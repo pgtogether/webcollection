@@ -25,13 +25,7 @@
 			placeholder : "block-placeholder",
 			tolerance : "pointer",
 			delay : 100,
-			zIndex : 100,
-			out : function(e, ui) {
-				$(ui.placeholder).hide(500);
-			},
-			change : function(e, ui) {
-				$(ui.placeholder).hide().show(300);
-			}
+			zIndex : 100
 		});
 		
 		$(".block-body-linklist").sortable({
