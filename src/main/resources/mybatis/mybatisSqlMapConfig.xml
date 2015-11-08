@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.dapeng.service.bo.TestBO" alias="TestBO" />
+	</typeAliases>
+
+	<!-- 使用spring整合mybatis时，以下代码可以省略 -->
+	<!-- <environments default="development"> -->
+	<!-- <environment id="development"> -->
+	<!-- <transactionManager type="JDBC" /> -->
+	<!-- <dataSource type="POOLED"> -->
+	<!-- <property name="driver" value="com.mysql.jdbc.Driver" /> -->
+	<!-- <property name="url" value="jdbc:mysql://localhost/mybatis" /> -->
+	<!-- <property name="username" value="root" /> -->
+	<!-- <property name="password" value="" /> -->
+	<!-- </dataSource> -->
+	<!-- </environment> -->
+	<!-- </environments> -->
+	<!-- 使用spring整合mybatis时，以下代码也可以省略 -->
+	<!-- <mappers> -->
+	<!-- <mapper resource="com/njupt/pojo/User.xml" /> -->
+	<!-- <mapper resource="com/njupt/pojo/Person.xml" /> -->
+	<!-- <mapper resource="com/njupt/pojo/Order.xml" /> -->
+	<!-- </mappers> -->
+</configuration>
