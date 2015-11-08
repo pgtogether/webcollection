@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+body {
+	background: #ECECEC;
+}
+
+.header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 40px;
+	background: rgba(0, 0, 0, .88);
+	z-index: 99;
+}
+
+.header .header-in {
+	width: 1200px;
+	height: 30px;
+	margin: 0 auto;
+}
+
+.header .head-logo {
+	float: left;
+	width: 170px;
+	height: 40px;
+	background: url(../img/logo.png);
+	background-size: 100%;
+}
+
+.header .head-logo a {
+	display: block;
+	width: 100%;
+	height: 30px
+}
+
+.header .head-fun-nav {
+	height: 30px;
+}
+
+.header .head-fun-nav ul li {
+	color: #fff;
+	float: right;
+	padding: 0 4px;
+	line-height: 40px;
+	width: 100px;
+}
+
+.wrap {
+	margin: 0 auto;
+	width: 1200px;
+	height: 1200px;
+	background: #FFFFFF;
+	box-shadow: 2px 2px 10px #bbb;
+	top: 40px;
+	position: relative;
+}
+
+.wrap-top {
+	width: 100%;
+	margin-top: 50px;
+	float: left;
+}
+
+.wrap-in {
+	width: 10%;
+	height: auto;
+	float: left;
+	margin: 0 auto;
+	margin-top: 2px;
+	border-top: 1px solid #CCC;
+}
+
+.wrap-in .left-box {
+	width: 10%;
+	float: left;
+	background: #fff;
+}
+
+.wrap-in .left-box .left-box-title {
+	width: 100%;
+	height: 30px;
+	text-align: left;
+	line-height: 30px;
+	text-indent: 5px;
+	background: #ECECEC;
+}
+
+.wrap-in .right-box {
+	width: 90%;
+	float: left;
+	background: #ECECEC;
+}
+
+.min-box {
+	height: 30px;
+}
