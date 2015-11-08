@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/*")
 public class TestController {
 
+	/**
+	 * 测试
+	 */
 	@RequestMapping("hello")
 	public String hello() {
 		return "hello";
