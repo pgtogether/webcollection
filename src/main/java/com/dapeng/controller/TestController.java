@@ -32,6 +32,11 @@ public class TestController {
 	public String myweb() {
 		return "bak/myweb";
 	}
+	
+	@RequestMapping("name")
+	public String name(){
+		return "name";
+	}
 
 	@RequestMapping("inserttest")
 	public String inserttest(Model model) {
