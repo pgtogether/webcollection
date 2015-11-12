@@ -45,7 +45,7 @@
 	<div class="header">
 		<div class="header-in">
 			<div class="head-logo">
-				<a href="${context_path}/">Web-Basket</a>
+				<a href="${context_path}/">WEB-BASKET</a>
 			</div>
 			<div class="head-fun-nav">
 				<ul>
