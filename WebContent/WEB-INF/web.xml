@@ -27,6 +27,10 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>webcollection</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>webcollection</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	<!-- 过滤编码方式，防止乱码 -->
@@ -40,6 +44,6 @@
 	</filter-mapping>
 
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index</welcome-file>
 	</welcome-file-list>
 </web-app>

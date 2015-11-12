@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 body {
-	background: #ECECEC;
+	background: #EDEFF0;
 	float: left;
 	width: 100%;
 	position: absolute;
@@ -9,47 +9,60 @@ body {
 
 .header {
 	top: 0;
+	left: 0;
 	width: 100%;
 	height: 40px;
-	background: #252535;
+	background: #EDEFF0;
+	z-index: 100;
+	position: fixed;
+	width: 100%;
 }
 
 .header .header-in {
 	width: 1200px;
 	height: 40px;
 	margin: 0 auto;
+	box-shadow: 0 -4px 0px 4px #edeff0, 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .header .head-logo {
 	float: left;
-	width: 170px;
+	width: 20%;
 	height: 40px;
-	background: url(../img/logo.png);
-	background-size: 100%;
+	/* 	background: url(../img/logo.png); */
 }
 
 .header .head-logo a {
 	display: block;
 	width: 100%;
-	height: 40px
+	height: 40px;
+	line-height: 40px;
+	margin-left: 20px;
+	font-size: 25px;
+	font-weight: bold;
+	color: #000;
+	text-decoration: blink;
 }
 
 .header .head-fun-nav {
+	width: 80%;
 	height: 40px;
-	background: #252535;
+	float: right;
+	background: #EDEFF0;
 }
 
 .header .head-fun-nav ul {
-	display: block;	
+	margin-right: 10px;
 }
 
 .header .head-fun-nav ul li {
-	color: #fff;
+	color: #000000;
 	float: right;
 	padding: 0 4px;
 	line-height: 40px;
 	width: 100px;
 	text-align: center;
+	cursor: pointer;
 }
 
 .header .head-fun-nav ul li:hover {
@@ -60,51 +73,50 @@ body {
 	width: 100px;
 	text-align: center;
 	background: #313142;
+	cursor: pointer;
 }
 
 .content {
 	margin: 0 auto;
-	padding-top: 50px;
 	height: 1000px;
 	display: block;
 	overflow: hidden;
-	width: 1200px;
-	background: #F3FFF7;
+	width: 1180px;
+	background: #FFFFFF;
+	padding-top: 60px;
 }
 
 .wrap-box {
-	width: 200px;
+	width: 224px;
 	min-height: 300px;
 	float: left;
-	margin-left: 20px;
-	float: left;
+	margin-left: 10px;
 }
 
 .block {
 	width: 100%;
 	min-height: 150px;
 	float: left;
-	box-shadow: 1px 1px 5px #DCDCDC;
 	margin-bottom: 10px;
-	border: 1px solid #DCDCDC;
-	border-radius: 4px 4px 0px 0px;
-	background: #FFFFFF;
+	background: #ffffff;
 }
 
 .block .block-head {
 	height: 30px;
 	width: 100%;
 	float: left;
-	background: #DEDEDE;
 	line-height: 30px;
 	text-indent: 10px;
 	cursor: move;
+	border-radius: 5px 5px 0px 0px;
+	border-bottom: 1px solid #000;
 }
 
 .block .block-body {
 	min-height: 150px;
 	width: 100%;
 	float: left;
+	background: #F7F7F7;
 }
 
 .block .block-body ul {
@@ -120,7 +132,7 @@ body {
 .block .block-body ul li:hover {
 	width: 100%;
 	float: left;
-	background: #F9F9F9;
+	background: #EFEFEF;
 }
 
 .block .block-body ul li a {
@@ -153,12 +165,100 @@ body {
 	width: 100%;
 	float: left;
 	height: 25px;
-	background: #CBE9FB;
+	background: #fff;
 }
 
-.footer{
+.footer {
 	bottom: 0;
 	width: 100%;
 	height: 150px;
-	background: #252535;
+	background: #EDEFF0;
+}
+
+.footer .footer-in {
+	width: 1200px;
+	height: 150px;
+	margin: 0 auto;
+	box-shadow: 0 -5px 2px -2px #DADADA;
+	border-radius: 2px 2px 0 0;
+}
+
+.randomcolor-1 {
+	background: #FFCACA;
+}
+
+.randomcolor-2 {
+	background: #FFE8CA;
+}
+
+.randomcolor-3 {
+	background: #F9F4BD;
+}
+
+.randomcolor-4 {
+	background: #CAFFCA;
+}
+
+.randomcolor-5 {
+	background: #AEFBDC;
+}
+
+.randomcolor-6 {
+	background: #BBE6F7;
+}
+
+.randomcolor-7 {
+	background: #BBCAF7;
+}
+
+.randomcolor-8 {
+	background: #DFBCEC;
+}
+
+.randomcolor-9 {
+	background: #FFEAC3;
+}
+
+.randomcolor-10 {
+	background: #C8ECC8;
+}
+
+.randomcolor-11 {
+	background: #BBF4F7;
+}
+
+.randomcolor-12 {
+	background: #FBF6AE;
+}
+
+.randomcolor-13 {
+	background: #FBAECD;
+}
+
+.randomcolor-14 {
+	background: #FDC2F8;
+}
+
+.randomcolor-15 {
+	background: #E6CEFF;
+}
+
+.randomcolor-16 {
+	background: #C1E5FF;
+}
+
+.randomcolor-17 {
+	background: #ADF5EF;
+}
+
+.randomcolor-18 {
+	background: #D4F9AD;
+}
+
+.randomcolor-19 {
+	background: #F3EEAE;
+}
+
+.randomcolor-20 {
+	background: #FFD1BA;
 }

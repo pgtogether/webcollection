@@ -8,26 +8,31 @@
 <title>Insert title here</title>
 <link href="${context_path}/css/base.css" rel="stylesheet"
 	type="text/css" />
-<link href="${context_path}/css/theme1.css" rel="stylesheet"
+<link href="${context_path}/css/index.css" rel="stylesheet"
 	type="text/css" />
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script src="${context_path}/js/jquery.ui.sortable-animation.js"></script>
+<script src="${context_path}/js/plugin/jquery.ui.sortable-animation.js"></script>
 </head>
 <script>
 	$(function() {
+		$(".block-head").each(function(){
+			var rand = parseInt(Math.random() * 20, 10) + 1;
+			$(this).addClass("randomcolor-" + rand);
+		});
+
 		$(".wrap-box").sortable({
 			connectWith : ".wrap-box",
 			handle : ".block-head",
 			distance : 5,
 			dropOnEmpty : true,
-			opacity : 0.8,
+			opacity : 1,
 			placeholder : "block-placeholder",
 			tolerance : "pointer",
 			delay : 100,
 			zIndex : 100
 		});
-		
+
 		$(".block-body-linklist").sortable({
 			connectWith : ".block-body-linklist",
 			dropOnEmpty : true,
@@ -40,7 +45,7 @@
 	<div class="header">
 		<div class="header-in">
 			<div class="head-logo">
-				<a href="${context_path}/"></a>
+				<a href="${context_path}/">Web-Basket</a>
 			</div>
 			<div class="head-fun-nav">
 				<ul>
@@ -305,7 +310,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		
+		<div class="footer-in"></div>
 	</div>
 </body>
 </html>
