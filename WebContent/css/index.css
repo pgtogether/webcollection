@@ -78,7 +78,7 @@ body {
 
 .content {
 	margin: 0 auto;
-	min-height: 768px;
+	height: 1000px;
 	display: block;
 	overflow: hidden;
 	width: 1180px;
@@ -256,7 +256,7 @@ body {
 }
 
 .randomcolor-19 {
-	background: #FDEDC8;
+	background: #F3EEAE;
 }
 
 .randomcolor-20 {
