@@ -36,6 +36,7 @@
 		$(".block-body-linklist").sortable({
 			connectWith : ".block-body-linklist",
 			dropOnEmpty : true,
+			tolerance : "pointer",
 			distance : 5,
 			placeholder : "block-body-linklist-placeholder"
 		});
