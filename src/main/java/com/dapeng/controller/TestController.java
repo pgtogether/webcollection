@@ -13,6 +13,14 @@ import com.dapeng.controller.form.TestForm;
 import com.dapeng.service.TestService;
 import com.dapeng.service.bo.TestBO;
 
+/**
+ * @Description: 测试用Controller
+ * 
+* @ClassName: TestController 
+* @author jiangdp
+* @date 2015年11月12日 下午7:20:46 
+*
+ */
 @Controller
 @RequestMapping("/*")
 public class TestController {
@@ -38,11 +46,11 @@ public class TestController {
 		return "name";
 	}
 
-	@RequestMapping("inserttest")
-	public String inserttest(Model model) {
+	@RequestMapping("test")
+	public String test(Model model) {
 		List<TestBO> testlist = testService.selectTestList();
 		model.addAttribute("testlist", testlist);
-		return "inserttest";
+		return "test";
 	}
 	
 	@RequestMapping(value = "doInsertTest", method = { RequestMethod.GET,
