@@ -86,11 +86,70 @@ body {
 	padding-top: 60px;
 }
 
+.content-left {
+	width: 922px;
+	min-height: 768px;
+	float: left;
+}
+
+.content-left .content-left-top {
+	width: 916px;
+	min-height: 100px;
+	margin-left: 5px;
+	overflow: auto;
+}
+
+.content-left .content-left-top-body ul {
+	width: 100%;
+	float: left;
+}
+
+.content-left .content-left-top-body ul li {
+	width: 24.5%;
+	height: 30px; 
+	margin-left : 0.5%;
+	float: left;
+	margin-top: 5px;
+	text-indent: 10px;
+	border-radius: 10px;
+	background: #EAEAEA;
+	margin-left: 0.5%;
+}
+
+.content-left .content-left-top-body ul li:hover {
+	width: 24.5%;
+	height: 30px;
+	margin-left: 0.5%;
+	float: left;
+	cursor: pointer;
+}
+
+.content-left .content-left-top-body ul li a {
+	height: 30px;
+	line-height: 30px;
+	text-indent: 10px;
+	cursor: pointer;
+	color: #000;
+}
+
+.content-left .content-left-body {
+	width: 100%;
+	margin-top: 10px;
+}
+
+.content-right {
+	width: 245px;
+	min-height: 768px;
+	background: #F7F7F7;
+	float: right;
+	margin-right: 6px;
+}
+
 .wrap-box {
-	width: 224px;
+	width: 225px;
 	min-height: 300px;
 	float: left;
-	margin-left: 10px;
+	margin-left: 5px;
 }
 
 .block {
@@ -101,14 +160,8 @@ body {
 }
 
 .block .block-head {
-	height: 30px;
-	width: 100%;
 	float: left;
-	line-height: 30px;
-	text-indent: 10px;
 	cursor: move;
-	border-radius: 5px 5px 0px 0px;
-	border-bottom: 1px solid #000;
 }
 
 .block .block-body {
@@ -143,31 +196,6 @@ body {
 	color: #000;
 }
 
-.block .block-body ul li a:hover {
-	float: left;
-	height: 25px;
-	line-height: 25px;
-	text-indent: 10px;
-	cursor: pointer;
-	color: #000;
-}
-
-.block-placeholder {
-	width: 200px;
-	height: 165px;
-	border: 2px dashed #bbb;
-	float: left;
-	margin-bottom: 20px;
-}
-
-.block-body-linklist-placeholder {
-	width: 100%;
-	float: left;
-	height: 25px;
-	border: 2px dashed #bbb;
-	background: #fff;
-}
-
 .footer {
 	bottom: 0;
 	width: 100%;
@@ -183,6 +211,21 @@ body {
 	border-radius: 2px 2px 0 0;
 }
 
+.box-title {
+	border-radius: 5px 5px 0 0;
+}
+
+/* 广告位 */
+.adv-show {
+	width: 100%;
+	height: 100px;
+	float: left;
+	font-size: 50px;
+	text-align: center;
+	line-height: 100px;
+}
+
+/* 随机变化颜色式样 */
 .randomcolor-1 {
 	background: #FFCACA;
 }
