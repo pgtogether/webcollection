@@ -83,7 +83,9 @@
 				</div>
 				<div class="content-left-top-body">
 					<ul class="hot-url-list">
-						<li><a href="###">中文网址测试</a></li>
+						<li>
+							<a href="###">中文网址测试</a>
+						</li>
 						<li><a href="###">6666666</a></li>
 						<li><a href="###">7777777</a></li>
 						<li><a href="###">中文网址测试</a></li>
@@ -135,7 +137,14 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
+								<li>
+									<a href="###">中文网址测试</a>
+									<span style="float:right;">
+										<img class="close" src="${context_path}/img/icon/star-h.png" style="margin-top:8px;cursor: pointer;float:left;margin-right: 2px;" />
+										<img class="close" src="${context_path}/img/icon/edit-h.png" style="margin-top:8px;cursor: pointer;float:left;margin-right: 1px;" />
+										<img class="close" src="${context_path}/img/icon/close-h.png" style="margin-top:8px;cursor: pointer;float:left;margin-right: 2px;" />
+									</span>
+								</li>
 								<li><a href="###">6666666</a></li>
 								<li><a href="###">7777777</a></li>
 							</ul>
