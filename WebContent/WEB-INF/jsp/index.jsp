@@ -18,19 +18,19 @@
 </head>
 <script>
 	$(function() {
-		$(".head-style").each(function(){
+		// 随机背景颜色
+		$(".head-style").each(function() {
 			var rand = parseInt(Math.random() * 20, 10) + 1;
 			$(this).addClass("randomcolor-" + rand);
 		});
 
 		$(".hot-url-list").sortable({
-			connectWith : ".url-list",
 			placeholder : "hot-url-list-placeholder",
 			dropOnEmpty : true,
 			tolerance : "pointer",
 			distance : 5
-		}).disableSelection();;
-		
+		}).disableSelection();
+
 		$(".wrap-box").sortable({
 			connectWith : ".wrap-box",
 			handle : ".block-head",
@@ -41,23 +41,54 @@
 			tolerance : "pointer",
 			delay : 100,
 			zIndex : 100
-		}).disableSelection();;
+		}).disableSelection();
 
 		$(".url-list").sortable({
-			connectWith : ".url-list,.hot-url-list",
+			connectWith : ".url-list",
 			dropOnEmpty : true,
 			tolerance : "pointer",
 			distance : 5,
 			placeholder : "url-list-placeholder"
-		}).disableSelection();;
-		
-		$(".hot-url-list li,.url-list li").hover(function(){
-			var color = $(this).parent().parent().siblings(".head-style").css("background-color");
-			$(this).css("background-color",color).siblings().attr("style","");
-		},function(){
-			$(this).attr("style","");
+		}).disableSelection();
+
+		$(".hot-url-list li,.url-list li").hover(function() {
+			var $this = $(this);
+					var color = $this.parent().parent().siblings(".head-style")
+							.css("background-color");
+					$this.css("background-color", color).siblings().attr(
+							"style", "");
+					appendOperateBtn($this);
+				}, function() {
+					var $this = $(this);
+					$this.attr("style", "");
+					removeOperateBtn($this);
+				});
+
+		$(".operatebtn").on("click", ".staricon", function() {
+			if ($(this).hasClass("light")) {
+				$(this).removeClass("light").attr("title", "标记为常用书签");
+			} else {
+				$(this).addClass("light").attr("title", "从常用书签取消");
+			}
+			// 此处应该有上升为常用书签的操作
+			// 还需要Ajax 反映到数据库中
+			// TODO
 		});
 	});
+
+	function appendOperateBtn($li) {
+		var operateHtml = '';
+		if ($li.find(".light").length == 0) {
+			operateHtml += '<span title="标记为常用书签" class="staricon"></span>';
+		}
+		operateHtml += '<span title="编辑书签" class="editicon"></span>';
+		operateHtml += '<span title="删除书签" class="delicon"></span>';
+		$li.find(".operatebtn").append(operateHtml);
+	}
+
+	function removeOperateBtn($li) {
+		$li.find(".operatebtn > span").not(".light").remove();
+	}
 </script>
 <body>
 	<div class="header">
@@ -83,11 +114,6 @@
 				</div>
 				<div class="content-left-top-body">
 					<ul class="hot-url-list">
-						<li>
-							<a href="###">中文网址测试</a>
-						</li>
-						<li><a href="###">6666666</a></li>
-						<li><a href="###">7777777</a></li>
 						<li><a href="###">中文网址测试</a></li>
 						<li><a href="###">6666666</a></li>
 						<li><a href="###">7777777</a></li>
@@ -95,38 +121,10 @@
 						<li><a href="###">6666666</a></li>
 						<li><a href="###">7777777</a></li>
 						<li><a href="###">中文网址测试</a></li>
-						<li><a href="###">6666666</a></li>
-						<li><a href="###">7777777</a></li>
-						<li><a href="###">中文网址测试</a></li>
-						<li><a href="###">6666666</a></li>
-						<li><a href="###">7777777</a></li>
-						<li><a href="###">中文网址测试</a></li>
-						<li><a href="###">6666666</a></li>
-						<li><a href="###">7777777</a></li>
-						<li><a href="###">中文网址测试</a></li>
-						<li><a href="###">6666666</a></li>
-						<li><a href="###">7777777</a></li>
-						<li><a href="###">中文网址测试</a></li>
-						<li><a href="###">6666666</a></li>
-						<li><a href="###">7777777</a></li>
-						<li><a href="###">中文网址测试</a></li>
-						<li><a href="###">6666666</a></li>
-						<li><a href="###">7777777</a></li>
-						<li><a href="###">中文网址测试</a></li>
-						<li><a href="###">6666666</a></li>
-						<li><a href="###">7777777</a></li>
-						<li><a href="###">中文网址测试</a></li>
-						<li><a href="###">6666666</a></li>
-						<li><a href="###">7777777</a></li>
-						<li><a href="###">中文网址测试</a></li>
-						<li><a href="###">6666666</a></li>
-						<li><a href="###">7777777</a></li>
 					</ul>
 				</div>
 			</div>
-			<div class="adv-show">
-				广告位招租
-			</div>
+			<div class="adv-show">广告位招租</div>
 			<div class="content-left-body">
 				<div class="wrap-box">
 					<div class="block">
@@ -137,16 +135,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li>
-									<a href="###">中文网址测试</a>
-									<span style="float:right;">
-										<img class="close" src="${context_path}/img/icon/star-h.png" style="margin-top:8px;cursor: pointer;float:left;margin-right: 2px;" />
-										<img class="close" src="${context_path}/img/icon/edit-h.png" style="margin-top:8px;cursor: pointer;float:left;margin-right: 1px;" />
-										<img class="close" src="${context_path}/img/icon/close-h.png" style="margin-top:8px;cursor: pointer;float:left;margin-right: 2px;" />
-									</span>
-								</li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -158,17 +152,24 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">3333333</a></li>
-								<li><a href="###">4444444</a></li>
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">3333333</a></li>
-								<li><a href="###">4444444</a></li>
-								<li><a href="###">5555555</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -180,9 +181,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -194,9 +198,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -208,9 +215,18 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -222,9 +238,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -236,9 +255,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -250,17 +272,18 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">3333333</a></li>
-								<li><a href="###">4444444</a></li>
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">3333333</a></li>
-								<li><a href="###">4444444</a></li>
-								<li><a href="###">5555555</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -272,9 +295,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -288,9 +314,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -302,15 +331,24 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">3333333</a></li>
-								<li><a href="###">4444444</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -322,9 +360,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -336,14 +377,24 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">3333333</a></li>
-								<li><a href="###">4444444</a></li>
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">3333333</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -355,9 +406,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -369,9 +423,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -383,9 +440,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -399,17 +459,24 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">3333333</a></li>
-								<li><a href="###">4444444</a></li>
-								<li><a href="###">4444444</a></li>
-								<li><a href="###">5555555</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -421,8 +488,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -434,11 +505,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">4444444</a></li>
-								<li><a href="###">5555555</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -450,8 +522,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -463,12 +539,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">3333333</a></li>
-								<li><a href="###">5555555</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -482,13 +558,18 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">3333333</a></li>
-								<li><a href="###">4444444</a></li>
-								<li><a href="###">5555555</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -500,9 +581,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">442244</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -514,19 +598,18 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">3333333</a></li>
-								<li><a href="###">4444444</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">3333333</a></li>
-								<li><a href="###">4444444</a></li>
-								<li><a href="###">5555555</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -538,13 +621,16 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">3333333</a></li>
-								<li><a href="###">4444444</a></li>
-								<li><a href="###">5555555</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -556,9 +642,12 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">442244</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>
@@ -570,13 +659,18 @@
 						</div>
 						<div class="block-body">
 							<ul class="url-list">
-								<li><a href="###">中文网址测试</a></li>
-								<li><a href="###">2222222</a></li>
-								<li><a href="###">3333333</a></li>
-								<li><a href="###">4444444</a></li>
-								<li><a href="###">5555555</a></li>
-								<li><a href="###">6666666</a></li>
-								<li><a href="###">7777777</a></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
+								<li><a href="###">中文网址测试</a>
+									<div class="operatebtn"></div></li>
 							</ul>
 						</div>
 					</div>

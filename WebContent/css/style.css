@@ -15,8 +15,8 @@
 	margin-top: 5px;
 	text-indent: 10px;
 	border-radius: 10px;
-	background: url(../img/xian.png) repeat !important;
-	opacity:0.6;
+	background: url(../img/icon/xian.png) repeat !important;
+	opacity: 0.6;
 }
 
 .block-placeholder {
@@ -24,14 +24,88 @@
 	height: 165px;
 	float: left;
 	margin-bottom: 20px;
-	background: url(../img/xian.png) repeat !important;
-	opacity:0.6;
+	background: url(../img/icon/xian.png) repeat !important;
+	opacity: 0.6;
 }
 
 .url-list-placeholder {
 	width: 100%;
 	float: left;
 	height: 25px;
-	background: url(../img/xian.png) repeat !important;
-	opacity:0.6;
+	background: url(../img/icon/xian.png) repeat !important;
+	opacity: 0.6;
+}
+
+.operatebtn {
+	float: right;
+}
+
+.staricon {
+	width: 16px;
+	height: 16px;
+	margin-top: 6px;
+	cursor: pointer;
+	float: left;
+	margin-right: 2px;
+	background: url(../img/icon/star.png);
+	width: 16px;
+}
+
+.staricon:hover {
+	width: 16px;
+	height: 16px;
+	margin-top: 6px;
+	cursor: pointer;
+	float: left;
+	margin-right: 2px;
+	background: url(../img/icon/star-h.png);
+}
+
+.staricon.light {
+	width: 16px;
+	height: 16px;
+	display: block;
+	margin-top: 5px;
+	cursor: pointer;
+	float: left;
+	margin-right: 2px;
+	background: url(../img/icon/stard.png);
+}
+
+.editicon {
+	width: 16px;
+	height: 16px;
+	margin-top: 6px;
+	cursor: pointer;
+	float: left;
+	background: url(../img/icon/edit.png);
+	width: 16px;
+}
+
+.editicon:hover {
+	width: 16px;
+	height: 16px;
+	margin-top: 6px;
+	cursor: pointer;
+	float: left;
+	background: url(../img/icon/edit-h.png);
+}
+
+.delicon {
+	width: 16px;
+	height: 16px;
+	margin-top: 5px;
+	cursor: pointer;
+	float: left;
+	background: url(../img/icon/del.png);
+	width: 16px;
+}
+
+.delicon:hover {
+	width: 16px;
+	height: 16px;
+	margin-top: 5px;
+	cursor: pointer;
+	float: left;
+	background: url(../img/icon/del-h.png);
 }
