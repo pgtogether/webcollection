@@ -1,0 +1,81 @@
+/* 以下是sortable插件拖动占位的样式 */
+.hot-url-list-placeholder {
+	width: 24.5%; margin-left: 0.5%; float: left; margin-top: 5px; text-indent: 10px; border-radius: 10px; background: url(../img/icon/xian.png) repeat !important; opacity: 0.6;
+}
+
+.block-placeholder {
+	width: 225px; height: 165px; float: left; margin-bottom: 20px; background: url(../img/icon/xian.png) repeat !important; opacity: 0.6;
+}
+
+.url-list-placeholder {
+	width: 100%; float: left; height: 25px; background: url(../img/icon/xian.png) repeat !important; opacity: 0.6;
+}
+
+/* 以下是操作书签按钮的样式 */
+.operatebtn {
+	float: right;
+}
+
+.confirmicon{
+	width: 20px; height: 20px; margin-top: 6px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/confirm.png);
+}
+
+.cancelicon{
+	width: 20px; height: 20px; margin-top: 6px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/cancel.png);
+}
+
+.cancelicon:hover{
+	width: 20px; height: 20px; margin-top: 6px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/cancel-h.png);
+}
+
+.menuicon {
+	width: 14px; height: 14px; margin-top: 8px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/menu.png);
+}
+
+.menuicon:hover {
+	width: 14px; height: 14px; margin-top: 8px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/menu-h.png);
+}
+
+.addicon {
+	width: 14px; height: 14px; margin-top: 8px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/add.png);
+}
+
+.addicon:hover {
+	width: 14px; height: 14px; margin-top: 8px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/add-h.png);
+}
+
+.closeicon {
+	width: 14px; height: 14px; margin-top: 8px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/close.png);
+}
+
+.closeicon:hover {
+	width: 14px; height: 14px; margin-top: 8px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/close-h.png);
+}
+
+.staricon {
+	width: 16px; height: 16px; margin-top: 6px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/star.png);
+}
+
+.staricon:hover {
+	width: 16px; height: 16px; margin-top: 6px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/star-h.png);
+}
+
+.staricon.light {
+	width: 16px; height: 16px; display: block; margin-top: 5px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/stard.png);
+}
+
+.editicon {
+	width: 16px; height: 16px; margin-top: 6px; cursor: pointer; float: left; background: url(../img/icon/edit.png);
+}
+
+.editicon:hover {
+	width: 16px; height: 16px; margin-top: 6px; cursor: pointer; float: left; background: url(../img/icon/edit-h.png);
+}
+
+.delicon {
+	width: 16px; height: 16px; margin-top: 5px; cursor: pointer; float: left; background: url(../img/icon/del.png);
+}
+
+.delicon:hover {
+	width: 16px; height: 16px; margin-top: 5px; cursor: pointer; float: left; background: url(../img/icon/del-h.png);
+}
