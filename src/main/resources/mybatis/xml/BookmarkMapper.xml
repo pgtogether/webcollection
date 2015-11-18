@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.dapeng.dao.BookmarkMapper">
+	<resultMap id="BaseResultMap" type="com.dapeng.domain.Bookmark">
+		<id column="bookmarkid" property="bookmarkid" jdbcType="INTEGER" />
+		<result column="bookmarkname" property="bookmarkname" jdbcType="VARCHAR" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+		<result column="permission" property="permission" jdbcType="VARCHAR" />
+		<result column="categoryid" property="categoryid" jdbcType="VARCHAR" />
+		<result column="usetimes" property="usetimes" jdbcType="INTEGER" />
+		<result column="fastletters" property="fastletters" jdbcType="VARCHAR" />
+		<result column="pinyinhead" property="pinyinhead" jdbcType="VARCHAR" />
+		<result column="createtime" property="createtime" jdbcType="VARCHAR" />
+		<result column="lastusetime" property="lastusetime" jdbcType="VARCHAR" />
+		<result column="updatetime" property="updatetime" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="sort" property="sort" jdbcType="INTEGER" />
+		<result column="hot" property="hot" jdbcType="VARCHAR" />
+		<result column="deleteflg" property="deleteflg" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		id, name
+	</sql>
+	<select id="selectBookmarkList" resultType="com.dapeng.domain.Bookmark">
+		select * from bookmark
+	</select>
+	
+	<select id="selectBookmarkListById" parameterType="int" resultType="com.dapeng.domain.Bookmark">
+		select * from bookmark 
+		where bookmarkid = #{bookmarkid,dbcType=INTEGER}
+	</select>
+	<delete id="deleteBookmarkById" parameterType="int">
+		delete from bookmark
+		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insertBookmark" parameterType="com.dapeng.domain.Bookmark">
+		insert into bookmark ( bookmarkname,url,permission,categoryid,createtime)
+		values (#{bookmarkname,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
+		,#{permission,jdbcType=VARCHAR},#{categoryid,jdbcType=VARCHAR},#{createtime,jdbcType=VARCHAR})
+	</insert>
+	<update id="updateBookmarkById" parameterType="com.dapeng.domain.Bookmark">
+		update bookmark
+		set
+		bookmarkname = #{bookmarkname,jdbcType=VARCHAR},
+		url = #{url,jdbcType=VARCHAR}
+	<!-- 	permission = #{permission,jdbcType=VARCHAR},
+		categoryid = #{categoryid,jdbcType=VARCHAR},
+		usetimes = #{usetimes,jdbcType=INTEGER},
+		fastletters = #{fastletters,jdbcType=VARCHAR},
+		pinyinhead = #{pinyinhead,jdbcType=VARCHAR},
+		createtime = #{createtime,jdbcType=VARCHAR},
+		lastusetime = #{lastusetime,jdbcType=VARCHAR},
+		updatetime = #{updatetime,jdbcType=VARCHAR},
+		description = #{description,jdbcType=VARCHAR},
+		sort = #{sort,jdbcType=INTEGER},
+		hot = #{hot,jdbcType=VARCHAR},
+		deleteflg = #{deleteflg,jdbcType=VARCHAR} -->
+		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+	</update>
+		
+		 
+	<update id="updateBookmarkBySlected" parameterType="com.dapeng.domain.Bookmark">
+		update bookmark
+		set
+		bookmarkname = #{bookmarkname},
+		url = #{url}
+		where bookmarkid = #{bookmarkid}
+	</update>
+	
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from test
+		where id = #{id,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.dapeng.domain.Test">
+		insert into test (id, name)
+		values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.dapeng.domain.Test">
+		insert into test
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+ 	<insert id="insertUser" parameterType="com.dapeng.domain.User">
+		insert into user(user_name,user_pwd,user_email)
+		values(#{user_name},#{user_pwd},#{user_email})
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.dapeng.domain.Test">
+		update test
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.dapeng.domain.Test">
+		update test
+		set
+		name = #{name,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectAll" resultType="TestBO">
+		select
+		<include refid="Base_Column_List" />
+		from test
+	</select>
+</mapper>
+
+<!-- 	permission = #{permission,jdbcType=VARCHAR},
+		categoryid = #{categoryid,jdbcType=VARCHAR},
+		usetimes = #{usetimes,jdbcType=INTEGER},
+		fastletters = #{fastletters,jdbcType=VARCHAR},
+		pinyinhead = #{pinyinhead,jdbcType=VARCHAR},
+		createtime = #{createtime,jdbcType=VARCHAR},
+		lastusetime = #{lastusetime,jdbcType=VARCHAR},
+		updatetime = #{updatetime,jdbcType=VARCHAR},
+		description = #{description,jdbcType=VARCHAR},
+		sort = #{sort,jdbcType=INTEGER},
+		hot = #{hot,jdbcType=VARCHAR},
+		deleteflg = #{deleteflg,jdbcType=VARCHAR} -->

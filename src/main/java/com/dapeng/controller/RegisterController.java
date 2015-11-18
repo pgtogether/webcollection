@@ -8,6 +8,15 @@
 */
 package com.dapeng.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.dapeng.domain.User;
+import com.dapeng.service.TestService;
+
 /**
  * 
  * 类的功能描述
@@ -18,6 +27,36 @@ package com.dapeng.controller;
  * @date 2015年11月12日 下午7:25:49
  * @version V1.0
  */
+@Controller
+@RequestMapping("/*")
 public class RegisterController {
+	
+	@Autowired
+	private TestService testService;
+	
+	
+	@RequestMapping("userRegist")
+	public String name(){
+		return "userRegist";
+	}
+	
+	
+	@RequestMapping(value = "doUserRegist", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	@ResponseBody
+	public String doUserRegist(User user) {
+		System.out.println(user.getUser_name()+"用户名...");
+		User userdto = new User();
+		userdto.setUser_name(user.getUser_name());
+		userdto.setUser_pwd(user.getUser_pwd());
+		userdto.setUser_email(user.getUser_email());
+		int result = testService.insertUser(userdto);
+		
+		if (result > 0) {
+			return "OK";
+		} else {
+			return "NG";
+		}
+	}
 
 }

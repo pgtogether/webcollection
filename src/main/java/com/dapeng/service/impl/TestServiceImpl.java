@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.dapeng.dao.TestMapper;
 import com.dapeng.domain.Test;
+import com.dapeng.domain.User;
 import com.dapeng.service.TestService;
 import com.dapeng.service.bo.TestBO;
 
@@ -27,6 +28,16 @@ public class TestServiceImpl implements TestService {
 	@Override
 	public List<TestBO> selectTestList() {
 		return testDao.selectAll();
+	}
+
+	@Override
+	public int insertUser(User user) {
+		User userdto = new User();
+		userdto.setUser_name(user.getUser_name());
+		userdto.setUser_pwd(user.getUser_pwd());
+		userdto.setUser_email(user.getUser_email());
+		
+		return  testDao.insertUser(userdto);
 	}
 
 }
