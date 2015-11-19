@@ -11,6 +11,7 @@
  */
 package com.dapeng.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -81,7 +82,7 @@ public class IndexController {
 		bmdto.setUrl(bookmark.getUrl());
 		bmdto.setPermission("1");
 		bmdto.setCategoryid("111");
-		bmdto.setCreatetime("2016-12-12");
+		bmdto.setCreatetime(new Date());
 		int result = bookmarkService.insertBookmark(bmdto);
 		return result;
 	}

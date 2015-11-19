@@ -1,4 +1,7 @@
 package com.dapeng.domain;
+
+import java.util.Date;
+
 /**
  * 书签实体类
  * @author Administrator
@@ -16,9 +19,9 @@ public class Bookmark {
 	private int usetimes;
 	private String fastletters;
 	private String pinyinhead;
-	private String createtime;
-	private String lastusetime;
-	private String updatetime;
+	private Date createtime;
+	private Date lastusetime;
+	private Date updatetime;
 	private String description;
 	private int sort;
 	private String hot;
@@ -73,22 +76,23 @@ public class Bookmark {
 	public void setPinyinhead(String pinyinhead) {
 		this.pinyinhead = pinyinhead;
 	}
-	public String getCreatetime() {
+	
+	public Date getCreatetime() {
 		return createtime;
 	}
-	public void setCreatetime(String createtime) {
+	public void setCreatetime(Date createtime) {
 		this.createtime = createtime;
 	}
-	public String getLastusetime() {
+	public Date getLastusetime() {
 		return lastusetime;
 	}
-	public void setLastusetime(String lastusetime) {
+	public void setLastusetime(Date lastusetime) {
 		this.lastusetime = lastusetime;
 	}
-	public String getUpdatetime() {
+	public Date getUpdatetime() {
 		return updatetime;
 	}
-	public void setUpdatetime(String updatetime) {
+	public void setUpdatetime(Date updatetime) {
 		this.updatetime = updatetime;
 	}
 	public String getDescription() {
