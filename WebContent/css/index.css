@@ -1,54 +1,28 @@
 @charset "utf-8";
 
 body {
-	background: #EDEFF0;
-	float: left;
-	width: 100%;
-	position: absolute;
+	background: #EDEFF0; float: left; width: 100%; position: absolute;
 }
 
 .header {
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 40px;
-	background: #EDEFF0;
-	z-index: 100;
-	position: fixed;
-	width: 100%;
+	top: 0; left: 0; width: 100%; height: 40px; background: #EDEFF0; z-index: 100; position: fixed; width: 100%;
 }
 
 .header .header-in {
-	width: 1200px;
-	height: 40px;
-	margin: 0 auto;
-	box-shadow: 0 -4px 0px 4px #edeff0, 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+	width: 1200px; height: 40px; margin: 0 auto; box-shadow: 0 -4px 0px 4px #edeff0, 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .header .head-logo {
-	float: left;
-	width: 20%;
-	height: 40px;
+	float: left; width: 20%; height: 40px;
 	/* 	background: url(../img/logo.png); */
 }
 
 .header .head-logo a {
-	display: block;
-	width: 100%;
-	height: 40px;
-	line-height: 40px;
-	margin-left: 20px;
-	font-size: 25px;
-	font-weight: bold;
-	color: #12A4FD;
-	text-decoration: blink;
+	display: block; width: 100%; height: 40px; line-height: 40px; margin-left: 20px; font-size: 25px; font-weight: bold; color: #12A4FD; text-decoration: blink;
 }
 
 .header .head-fun-nav {
-	width: 80%;
-	height: 40px;
-	float: right;
-	background: #EDEFF0;
+	width: 80%; height: 40px; float: right; background: #EDEFF0;
 }
 
 .header .head-fun-nav ul {
@@ -56,173 +30,126 @@ body {
 }
 
 .header .head-fun-nav ul li {
-	color: #000000;
-	float: right;
-	padding: 0 4px;
-	line-height: 40px;
-	width: 100px;
-	text-align: center;
-	cursor: pointer;
+	color: #000000; float: right; padding: 0 4px; line-height: 40px; width: 100px; text-align: center; cursor: pointer;
 }
 
 .header .head-fun-nav ul li:hover {
-	color: #fff;
-	float: right;
-	padding: 0 4px;
-	line-height: 40px;
-	width: 100px;
-	text-align: center;
-	background: #313142;
-	cursor: pointer;
+	color: #fff; float: right; padding: 0 4px; line-height: 40px; width: 100px; text-align: center; background: #313142; cursor: pointer;
 }
 
 .content {
-	margin: 0 auto;
-	min-height: 768px;
-	display: block;
-	overflow: hidden;
-	width: 1180px;
-	background: #FFFFFF;
-	padding-top: 60px;
+	margin: 0 auto; min-height: 768px; display: block; overflow: hidden; width: 1180px; background: #FFFFFF; padding-top: 60px;
 }
 
 .content-left {
-	width: 922px;
-	min-height: 768px;
-	float: left;
+	width: 922px; min-height: 768px; float: left;
 }
 
 .content-left .content-left-top {
-	width: 916px;
-	min-height: 100px;
-	margin-left: 5px;
-	overflow: auto;
+	width: 916px; min-height: 100px; margin-left: 5px; overflow: auto;
 }
 
 .content-left .content-left-top-body ul {
-	width: 100%;
-	float: left;
+	width: 100%; float: left;
 }
 
 .content-left .content-left-top-body ul li {
-	width: 24.5%;
-	height: 30px; 
-	margin-left : 0.5%;
-	float: left;
-	margin-top: 5px;
-	text-indent: 10px;
-	border-radius: 10px;
-	background: #EAEAEA;
-	margin-left: 0.5%;
+	width: 24.5%; height: 30px; margin-left: 0.5%; float: left; margin-top: 5px; text-indent: 10px; border-radius: 10px; background: #EAEAEA; margin-left: 0.5%;
 }
 
 .content-left .content-left-top-body ul li:hover {
-	width: 24.5%;
-	height: 30px;
-	margin-left: 0.5%;
-	float: left;
-	cursor: pointer;
+	width: 24.5%; height: 30px; margin-left: 0.5%; float: left; cursor: pointer;
 }
 
 .content-left .content-left-top-body ul li a {
-	height: 30px;
-	line-height: 30px;
-	text-indent: 10px;
-	cursor: pointer;
-	color: #000;
+	height: 30px; line-height: 30px; text-indent: 10px; cursor: pointer; color: #000;
 }
 
 .content-left .content-left-body {
-	width: 100%;
-	margin-top: 10px;
+	width: 100%; margin-top: 10px;
 }
 
 .content-right {
-	width: 245px;
-	min-height: 768px;
-	background: #F7F7F7;
-	float: right;
-	margin-right: 6px;
+	width: 245px; min-height: 768px; background: #F7F7F7; float: right; margin-right: 6px;
 }
 
 .wrap-box {
-	width: 225px;
-	min-height: 300px;
-	float: left;
-	margin-left: 5px;
+	width: 225px; min-height: 300px; float: left; margin-left: 5px;
 }
 
 .block {
-	width: 100%;
-	float: left;
-	margin-bottom: 10px;
-	background: #ffffff;
+	width: 100%; float: left; margin-bottom: 10px; background: #ffffff;
 }
 
 .block .block-head {
+	float: left; cursor: move;
+}
+
+.block .block-head .block-head-title {
 	float: left;
-	cursor: move;
+	cursor: pointer;
+}
+
+.block .block-head .block-head-title .updatetitle{
+	outline: none;
+	border: 0;
+	height:30px;
+}
+
+
+.block .block-head .block-head-func {
+	float: right;
+	margin-right: 5px;
+	height: 30px;
+}
+
+.block .block-head .block-head-func span{
+	margin-right: 2px;
 }
 
 .block .block-body {
-	width: 100%;
-	float: left;
-	background: #F7F7F7;
+	width: 100%; float: left; background: #F7F7F7;
 }
 
 .block .block-body ul {
-	min-height: 130px;
-	width: 100%;
-	float: left;
+	min-height: 130px; width: 100%; float: left;
 }
 
 .block .block-body ul li {
-	width: 100%;
-	float: left;
+	width: 100%; float: left;
 }
 
 .block .block-body ul li:hover {
-	width: 100%;
-	float: left;
-	background: #EFEFEF;
+	width: 100%; float: left; background: #EFEFEF;
 }
 
 .block .block-body ul li a {
-	float: left;
-	height: 25px;
-	line-height: 28px;
-	text-indent: 10px;
-	cursor: pointer;
-	color: #000;
+	float: left; height: 25px; line-height: 28px; text-indent: 10px; cursor: pointer; color: #000;
 }
 
 .footer {
-	bottom: 0;
-	width: 100%;
-	height: 150px;
-	background: #EDEFF0;
+	bottom: 0; width: 100%; height: 150px; background: #EDEFF0;
 }
 
 .footer .footer-in {
-	width: 1200px;
-	height: 150px;
-	margin: 0 auto;
-	box-shadow: 0 -5px 2px -2px #DADADA;
-	border-radius: 2px 2px 0 0;
+	width: 1200px; height: 150px; margin: 0 auto; box-shadow: 0 -5px 2px -2px #DADADA; border-radius: 2px 2px 0 0;
 }
 
 .box-title {
 	border-radius: 5px 5px 0 0;
 }
 
+.head-style {
+	width: 100%; height: 30px; line-height: 30px; text-indent: 10px; border-radius: 5px 5px 0px 0px; border-bottom: 1px solid #000; text-indent: 10px;
+}
+
+.head-style.modify {
+	width: 100%; height: 30px; line-height: 30px; text-indent: 10px; border-radius: 0px 0px 0px 0px; border-bottom: 2px dashed #bbb; text-indent: 10px;
+}
+
 /* 广告位 */
 .adv-show {
-	width: 100%;
-	height: 100px;
-	float: left;
-	font-size: 50px;
-	text-align: center;
-	line-height: 100px;
+	width: 100%; height: 100px; float: left; font-size: 50px; text-align: center; line-height: 100px;
 }
 
 /* 随机变化颜色式样 */
