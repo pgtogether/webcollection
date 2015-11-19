@@ -11,9 +11,9 @@
 		<result column="usetimes" property="usetimes" jdbcType="INTEGER" />
 		<result column="fastletters" property="fastletters" jdbcType="VARCHAR" />
 		<result column="pinyinhead" property="pinyinhead" jdbcType="VARCHAR" />
-		<result column="createtime" property="createtime" jdbcType="VARCHAR" />
-		<result column="lastusetime" property="lastusetime" jdbcType="VARCHAR" />
-		<result column="updatetime" property="updatetime" jdbcType="VARCHAR" />
+		<result column="createtime" property="createtime"  />
+		<result column="lastusetime" property="lastusetime" />
+		<result column="updatetime" property="updatetime" />
 		<result column="description" property="description" jdbcType="VARCHAR" />
 		<result column="sort" property="sort" jdbcType="INTEGER" />
 		<result column="hot" property="hot" jdbcType="VARCHAR" />
@@ -38,7 +38,7 @@
 	<insert id="insertBookmark" parameterType="com.dapeng.domain.Bookmark">
 		insert into bookmark ( bookmarkname,url,permission,categoryid,createtime)
 		values (#{bookmarkname,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
-		,#{permission,jdbcType=VARCHAR},#{categoryid,jdbcType=VARCHAR},#{createtime,jdbcType=VARCHAR})
+		,#{permission,jdbcType=VARCHAR},#{categoryid,jdbcType=VARCHAR},#{createtime})
 	</insert>
 	<update id="updateBookmarkById" parameterType="com.dapeng.domain.Bookmark">
 		update bookmark
