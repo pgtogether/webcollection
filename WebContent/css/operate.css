@@ -16,15 +16,15 @@
 	float: right;
 }
 
-.confirmicon{
+.confirmicon {
 	width: 20px; height: 20px; margin-top: 6px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/confirm.png);
 }
 
-.cancelicon{
+.cancelicon {
 	width: 20px; height: 20px; margin-top: 6px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/cancel.png);
 }
 
-.cancelicon:hover{
+.cancelicon:hover {
 	width: 20px; height: 20px; margin-top: 6px; cursor: pointer; float: left; margin-right: 2px; background: url(../img/icon/cancel-h.png);
 }
 
@@ -78,4 +78,41 @@
 
 .delicon:hover {
 	width: 16px; height: 16px; margin-top: 5px; cursor: pointer; float: left; background: url(../img/icon/del-h.png);
+}
+
+/* 分类内部新增书签样式 */
+.addbookmark {
+	float: left; text-align: center; width: 100%; height: auto; overflow: auto; background: #fff; padding: 10px 0px 0px 0px; border-bottom: 1px dashed #D2D2D2; background: #fff;
+}
+
+.addbookmark p {
+	width: 100%; float: left; min-height: 25px; height: auto;
+}
+
+.addbookmark p label {
+	float: left; width: 30px; line-height: 20px;
+}
+
+.addbookmark p input {
+	float: left; outline: none; border: 1px solid #E6E6E6; height: 20px; width: 190px; text-indent: 5px; line-height: 20px;
+}
+
+.addbookmark p textarea {
+	float: left; outline: none; border: 1px solid #E6E6E6; height: 40px; width: 190px; max-width: 190px; text-indent: 5px; line-height: 20px;
+}
+
+.addbookmark p.btn {
+	margin-top: 5px;
+}
+
+.confirmaddicon {
+	width: 20px; height: 20px; cursor: pointer; float: left; margin: 0px 20px 0px 85px; background: url(../img/icon/confirm.png) no-repeat;
+}
+
+.canceladdicon {
+	width: 20px; height: 20px; cursor: pointer; float: left; margin: 0px 0px 0px 0px; background: url(../img/icon/cancel.png) no-repeat;
+}
+
+.canceladdicon:hover {
+	width: 20px; height: 20px; cursor: pointer; float: left; margin: 0px 0px 0px 0px; background: url(../img/icon/cancel-h.png) no-repeat;
 }

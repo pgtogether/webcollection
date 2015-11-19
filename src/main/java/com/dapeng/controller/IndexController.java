@@ -13,9 +13,6 @@ package com.dapeng.controller;
 
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,21 +52,9 @@ public class IndexController {
 	@RequestMapping(value = "doSelectBookmarkList", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	@ResponseBody
-	public String doSelectBookmarkList() {
+	public List<Bookmark> doSelectBookmarkList() {
 		List<Bookmark> bookmarkList = bookmarkService.selectBookmarkList();
-		JSONArray jsonArray =new JSONArray();
-		for (Bookmark bookmark : bookmarkList) {
-			JSONObject jsonObject = new JSONObject();
-			try {
-				jsonObject.put("id",bookmark.getBookmarkid());
-				jsonObject.put("name", bookmark.getBookmarkname());
-				jsonObject.put("url", bookmark.getUrl());
-				jsonArray.put(jsonObject);
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		return jsonArray.toString();
+		return bookmarkList;
 	}
 	
 	@RequestMapping(value = "doAddBookmark", method = { RequestMethod.GET,
