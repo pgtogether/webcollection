@@ -46,6 +46,8 @@ var openSortableFunc = {
 	urlSortable : function() {
 		$(".url-list").sortable({
 			connectWith : ".url-list",
+			items: "li:not(.li-disabled)",
+			cancel: ".li-disabled",
 			dropOnEmpty : true,
 			tolerance : "pointer",
 			distance : 5,
@@ -150,8 +152,10 @@ var bookmarkOperateFunc = {
 		this.hoverBookmark();
 		this.setHotBookmark();
 		this.addBookmark();
-		this.confirmAddBookmark();
-		this.cancelAddBookmark();
+		this.editBookmark();
+		this.delBookmark();
+		this.confirmEditBookmark();
+		this.cancelEditBookmark();
 	},
 	// 鼠标经过书签	
 	hoverBookmark : function() {
@@ -173,10 +177,49 @@ var bookmarkOperateFunc = {
 	addBookmark : function(){
 		var selfFunc = this;
 		$(".wrap-box").on("click",".addicon", function(){
-			// 每次打开新的模板之前，先关闭其他开着的模板
-			selfFunc.closeAllAddBookmarkTemplate();
-			var $ul = $(this).parents(".block").find(".url-list");
-			selfFunc.appendAddBookmarkTemplate($ul);
+			// 如果已经存在,不需要再增加一个模板
+			var $this = $(this);
+			if ($this.parents(".block").find(".addbookmark").length == 0) {
+				// 每次打开新的模板之前，先关闭其他开着的模板
+				selfFunc.closeAllEditBookmarkTemplate();
+				var $ul = $this.parents(".block").find(".url-list");
+				selfFunc.appendAddBookmarkTemplate($ul);
+			} else {
+				selfFunc.closeAllEditBookmarkTemplate();
+			}
+		});
+	},
+	// 编辑书签
+	editBookmark : function(){
+		var selfFunc = this;
+		$(".wrap-box").on("click",".editicon", function(){
+			// 如果已经存在,不需要再增加一个模板
+			var $this = $(this);
+			var $nextli = $this.parents("li").next();
+			if ($nextli.find(".editbookmark").length == 0) {
+				// 每次打开新的模板之前，先关闭其他开着的模板
+				selfFunc.closeAllEditBookmarkTemplate();
+				var $li = $this.parents("li").addClass("li-disabled pointto");
+				selfFunc.appendEditBookmarkTemplate($li);
+			} else {
+				selfFunc.closeAllEditBookmarkTemplate();
+			}
+		});
+	},
+	// 删除书签
+	delBookmark : function(){
+		var selfFunc = this;
+		$(".wrap-box").on("click",".delicon", function(){
+			// 如果已经存在,不需要再增加一个模板
+			var $this = $(this);
+			if ($this.parents("li").next().find(".delbookmark").length == 0) {
+				// 每次打开新的模板之前，先关闭其他开着的模板
+				selfFunc.closeAllEditBookmarkTemplate();
+				var $li = $this.parents("li").addClass("li-disabled pointto");
+				selfFunc.appendDelBookmarkTemplate($li);
+			} else {
+				selfFunc.closeAllEditBookmarkTemplate();
+			}
 		});
 	},
 	// 标记为常用书签
@@ -190,6 +233,20 @@ var bookmarkOperateFunc = {
 			// 此处应该有上升为常用书签的操作
 			// 还需要Ajax 反映到数据库中
 			// TODO
+		});
+	},
+	// 确定书签
+	confirmEditBookmark : function(){
+		selfFunc = this;
+		$(".wrap-box").on("click", ".confirmediticon", function() {
+			selfFunc.closeAllEditBookmarkTemplate();
+		});
+	},
+	// 取消书签
+	cancelEditBookmark : function(){
+		selfFunc = this;
+		$(".wrap-box").on("click", ".cancelediticon", function() {
+			selfFunc.closeAllEditBookmarkTemplate();
 		});
 	},
 	// 插入书签操作按钮模板
@@ -208,47 +265,55 @@ var bookmarkOperateFunc = {
 	},
 	// 新增书签模板
 	appendAddBookmarkTemplate : function($ul){
+		var operateHtml = this.getAddAndEditBookmarkTemplate("addbookmark");
+		$ul.prepend(operateHtml);
+		$ul.find(".editbookmarktemplate").slideDown();
+	},
+	// 编辑书签模板
+	appendEditBookmarkTemplate : function($li){
+		var operateHtml = this.getAddAndEditBookmarkTemplate("editbookmark");
+		$li.after(operateHtml);
+		$li.next().slideDown();
+	},
+	// 删除书签模板
+	appendDelBookmarkTemplate : function($li){
 		var operateHtml = '';
-		operateHtml += '<li class="addbookmarktemplate" style="display:none;">';
-		operateHtml += '<div class="addbookmark">';
-		operateHtml += '	<p><label>网址</label><input type="text" id="url" placeholder="例:www.52url.com"></p>';
-		operateHtml += '	<p><label>名称</label><input type="text" id="bookmarkname" placeholder="例:网址收藏"></p>';
-		operateHtml += '	<p><label>标签</label><input type="text" id="tags" placeholder="例:生活,美食(以逗号,分隔)"></p>';
-		operateHtml += '	<p><label>描述</label><textarea id="desc"></textarea></p>';
+		operateHtml += '<li class="editbookmarktemplate li-disabled" style="display:none;">';
+		operateHtml += '<div class="delbookmark">';
+		operateHtml += '	<p><span class="delconfirmmsg">您确定删除本书签吗？</span></p>';
+		operateHtml += '	<p><span class="deltip">提示:可以到<font color="#000">回收站</font>找回删除的书签哦!</span></p>';
 		operateHtml += '	<p class="btn">';
-		operateHtml += '		<span class="confirmaddicon" title="确定"></span>';
-		operateHtml += '		<span class="canceladdicon" title="取消"></span>';
+		operateHtml += '		<span class="confirmediticon" title="确定"></span>';
+		operateHtml += '		<span class="cancelediticon" title="取消"></span>';
 		operateHtml += '	</p>';
 		operateHtml += '</div>';
 		operateHtml += '</li>';
-		$ul.prepend(operateHtml);
-		$ul.find(".addbookmarktemplate").slideDown();
+		$li.after(operateHtml);
+		$li.next().slideDown();
 	},
-	// 确定新增书签
-	confirmAddBookmark : function(){
-		selfFunc = this;
-		$(".wrap-box").on("click", ".confirmaddicon", function() {
+	// 关闭其他正在编辑的书签模板
+	closeAllEditBookmarkTemplate : function(){
+		$(".wrap-box").find(".editbookmarktemplate").slideUp(function(){
 			var $this = $(this);
-			$this.parents(".addbookmarktemplate").slideUp(function(){
-				$(this).remove();
-			});
+			$this.prev(".pointto").removeClass("li-disabled pointto");
+			$this.remove();
 		});
 	},
-	// 取消新增书签
-	cancelAddBookmark : function(){
-		selfFunc = this;
-		$(".wrap-box").on("click", ".canceladdicon", function() {
-			var $this = $(this);
-			$this.parents(".addbookmarktemplate").slideUp(function(){
-				$(this).remove();
-			});
-		});
-	},
-	// 关闭开着的新增书签模板
-	closeAllAddBookmarkTemplate : function(){
-		selfFunc = this;
-		$(".wrap-box").find(".addbookmarktemplate").slideUp(function(){
-			$(this).remove();
-		});
+	// 新增书签与编辑书签公用模板
+	getAddAndEditBookmarkTemplate : function(editclass){
+		var operateHtml = '';
+		operateHtml += '<li class="editbookmarktemplate li-disabled" style="display:none;">';
+		operateHtml += '<div class="'+editclass+'">';
+		operateHtml += '	<p><label>网址</label><input type="text" id="url" placeholder="例:www.52url.com" /></p>';
+		operateHtml += '	<p><label>名称</label><input type="text" id="bookmarkname" placeholder="例:网址收藏" /></p>';
+		operateHtml += '	<p><label>标签</label><input type="text" id="tags" placeholder="例:生活,美食(以逗号,分隔)" /></p>';
+		operateHtml += '	<p><label>描述</label><textarea id="desc"></textarea></p>';
+		operateHtml += '	<p class="btn">';
+		operateHtml += '		<span class="confirmediticon" title="确定"></span>';
+		operateHtml += '		<span class="cancelediticon" title="取消"></span>';
+		operateHtml += '	</p>';
+		operateHtml += '</div>';
+		operateHtml += '</li>';
+		return operateHtml;
 	}
 };

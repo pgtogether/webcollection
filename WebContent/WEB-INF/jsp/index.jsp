@@ -47,7 +47,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="adv-show">广告位招租</div>
+			<div class="adv-show">占位</div>
 			<div class="content-left-body">
 				<div class="wrap-box">
 					<div class="block">
@@ -604,8 +604,7 @@
 	<div class="footer">
 		<div class="footer-in"></div>
 	</div>
-	<script src="${context_path}/js/plugin/jquery-2.1.4.min.js"></script>
-	<script src="${context_path}/js/plugin/jquery-ui.min.js"></script>
+	<jsp:include page="/js/dynamic/plugin.js.jsp"></jsp:include>
 	<jsp:include page="/js/dynamic/index.js.jsp"></jsp:include>
 </body>
 </html>

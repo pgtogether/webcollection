@@ -81,38 +81,61 @@
 }
 
 /* 分类内部新增书签样式 */
-.addbookmark {
-	float: left; text-align: center; width: 100%; height: auto; overflow: auto; background: #fff; padding: 10px 0px 0px 0px; border-bottom: 1px dashed #D2D2D2; background: #fff;
+.pointto {
+	background: url(../img/icon/pointto.png) -2px 5px no-repeat !important; box-shadow: 0px -1px 2px #bbb, 0px 1px 2px #bbb; z-index: 100; position: relative;
 }
 
-.addbookmark p {
+/* 新增书签 */
+.addbookmark,.editbookmark {
+	float: left; text-align: center; width: 100%; height: auto; overflow: auto; background: #fff; padding: 5px 0px 0px 0px; border-bottom: 1px dashed #D2D2D2;
+}
+
+.addbookmark p,.editbookmark p {
 	width: 100%; float: left; min-height: 25px; height: auto;
 }
 
-.addbookmark p label {
+.addbookmark p label,.editbookmark p label {
 	float: left; width: 30px; line-height: 20px;
 }
 
-.addbookmark p input {
+.addbookmark p input,.editbookmark p input {
 	float: left; outline: none; border: 1px solid #E6E6E6; height: 20px; width: 190px; text-indent: 5px; line-height: 20px;
 }
 
-.addbookmark p textarea {
+.addbookmark p textarea,.editbookmark p textarea {
 	float: left; outline: none; border: 1px solid #E6E6E6; height: 40px; width: 190px; max-width: 190px; text-indent: 5px; line-height: 20px;
 }
 
-.addbookmark p.btn {
+.addbookmark p.btn,.editbookmark p.btn {
 	margin-top: 5px;
 }
 
-.confirmaddicon {
+/* 删除书签 */
+.delbookmark {
+	float: left; text-align: center; width: 100%; height: auto; overflow: auto; background: #fff; border-bottom: 1px dashed #D2D2D2;
+}
+
+.delbookmark p {
+	width: 100%; float: left; min-height: 25px; height: auto;
+}
+
+.delbookmark .delconfirmmsg {
+	background: url(../img/icon/hand.png) no-repeat 5px 0px; width: 100%; float: left; height: 30px; z-index: 100; font-size: 15px; font-weight: bold; line-height: 38px;
+}
+
+.delbookmark .deltip {
+	height: 25px; line-height: 25px; color: #9A9A9A; width: 100%; float: left; margin-bottom: 5px;
+}
+
+/* 编辑书签的确认取消按钮 */
+.confirmediticon {
 	width: 20px; height: 20px; cursor: pointer; float: left; margin: 0px 20px 0px 85px; background: url(../img/icon/confirm.png) no-repeat;
 }
 
-.canceladdicon {
+.cancelediticon {
 	width: 20px; height: 20px; cursor: pointer; float: left; margin: 0px 0px 0px 0px; background: url(../img/icon/cancel.png) no-repeat;
 }
 
-.canceladdicon:hover {
+.cancelediticon:hover {
 	width: 20px; height: 20px; cursor: pointer; float: left; margin: 0px 0px 0px 0px; background: url(../img/icon/cancel-h.png) no-repeat;
 }
