@@ -53,24 +53,18 @@ public class IndexController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "index1", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public String index1() {
+		return "index1";
+	}
+	
 	@RequestMapping(value = "doSelectBookmarkList", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	@ResponseBody
-	public String doSelectBookmarkList() {
+	public List<Bookmark> doSelectBookmarkList() {
 		List<Bookmark> bookmarkList = bookmarkService.selectBookmarkList();
-		JSONArray jsonArray =new JSONArray();
-		for (Bookmark bookmark : bookmarkList) {
-			JSONObject jsonObject = new JSONObject();
-			try {
-				jsonObject.put("id",bookmark.getBookmarkid());
-				jsonObject.put("name", bookmark.getBookmarkname());
-				jsonObject.put("url", bookmark.getUrl());
-				jsonArray.put(jsonObject);
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-		return jsonArray.toString();
+		return bookmarkList;
 	}
 	
 	@RequestMapping(value = "doAddBookmark", method = { RequestMethod.GET,
