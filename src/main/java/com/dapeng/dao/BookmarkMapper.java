@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.dapeng.domain.Bookmark;
+import com.dapeng.domain.Category;
 
 @Repository
 public interface BookmarkMapper {
@@ -19,4 +20,6 @@ public interface BookmarkMapper {
 	int updateBookmarkById(int id);
 	
 	int updateBookmarkBySlected(Bookmark bookmark);
+	
+	int addCategory(Category category);
 }
