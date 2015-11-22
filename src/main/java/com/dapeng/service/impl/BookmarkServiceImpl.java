@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.dapeng.dao.BookmarkMapper;
 import com.dapeng.domain.Bookmark;
+import com.dapeng.domain.Category;
 import com.dapeng.service.BookmarkService;
 
 @Service
@@ -43,5 +44,12 @@ public class BookmarkServiceImpl implements BookmarkService{
 	public int updateBookmarkBySlected(Bookmark bookmark) {
 		return bookmarkDao.updateBookmarkBySlected(bookmark);
 	}
+
+	@Override
+	public int addCategory(Category category) {
+		return 0;
+	}
+	
+	
 
 }

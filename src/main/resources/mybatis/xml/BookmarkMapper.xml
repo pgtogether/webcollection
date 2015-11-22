@@ -19,10 +19,15 @@
 		<result column="hot" property="hot" jdbcType="VARCHAR" />
 		<result column="deleteflg" property="deleteflg" jdbcType="VARCHAR" />
 	</resultMap>
+	<resultMap id="BaseResultMap1" type="com.dapeng.domain.Category">
+		<id column="categoryid" property="categoryid" jdbcType="INTEGER" />
+		<result column="categoryname" property="categoryname" jdbcType="VARCHAR" />
+		<result column="categorytype" property="categorytype" jdbcType="VARCHAR" />
+		<result column="parentcategoryid" property="parentcategoryid" jdbcType="INTEGER" />
+		<result column="categorypermission" property="categorypermission" jdbcType="VARCHAR" />
+		<result column="categorypsw" property="categorypsw" jdbcType="VARCHAR" />
+	</resultMap>
 	
-	<sql id="Base_Column_List">
-		id, name
-	</sql>
 	<select id="selectBookmarkList" resultType="com.dapeng.domain.Bookmark">
 		select * from bookmark
 	</select>
