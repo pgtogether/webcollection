@@ -86,24 +86,18 @@ body {
 }
 
 .block .block-head .block-head-title {
-	float: left;
-	cursor: pointer;
+	float: left; cursor: pointer;
 }
 
-.block .block-head .block-head-title .updatetitle{
-	outline: none;
-	border: 0;
-	height:30px;
+.block .block-head .block-head-title .updatetitle {
+	outline: none; border: 0; height: 30px;
 }
-
 
 .block .block-head .block-head-func {
-	float: right;
-	margin-right: 5px;
-	height: 30px;
+	float: right; margin-right: 5px; height: 30px;
 }
 
-.block .block-head .block-head-func span{
+.block .block-head .block-head-func span {
 	margin-right: 2px;
 }
 
@@ -116,7 +110,7 @@ body {
 }
 
 .block .block-body ul li {
-	width: 100%; float: left;
+	width: 100%; float: left; background: #F7F7F7;
 }
 
 .block .block-body ul li:hover {
@@ -140,7 +134,7 @@ body {
 }
 
 .head-style {
-	width: 100%; height: 30px; line-height: 30px; text-indent: 10px; border-radius: 5px 5px 0px 0px; border-bottom: 1px solid #000; text-indent: 10px;
+	width: 100%; height: 30px; line-height: 30px; text-indent: 10px; border-radius: 5px 5px 0px 0px; border-bottom: 1px solid #000; text-indent: 10px; background: #EDEFF0;
 }
 
 .head-style.modify {
