@@ -50,6 +50,12 @@ public class IndexController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "index1", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public String index1() {
+		return "index1";
+	}
+	
 	@RequestMapping(value = "doSelectBookmarkList", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	@ResponseBody

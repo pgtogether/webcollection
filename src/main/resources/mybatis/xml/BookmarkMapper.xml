@@ -19,10 +19,15 @@
 		<result column="hot" property="hot" jdbcType="VARCHAR" />
 		<result column="deleteflg" property="deleteflg" jdbcType="VARCHAR" />
 	</resultMap>
+	<resultMap id="BaseResultMap1" type="com.dapeng.domain.Category">
+		<id column="categoryid" property="categoryid" jdbcType="INTEGER" />
+		<result column="categoryname" property="categoryname" jdbcType="VARCHAR" />
+		<result column="categorytype" property="categorytype" jdbcType="VARCHAR" />
+		<result column="parentcategoryid" property="parentcategoryid" jdbcType="INTEGER" />
+		<result column="categorypermission" property="categorypermission" jdbcType="VARCHAR" />
+		<result column="categorypsw" property="categorypsw" jdbcType="VARCHAR" />
+	</resultMap>
 	
-	<sql id="Base_Column_List">
-		id, name
-	</sql>
 	<select id="selectBookmarkList" resultType="com.dapeng.domain.Bookmark">
 		select * from bookmark
 	</select>
@@ -69,59 +74,11 @@
 		where bookmarkid = #{bookmarkid}
 	</update>
 	
-	
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-		delete from test
-		where id = #{id,jdbcType=VARCHAR}
-	</delete>
-	<insert id="insert" parameterType="com.dapeng.domain.Test">
-		insert into test (id, name)
-		values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
-	</insert>
-	<insert id="insertSelective" parameterType="com.dapeng.domain.Test">
-		insert into test
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				id,
-			</if>
-			<if test="name != null">
-				name,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				#{id,jdbcType=VARCHAR},
-			</if>
-			<if test="name != null">
-				#{name,jdbcType=VARCHAR},
-			</if>
-		</trim>
-	</insert>
+
  	<insert id="insertUser" parameterType="com.dapeng.domain.User">
 		insert into user(user_name,user_pwd,user_email)
 		values(#{user_name},#{user_pwd},#{user_email})
 	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="com.dapeng.domain.Test">
-		update test
-		<set>
-			<if test="name != null">
-				name = #{name,jdbcType=VARCHAR},
-			</if>
-		</set>
-		where id = #{id,jdbcType=VARCHAR}
-	</update>
-	<update id="updateByPrimaryKey" parameterType="com.dapeng.domain.Test">
-		update test
-		set
-		name = #{name,jdbcType=VARCHAR}
-		where id = #{id,jdbcType=VARCHAR}
-	</update>
-
-	<select id="selectAll" resultType="TestBO">
-		select
-		<include refid="Base_Column_List" />
-		from test
-	</select>
 </mapper>
 
 <!-- 	permission = #{permission,jdbcType=VARCHAR},
