@@ -12,6 +12,30 @@ $(function() {
 	boxHeadOperateFunc.init();
 	// 初始化操作书签的功能
 	bookmarkOperateFunc.init();
+	
+	
+	// 当点击跳转链接后，回到页面顶部位置
+	$(window).scroll(function() {
+		if ($(window).scrollTop() > 100) {
+			$(".scrolltop").fadeIn(500);
+		} else {
+			$(".scrolltop").slideUp(500);
+		}
+
+		var x = $(document).scrollTop() + $(window).height();
+		if (x + 100 > $(document).height()) {
+			var fixBottom = $(document).scrollTop() - $(window).height() - 30;
+			$(".slideBanner").css("bottom", fixBottom);
+		} else {
+			$(".slideBanner").css("bottom", 15);
+		}
+	});
+	$(".scrolltop").click(function(){
+		$('body,html').animate({
+			scrollTop : 0
+		}, 500);
+		return false;
+	});
 });
 
 
@@ -239,6 +263,20 @@ var bookmarkOperateFunc = {
 	confirmEditBookmark : function(){
 		selfFunc = this;
 		$(".wrap-box").on("click", ".confirmediticon", function() {
+			var $thisBtn = $(this);
+			// 确认新增书签
+			if ($thisBtn.parents(".addbookmark").length > 0) {
+				// TODO
+			}
+			// 确认编辑书签
+			else if ($thisBtn.parents(".editbookmark").length > 0) {
+				// TODO
+			}			
+			// 确认删除书签
+			else if ($thisBtn.parents(".delbookmark").length > 0) {
+				var $delObj = $thisBtn.parents(".editbookmarktemplate").prev();
+				flyTool.play($delObj);
+			}
 			selfFunc.closeAllEditBookmarkTemplate();
 		});
 	},
@@ -317,3 +355,31 @@ var bookmarkOperateFunc = {
 		return operateHtml;
 	}
 };
+
+//放入回收站的飞行动作
+var flyTool = {
+	play : function($flyer) {
+		var $clone = $flyer.clone().removeClass().addClass("flystyle");
+		$('body').append($clone);
+		$clone.css({
+			'top' : $flyer.offset().top + 'px',
+			'left' : $flyer.offset().left + 'px',
+			'width' : $flyer.width() + 'px',
+			'height' : $flyer.height() + 'px',
+		});
+		$flyer.slideUp(800, function() {
+			$(this).remove();
+		});
+		$clone.animate({
+			opacity : 1,
+			top : $('.trashcan').offset().top + 20,
+			left : $('.trashcan').offset().left + 20,
+			width : 10,
+			height : 10
+		}, 1000, function() {
+			$clone.remove();
+		});
+	}
+};
+
+//监听滚动条

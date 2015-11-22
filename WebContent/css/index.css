@@ -146,6 +146,51 @@ body {
 	width: 100%; height: 100px; float: left; font-size: 50px; text-align: center; line-height: 100px;
 }
 
+/* 侧边栏式样  */
+.slideBanner {
+	position: fixed; right: 0; bottom: 15px;
+}
+
+.slideBanner div {
+	width: 50px; height: 50px; text-align: center; line-height: 50px; font-size: 13px; margin-bottom: 1px; background: #FFFFFF;
+}
+
+.slideBanner div span {
+	width: 30px; height: 100%; display: inline-block; text-align: center; line-height: initial; margin-top: 10px;
+}
+
+.slideBanner .fun1 {
+	background: #FFCDCD;
+}
+
+.slideBanner .fun1:hover {
+	cursor: pointer; background: #D42424; color: #FFFFFF; -webkit-transition: color .2s linear, background-color .2s linear; transition: color .2s linear, background-color .2s linear;
+}
+
+.slideBanner .fun2 {
+	background: #C1F0FB;
+}
+
+.slideBanner .fun2:hover {
+	cursor: pointer; background: #0083D2; color: #FFFFFF; -webkit-transition: color .2s linear, background-color .2s linear; transition: color .2s linear, background-color .2s linear;
+}
+
+.slideBanner .scrolltop {
+	background: #DEDEDE;
+}
+
+.slideBanner .scrolltop:hover {
+	cursor: pointer; background: #868686; color: #FFFFFF; -webkit-transition: color .2s linear, background-color .2s linear; transition: color .2s linear, background-color .2s linear;
+}
+
+.slideBanner .trashcan {
+	background: #9EECA8;
+}
+
+.slideBanner .trashcan:hover {
+	cursor: pointer; background: #4BB73F; color: #FFFFFF; -webkit-transition: color .2s linear, background-color .2s linear; transition: color .2s linear, background-color .2s linear;
+}
+
 /* 随机变化颜色式样 */
 .randomcolor-1 {
 	background: #FFCACA;

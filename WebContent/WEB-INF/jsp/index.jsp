@@ -604,6 +604,12 @@
 	<div class="footer">
 		<div class="footer-in"></div>
 	</div>
+	<div class="slideBanner">
+		<div class="fun1"><span>待定功能</span></div>
+		<div class="fun2"><span>待定功能</span></div>
+		<div class="trashcan"><span>回收小站</span></div>
+		<div class="scrolltop" style="display:none;"><span>回到顶部</span></div>
+	</div>
 	<jsp:include page="/js/dynamic/plugin.js.jsp"></jsp:include>
 	<jsp:include page="/js/dynamic/index.js.jsp"></jsp:include>
 </body>
