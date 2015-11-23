@@ -1,20 +1,20 @@
 package com.dapeng.service.impl;
 
-import java.util.List;  
+import java.util.List;
 
+import org.apache.log4j.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dapeng.dao.BookmarkMapper;
 import com.dapeng.domain.Bookmark;
-import com.dapeng.domain.Category;
 import com.dapeng.service.BookmarkService;
 
 @Service
-public class BookmarkServiceImpl implements BookmarkService{
+public class BookmarkServiceImpl implements BookmarkService {
 	@Autowired
 	private BookmarkMapper bookmarkDao;
-	
+
 	@Override
 	public List<Bookmark> selectBookmarkList() {
 		return bookmarkDao.selectBookmarkList();
@@ -49,7 +49,5 @@ public class BookmarkServiceImpl implements BookmarkService{
 	public int addCategory(Category category) {
 		return 0;
 	}
-	
-	
 
 }
