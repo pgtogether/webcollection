@@ -12,30 +12,8 @@ $(function() {
 	boxHeadOperateFunc.init();
 	// 初始化操作书签的功能
 	bookmarkOperateFunc.init();
-	
-	
-	// 当点击跳转链接后，回到页面顶部位置
-	$(window).scroll(function() {
-		if ($(window).scrollTop() > 100) {
-			$(".scrolltop").fadeIn(500);
-		} else {
-			$(".scrolltop").slideUp(500);
-		}
-
-		var x = $(document).scrollTop() + $(window).height();
-		if (x + 100 > $(document).height()) {
-			var fixBottom = $(document).scrollTop() - $(window).height() - 30;
-			$(".slideBanner").css("bottom", fixBottom);
-		} else {
-			$(".slideBanner").css("bottom", 15);
-		}
-	});
-	$(".scrolltop").click(function(){
-		$('body,html').animate({
-			scrollTop : 0
-		}, 500);
-		return false;
-	});
+	// 侧边栏功能
+	sideBannerFunc.init();
 });
 
 
@@ -52,7 +30,7 @@ var openSortableFunc = {
 			dropOnEmpty : true,
 			tolerance : "pointer",
 			distance : 5
-		}).disableSelection();
+		});
 	},
 	boxSortable : function() {
 		$(".wrap-box").sortable({
@@ -65,7 +43,7 @@ var openSortableFunc = {
 			tolerance : "pointer",
 			delay : 100,
 			zIndex : 100
-		}).disableSelection();
+		});
 	},
 	urlSortable : function() {
 		$(".url-list").sortable({
@@ -76,7 +54,7 @@ var openSortableFunc = {
 			tolerance : "pointer",
 			distance : 5,
 			placeholder : "url-list-placeholder"
-		}).disableSelection();
+		});
 	}
 };
 
@@ -378,8 +356,37 @@ var flyTool = {
 			height : 10
 		}, 1000, function() {
 			$clone.remove();
+			new JumpObj($('.trashcan')[0],10).jump();
 		});
 	}
 };
-
-//监听滚动条
+// 侧边栏
+var sideBannerFunc = {
+		init : function(){
+			$(window).scroll(function() {
+				// 滚动到一定高度后，出现回到顶部按钮
+				if ($(window).scrollTop() > 100) {
+					$(".scrolltop").fadeIn(500);
+				} else {
+					$(".scrolltop").slideUp(500);
+				}
+				// 当侧边框距离底部与footer齐平时，停止跟随
+				var $sideBanner = $(".sideBanner");
+				var footerHeight = $(".footer").height();
+				// 文档高度-滚动上去的高度-显示的页面高度
+				var scrollBottom = $(document).height() - $(document).scrollTop() - $(window).height();
+				if (scrollBottom < footerHeight) {
+					$sideBanner.css("bottom", footerHeight - scrollBottom);
+				} else {
+					$sideBanner.css("bottom", 15);
+				}
+			});
+			// 当点击跳转链接后，回到页面顶部位置
+			$(".scrolltop").click(function(){
+				$('body,html').animate({
+					scrollTop : 0
+				}, 500);
+				return false;
+			});
+		}
+};

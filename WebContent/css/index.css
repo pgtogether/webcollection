@@ -70,7 +70,7 @@ body {
 }
 
 .content-right {
-	width: 245px; min-height: 768px; background: #F7F7F7; float: right; margin-right: 6px;
+	width: 245px; min-height: 768px; float: right; margin-right: 6px;
 }
 
 .wrap-box {
@@ -147,47 +147,47 @@ body {
 }
 
 /* 侧边栏式样  */
-.slideBanner {
+.sideBanner {
 	position: fixed; right: 0; bottom: 15px;
 }
 
-.slideBanner div {
+.sideBanner div {
 	width: 50px; height: 50px; text-align: center; line-height: 50px; font-size: 13px; margin-bottom: 1px; background: #FFFFFF;
 }
 
-.slideBanner div span {
-	width: 30px; height: 100%; display: inline-block; text-align: center; line-height: initial; margin-top: 10px;
+.sideBanner div span {
+	width: 30px; height: 100%; display: inline-block; text-align: center; line-height: normal; margin-top: 10px;
 }
 
-.slideBanner .fun1 {
+.sideBanner .fun1 {
 	background: #FFCDCD;
 }
 
-.slideBanner .fun1:hover {
+.sideBanner .fun1:hover {
 	cursor: pointer; background: #D42424; color: #FFFFFF; -webkit-transition: color .2s linear, background-color .2s linear; transition: color .2s linear, background-color .2s linear;
 }
 
-.slideBanner .fun2 {
+.sideBanner .fun2 {
 	background: #C1F0FB;
 }
 
-.slideBanner .fun2:hover {
+.sideBanner .fun2:hover {
 	cursor: pointer; background: #0083D2; color: #FFFFFF; -webkit-transition: color .2s linear, background-color .2s linear; transition: color .2s linear, background-color .2s linear;
 }
 
-.slideBanner .scrolltop {
+.sideBanner .scrolltop {
 	background: #DEDEDE;
 }
 
-.slideBanner .scrolltop:hover {
+.sideBanner .scrolltop:hover {
 	cursor: pointer; background: #868686; color: #FFFFFF; -webkit-transition: color .2s linear, background-color .2s linear; transition: color .2s linear, background-color .2s linear;
 }
 
-.slideBanner .trashcan {
+.sideBanner .trashcan {
 	background: #9EECA8;
 }
 
-.slideBanner .trashcan:hover {
+.sideBanner .trashcan:hover {
 	cursor: pointer; background: #4BB73F; color: #FFFFFF; -webkit-transition: color .2s linear, background-color .2s linear; transition: color .2s linear, background-color .2s linear;
 }
 
@@ -270,4 +270,78 @@ body {
 
 .randomcolor-20 {
 	background: #FFD1BA;
+}
+
+/* 标签样式 */
+.notes {
+	width: 100%; float: left; margin-bottom: 10px; background: #ffffff;
+}
+
+.notes .notes-head {
+	float: left;
+}
+
+.notes .notes-head .notes-head-title {
+	float: left; cursor: pointer;
+}
+
+.notes .notes-head .notes-head-func {
+	float: right; margin-right: 5px; height: 30px;
+}
+
+.notes .notes-head .notes-head-func span {
+	margin-right: 2px;
+}
+
+.notes .notes-body {
+	width: 100%; float: left;
+}
+
+.notes .notes-body ul {
+	min-height: 130px; width: 100%; float: left; margin-top: 5px;
+}
+
+.notes .notes-body ul li {
+	width: auto; float: left; margin: 2px 2px 2px 2px; height: 22px; line-height: 200%; padding: 0px 4px; border-radius: 2px; color: #0087C5;
+}
+
+.notes .notes-body ul li span {
+	height: 20px; line-height: 20px; cursor: pointer;
+}
+
+.notes .notes-body ul li span:hover {
+	height: 20px; line-height: 20px; cursor: pointer; text-decoration: underline;
+}
+
+/* 活跃用户 */
+.users {
+	width: 100%; float: left; margin-bottom: 10px; background: #ffffff;
+}
+
+.users .users-head {
+	float: left;
+}
+
+.users .users-head .users-head-title {
+	float: left;
+}
+
+.users .users-body {
+	width: 100%; float: left;
+}
+
+.users ul {
+	width: 100%; float: left; text-align: center;
+}
+
+.users ul li {
+	width: 60px; height: 60px; float: left; background: #C1F0FB; margin: 2px 0px 0px 1px; cursor: pointer;
+}
+
+.users ul li:hover {
+	width: 60px; height: 60px; float: left; background: #FFCDCD; margin: 2px 0px 0px 1px; cursor: pointer;
+}
+
+.users ul li span {
+	width: 30px; height: 100%; display: inline-block; text-align: center; line-height: normal; margin-top: 10px;
 }
