@@ -272,6 +272,47 @@ body {
 	background: #FFD1BA;
 }
 
+/* 添加分类 */
+.newbtnsbox {
+	width: 100%; float: left; margin-bottom: 10px; text-align: center;
+}
+
+.content-right .newbtns {
+	background: #FFF; width: 47%; height: 100px; box-shadow: 1px 1px 5px #D4D4D4, -1px -1px 5px #D4D4D4;
+}
+
+.content-right .newbtn {
+	width: 100%; float: left; height: 30px; line-height: 30px; color: #fff; cursor: pointer;
+}
+
+.content-right .newbtn:hover {
+	width: 100%; float: left; height: 30px; line-height: 30px; color: #fff; box-shadow: 1px 1px 1px #737373, -1px -1px 1px #737373; cursor: pointer;
+}
+
+.content-right .newbtn.category {
+	background: #046BD8;
+}
+
+.content-right .newbtn.bookmark {
+	background: #00A726;
+}
+
+.content-right .count {
+	width: 100%; float: left; height: 50px; line-height: 50px; font-size: 30px; font-weight: bold;
+}
+
+.content-right .count.category {
+	width: 100%; float: left; height: 50px; line-height: 50px; color: #046BD8; font-size: 30px; font-weight: bold;
+}
+
+.content-right .count.bookmark {
+	width: 100%; float: left; height: 50px; line-height: 50px; color: #00A726; font-size: 30px; font-weight: bold;
+}
+
+.content-right .newbtns .desc {
+	width: 100%; float: left; height: 20px; background: #EAEAEA; line-height: 20px; color: #000000;
+}
+
 /* 标签样式 */
 .notes {
 	width: 100%; float: left; margin-bottom: 10px; background: #ffffff;
@@ -344,4 +385,17 @@ body {
 
 .users ul li span {
 	width: 30px; height: 100%; display: inline-block; text-align: center; line-height: normal; margin-top: 10px;
+}
+
+/* 添加右边栏模块 */
+.modules {
+	width: 100%; float: left;
+}
+
+.modules .addmodules {
+	width: 100%; float: left; text-align: center; font-size: 100px; color: #E0E0E0; cursor: pointer;
+}
+
+.modules .addmodules:hover {
+	width: 100%; float: left; text-align: center; font-size: 100px; color: #E0E0E0; background: #F7F7F7; cursor: pointer;
 }

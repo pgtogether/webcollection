@@ -22,9 +22,10 @@
 			</div>
 			<div class="head-fun-nav">
 				<ul>
-					<li>设置</li>
-					<li>插件</li>
-					<li>我的空间</li>
+					<li>个性设置</li>
+					<li>书签插件</li>
+					<li>淘淘看</li>
+					<li>我的主页</li>
 					<li>首页</li>
 				</ul>
 			</div>
@@ -599,9 +600,19 @@
 			</div>
 		</div>
 		<div class="content-right">
+			<div class="newbtnsbox">
+				<div class="newbtns floatLeft">
+					<span class="newbtn category">添加分类</span> <span
+						class="count category">15</span> <span class="desc">分类个数</span>
+				</div>
+				<div class="newbtns floatRight">
+					<span class="newbtn bookmark">添加网址</span> <span
+						class="count bookmark">123</span> <span class="desc">网址个数</span>
+				</div>
+			</div>
 			<div class="notes">
 				<div class="notes-head head-style">
-					<div class="notes-head-title">我的标签</div>
+					<div class="notes-head-title">标签</div>
 					<div class="notes-head-func"></div>
 				</div>
 				<div class="notes-body">
@@ -617,17 +628,20 @@
 						<li><span>这个事ABVC</span></li>
 						<li><span>mama</span></li>
 						<li><span>哈哈利利</span></li>
-						<li><span>asd</span></li><li><span>海外网</span></li>
+						<li><span>asd</span></li>
+						<li><span>海外网</span></li>
 						<li><span>我单位民</span></li>
 						<li><span>这个事ABVC</span></li>
 						<li><span>mama</span></li>
 						<li><span>哈哈利利</span></li>
-						<li><span>asd</span></li><li><span>海外网</span></li>
+						<li><span>asd</span></li>
+						<li><span>海外网</span></li>
 						<li><span>我单位民</span></li>
 						<li><span>这个事ABVC</span></li>
 						<li><span>mama</span></li>
 						<li><span>哈哈利利</span></li>
-						<li><span>asd</span></li><li><span>海外网</span></li>
+						<li><span>asd</span></li>
+						<li><span>海外网</span></li>
 						<li><span>我单位民</span></li>
 						<li><span>这个事ABVC</span></li>
 						<li><span>mama</span></li>
@@ -649,17 +663,17 @@
 							<div class="operatebtn"></div></li>
 						<li><a href="###">中文网址测试</a>
 							<div class="operatebtn"></div></li>
-							<li><a href="###">中文网址测试</a>
+						<li><a href="###">中文网址测试</a>
 							<div class="operatebtn"></div></li>
-							<li><a href="###">中文网址测试</a>
+						<li><a href="###">中文网址测试</a>
 							<div class="operatebtn"></div></li>
-							<li><a href="###">中文网址测试</a>
+						<li><a href="###">中文网址测试</a>
 							<div class="operatebtn"></div></li>
-							<li><a href="###">中文网址测试</a>
+						<li><a href="###">中文网址测试</a>
 							<div class="operatebtn"></div></li>
-							<li><a href="###">中文网址测试</a>
+						<li><a href="###">中文网址测试</a>
 							<div class="operatebtn"></div></li>
-							<li><a href="###">中文网址测试</a>
+						<li><a href="###">中文网址测试</a>
 							<div class="operatebtn"></div></li>
 					</ul>
 				</div>
@@ -682,7 +696,7 @@
 			</div>
 			<div class="users">
 				<div class="users-head head-style">
-					<div class="users-head-title">活跃用户</div>
+					<div class="users-head-title">这个需要改一下，显示头像用户名 分类以及网址数</div>
 				</div>
 				<div class="users-body">
 					<ul>
@@ -704,6 +718,9 @@
 						<li><span>小米</span></li>
 					</ul>
 				</div>
+			</div>
+			<div class="modules">
+				<span class="addmodules" title="添加模块">+</span>
 			</div>
 		</div>
 	</div>
