@@ -704,81 +704,26 @@
 			</div>
 			<div class="users">
 				<div class="users-head head-style">
-					<div class="users-head-title">收藏最多的用户</div>
+					<div class="users-head-title">活跃用户</div>
 				</div>
 				<div class="users-body">
 					<ul>
-						<li>
-							<div class="user-img">
-								<a><img src="${context_path}/img/default-user.png" title="用户名" /></a>
-							</div>
-							<div class="user-count">
-								<span class="user-category" title="分类个数">333</span><span class="user-bookmark" title="网址个数">123</span>
-							</div>
-						</li><li>
-							<div class="user-img">
-								<a><img src="${context_path}/img/default-user.png" title="用户名" /></a>
-							</div>
-							<div class="user-count">
-								<span class="user-category" title="分类个数">333</span><span class="user-bookmark" title="网址个数">123</span>
-							</div>
-						</li><li>
-							<div class="user-img">
-								<a><img src="${context_path}/img/default-user.png" title="用户名" /></a>
-							</div>
-							<div class="user-count">
-								<span class="user-category" title="分类个数">333</span><span class="user-bookmark" title="网址个数">123</span>
-							</div>
-						</li><li>
-							<div class="user-img">
-								<a><img src="${context_path}/img/default-user.png" title="用户名" /></a>
-							</div>
-							<div class="user-count">
-								<span class="user-category" title="分类个数">333</span><span class="user-bookmark" title="网址个数">123</span>
-							</div>
-						</li><li>
-							<div class="user-img">
-								<a><img src="${context_path}/img/default-user.png" title="用户名" /></a>
-							</div>
-							<div class="user-count">
-								<span class="user-category" title="分类个数">333</span><span class="user-bookmark" title="网址个数">123</span>
-							</div>
-						</li><li>
-							<div class="user-img">
-								<a><img src="${context_path}/img/default-user.png" title="用户名" /></a>
-							</div>
-							<div class="user-count">
-								<span class="user-category" title="分类个数">333</span><span class="user-bookmark" title="网址个数">123</span>
-							</div>
-						</li><li>
-							<div class="user-img">
-								<a><img src="${context_path}/img/default-user.png" title="用户名" /></a>
-							</div>
-							<div class="user-count">
-								<span class="user-category" title="分类个数">333</span><span class="user-bookmark" title="网址个数">123</span>
-							</div>
-						</li><li>
-							<div class="user-img">
-								<a><img src="${context_path}/img/default-user.png" title="用户名" /></a>
-							</div>
-							<div class="user-count">
-								<span class="user-category" title="分类个数">333</span><span class="user-bookmark" title="网址个数">123</span>
-							</div>
-						</li><li>
-							<div class="user-img">
-								<a><img src="${context_path}/img/default-user.png" title="用户名" /></a>
-							</div>
-							<div class="user-count">
-								<span class="user-category" title="分类个数">333</span><span class="user-bookmark" title="网址个数">123</span>
-							</div>
-						</li><li>
-							<div class="user-img">
-								<a><img src="${context_path}/img/default-user.png" title="用户名" /></a>
-							</div>
-							<div class="user-count">
-								<span class="user-category" title="分类个数">333</span><span class="user-bookmark" title="网址个数">123</span>
-							</div>
-						</li>
+						<li><span>张三</span></li>
+						<li><span>李四</span></li>
+						<li><span>张三</span></li>
+						<li><span>李四</span></li>
+						<li><span>张三sa</span></li>
+						<li><span>扫风</span></li>
+						<li><span>见见我的药</span></li>
+						<li><span>张三</span></li>
+						<li><span>李四</span></li>
+						<li><span>张三sa</span></li>
+						<li><span>小a米</span></li>
+						<li><span>张三</span></li>
+						<li><span>李d四</span></li>
+						<li><span>张三sa</span></li>
+						<li><span>好早上的就</span></li>
+						<li><span>小米</span></li>
 					</ul>
 				</div>
 			</div>
