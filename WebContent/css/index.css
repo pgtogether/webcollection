@@ -148,7 +148,7 @@ body {
 
 /* 侧边栏式样  */
 .sideBanner {
-	position: fixed; right: 0; bottom: 15px;
+	position: fixed; right: 0; bottom: 15px; z-index: 9999;
 }
 
 .sideBanner div {
@@ -289,11 +289,11 @@ body {
 	width: 100%; float: left; height: 30px; line-height: 30px; color: #fff; box-shadow: 1px 1px 1px #737373, -1px -1px 1px #737373; cursor: pointer;
 }
 
-.content-right .newbtn.category {
+.content-right .newbtn.categorybtn {
 	background: #046BD8;
 }
 
-.content-right .newbtn.bookmark {
+.content-right .newbtn.bookmarkbtn {
 	background: #00A726;
 }
 
@@ -301,11 +301,11 @@ body {
 	width: 100%; float: left; height: 50px; line-height: 50px; font-size: 30px; font-weight: bold;
 }
 
-.content-right .count.category {
+.content-right .count.categorybtn {
 	width: 100%; float: left; height: 50px; line-height: 50px; color: #046BD8; font-size: 30px; font-weight: bold;
 }
 
-.content-right .count.bookmark {
+.content-right .count.bookmarkbtn {
 	width: 100%; float: left; height: 50px; line-height: 50px; color: #00A726; font-size: 30px; font-weight: bold;
 }
 
@@ -343,15 +343,11 @@ body {
 }
 
 .notes .notes-body ul li {
-	width: auto; float: left; margin: 2px 2px 2px 2px; height: 22px; line-height: 200%; padding: 0px 4px; border-radius: 2px; color: #0087C5;
+	width: auto; float: left; margin: 2px 2px 2px 2px; height: 22px; line-height: 200%; padding: 0px 4px; cursor: pointer; border-radius: 5px; color: #0087C5; border: 1px solid #DCDCDC; box-shadow: 1px 1px 1px #F3F3F3, -1px -1px 1px #F3F3F3;
 }
 
-.notes .notes-body ul li span {
-	height: 20px; line-height: 20px; cursor: pointer;
-}
-
-.notes .notes-body ul li span:hover {
-	height: 20px; line-height: 20px; cursor: pointer; text-decoration: underline;
+.notes .notes-body ul li:hover {
+	cursor: pointer; background: #046BD8; color: #fff;
 }
 
 /* 活跃用户 */

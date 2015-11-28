@@ -149,4 +149,75 @@
 	float: left; height: 25px; line-height: 28px; text-indent: 10px; color: #000;
 }
 
+/* ’⁄’÷≤„—˘ Ω */
+.mask {
+	display: none; position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 9000; background-color: #A0A0A0; opacity: 0.5;
+}
 
+.popbox {
+	display: none; position: fixed; left: 40%; top: 30%; z-index: 9999; width: 350px; background: #fff; height: auto; box-shadow: 5px 5px 20px #9C9C9C, -5px -5px 20px #9C9C9C; border-radius: 8px; position: fixed;
+}
+
+.popbox-head {
+	width: 100%; height: 40px; float: left; line-height: 45px; font-size: 17px; border-bottom: 1px solid #000; text-indent: 10px; color: #000; border-radius: 8px 8px 0px 0px;
+}
+
+.popbox-body {
+	width: 100%; float: left; padding-top: 10px;
+}
+
+.popbox-body p {
+	width: 100%; float: left; line-height: 40px; text-align: center;
+}
+
+.popbox-body p label {
+	width: 15%; float: left; margin-left: 2.5%; margin-right: 2.5%; text-align: center;
+}
+
+.popbox-body p input {
+	width: 75%; float: left; text-indent: 5px; height: 25px; margin-top: 5px;
+}
+
+.popbox-body p textarea {
+	width: 75%; max-width: 78%; float: left; text-indent: 5px; line-height: 30px; margin-top: 5px;
+}
+
+.popbox-body p input[type=radio] {
+	width: 20px; height: 30px; margin-right: 3px;
+}
+
+.popbox-body p .permission {
+	float: left; height: 30px; text-align: left; margin-right: 10px;
+}
+
+.popbox-body p .btn {
+	width: 100%;
+}
+
+.popbox-body p.psw {
+	display: none;
+}
+
+.popbox-body p .btn  a {
+	display: inline-block; width: 100px; height: 40px; margin: 15px 0px 15px 25px; text-decoration: none; cursor: pointer; border-radius: 5px; font-size: 14px; color: #000;
+}
+
+.popbox-body p .btn  a:hover {
+	display: inline-block; width: 100px; height: 40px; background: #FF8A35; margin: 15px 0px 15px 25px; text-decoration: none; cursor: pointer; color: #fff; -webkit-transition: color .2s linear, background-color .2s linear; transition: color .2s linear, background-color .2s linear;
+}
+
+.pop-bookmark .popbox-head {
+	background: #7BE693;
+}
+
+.pop-bookmark .btn a {
+	background: #7BE693;
+}
+
+.pop-category .popbox-head {
+	background: #6FC2FF;
+}
+
+.pop-category   .btn a {
+	background: #6FC2FF;
+}

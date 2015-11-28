@@ -6,6 +6,8 @@ $(function() {
 		$titlelist.eq(i).addClass("randomcolor-" + rand);
 	}
 
+	// 初始化新增功能
+	newCategoryOrBookMarkFunc.init();
 	// 开启sortable功能
 	openSortableFunc.initSortable();
 	// 初始化操作分类的功能
@@ -16,10 +18,9 @@ $(function() {
 	sideBannerFunc.init();
 });
 
-
 // 排序功能
 var openSortableFunc = {
-	initSortable : function(){
+	initSortable : function() {
 		this.hotUrlSortable();
 		this.boxSortable();
 		this.urlSortable();
@@ -48,8 +49,8 @@ var openSortableFunc = {
 	urlSortable : function() {
 		$(".url-list").sortable({
 			connectWith : ".url-list",
-			items: "li:not(.li-disabled)",
-			cancel: ".li-disabled",
+			items : "li:not(.li-disabled)",
+			cancel : ".li-disabled",
 			dropOnEmpty : true,
 			tolerance : "pointer",
 			distance : 5,
@@ -58,81 +59,124 @@ var openSortableFunc = {
 	}
 };
 
+// 新增分类或者书签
+var newCategoryOrBookMarkFunc = {
+	init : function() {
+		this.newCategory();
+		this.newBookMark();
+		this.confirmNew();
+		this.cancelNew();
+	},
+	newCategory : function() {
+		$(".categorybtn").click(function() {
+			$(".mask").show();
+			$(".pop-category").slideDown(300);
+		});
+	},
+	newBookMark : function() {
+		$(".bookmarkbtn").click(function() {
+			$(".mask").show();
+			$(".pop-bookmark").slideDown(300);
+		});
+	},
+	confirmNew : function() {
+		$(".popbox .confirm-btn").click(function() {
+			$(".mask").hide();
+			$(".popbox").hide();
+		});
+	},
+	cancelNew : function() {
+		$(".popbox .cancel-btn").click(function() {
+			$(".mask").hide();
+			$(".popbox").hide();
+		});
+	},
+	callbackShow : function(){
+		
+	}
+};
+
 // 操作分类标题的功能
 var boxHeadOperateFunc = {
 	// 初始化事件
-	init : function(){
+	init : function() {
 		this.hoverTitle();
 		this.modifyTitle();
 		this.confirmModify();
 		this.cancelModify();
 	},
 	// 鼠标经过标题时候
-	hoverTitle : function(){
+	hoverTitle : function() {
 		var selfFunc = this;
-		$(".wrap-box").on("mouseenter mouseleave",".block-head", function(event){
-			 if( event.type == "mouseenter"){ 
-				 selfFunc.appendBoxHeadOperateBtn($(this));
-			 }
-			 else if(event.type == "mouseleave" ){
-				 selfFunc.removeBoxHeadOperateBtn($(this));
-			 }
-		});
+		$(".wrap-box").on("mouseenter mouseleave", ".block-head",
+				function(event) {
+					if (event.type == "mouseenter") {
+						selfFunc.appendBoxHeadOperateBtn($(this));
+					} else if (event.type == "mouseleave") {
+						selfFunc.removeBoxHeadOperateBtn($(this));
+					}
+				});
 	},
 	// 修改分类标题
-	modifyTitle : function(){
+	modifyTitle : function() {
 		// 双击修改分类标题
 		var selfFunc = this;
-		$(".wrap-box").on("dblclick",".block-head", function(){
-			if (!$(this).hasClass("modify")) {
-				selfFunc.closeOtherModifyTitle();
-				var $title = $(this).find(".block-head-title");
-				var titleText = $title.text();
-				var inputHtml = '<input class="updatetitle" type="text" style="background-color:'+$title.css("background-color")+'">';
-				$title.html(inputHtml).parent().addClass("modify");
-				$title.find("input").focus().val(titleText);
-				selfFunc.appendBoxTitleUpdateBtn($title);
-			}
-		});
+		$(".wrap-box")
+				.on(
+						"dblclick",
+						".block-head",
+						function() {
+							if (!$(this).hasClass("modify")) {
+								selfFunc.closeOtherModifyTitle();
+								var $title = $(this).find(".block-head-title");
+								var titleText = $title.text();
+								var inputHtml = '<input class="updatetitle" type="text" style="background-color:'
+										+ $title.css("background-color") + '">';
+								$title.html(inputHtml).parent().addClass(
+										"modify");
+								$title.find("input").focus().val(titleText);
+								selfFunc.appendBoxTitleUpdateBtn($title);
+							}
+						});
 	},
 	// 确定修改
-	confirmModify : function(){
+	confirmModify : function() {
 		var selfFunc = this;
-		$(".wrap-box").on("click",".confirmicon",function(){
+		$(".wrap-box").on("click", ".confirmicon", function() {
 			var $headFuncSpan = $(this).parent();
 			selfFunc.removeBoxTitleUpdateBtn($headFuncSpan);
 		});
 	},
 	// 取消修改
-	cancelModify : function(){
+	cancelModify : function() {
 		var selfFunc = this;
-		$(".wrap-box").on("click",".cancelicon",function(){
+		$(".wrap-box").on("click", ".cancelicon", function() {
 			var $headFuncSpan = $(this).parent();
 			selfFunc.removeBoxTitleUpdateBtn($headFuncSpan);
 		});
 	},
 	// 关闭其他正在编辑标题的操作
-	closeOtherModifyTitle : function(){
+	closeOtherModifyTitle : function() {
 		var selfFunc = this;
-		$(".wrap-box").find(".modify .block-head-func").each(function(){
+		$(".wrap-box").find(".modify .block-head-func").each(function() {
 			selfFunc.removeBoxTitleUpdateBtn($(this));
 		});
 	},
 	// 插入标题操作按钮模板
-	appendBoxTitleUpdateBtn : function($target){
+	appendBoxTitleUpdateBtn : function($target) {
 		var operateHtml = '';
 		operateHtml += '<span title="确定" class="confirmicon"></span>';
 		operateHtml += '<span title="取消" class="cancelicon"></span>';
 		$target.next().html(operateHtml);
 	},
 	// 删除标题操作按钮
-	removeBoxTitleUpdateBtn : function($target){
+	removeBoxTitleUpdateBtn : function($target) {
 		var $head = $target.siblings();
 		$head.html($head.children().val());
 		$target.html("").parent(".block-head").removeClass("modify");
 	},
 	// 插入删除分类，新增书签按钮模板
-	appendBoxHeadOperateBtn : function($target){
+	appendBoxHeadOperateBtn : function($target) {
 		if (!$target.hasClass("modify")) {
 			var operateHtml = '';
 			operateHtml += '<span title="新增书签" class="addicon"></span>';
@@ -141,7 +185,7 @@ var boxHeadOperateFunc = {
 		}
 	},
 	// 移除[删除分类，新增书签]按钮
-	removeBoxHeadOperateBtn : function($target){
+	removeBoxHeadOperateBtn : function($target) {
 		if (!$target.hasClass("modify")) {
 			$target.find(".block-head-func").html("");
 		}
@@ -150,7 +194,7 @@ var boxHeadOperateFunc = {
 
 // 操作书签功能
 var bookmarkOperateFunc = {
-	init : function(){
+	init : function() {
 		this.hoverBookmark();
 		this.setHotBookmark();
 		this.addBookmark();
@@ -159,26 +203,30 @@ var bookmarkOperateFunc = {
 		this.confirmEditBookmark();
 		this.cancelEditBookmark();
 	},
-	// 鼠标经过书签	
+	// 鼠标经过书签
 	hoverBookmark : function() {
 		var selfFunc = this;
-		$(".content").on("mouseenter mouseleave",".hot-url-list li,.url-list li", function(event){
-			 var $li = $(this);
-			 if( event.type == "mouseenter"){ 
-				var color = $li.parent().parent().siblings(".head-style").css("background-color");
-				$li.css("background-color", color).siblings().attr("style", "");
-				selfFunc.appendUrlOperateBtn($li);
-			 }
-			 else if(event.type == "mouseleave"){
-				$li.attr("style", "");
-				selfFunc.removeUrlOperateBtn($li);
-			 }
-		});
+		$(".content").on(
+				"mouseenter mouseleave",
+				".hot-url-list li,.url-list li",
+				function(event) {
+					var $li = $(this);
+					if (event.type == "mouseenter") {
+						var color = $li.parent().parent().siblings(
+								".head-style").css("background-color");
+						$li.css("background-color", color).siblings().attr(
+								"style", "");
+						selfFunc.appendUrlOperateBtn($li);
+					} else if (event.type == "mouseleave") {
+						$li.attr("style", "");
+						selfFunc.removeUrlOperateBtn($li);
+					}
+				});
 	},
 	// 新增书签
-	addBookmark : function(){
+	addBookmark : function() {
 		var selfFunc = this;
-		$(".wrap-box").on("click",".addicon", function(){
+		$(".wrap-box").on("click", ".addicon", function() {
 			// 如果已经存在,不需要再增加一个模板
 			var $this = $(this);
 			if ($this.parents(".block").find(".addbookmark").length == 0) {
@@ -192,9 +240,9 @@ var bookmarkOperateFunc = {
 		});
 	},
 	// 编辑书签
-	editBookmark : function(){
+	editBookmark : function() {
 		var selfFunc = this;
-		$(".wrap-box").on("click",".editicon", function(){
+		$(".wrap-box").on("click", ".editicon", function() {
 			// 如果已经存在,不需要再增加一个模板
 			var $this = $(this);
 			var $nextli = $this.parents("li").next();
@@ -209,9 +257,9 @@ var bookmarkOperateFunc = {
 		});
 	},
 	// 删除书签
-	delBookmark : function(){
+	delBookmark : function() {
 		var selfFunc = this;
-		$(".wrap-box").on("click",".delicon", function(){
+		$(".wrap-box").on("click", ".delicon", function() {
 			// 如果已经存在,不需要再增加一个模板
 			var $this = $(this);
 			if ($this.parents("li").next().find(".delbookmark").length == 0) {
@@ -225,7 +273,7 @@ var bookmarkOperateFunc = {
 		});
 	},
 	// 标记为常用书签
-	setHotBookmark : function(){
+	setHotBookmark : function() {
 		$(".wrap-box").on("click", ".operatebtn .staricon", function() {
 			if ($(this).hasClass("light")) {
 				$(this).removeClass("light").attr("title", "标记为常用书签");
@@ -238,7 +286,7 @@ var bookmarkOperateFunc = {
 		});
 	},
 	// 确定书签
-	confirmEditBookmark : function(){
+	confirmEditBookmark : function() {
 		selfFunc = this;
 		$(".wrap-box").on("click", ".confirmediticon", function() {
 			var $thisBtn = $(this);
@@ -249,7 +297,7 @@ var bookmarkOperateFunc = {
 			// 确认编辑书签
 			else if ($thisBtn.parents(".editbookmark").length > 0) {
 				// TODO
-			}			
+			}
 			// 确认删除书签
 			else if ($thisBtn.parents(".delbookmark").length > 0) {
 				var $delObj = $thisBtn.parents(".editbookmarktemplate").prev();
@@ -259,7 +307,7 @@ var bookmarkOperateFunc = {
 		});
 	},
 	// 取消书签
-	cancelEditBookmark : function(){
+	cancelEditBookmark : function() {
 		selfFunc = this;
 		$(".wrap-box").on("click", ".cancelediticon", function() {
 			selfFunc.closeAllEditBookmarkTemplate();
@@ -280,19 +328,19 @@ var bookmarkOperateFunc = {
 		$li.find(".operatebtn > span").not(".light").remove();
 	},
 	// 新增书签模板
-	appendAddBookmarkTemplate : function($ul){
+	appendAddBookmarkTemplate : function($ul) {
 		var operateHtml = this.getAddAndEditBookmarkTemplate("addbookmark");
 		$ul.prepend(operateHtml);
 		$ul.find(".editbookmarktemplate").slideDown();
 	},
 	// 编辑书签模板
-	appendEditBookmarkTemplate : function($li){
+	appendEditBookmarkTemplate : function($li) {
 		var operateHtml = this.getAddAndEditBookmarkTemplate("editbookmark");
 		$li.after(operateHtml);
 		$li.next().slideDown();
 	},
 	// 删除书签模板
-	appendDelBookmarkTemplate : function($li){
+	appendDelBookmarkTemplate : function($li) {
 		var operateHtml = '';
 		operateHtml += '<li class="editbookmarktemplate li-disabled" style="display:none;">';
 		operateHtml += '<div class="delbookmark">';
@@ -308,18 +356,18 @@ var bookmarkOperateFunc = {
 		$li.next().slideDown();
 	},
 	// 关闭其他正在编辑的书签模板
-	closeAllEditBookmarkTemplate : function(){
-		$(".wrap-box").find(".editbookmarktemplate").slideUp(function(){
+	closeAllEditBookmarkTemplate : function() {
+		$(".wrap-box").find(".editbookmarktemplate").slideUp(function() {
 			var $this = $(this);
 			$this.prev(".pointto").removeClass("li-disabled pointto");
 			$this.remove();
 		});
 	},
 	// 新增书签与编辑书签公用模板
-	getAddAndEditBookmarkTemplate : function(editclass){
+	getAddAndEditBookmarkTemplate : function(editclass) {
 		var operateHtml = '';
 		operateHtml += '<li class="editbookmarktemplate li-disabled" style="display:none;">';
-		operateHtml += '<div class="'+editclass+'">';
+		operateHtml += '<div class="' + editclass + '">';
 		operateHtml += '	<p><label>网址</label><input type="text" id="url" placeholder="例:www.52url.com" /></p>';
 		operateHtml += '	<p><label>名称</label><input type="text" id="bookmarkname" placeholder="例:网址收藏" /></p>';
 		operateHtml += '	<p><label>标签</label><input type="text" id="tags" placeholder="例:生活,美食(以逗号,分隔)" /></p>';
@@ -334,7 +382,7 @@ var bookmarkOperateFunc = {
 	}
 };
 
-//放入回收站的飞行动作
+// 放入回收站的飞行动作
 var flyTool = {
 	play : function($flyer) {
 		var $clone = $flyer.clone().removeClass().addClass("flystyle");
@@ -356,37 +404,39 @@ var flyTool = {
 			height : 10
 		}, 1000, function() {
 			$clone.remove();
-			new JumpObj($('.trashcan')[0],10).jump();
+			new JumpObj($('.trashcan')[0], 10).jump();
 		});
 	}
 };
 // 侧边栏
 var sideBannerFunc = {
-		init : function(){
-			$(window).scroll(function() {
-				// 滚动到一定高度后，出现回到顶部按钮
-				if ($(window).scrollTop() > 100) {
-					$(".scrolltop").fadeIn(500);
-				} else {
-					$(".scrolltop").slideUp(500);
-				}
-				// 当侧边框距离底部与footer齐平时，停止跟随
-				var $sideBanner = $(".sideBanner");
-				var footerHeight = $(".footer").height();
-				// 文档高度-滚动上去的高度-显示的页面高度
-				var scrollBottom = $(document).height() - $(document).scrollTop() - $(window).height();
-				if (scrollBottom < footerHeight) {
-					$sideBanner.css("bottom", footerHeight - scrollBottom);
-				} else {
-					$sideBanner.css("bottom", 15);
-				}
-			});
-			// 当点击跳转链接后，回到页面顶部位置
-			$(".scrolltop").click(function(){
-				$('body,html').animate({
-					scrollTop : 0
-				}, 500);
-				return false;
-			});
-		}
+	init : function() {
+		$(window).scroll(
+				function() {
+					// 滚动到一定高度后，出现回到顶部按钮
+					if ($(window).scrollTop() > 100) {
+						$(".scrolltop").fadeIn(500);
+					} else {
+						$(".scrolltop").slideUp(500);
+					}
+					// 当侧边框距离底部与footer齐平时，停止跟随
+					var $sideBanner = $(".sideBanner");
+					var footerHeight = $(".footer").height();
+					// 文档高度-滚动上去的高度-显示的页面高度
+					var scrollBottom = $(document).height()
+							- $(document).scrollTop() - $(window).height();
+					if (scrollBottom < footerHeight) {
+						$sideBanner.css("bottom", footerHeight - scrollBottom);
+					} else {
+						$sideBanner.css("bottom", 15);
+					}
+				});
+		// 当点击跳转链接后，回到页面顶部位置
+		$(".scrolltop").click(function() {
+			$('body,html').animate({
+				scrollTop : 0
+			}, 500);
+			return false;
+		});
+	}
 };
