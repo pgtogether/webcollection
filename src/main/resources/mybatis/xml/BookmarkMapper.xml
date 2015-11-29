@@ -28,22 +28,63 @@
 		<result column="categorypsw" property="categorypsw" jdbcType="VARCHAR" />
 	</resultMap>
 	
-	<select id="selectBookmarkList" resultType="com.dapeng.domain.Bookmark">
-		select * from bookmark
+	<!-- 书签类别操作 -->
+	<select id="selectCategoryList" resultType="com.dapeng.domain.Category">
+		select * from bookmark_category
 	</select>
+	
+		<select id="selectCategoryListById" parameterType="int" resultType="com.dapeng.domain.Category">
+		select * from bookmark_category 
+		where categoryid = #{categoryid,dbcType=INTEGER}
+	</select>
+	<delete id="deleteCategoryById" parameterType="int">
+		delete from bookmark_category
+		where categoryid = #{categoryid,jdbcType=INTEGER}
+	</delete>
+	<insert id="addCategory" parameterType="com.dapeng.domain.Category">
+		insert into bookmark_category ( categoryname,categorytype,parentcategoryid,categorypermission,categorypsw)
+		values (#{categoryname,jdbcType=VARCHAR}, #{categorytype,jdbcType=VARCHAR}
+		,#{parentcategoryid,jdbcType=INTEGER},#{categorypermission,jdbcType=VARCHAR},#{categorypsw})
+	</insert>
+	<update id="updateCategoryBySlected" parameterType="com.dapeng.domain.Category">
+		update bookmark_category
+		set
+		categoryname = #{categoryname}
+		where categoryid = #{categoryid}
+	</update>
+	
+	
+	<!-- 书签操作 -->
+	<select id="selectBookmarkList" resultType="com.dapeng.domain.Bookmark">
+		select * from bookmark where deleteflg!="1"
+	</select>
+	<!-- 回收站 -->
+	<select id="selectrecycleList" resultType="com.dapeng.domain.Bookmark">
+		select * from bookmark where deleteflg="1"
+	</select>
+	
 	
 	<select id="selectBookmarkListById" parameterType="int" resultType="com.dapeng.domain.Bookmark">
 		select * from bookmark 
 		where bookmarkid = #{bookmarkid,dbcType=INTEGER}
 	</select>
-	<delete id="deleteBookmarkById" parameterType="int">
+	<!-- 逻辑删除书签 -->
+	<update id="deleteBookmarkById" parameterType="int">
+		update bookmark
+		set deleteflg = "1"
+		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+	</update>
+	<!-- 物理删除书签 -->
+	<delete id="deletePhysicsBookmarkById" parameterType="int">
 		delete from bookmark
 		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
 	</delete>
+	
 	<insert id="insertBookmark" parameterType="com.dapeng.domain.Bookmark">
-		insert into bookmark ( bookmarkname,url,permission,categoryid,createtime)
+		insert into bookmark ( bookmarkname,url,permission,categoryid,createtime,deleteflg)
 		values (#{bookmarkname,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
-		,#{permission,jdbcType=VARCHAR},#{categoryid,jdbcType=VARCHAR},#{createtime})
+		,#{permission,jdbcType=VARCHAR},#{categoryid,jdbcType=VARCHAR},#{createtime}
+		,#{deleteflg,jdbcType=VARCHAR})
 	</insert>
 	<update id="updateBookmarkById" parameterType="com.dapeng.domain.Bookmark">
 		update bookmark
