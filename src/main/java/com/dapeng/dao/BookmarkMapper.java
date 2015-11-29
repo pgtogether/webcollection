@@ -2,7 +2,7 @@ package com.dapeng.dao;
 
 import java.util.List;
 
-import org.apache.log4j.Category;
+import com.dapeng.domain.Category;
 import org.springframework.stereotype.Repository;
 
 import com.dapeng.domain.Bookmark;
