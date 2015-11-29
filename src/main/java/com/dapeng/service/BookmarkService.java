@@ -1,4 +1,4 @@
-package com.dapeng.service;
+﻿package com.dapeng.service;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import com.dapeng.domain.Category;
 
 public interface BookmarkService {
 	//查看书签列表
-	List<Bookmark> selectBookmarkList();
+	List<Bookmark> selectBookmarkList(); 
 	
 	//查看回收站列表
 	List<Bookmark> selectrecycleList();
