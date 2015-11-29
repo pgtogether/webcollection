@@ -1,4 +1,4 @@
-package com.dapeng.dao;
+﻿package com.dapeng.dao;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import com.dapeng.domain.Bookmark;
 
 @Repository
 public interface BookmarkMapper {
-	List<Bookmark> selectBookmarkList();
+	List<Bookmark> selectBookmarkList(); 
 	
 	List<Bookmark> selectrecycleList();
 	
