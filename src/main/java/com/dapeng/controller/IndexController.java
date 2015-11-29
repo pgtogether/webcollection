@@ -82,8 +82,31 @@ public class IndexController {
 		List<Bookmark> bookmarkList = bookmarkService.selectrecycleList();
 		return bookmarkList;
 	}
-	
-
+	/**
+	 * 从回收站恢复
+	 * @param bookmarkid
+	 * @return
+	 */
+	@RequestMapping(value = "doRecoverBookmark", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	@ResponseBody
+	public int doRecoverBookmark(String bookmarkid) {
+		System.out.println("从回收站恢复----->  "+bookmarkid);
+		String[] bookmarkidarr = bookmarkid.split(";");
+		int result= -1;
+		try {
+			for (int i = 0; i < bookmarkidarr.length; i++) {
+				 result = bookmarkService.doRecoverBookmark(Integer.parseInt(bookmarkidarr[i]));
+				 if (result<0) {
+					break;
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 	
 	@RequestMapping(value = "doAddBookmark", method = { RequestMethod.GET,
@@ -128,7 +151,7 @@ public class IndexController {
 			RequestMethod.POST })
 	@ResponseBody
 	public int doPhysicsDelBookmark(String bookmarkid) {
-		System.out.println("dophy----->  "+bookmarkid);
+		System.out.println("物理删除----->  "+bookmarkid);
 		String[] bookmarkidarr = bookmarkid.split(";");
 		int result= -1;
 		try {

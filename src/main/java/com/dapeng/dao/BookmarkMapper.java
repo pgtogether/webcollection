@@ -31,6 +31,10 @@ public interface BookmarkMapper {
 	 */
 	
 	int deletePhysicsBookmarkById(int id);
+	
+	//从回收站恢复书签
+	int doRecoverBookmark(int id);
+	
 	int updateBookmarkById(int id);
 	
 	int updateBookmarkBySlected(Bookmark bookmark);

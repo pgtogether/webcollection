@@ -70,6 +70,12 @@ public  class BookmarkServiceImpl implements BookmarkService{
 	public List<Bookmark> selectrecycleList() {
 		return bookmarkDao.selectrecycleList();
 	}
+	
+	//从回收站恢复书签
+	@Override
+	public int doRecoverBookmark(int id) {
+		return bookmarkDao.doRecoverBookmark(id);
+	}
 
 	
 
