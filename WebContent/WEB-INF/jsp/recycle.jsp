@@ -81,9 +81,27 @@ $(function() {
 		 var str = "";
 		$("[name='recycledmark']:checked").each(function(){
 			
-			 str+=$(this).val()+"\n";    
+			 str+=$(this).val()+";";    
 		});
-		alert(str);
+		//alert(str);
+		$.ajax({
+			data:'bookmarkid='+str,
+			type : "post",
+			url : "${context_path}/doRecoverBookmark",
+			success : function(json) {
+				if(json>0){
+					alert("恢复成功");
+				}else{
+					alert("恢复失败");
+				}
+			},
+			error : function(e) {
+				alert(e);
+			
+			}
+		});
+		
+		
 	});
 	 
 	 $("#delete").click(function(){
