@@ -79,6 +79,12 @@
 		delete from bookmark
 		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
 	</delete>
+	<!-- 从回收站恢复书签 -->
+	<update id="doRecoverBookmark" parameterType="int">
+		update bookmark
+		set deleteflg = "0"
+		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+	</update>
 	
 	<insert id="insertBookmark" parameterType="com.dapeng.domain.Bookmark">
 		insert into bookmark ( bookmarkname,url,permission,categoryid,createtime,deleteflg)
