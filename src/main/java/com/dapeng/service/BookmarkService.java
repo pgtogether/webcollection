@@ -15,13 +15,13 @@ public interface BookmarkService {
 	int insertBookmark(Bookmark bookmark);
 	
 	/**
-	 * é€»è¾‘åˆ é™¤
+	 * Âß¼­É¾³ı
 	 * @param id
 	 * @return
 	 */
 	int deleteBookmarkById(int id);
 	/**
-	 * ç‰©ç†åˆ é™¤
+	 * ÎïÀíÉ¾³ı
 	 * @param id
 	 * @return
 	 */

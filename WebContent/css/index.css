@@ -70,7 +70,7 @@ body {
 }
 
 .content-right {
-	width: 245px; min-height: 768px; background: #F7F7F7; float: right; margin-right: 6px;
+	width: 245px; min-height: 768px; float: right; margin-right: 6px;
 }
 
 .wrap-box {
@@ -144,6 +144,51 @@ body {
 /* 广告位 */
 .adv-show {
 	width: 100%; height: 100px; float: left; font-size: 50px; text-align: center; line-height: 100px;
+}
+
+/* 侧边栏式样  */
+.sideBanner {
+	position: fixed; right: 0; bottom: 15px; z-index: 9999;
+}
+
+.sideBanner div {
+	width: 50px; height: 50px; text-align: center; line-height: 50px; font-size: 13px; margin-bottom: 1px; background: #FFFFFF;
+}
+
+.sideBanner div span {
+	width: 30px; height: 100%; display: inline-block; text-align: center; line-height: normal; margin-top: 10px;
+}
+
+.sideBanner .fun1 {
+	background: #FFCDCD;
+}
+
+.sideBanner .fun1:hover {
+	cursor: pointer; background: #D42424; color: #FFFFFF; -webkit-transition: color .2s linear, background-color .2s linear; transition: color .2s linear, background-color .2s linear;
+}
+
+.sideBanner .fun2 {
+	background: #C1F0FB;
+}
+
+.sideBanner .fun2:hover {
+	cursor: pointer; background: #0083D2; color: #FFFFFF; -webkit-transition: color .2s linear, background-color .2s linear; transition: color .2s linear, background-color .2s linear;
+}
+
+.sideBanner .scrolltop {
+	background: #DEDEDE;
+}
+
+.sideBanner .scrolltop:hover {
+	cursor: pointer; background: #868686; color: #FFFFFF; -webkit-transition: color .2s linear, background-color .2s linear; transition: color .2s linear, background-color .2s linear;
+}
+
+.sideBanner .trashcan {
+	background: #9EECA8;
+}
+
+.sideBanner .trashcan:hover {
+	cursor: pointer; background: #4BB73F; color: #FFFFFF; -webkit-transition: color .2s linear, background-color .2s linear; transition: color .2s linear, background-color .2s linear;
 }
 
 /* 随机变化颜色式样 */
@@ -225,4 +270,157 @@ body {
 
 .randomcolor-20 {
 	background: #FFD1BA;
+}
+
+/* 添加分类 */
+.newbtnsbox {
+	width: 100%; float: left; margin-bottom: 10px; text-align: center;
+}
+
+.content-right .newbtns {
+	background: #FFF; width: 47%; height: 100px; box-shadow: 1px 1px 5px #D4D4D4, -1px -1px 5px #D4D4D4;
+}
+
+.content-right .newbtn {
+	width: 100%; float: left; height: 30px; line-height: 30px; color: #fff; cursor: pointer;
+}
+
+.content-right .newbtn:hover {
+	width: 100%; float: left; height: 30px; line-height: 30px; color: #fff; box-shadow: 1px 1px 1px #737373, -1px -1px 1px #737373; cursor: pointer;
+}
+
+.content-right .newbtn.categorybtn {
+	background: #046BD8;
+}
+
+.content-right .newbtn.bookmarkbtn {
+	background: #00A726;
+}
+
+.content-right .count {
+	width: 100%; float: left; height: 50px; line-height: 50px; font-size: 30px; font-weight: bold;
+}
+
+.content-right .count.categorybtn {
+	width: 100%; float: left; height: 50px; line-height: 50px; color: #046BD8; font-size: 30px; font-weight: bold;
+}
+
+.content-right .count.bookmarkbtn {
+	width: 100%; float: left; height: 50px; line-height: 50px; color: #00A726; font-size: 30px; font-weight: bold;
+}
+
+.content-right .newbtns .desc {
+	width: 100%; float: left; height: 20px; background: #EAEAEA; line-height: 20px; color: #000000;
+}
+
+/* 标签样式 */
+.notes {
+	width: 100%; float: left; margin-bottom: 10px; background: #ffffff;
+}
+
+.notes .notes-head {
+	float: left;
+}
+
+.notes .notes-head .notes-head-title {
+	float: left; cursor: pointer;
+}
+
+.notes .notes-head .notes-head-func {
+	float: right; margin-right: 5px; height: 30px;
+}
+
+.notes .notes-head .notes-head-func span {
+	margin-right: 2px;
+}
+
+.notes .notes-body {
+	width: 100%; float: left;
+}
+
+.notes .notes-body ul {
+	min-height: 130px; width: 100%; float: left; margin-top: 5px;
+}
+
+.notes .notes-body ul li {
+	width: auto; float: left; margin: 2px 2px 2px 2px; height: 22px; line-height: 200%; padding: 0px 4px; cursor: pointer; border-radius: 5px; color: #0087C5; border: 1px solid #DCDCDC; box-shadow: 1px 1px 1px #F3F3F3, -1px -1px 1px #F3F3F3;
+}
+
+.notes .notes-body ul li:hover {
+	cursor: pointer; background: #046BD8; color: #fff;
+}
+
+/* 活跃用户 */
+.users {
+	width: 100%; float: left; margin-bottom: 10px; background: #ffffff;
+}
+
+.users .users-head {
+	float: left;
+}
+
+.users .users-head .users-head-title {
+	float: left;
+}
+
+.users .users-body {
+	width: 100%; float: left;
+}
+
+.users ul {
+	width: 100%; float: left; text-align: center;
+}
+
+.users ul li {
+	width: 60px; height: 60px; float: left; background: #C1F0FB; margin: 2px 0px 0px 1px; cursor: pointer;
+}
+
+.users ul li:hover {
+	width: 60px; height: 60px; float: left; background: #FFCDCD; margin: 2px 0px 0px 1px; cursor: pointer;
+}
+
+.users ul li span {
+	width: 30px; height: 100%; display: inline-block; text-align: center; line-height: normal; margin-top: 10px;
+}
+
+/* 添加右边栏模块 */
+.modules {
+	width: 100%; float: left;
+}
+
+.modules .addmodules {
+	width: 100%; float: left; text-align: center; font-size: 100px; color: #E0E0E0; cursor: pointer;
+}
+
+.modules .addmodules:hover {
+	width: 100%; float: left; text-align: center; font-size: 100px; color: #E0E0E0; background: #F7F7F7; cursor: pointer;
+}
+
+/* 快速检索 */
+.fast-search {
+	width: 100%; float: left; padding: 10px 0 0 0;
+}
+
+.fast-search input {
+	height: 25px; width: 75%; float: left; text-indent: 5px;
+}
+
+.fast-search .fast-search-input {
+	border: 1px solid #E6E6E6;
+}
+
+.fast-search .fast-search-input:focus {
+	border: 1px solid #E6E6E6; box-shadow: 1px 1px 1px #B9B9B9;
+}
+
+.fast-search span {
+	height: 27px; width: 23%; float: right; text-align: center; line-height: 27px; color: #fff; background: #046BD8; cursor: pointer; border-radius: 5px;
+}
+
+.fast-search .fast-search-btn {
+	box-shadow: 1px 1px 5px #D4D4D4, -1px -1px 5px #D4D4D4;
+}
+
+.fast-search .fast-search-btn:hover {
+	box-shadow: 1px 1px 1px #737373, -1px -1px 1px #737373;
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/include/constants.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,22 +10,23 @@
 	type="text/css" />
 <link href="${context_path}/css/theme1.css" rel="stylesheet"
 	type="text/css" />
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<style type="text/css">
+</style>
 </head>
 <script type="text/javascript">
 	$(function() {
-		$("#insertBtn").click(function() {
-			$.ajax({
-				type : "post",
-				url : "${context_path}/doInsertTest",
-				data : $("#testform").serialize(),
-				success : function(json) {
-					alert(json);
-				},
-				error : function() {
-				}
-			});
-		});
+		// 		$("#insertBtn").click(function() {
+		// 			$.ajax({
+		// 				type : "post",
+		// 				url : "${context_path}/doInsertTest",
+		// 				data : $("#testform").serialize(),
+		// 				success : function(json) {
+		// 					alert(json);
+		// 				},
+		// 				error : function() {
+		// 				}
+		// 			});
+		// 		});
 	});
 </script>
 <body>
@@ -42,4 +43,6 @@
 		</ul>
 	</div>
 </body>
+
+
 </html>

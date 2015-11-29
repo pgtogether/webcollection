@@ -4,28 +4,29 @@
 @功能: 重设浏览器默认样式 
 */
 /* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
-html {
-	color: black;
-	background: white;
+html,body {
+	color: black; background: white; font-family: Arial, "\5B8B\4F53", Helvetica, sans-serif; font-size: 12px;
 }
 /* 内外边距通常让各个浏览器样式的表现位置不同 */
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section
-	{
-	margin: 0;
-	padding: 0;
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+	margin: 0; padding: 0;
 }
 /* 要注意表单元素并不继承父级 font 的问题 */
 body,button,input,select,textarea {
-	font: 12px SimSun, tahoma, arial, sans-serif;
+	font-size: 12px; font-family: Arial, "\5B8B\4F53", Helvetica, sans-serif; font-size: 12px;
 }
 
 input,select,textarea {
 	font-size: 100%;
 }
+
+textarea {
+	overflow: auto;
+}
+
 /* 去掉各Table cell 的边距并让其边重合 */
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+	border-collapse: collapse; border-spacing: 0;
 }
 /* IE bug fixed: th 不继承 text-align*/
 th {
@@ -41,8 +42,7 @@ iframe {
 }
 /* 去掉 firefox 下此元素的边框 */
 abbr,acronym {
-	border: none;
-	font-variant: normal;
+	border: none; font-variant: normal;
 }
 /* 一致的 del 样式 */
 del {
@@ -50,8 +50,7 @@ del {
 }
 
 address,caption,cite,code,dfn,em,th,var {
-	font-style: normal;
-	font-weight: 500;
+	font-style: normal; font-weight: 500;
 }
 /* 去掉列表前的标识, li 会继承 */
 ol,ul {
@@ -63,8 +62,7 @@ caption,th {
 }
 /* 来自yahoo, 让标题都自定义, 适应多个系统应用 */
 h1,h2,h3,h4,h5,h6 {
-	font-size: 100%;
-	font-weight: 500;
+	font-size: 100%; font-weight: 500;
 }
 
 q:before,q:after {
@@ -72,10 +70,7 @@ q:before,q:after {
 }
 /* 统一上标和下标 */
 sub,sup {
-	font-size: 75%;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
+	font-size: 75%; line-height: 0; position: relative; vertical-align: baseline;
 }
 
 sup {
@@ -99,13 +94,11 @@ a:focus,*:focus {
 }
 /* 清除浮动 */
 .clearfix:before,.clearfix:after {
-	content: "";
-	display: table;
+	content: ""; display: table;
 }
 
 .clearfix:after {
-	clear: both;
-	overflow: hidden;
+	clear: both; overflow: hidden;
 }
 
 .clearfix {
@@ -113,17 +106,11 @@ a:focus,*:focus {
 }
 
 .clear {
-	clear: both;
-	display: block;
-	overflow: hidden;
-	height: 0;
-	line-height: 0;
-	font-size: 0;
+	clear: both; display: block; overflow: hidden; height: 0; line-height: 0; font-size: 0;
 }
 /* 设置显示和隐藏, 通常用来与 JS 配合 */
 .hide {
-	display: none !important;
-	visibility: hidden;
+	display: none !important; visibility: hidden;
 }
 
 .block {
@@ -131,11 +118,17 @@ a:focus,*:focus {
 }
 /* 设置内联, 减少浮动带来的bug */
 .fl {
-	float: left;
-	display: inline;
+	float: left; display: inline;
 }
 
 .fr {
-	float: right;
-	display: inline;
+	float: right; display: inline;
+}
+
+.floatLeft{
+	float:left;
+}
+
+.floatRight{
+	float:right;
 }

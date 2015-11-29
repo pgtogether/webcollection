@@ -2,10 +2,10 @@ package com.dapeng.dao;
 
 import java.util.List;
 
+import org.apache.log4j.Category;
 import org.springframework.stereotype.Repository;
 
 import com.dapeng.domain.Bookmark;
-import com.dapeng.domain.Category;
 
 @Repository
 public interface BookmarkMapper {

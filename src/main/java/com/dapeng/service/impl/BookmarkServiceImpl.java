@@ -16,35 +16,35 @@ public  class BookmarkServiceImpl implements BookmarkService{
 	private BookmarkMapper bookmarkDao;
 	
 	/**
-	 * 鑾峰彇鏍囩鍒楄〃
+	 * 获取标签列表
 	 */
 	@Override
 	public List<Bookmark> selectBookmarkList() {
 		return bookmarkDao.selectBookmarkList();
 	}
 	/**
-	 * 鏍规嵁id鑾峰緱涔︾
+	 * 根据id获得书签
 	 */
 	@Override
 	public Bookmark selectBookmarkListById(int bookmarkId) {
 		return bookmarkDao.selectBookmarkListById(bookmarkId);
 	}
 	/**
-	 * 娣诲姞涔︾
+	 * 添加书签
 	 */
 	@Override
 	public int insertBookmark(Bookmark bookmark) {
 		return bookmarkDao.insertBookmark(bookmark);
 	}
 	/**
-	 * 閫昏緫鍒犻櫎涔︾
+	 * 逻辑删除书签
 	 */
 	@Override
 	public int deleteBookmarkById(int id) {
 		return bookmarkDao.deleteBookmarkById(id);
 	}
 	/**
-	 * 鐗╃悊鍒犻櫎涔︾
+	 * 物理删除书签
 	 */
 	@Override
 	public int deletePhysicsBookmarkById(int id) {
@@ -52,21 +52,21 @@ public  class BookmarkServiceImpl implements BookmarkService{
 	}
 	
 	/**
-	 * 缂栬緫涔︾
+	 * 编辑书签
 	 */
 	@Override
 	public int updateBookmarkById(int id) {
 		return bookmarkDao.updateBookmarkById(id);
 	}
 	/**
-	 * 缂栬緫涔︾
+	 * 编辑书签
 	 */
 	@Override
 	public int updateBookmarkBySlected(Bookmark bookmark) {
 		return bookmarkDao.updateBookmarkBySlected(bookmark);
 	}
 	/**
-	 * 澧炲姞绫诲埆
+	 * 增加类别
 	 */
 	@Override
 	public int addCategory(Category category) {
