@@ -69,18 +69,35 @@ var newCategoryOrBookMarkFunc = {
 	},
 	newCategory : function() {
 		$(".categorybtn").click(function() {
-			$(".mask").show();
-			$(".pop-category").slideDown(300);
+			$(".mask").fadeIn(300);
+			$(".pop-category").fadeIn(300);
+		});
+		$("#psw-permission").click(function(){
+			$(".psw").show();
+		});
+		$("#normal-permission").click(function(){
+			$(".psw").hide();
 		});
 	},
 	newBookMark : function() {
 		$(".bookmarkbtn").click(function() {
-			$(".mask").show();
-			$(".pop-bookmark").slideDown(300);
+			$(".mask").fadeIn(300);
+			$(".pop-bookmark").fadeIn(300);
 		});
 	},
 	confirmNew : function() {
 		$(".popbox .confirm-btn").click(function() {
+			// 新增分类
+			if($(this).parents(".pop-category").length > 0){
+				var categoryname = $("#categoryname").val();
+				var $clone = $(".blank-category").clone().removeClass("blank-category");
+				$clone.find(".block-head-title").text(categoryname);
+				$(".wrap-box").eq(0).prepend($clone);
+				$clone.slideDown();
+				openSortableFunc.urlSortable();
+			} else {
+				// 新增书签
+			}
 			$(".mask").hide();
 			$(".popbox").hide();
 		});
@@ -250,7 +267,11 @@ var bookmarkOperateFunc = {
 				// 每次打开新的模板之前，先关闭其他开着的模板
 				selfFunc.closeAllEditBookmarkTemplate();
 				var $li = $this.parents("li").addClass("li-disabled pointto");
-				selfFunc.appendEditBookmarkTemplate($li);
+				var $a = $li.find("a");
+				var values = {};
+				values.url = $a.attr("href");
+				values.name = $a.text();
+				selfFunc.appendEditBookmarkTemplate($li,values);
 			} else {
 				selfFunc.closeAllEditBookmarkTemplate();
 			}
@@ -290,13 +311,22 @@ var bookmarkOperateFunc = {
 		selfFunc = this;
 		$(".wrap-box").on("click", ".confirmediticon", function() {
 			var $thisBtn = $(this);
+			var $li = $thisBtn.parents("li");
+			var url = $li.find("input[id='url']").val();
+			var name = $li.find("input[id='bookmarkname']").val();
 			// 确认新增书签
 			if ($thisBtn.parents(".addbookmark").length > 0) {
 				// TODO
+				var template = selfFunc.getBookmarkTemplate(url, name);
+				var $ul = $thisBtn.parents("ul");
+				$ul.prepend(template);
 			}
 			// 确认编辑书签
 			else if ($thisBtn.parents(".editbookmark").length > 0) {
 				// TODO
+				var $a = $li.prev(".pointto").find("a");
+				$a.prop("href",url);
+				$a.text(name);
 			}
 			// 确认删除书签
 			else if ($thisBtn.parents(".delbookmark").length > 0) {
@@ -334,8 +364,8 @@ var bookmarkOperateFunc = {
 		$ul.find(".editbookmarktemplate").slideDown();
 	},
 	// 编辑书签模板
-	appendEditBookmarkTemplate : function($li) {
-		var operateHtml = this.getAddAndEditBookmarkTemplate("editbookmark");
+	appendEditBookmarkTemplate : function($li,values) {
+		var operateHtml = this.getAddAndEditBookmarkTemplate("editbookmark",values);
 		$li.after(operateHtml);
 		$li.next().slideDown();
 	},
@@ -364,20 +394,34 @@ var bookmarkOperateFunc = {
 		});
 	},
 	// 新增书签与编辑书签公用模板
-	getAddAndEditBookmarkTemplate : function(editclass) {
+	getAddAndEditBookmarkTemplate : function(editclass,values) {
+		var url = "",name = "",tags = "",desc = "";
+		if(values){
+			url = values.url ? values.url : "";
+			name = values.name ? values.name : "";
+			tags = values.tags ? values.tags : "";
+			desc = values.desc ? values.desc : "";
+		}
 		var operateHtml = '';
 		operateHtml += '<li class="editbookmarktemplate li-disabled" style="display:none;">';
 		operateHtml += '<div class="' + editclass + '">';
-		operateHtml += '	<p><label>网址</label><input type="text" id="url" placeholder="例:www.52url.com" /></p>';
-		operateHtml += '	<p><label>名称</label><input type="text" id="bookmarkname" placeholder="例:网址收藏" /></p>';
-		operateHtml += '	<p><label>标签</label><input type="text" id="tags" placeholder="例:生活,美食(以逗号,分隔)" /></p>';
-		operateHtml += '	<p><label>描述</label><textarea id="desc"></textarea></p>';
+		operateHtml += '	<p><label>网址</label><input type="text" id="url" placeholder="例:www.52url.com" value="'+url+'"/></p>';
+		operateHtml += '	<p><label>名称</label><input type="text" id="bookmarkname" placeholder="例:网址收藏" value="'+name+'"/></p>';
+		operateHtml += '	<p><label>标签</label><input type="text" id="tags" placeholder="例:生活,美食(以逗号,分隔)" value="'+tags+'"/></p>';
+		operateHtml += '	<p><label>描述</label><textarea id="desc">'+desc+'</textarea></p>';
 		operateHtml += '	<p class="btn">';
 		operateHtml += '		<span class="confirmediticon" title="确定"></span>';
 		operateHtml += '		<span class="cancelediticon" title="取消"></span>';
 		operateHtml += '	</p>';
 		operateHtml += '</div>';
 		operateHtml += '</li>';
+		return operateHtml;
+	},
+	// 新增书签
+	getBookmarkTemplate : function(url,name){
+		var operateHtml = '';
+		operateHtml += '<li style="dislpay:none;"><a href="'+url+'">'+name+'</a>';
+		operateHtml += '<div class="operatebtn"></div></li>';
 		return operateHtml;
 	}
 };
@@ -386,6 +430,7 @@ var bookmarkOperateFunc = {
 var flyTool = {
 	play : function($flyer) {
 		var $clone = $flyer.clone().removeClass().addClass("flystyle");
+		$flyer.removeClass("pointto").find("a").text("");
 		$('body').append($clone);
 		$clone.css({
 			'top' : $flyer.offset().top + 'px',

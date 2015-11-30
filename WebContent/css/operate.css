@@ -221,3 +221,8 @@
 .pop-category   .btn a {
 	background: #6FC2FF;
 }
+
+/* ¿Õ°×Ä£°å */
+.blank-category {
+	display: none;
+}
