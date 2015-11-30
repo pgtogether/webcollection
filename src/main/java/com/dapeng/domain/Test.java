@@ -1,28 +1,23 @@
 package com.dapeng.domain;
 
 public class Test {
+    private String id;
 
-	private String id;
+    private String name;
 
-	private String name;
+    public String getId() {
+        return id;
+    }
 
-	public String getId() {
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
 
-		return id;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setId(String id) {
-
-		this.id = id == null ? null : id.trim();
-	}
-
-	public String getName() {
-
-		return name;
-	}
-
-	public void setName(String name) {
-
-		this.name = name == null ? null : name.trim();
-	}
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
 }

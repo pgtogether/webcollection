@@ -159,9 +159,11 @@
 			});
 		}
 	function addcategory(){
+		
+		//alert($('input:radio[name=myradio]:checked').val());
 		$.ajax({
-			data:$("#addcategoryform").serialize(),
-			type : "post",
+			data:"categoryname="+$("#categoryname1").val()+"&categorypermission="+$('input:radio[name=myradio]:checked').val(),
+			type:"post",
 			url : "${context_path}/doAddCategory",
 			success : function(json) {
 				if(json>0){
@@ -715,7 +717,9 @@
 		</div>
 		<div >
 			<form id="addcategoryform">
-				分类名：<input type="text" id="categoryname1" name="categoryname"/>
+				分类名：<input type="text" id="categoryname1" name="categoryname"/><br>
+				  <label><input type="radio" name="myradio" id="radiobtn1" value="0" checked="checked" >普通</label>
+				    <label><input type="radio" name="myradio" id="radiobtn2" value="1"  >保密</label>
 				<input type="button" id="addcategorybtn" value="添加" onClick="addcategory()"><br/>
 			</form>
 		</div>

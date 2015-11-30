@@ -16,64 +16,63 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.util.FileCopyUtils;
 
-public class UTF8StringHttpMessageConverter extends AbstractHttpMessageConverter<String> {
+public class UTF8StringHttpMessageConverter extends
+		AbstractHttpMessageConverter<String> {
 
-    public static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
+	public static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
+	private final List<Charset> availableCharsets;
 
-    private final List<Charset> availableCharsets;
+	public UTF8StringHttpMessageConverter() {
+		this(DEFAULT_CHARSET);
+	}
 
-    public UTF8StringHttpMessageConverter() {
+	public UTF8StringHttpMessageConverter(Charset defaultCharset) {
+		super(new MediaType("text", "plain", defaultCharset), MediaType.ALL);
+		this.availableCharsets = new ArrayList<Charset>(Charset
+				.availableCharsets().values());
+	}
 
-        this(DEFAULT_CHARSET);
-    }
+	@Override
+	protected boolean supports(Class<?> clazz) {
+		return String.class.equals(clazz);
+	}
 
-    public UTF8StringHttpMessageConverter(Charset defaultCharset) {
+	@Override
+	protected String readInternal(Class<? extends String> clazz,
+			HttpInputMessage inputMessage) throws IOException,
+			HttpMessageNotReadableException {
+		MediaType contentType = inputMessage.getHeaders().getContentType();
+		Charset charset = contentType.getCharSet() != null ? contentType
+				.getCharSet() : DEFAULT_CHARSET;
+		return FileCopyUtils.copyToString(new InputStreamReader(inputMessage
+				.getBody(), charset));
+	}
 
-        super(new MediaType("text", "plain", defaultCharset), MediaType.ALL);
-        this.availableCharsets = new ArrayList<Charset>(Charset.availableCharsets().values());
-    }
+	@Override
+	protected void writeInternal(String t, HttpOutputMessage outputMessage)
+			throws IOException, HttpMessageNotWritableException {
+		MediaType contentType = outputMessage.getHeaders().getContentType();
+		Charset charset = contentType.getCharSet() != null ? contentType
+				.getCharSet() : DEFAULT_CHARSET;
+		FileCopyUtils.copy(t, new OutputStreamWriter(outputMessage.getBody(),
+				charset));
+	}
 
-    @Override
-    protected boolean supports(Class<?> clazz) {
+	protected List<Charset> getAcceptedCharsets() {
+		return this.availableCharsets;
+	}
 
-        return String.class.equals(clazz);
-    }
-
-    @Override
-    protected String readInternal(Class<? extends String> clazz, HttpInputMessage inputMessage) throws IOException,
-            HttpMessageNotReadableException {
-
-        MediaType contentType = inputMessage.getHeaders().getContentType();
-        Charset charset = contentType.getCharSet() != null ? contentType.getCharSet() : DEFAULT_CHARSET;
-        return FileCopyUtils.copyToString(new InputStreamReader(inputMessage.getBody(), charset));
-    }
-
-    @Override
-    protected void writeInternal(String t, HttpOutputMessage outputMessage) throws IOException,
-            HttpMessageNotWritableException {
-
-        MediaType contentType = outputMessage.getHeaders().getContentType();
-        Charset charset = contentType.getCharSet() != null ? contentType.getCharSet() : DEFAULT_CHARSET;
-        FileCopyUtils.copy(t, new OutputStreamWriter(outputMessage.getBody(), charset));
-    }
-
-    protected List<Charset> getAcceptedCharsets() {
-
-        return this.availableCharsets;
-    }
-
-    @Override
-    protected Long getContentLength(String s, MediaType contentType) {
-
-        if (contentType != null && contentType.getCharSet() != null) {
-            Charset charset = contentType.getCharSet();
-            try {
-                return (long) s.getBytes(charset.name()).length;
-            } catch (UnsupportedEncodingException ex) {
-                throw new InternalError(ex.getMessage());
-            }
-        } else {
-            return null;
-        }
-    }
+	@Override
+	protected Long getContentLength(String s, MediaType contentType) {
+		if (contentType != null && contentType.getCharSet() != null) {
+			Charset charset = contentType.getCharSet();
+			try {
+				return (long) s.getBytes(charset.name()).length;
+			} catch (UnsupportedEncodingException ex) {
+				throw new InternalError(ex.getMessage());
+			}
+		} else {
+			return null;
+		}
+	}
 }
