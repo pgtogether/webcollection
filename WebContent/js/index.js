@@ -138,23 +138,19 @@ var boxHeadOperateFunc = {
 	modifyTitle : function() {
 		// 双击修改分类标题
 		var selfFunc = this;
-		$(".wrap-box")
-				.on(
-						"dblclick",
-						".block-head",
-						function() {
-							if (!$(this).hasClass("modify")) {
-								selfFunc.closeOtherModifyTitle();
-								var $title = $(this).find(".block-head-title");
-								var titleText = $title.text();
-								var inputHtml = '<input class="updatetitle" type="text" style="background-color:'
-										+ $title.css("background-color") + '">';
-								$title.html(inputHtml).parent().addClass(
-										"modify");
-								$title.find("input").focus().val(titleText);
-								selfFunc.appendBoxTitleUpdateBtn($title);
-							}
-						});
+		$(".wrap-box").on("dblclick",".block-head",
+			function() {
+				if (!$(this).hasClass("modify")) {
+					selfFunc.closeOtherModifyTitle();
+					var $title = $(this).find(".block-head-title");
+					var titleText = $title.text();
+					var inputHtml = '<input class="updatetitle" type="text" style="background-color:'
+						+ $title.css("background-color") + '">';
+					$title.html(inputHtml).parent().addClass("modify");
+					$title.find("input").focus().val(titleText);
+					selfFunc.appendBoxTitleUpdateBtn($title);
+			}
+		});
 	},
 	// 确定修改
 	confirmModify : function() {
@@ -317,9 +313,8 @@ var bookmarkOperateFunc = {
 			// 确认新增书签
 			if ($thisBtn.parents(".addbookmark").length > 0) {
 				// TODO
-				var template = selfFunc.getBookmarkTemplate(url, name);
-				var $ul = $thisBtn.parents("ul");
-				$ul.prepend(template);
+				// 保存数据
+				doAjaxFunc.addbookmark();
 			}
 			// 确认编辑书签
 			else if ($thisBtn.parents(".editbookmark").length > 0) {
@@ -332,8 +327,8 @@ var bookmarkOperateFunc = {
 			else if ($thisBtn.parents(".delbookmark").length > 0) {
 				var $delObj = $thisBtn.parents(".editbookmarktemplate").prev();
 				flyTool.play($delObj);
+				selfFunc.closeAllEditBookmarkTemplate();
 			}
-			selfFunc.closeAllEditBookmarkTemplate();
 		});
 	},
 	// 取消书签
@@ -404,23 +399,25 @@ var bookmarkOperateFunc = {
 		}
 		var operateHtml = '';
 		operateHtml += '<li class="editbookmarktemplate li-disabled" style="display:none;">';
+		operateHtml += '<form id="' + editclass + 'form">';
 		operateHtml += '<div class="' + editclass + '">';
-		operateHtml += '	<p><label>网址</label><input type="text" id="url" placeholder="例:www.52url.com" value="'+url+'"/></p>';
-		operateHtml += '	<p><label>名称</label><input type="text" id="bookmarkname" placeholder="例:网址收藏" value="'+name+'"/></p>';
-		operateHtml += '	<p><label>标签</label><input type="text" id="tags" placeholder="例:生活,美食(以逗号,分隔)" value="'+tags+'"/></p>';
-		operateHtml += '	<p><label>描述</label><textarea id="desc">'+desc+'</textarea></p>';
+		operateHtml += '	<p><label>网址</label><input type="text" id="url" name="url" placeholder="例:www.52url.com" value="'+url+'"/></p>';
+		operateHtml += '	<p><label>名称</label><input type="text" id="bookmarkname" name="bookmarkname" placeholder="例:网址收藏" value="'+name+'"/></p>';
+		operateHtml += '	<p><label>标签</label><input type="text" id="tags" name="tags" placeholder="例:生活,美食(以逗号,分隔)" value="'+tags+'"/></p>';
+		operateHtml += '	<p><label>描述</label><textarea id="desc" name="desc">'+desc+'</textarea></p>';
 		operateHtml += '	<p class="btn">';
 		operateHtml += '		<span class="confirmediticon" title="确定"></span>';
 		operateHtml += '		<span class="cancelediticon" title="取消"></span>';
 		operateHtml += '	</p>';
 		operateHtml += '</div>';
+		operateHtml += '</form>';
 		operateHtml += '</li>';
 		return operateHtml;
 	},
 	// 新增书签
 	getBookmarkTemplate : function(url,name){
 		var operateHtml = '';
-		operateHtml += '<li style="dislpay:none;"><a href="'+url+'">'+name+'</a>';
+		operateHtml += '<li style="display:none;"><a href="'+url+'">'+name+'</a>';
 		operateHtml += '<div class="operatebtn"></div></li>';
 		return operateHtml;
 	}
@@ -482,6 +479,42 @@ var sideBannerFunc = {
 				scrollTop : 0
 			}, 500);
 			return false;
+		});
+	}
+};
+
+// 提交数据的Ajax的操作
+var doAjaxFunc = {
+	// 新增书签
+	addbookmark : function() {
+		$addbookmarkform = $("#addbookmarkform");
+		var url = $addbookmarkform.find("#url").val();
+		var name = $addbookmarkform.find("#bookmarkname").val();
+		var template = selfFunc.getBookmarkTemplate(url, name);
+		$.ajax({
+			data : $addbookmarkform.serialize(),
+			type : "post",
+			url : CONTEXT_PATH + "/doAddBookmark",
+			success : function(json) {
+				if (json.result == "OK") {
+					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
+					var $ul = $addbookmarkform.parents("ul");
+					$ul.prepend(template);
+					$ul.find("li:eq(0)").addClass("delay-pointto").slideDown(function(){
+						var $newli = $(this);
+						$(".pop-callback").animate({top:"10px",opacity:1},800,function(){
+							$(this).delay(1000).animate({top:"-350px",opacity:0.3},800,function(){
+								$newli.removeClass("delay-pointto");
+							});
+						});
+					});
+				} else {
+					alert("插入失败");
+				}
+			},
+			error : function(e) {
+				alert(e);
+			}
 		});
 	}
 };

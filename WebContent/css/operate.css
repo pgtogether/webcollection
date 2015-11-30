@@ -84,6 +84,10 @@
 .pointto {
 	background: url(../img/icon/pointto.png) -2px 5px no-repeat !important; box-shadow: 0px -1px 2px #bbb, 0px 1px 2px #bbb; z-index: 100; position: relative;
 }
+.delay-pointto {
+	background: url(../img/icon/pointto.png) -2px 5px no-repeat !important; box-shadow: 0px -1px 2px #bbb, 0px 1px 2px #bbb; z-index: 100; position: relative;
+}
+
 
 /* 新增书签 */
 .addbookmark,.editbookmark {
@@ -220,6 +224,10 @@
 
 .pop-category   .btn a {
 	background: #6FC2FF;
+}
+
+.pop-callback {
+	top: -350px; display: block; opacity: 0.3;
 }
 
 /* 空白模板 */

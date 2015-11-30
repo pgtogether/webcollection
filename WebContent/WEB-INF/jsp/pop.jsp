@@ -71,7 +71,7 @@
 				<img alt="success" src="${context_path}/img/success.png">
 			</p>
 			<p>
-				<span>新增成功</span>
+				<span>保存成功</span>
 			</p>
 		</div>
 	</div>

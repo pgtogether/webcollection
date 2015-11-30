@@ -13,6 +13,7 @@ package com.dapeng.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dapeng.controller.form.BookMarkForm;
 import com.dapeng.domain.Bookmark;
 import com.dapeng.domain.Category;
 import com.dapeng.service.BookmarkService;
@@ -35,7 +37,7 @@ import com.dapeng.service.BookmarkService;
  */
 @Controller
 @RequestMapping("/*")
-public class IndexController {
+public class IndexController extends BaseController {
 
     @Autowired
     private BookmarkService bookmarkService;
@@ -61,11 +63,16 @@ public class IndexController {
         return "recycle";
     }
 
+    /**
+     * 
+     * 获取用户收藏的所有书签
+     * 
+     */
     @RequestMapping(value = "doSelectBookmarkList", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public List<Bookmark> doSelectBookmarkList() {
+    public Map<String, Object> doSelectBookmarkList() {
         List<Bookmark> bookmarkList = bookmarkService.selectBookmarkList();
-        return bookmarkList;
+        return ajaxSuccess(bookmarkList);
     }
 
     /**
@@ -108,16 +115,20 @@ public class IndexController {
 
     @RequestMapping(value = "doAddBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public int doAddBookmark(Bookmark bookmark) {
+    public Map<String, Object> doAddBookmark(BookMarkForm form) {
         Bookmark bmdto = new Bookmark();
-        bmdto.setBookmarkname(bookmark.getBookmarkname());
-        bmdto.setUrl(bookmark.getUrl());
+        bmdto.setBookmarkname(form.getBookmarkname());
+        bmdto.setUrl(form.getUrl());
         bmdto.setPermission("1");
         bmdto.setCategoryid("111");
         bmdto.setCreatetime(new Date());
         bmdto.setDeleteflg("0");
         int result = bookmarkService.insertBookmark(bmdto);
-        return result;
+        if (result > 0) {
+            return ajaxSuccess();
+        } else {
+            return ajaxFail();
+        }
     }
 
     /**

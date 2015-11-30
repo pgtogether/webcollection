@@ -1,4 +1,4 @@
-package com.dapeng.domain;
+package com.dapeng.service.bo;
 
 import java.util.Date;
 
@@ -8,7 +8,8 @@ import java.util.Date;
  * @author Administrator
  * 
  */
-public class Bookmark {
+public class BookmarkBO {
+
     private int bookmarkid;
 
     private String bookmarkname;

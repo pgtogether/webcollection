@@ -8,3 +8,6 @@
 %>
 <c:set var="context_path" value="<%=context_path%>" />
 <c:set var="version" value="<%=dateStr%>" />
+<script type="text/javascript">
+	var CONTEXT_PATH = '${context_path}';
+</script>
