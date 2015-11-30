@@ -192,12 +192,11 @@ public class IndexController {
 		try {
 			Category cgdto = new Category();
 			cgdto.setCategoryname(category.getCategoryname());
-			cgdto.setCategorypermission("0");
+			cgdto.setCategorypermission(category.getCategorypermission());
 			cgdto.setCategorypsw("1111");
 			cgdto.setCategorytype("1");
 			cgdto.setParentcategoryid(3);
 			 result = bookmarkService.addCategory(cgdto);
-			 System.out.println(result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
