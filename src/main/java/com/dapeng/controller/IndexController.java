@@ -77,6 +77,53 @@ public class IndexController extends BaseController {
     }
 
     /**
+     * 
+     * 获取同一类别书签
+     * 
+     */
+    @RequestMapping(value = "doSelectSametypeBookmarkList", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> doSelectSametypeBookmarkList() {
+        List<Bookmark> bookmarkList = bookmarkService.selectBookmarkList();
+        return ajaxSuccess(bookmarkList);
+    }
+
+    /**
+     * 
+     * 标记为热点书签
+     * 
+     */
+    @RequestMapping(value = "doSethotbookmark", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> doSethotbookmark(BookmarkBO bo) {
+    	int result = -1;
+    	result = bookmarkService.setHotbookmark(bo);
+        return ajaxSuccess(result);
+    }
+
+    /**
+     * 
+     * 取消热点书签
+     * 
+     */
+    @RequestMapping(value = "doCancelhotbookmark", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> doCancelhotbookmark(BookmarkBO bo) {
+    	int result = -1;
+    	result = bookmarkService.cancelHotbookmark(bo);
+        return ajaxSuccess(result);
+    }
+    
+    /**
+     * 查询热点书签
+     */
+    @RequestMapping(value = "doSelectHotBookmarkList", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> doSelectHotBookmarkList() {
+        List<Bookmark> bookmarkList = bookmarkService.selectHotBookmarkList();
+        return ajaxSuccess(bookmarkList);
+    }
+    /**
      * 回收站
      * 
      * @return

@@ -20,6 +20,16 @@ public  class BookmarkServiceImpl implements BookmarkService{
 	public List<Bookmark> selectBookmarkList() {
 		return bookmarkDao.selectBookmarkList();
 	}
+	
+	/* (non-Javadoc)
+	 * @see com.dapeng.service.BookmarkService#selectBookmarkListByCategoryid(int)
+	 */
+	@Override
+	public List<Bookmark> selectBookmarkListByCategoryid(int categoryid) {
+		
+		return bookmarkDao.selectBookmarkListByCategoryid(categoryid);
+	}
+	
 	@Override
 	public Bookmark selectBookmarkListById(int bookmarkId) {
 		return bookmarkDao.selectBookmarkListById(bookmarkId);
@@ -87,6 +97,34 @@ public  class BookmarkServiceImpl implements BookmarkService{
 		bm.setSort(bo.getSort());
 		bm.setCategoryid(bo.getCategoryid());
 		return bookmarkDao.updateBookmarkCategory(bm);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.dapeng.service.BookmarkService#setHotbookmark(com.dapeng.service.bo.BookmarkBO)
+	 */
+	@Override
+	public int setHotbookmark(BookmarkBO bo) {
+		Bookmark bm = new Bookmark();
+		bm.setBookmarkid(bo.getBookmarkid());
+		return bookmarkDao.setHotbookmark(bm);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.dapeng.service.BookmarkService#cancelHotbookmark(com.dapeng.service.bo.BookmarkBO)
+	 */
+	@Override
+	public int cancelHotbookmark(BookmarkBO bo) {
+		Bookmark bm = new Bookmark();
+		bm.setBookmarkid(bo.getBookmarkid());
+		return bookmarkDao.cancelHotbookmark(bm);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.dapeng.service.BookmarkService#selectHotBookmarkList(com.dapeng.service.bo.BookmarkBO)
+	 */
+	@Override
+	public List<Bookmark> selectHotBookmarkList() {
+		return bookmarkDao.selectHotBookmarkList();
 	}
 
 	
