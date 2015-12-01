@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dapeng.domain.Bookmark;
 import com.dapeng.domain.Category;
+import com.dapeng.service.bo.BookmarkBO;
 
 public interface BookmarkService {
 	//查看书签列表
@@ -38,4 +39,6 @@ public interface BookmarkService {
 	//更新类别
 	int updateCategoryBySlected(Category category);
 
+	//改变标签的分类
+	int updateBookmarkCategory(BookmarkBO bo);
 }

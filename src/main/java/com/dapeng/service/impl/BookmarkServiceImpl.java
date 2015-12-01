@@ -9,6 +9,7 @@ import com.dapeng.dao.BookmarkMapper;
 import com.dapeng.domain.Bookmark;
 import com.dapeng.domain.Category;
 import com.dapeng.service.BookmarkService;
+import com.dapeng.service.bo.BookmarkBO;
 
 @Service
 public  class BookmarkServiceImpl implements BookmarkService{
@@ -75,6 +76,17 @@ public  class BookmarkServiceImpl implements BookmarkService{
 	@Override
 	public int doRecoverBookmark(int id) {
 		return bookmarkDao.doRecoverBookmark(id);
+	}
+	/* (non-Javadoc)
+	 * @see com.dapeng.service.BookmarkService#updateBookmarkCategory(int)
+	 */
+	@Override
+	public int updateBookmarkCategory(BookmarkBO bo) {
+		Bookmark bm = new Bookmark();
+		bm.setBookmarkid(bo.getBookmarkid());
+		bm.setSort(bo.getSort());
+		bm.setCategoryid(bo.getCategoryid());
+		return bookmarkDao.updateBookmarkCategory(bm);
 	}
 
 	

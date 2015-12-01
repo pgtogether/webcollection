@@ -25,6 +25,7 @@ import com.dapeng.controller.form.BookMarkForm;
 import com.dapeng.domain.Bookmark;
 import com.dapeng.domain.Category;
 import com.dapeng.service.BookmarkService;
+import com.dapeng.service.bo.BookmarkBO;
 
 /**
  * 类的功能描述
@@ -120,7 +121,7 @@ public class IndexController extends BaseController {
         bmdto.setBookmarkname(form.getBookmarkname());
         bmdto.setUrl(form.getUrl());
         bmdto.setPermission("1");
-        bmdto.setCategoryid("111");
+        bmdto.setCategoryid(4);
         bmdto.setCreatetime(new Date());
         bmdto.setDeleteflg("0");
         int result = bookmarkService.insertBookmark(bmdto);
@@ -242,5 +243,24 @@ public class IndexController extends BaseController {
     public List<Category> doSelectCategoryList() {
         List<Category> categoryList = bookmarkService.selectCategoryList();
         return categoryList;
+    }
+    
+    /**
+     * 书签从分类中迁移到另外一个分类  TODO
+     * @param bookMarkForm
+     * @return
+     */
+    @RequestMapping(value = "doChangeCategory", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public int doChangeCategory(BookMarkForm bookMarkForm) {
+    	int result = -1;
+    	BookmarkBO bo = new BookmarkBO();
+//    	bo.setBookmarkname(bookMarkForm.getBookmarkname());
+//    	bo.setUrl(bookMarkForm.getUrl());
+    	bo.setBookmarkid(4);
+    	bo.setSort(5);
+    	bo.setCategoryid(2);
+    	result = bookmarkService.updateBookmarkCategory(bo);
+        return result;
     }
 }

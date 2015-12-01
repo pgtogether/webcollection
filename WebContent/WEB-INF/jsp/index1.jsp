@@ -213,6 +213,23 @@
 			}
 		});
 	}
+	
+	function changecategory(){
+		$.ajax({
+			type : "post",
+			url : "${context_path}/doChangeCategory",
+			success : function(json) {
+				if(json>0){
+					alert("类别变换成功");
+				}else{
+					alert("类别变换失败");
+				}
+			},
+			error : function(e) {
+				alert(e);
+			}
+		});
+	}
 </script>
 <body>
 
@@ -737,6 +754,7 @@
 				</form>
 				<ul id="categorylist"></ul>
 			</div>
+			<input type="button"  value="改变类别" onClick="changecategory()"><br/>
 	<div class="footer">
 		<div class="footer-in"></div>
 	</div>

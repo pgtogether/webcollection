@@ -86,6 +86,12 @@
 		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
 	</update>
 	
+	<update id="updateBookmarkCategory" parameterType="com.dapeng.domain.Bookmark">
+		update bookmark
+		set categoryid = #{categoryid,jdbcType=INTEGER},
+			sort = #{sort,jdbcType=INTEGER}
+		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+	</update>
 	<insert id="insertBookmark" parameterType="com.dapeng.domain.Bookmark">
 		insert into bookmark ( bookmarkname,url,permission,categoryid,createtime,deleteflg)
 		values (#{bookmarkname,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}

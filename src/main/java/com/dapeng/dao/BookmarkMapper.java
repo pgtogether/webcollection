@@ -2,10 +2,10 @@
 
 import java.util.List;
 
-import com.dapeng.domain.Category;
 import org.springframework.stereotype.Repository;
 
 import com.dapeng.domain.Bookmark;
+import com.dapeng.domain.Category;
 
 @Repository
 public interface BookmarkMapper {
@@ -53,4 +53,6 @@ public interface BookmarkMapper {
 	int deleteCategoryById(int categoryid);
 	
 	int updateCategoryBySlected(Category category);
+	//改变标签的分类和排序
+	int updateBookmarkCategory(Bookmark bookmark);
 }
