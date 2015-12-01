@@ -487,7 +487,11 @@ var sideBannerFunc = {
 var doAjaxFunc = {
 	// 新增书签
 	addbookmark : function() {
+		formValidateFunc.validateAddBookmarkForm();
 		$addbookmarkform = $("#addbookmarkform");
+		if(!$addbookmarkform.valid()){
+			return;
+		}
 		var url = $addbookmarkform.find("#url").val();
 		var name = $addbookmarkform.find("#bookmarkname").val();
 		var template = selfFunc.getBookmarkTemplate(url, name);
@@ -515,6 +519,33 @@ var doAjaxFunc = {
 			error : function(e) {
 				alert(e);
 			}
+		});
+	}
+};
+
+// 表单验证操作
+var formValidateFunc = {
+	// 验证新增书签表单
+	validateAddBookmarkForm : function() {
+		return $("#addbookmarkform").validate({
+			rules: {
+			    url	: {
+			    	required : true,
+			    	isUrl : true
+			    },
+			    bookmarkname : {
+			      required: true
+			    }
+			  },
+			  messages: {
+				  url: {
+					  required : "请输入网址",
+					  isUrl : "请输入合法的网址"
+				  },
+				  bookmarkname : {
+					  required: "请输入名称"
+				  }
+			  }
 		});
 	}
 };

@@ -3,4 +3,6 @@
 <%@ include file="/include/constants.jsp"%>
 <script src="${context_path}/js/plugin/jquery-2.1.4.min.js"></script>
 <script src="${context_path}/js/plugin/jquery-ui.min.js"></script>
+<script src="${context_path}/js/plugin/jquery.validate-1.13.1.min.js"></script>
 <script src="${context_path}/js/plugin/jump.js"></script>
+<script src="${context_path}/js/validate.js"></script>
