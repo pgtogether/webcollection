@@ -35,7 +35,7 @@
 	
 		<select id="selectCategoryListById" parameterType="int" resultType="com.dapeng.domain.Category">
 		select * from bookmark_category 
-		where categoryid = #{categoryid,dbcType=INTEGER}
+		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteCategoryById" parameterType="int">
 		delete from bookmark_category
@@ -58,6 +58,27 @@
 	<select id="selectBookmarkList" resultType="com.dapeng.domain.Bookmark">
 		select * from bookmark where deleteflg!="1"
 	</select>
+	<!-- 书签操作  获取同一类别书签-->
+	<select id="selectBookmarkListByCategoryid" resultType="com.dapeng.domain.Bookmark">
+		select * from bookmark where deleteflg!="1" and categoryid = #{categoryid}
+	</select>
+	<update id="setHotbookmark" parameterType="com.dapeng.domain.Bookmark">
+		update bookmark
+		set
+		hot = "1"
+		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+	</update>
+	<update id="cancelHotbookmark" parameterType="com.dapeng.domain.Bookmark">
+		update bookmark
+		set
+		hot = "2"
+		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectHotBookmarkList" resultType="com.dapeng.domain.Bookmark">
+		select * from bookmark where deleteflg!="1" and hot="1"
+	</select>
+	
 	<!-- 回收站 -->
 	<select id="selectrecycleList" resultType="com.dapeng.domain.Bookmark">
 		select * from bookmark where deleteflg="1"
@@ -66,7 +87,7 @@
 	
 	<select id="selectBookmarkListById" parameterType="int" resultType="com.dapeng.domain.Bookmark">
 		select * from bookmark 
-		where bookmarkid = #{bookmarkid,dbcType=INTEGER}
+		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
 	</select>
 	<!-- 逻辑删除书签 -->
 	<update id="deleteBookmarkById" parameterType="int">
@@ -86,6 +107,12 @@
 		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
 	</update>
 	
+	<update id="updateBookmarkCategory" parameterType="com.dapeng.domain.Bookmark">
+		update bookmark
+		set categoryid = #{categoryid,jdbcType=INTEGER},
+			sort = #{sort,jdbcType=INTEGER}
+		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+	</update>
 	<insert id="insertBookmark" parameterType="com.dapeng.domain.Bookmark">
 		insert into bookmark ( bookmarkname,url,permission,categoryid,createtime,deleteflg)
 		values (#{bookmarkname,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}

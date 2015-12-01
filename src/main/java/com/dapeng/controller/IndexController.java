@@ -25,6 +25,7 @@ import com.dapeng.controller.form.BookMarkForm;
 import com.dapeng.domain.Bookmark;
 import com.dapeng.domain.Category;
 import com.dapeng.service.BookmarkService;
+import com.dapeng.service.bo.BookmarkBO;
 
 /**
  * 类的功能描述
@@ -76,6 +77,53 @@ public class IndexController extends BaseController {
     }
 
     /**
+     * 
+     * 获取同一类别书签
+     * 
+     */
+    @RequestMapping(value = "doSelectSametypeBookmarkList", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> doSelectSametypeBookmarkList() {
+        List<Bookmark> bookmarkList = bookmarkService.selectBookmarkList();
+        return ajaxSuccess(bookmarkList);
+    }
+
+    /**
+     * 
+     * 标记为热点书签
+     * 
+     */
+    @RequestMapping(value = "doSethotbookmark", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> doSethotbookmark(BookmarkBO bo) {
+    	int result = -1;
+    	result = bookmarkService.setHotbookmark(bo);
+        return ajaxSuccess(result);
+    }
+
+    /**
+     * 
+     * 取消热点书签
+     * 
+     */
+    @RequestMapping(value = "doCancelhotbookmark", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> doCancelhotbookmark(BookmarkBO bo) {
+    	int result = -1;
+    	result = bookmarkService.cancelHotbookmark(bo);
+        return ajaxSuccess(result);
+    }
+    
+    /**
+     * 查询热点书签
+     */
+    @RequestMapping(value = "doSelectHotBookmarkList", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> doSelectHotBookmarkList() {
+        List<Bookmark> bookmarkList = bookmarkService.selectHotBookmarkList();
+        return ajaxSuccess(bookmarkList);
+    }
+    /**
      * 回收站
      * 
      * @return
@@ -120,7 +168,7 @@ public class IndexController extends BaseController {
         bmdto.setBookmarkname(form.getBookmarkname());
         bmdto.setUrl(form.getUrl());
         bmdto.setPermission("1");
-        bmdto.setCategoryid("111");
+        bmdto.setCategoryid(4);
         bmdto.setCreatetime(new Date());
         bmdto.setDeleteflg("0");
         int result = bookmarkService.insertBookmark(bmdto);
@@ -242,5 +290,24 @@ public class IndexController extends BaseController {
     public List<Category> doSelectCategoryList() {
         List<Category> categoryList = bookmarkService.selectCategoryList();
         return categoryList;
+    }
+    
+    /**
+     * 书签从分类中迁移到另外一个分类  TODO
+     * @param bookMarkForm
+     * @return
+     */
+    @RequestMapping(value = "doChangeCategory", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public int doChangeCategory(BookMarkForm bookMarkForm) {
+    	int result = -1;
+    	BookmarkBO bo = new BookmarkBO();
+//    	bo.setBookmarkname(bookMarkForm.getBookmarkname());
+//    	bo.setUrl(bookMarkForm.getUrl());
+    	bo.setBookmarkid(4);
+    	bo.setSort(5);
+    	bo.setCategoryid(2);
+    	result = bookmarkService.updateBookmarkCategory(bo);
+        return result;
     }
 }

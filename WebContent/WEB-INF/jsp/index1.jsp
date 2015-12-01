@@ -70,22 +70,22 @@
 	
 
 	$(function() {
-	 		$.ajax({
+	 /* 	 	$.ajax({
 				type : "post",
 				url : "${context_path}/doSelectBookmarkList",
 				dataType:"json",
 				success : function(json) {
 					//alert(json[0].url);
-					 for(var i=0;i<json.length;i++){  
+					 for(var i=0;i<json.data.length;i++){  
 					   //alert(json); 
-					  $("#ddd").val(json[i].bookmarkid + json[i].bookmarkname+json[i].url);
-					  $("#hotlist").append("<li><a href="+json[i].url+">"+json[i].bookmarkname+"</a></li>");
+					//  $("#ddd").val(json[i].bookmarkid + json[i].bookmarkname+json[i].url);
+					  $("#hotlist").append("<li><a href="+json.data[i].url+">"+json.data[i].bookmarkname+"</a></li>");
 					}    
 				},
 				error : function(e) {
-					alert(e);
+					alert("查询失败");
 				}
-			});
+			}); */
 	 		
 	 		$.ajax({
 				type : "post",
@@ -206,6 +206,77 @@
 					alert("分类更新成功");
 				}else{
 					alert("分类更新失败");
+				}
+			},
+			error : function(e) {
+				alert(e);
+			}
+		});
+	}
+	
+	function changecategory(){
+		$.ajax({
+			type : "post",
+			url : "${context_path}/doChangeCategory",
+			success : function(json) {
+				if(json>0){
+					alert("类别变换成功");
+				}else{
+					alert("类别变换失败");
+				}
+			},
+			error : function(e) {
+				alert(e);
+			}
+		});
+	}
+	
+	function sethot(){
+		$.ajax({
+			data : "bookmarkid=4",
+			type : "post",
+			url : "${context_path}/doSethotbookmark",
+			success : function(json) {
+				if(json.result ="OK"){
+					alert("设置热门成功");
+				}else{
+					alert("设置热门失败");
+				}
+			},
+			error : function(e) {
+				alert(e);
+			}
+		});
+	}
+	function cancelhot(){
+		$.ajax({
+			data : "bookmarkid=4",
+			type : "post",
+			url : "${context_path}/doCancelhotbookmark",
+			success : function(json) {
+				if(json.result ="OK"){
+					alert("取消热门成功");
+				}else{
+					alert("取消热门失败");
+				}
+			},
+			error : function(e) {
+				alert(e);
+			}
+		});
+	}
+	function selecthot(){
+		$.ajax({
+			type : "post",
+			url : "${context_path}/doSelectHotBookmarkList",
+			success : function(json) {
+				if(json.result="OK"){
+					 for(var i=0;i<json.data.length;i++){  
+						   //alert(json); 
+						  $("#hotlist").append("<li><a href="+json.data[i].url+">"+json.data[i].bookmarkname+"</a></li>");
+						}
+				}else{
+					alert("查询热门列表失败");
 				}
 			},
 			error : function(e) {
@@ -737,6 +808,10 @@
 				</form>
 				<ul id="categorylist"></ul>
 			</div>
+			<input type="button"  value="改变类别" onClick="changecategory()"><br/>
+			<input type="button"  value="标记为热点书签" onClick="sethot()"><br/>
+			<input type="button"  value="取消热点书签" onClick="cancelhot()"><br/>
+			<input type="button"  value="查询热点书签" onClick="selecthot()"><br/>
 	<div class="footer">
 		<div class="footer-in"></div>
 	</div>

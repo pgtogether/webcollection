@@ -322,6 +322,7 @@ var bookmarkOperateFunc = {
 				var $a = $li.prev(".pointto").find("a");
 				$a.prop("href",url);
 				$a.text(name);
+				selfFunc.closeAllEditBookmarkTemplate();
 			}
 			// 确认删除书签
 			else if ($thisBtn.parents(".delbookmark").length > 0) {

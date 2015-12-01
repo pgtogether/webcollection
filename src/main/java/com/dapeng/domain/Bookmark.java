@@ -17,7 +17,7 @@ public class Bookmark {
 
     private String permission;
 
-    private String categoryid;
+    private int categoryid;
 
     /**
      * 访问次数
@@ -74,15 +74,16 @@ public class Bookmark {
         this.permission = permission;
     }
 
-    public String getCategoryid() {
-        return categoryid;
-    }
 
-    public void setCategoryid(String categoryid) {
-        this.categoryid = categoryid;
-    }
+    public int getCategoryid() {
+		return categoryid;
+	}
 
-    public int getUsetimes() {
+	public void setCategoryid(int categoryid) {
+		this.categoryid = categoryid;
+	}
+
+	public int getUsetimes() {
         return usetimes;
     }
 
