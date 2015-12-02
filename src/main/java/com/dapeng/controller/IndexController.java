@@ -17,6 +17,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -96,8 +99,8 @@ public class IndexController extends BaseController {
     @RequestMapping(value = "doSethotbookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public Map<String, Object> doSethotbookmark(BookmarkBO bo) {
-    	int result = -1;
-    	result = bookmarkService.setHotbookmark(bo);
+        int result = -1;
+        result = bookmarkService.setHotbookmark(bo);
         return ajaxSuccess(result);
     }
 
@@ -109,11 +112,11 @@ public class IndexController extends BaseController {
     @RequestMapping(value = "doCancelhotbookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public Map<String, Object> doCancelhotbookmark(BookmarkBO bo) {
-    	int result = -1;
-    	result = bookmarkService.cancelHotbookmark(bo);
+        int result = -1;
+        result = bookmarkService.cancelHotbookmark(bo);
         return ajaxSuccess(result);
     }
-    
+
     /**
      * 查询热点书签
      */
@@ -123,6 +126,7 @@ public class IndexController extends BaseController {
         List<Bookmark> bookmarkList = bookmarkService.selectHotBookmarkList();
         return ajaxSuccess(bookmarkList);
     }
+
     /**
      * 回收站
      * 
@@ -161,9 +165,17 @@ public class IndexController extends BaseController {
         return result;
     }
 
+    /**
+     * 添加网址
+     */
     @RequestMapping(value = "doAddBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String, Object> doAddBookmark(BookMarkForm form) {
+    public Map<String, Object> doAddBookmark(@Validated
+    BookMarkForm form, BindingResult result) {
+        if (result.hasErrors()) {
+            return ajaxValidateError(result);
+        }
+
         Bookmark bmdto = new Bookmark();
         bmdto.setBookmarkname(form.getBookmarkname());
         bmdto.setUrl(form.getUrl());
@@ -171,8 +183,8 @@ public class IndexController extends BaseController {
         bmdto.setCategoryid(4);
         bmdto.setCreatetime(new Date());
         bmdto.setDeleteflg("0");
-        int result = bookmarkService.insertBookmark(bmdto);
-        if (result > 0) {
+        int rows = bookmarkService.insertBookmark(bmdto);
+        if (rows > 0) {
             return ajaxSuccess();
         } else {
             return ajaxFail();
@@ -291,23 +303,24 @@ public class IndexController extends BaseController {
         List<Category> categoryList = bookmarkService.selectCategoryList();
         return categoryList;
     }
-    
+
     /**
-     * 书签从分类中迁移到另外一个分类  TODO
+     * 书签从分类中迁移到另外一个分类 TODO
+     * 
      * @param bookMarkForm
      * @return
      */
     @RequestMapping(value = "doChangeCategory", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public int doChangeCategory(BookMarkForm bookMarkForm) {
-    	int result = -1;
-    	BookmarkBO bo = new BookmarkBO();
-//    	bo.setBookmarkname(bookMarkForm.getBookmarkname());
-//    	bo.setUrl(bookMarkForm.getUrl());
-    	bo.setBookmarkid(4);
-    	bo.setSort(5);
-    	bo.setCategoryid(2);
-    	result = bookmarkService.updateBookmarkCategory(bo);
+        int result = -1;
+        BookmarkBO bo = new BookmarkBO();
+        // bo.setBookmarkname(bookMarkForm.getBookmarkname());
+        // bo.setUrl(bookMarkForm.getUrl());
+        bo.setBookmarkid(4);
+        bo.setSort(5);
+        bo.setCategoryid(2);
+        result = bookmarkService.updateBookmarkCategory(bo);
         return result;
     }
 }

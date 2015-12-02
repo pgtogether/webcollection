@@ -514,7 +514,12 @@ var doAjaxFunc = {
 						});
 					});
 				} else {
-					alert("插入失败");
+					var errorlist = json.errors;
+					var errorHtml = "";
+					for (var index in errorlist){
+						errorHtml += errorlist[index].defaultMessage +"\n";
+					}
+					alert(errorHtml);
 				}
 			},
 			error : function(e) {
@@ -528,25 +533,25 @@ var doAjaxFunc = {
 var formValidateFunc = {
 	// 验证新增书签表单
 	validateAddBookmarkForm : function() {
-		return $("#addbookmarkform").validate({
-			rules: {
-			    url	: {
-			    	required : true,
-			    	isUrl : true
-			    },
-			    bookmarkname : {
-			      required: true
-			    }
-			  },
-			  messages: {
-				  url: {
-					  required : "请输入网址",
-					  isUrl : "请输入合法的网址"
-				  },
-				  bookmarkname : {
-					  required: "请输入名称"
-				  }
-			  }
-		});
+//		return $("#addbookmarkform").validate({
+//			rules: {
+//			    url	: {
+//			    	required : true,
+//			    	isUrl : true
+//			    },
+//			    bookmarkname : {
+//			      required: true
+//			    }
+//			  },
+//			  messages: {
+//				  url: {
+//					  required : "请输入网址",
+//					  isUrl : "请输入合法的网址"
+//				  },
+//				  bookmarkname : {
+//					  required: "请输入名称"
+//				  }
+//			  }
+//		});
 	}
 };

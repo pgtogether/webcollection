@@ -17,6 +17,9 @@
 
 package com.dapeng.controller.form;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.URL;
+
 /**
  * ClassName:BookMarkForm <br/>
  * Function: TODO ADD FUNCTION. <br/>
@@ -29,9 +32,12 @@ package com.dapeng.controller.form;
  * @see
  */
 public class BookMarkForm {
-    
+
+    @NotEmpty(message = "网址不能为空")
+    @URL(message = "网址不合法")
     private String url;
 
+    @NotEmpty(message = "名称不能为空")
     private String bookmarkname;
 
     public String getUrl() {
@@ -49,7 +55,5 @@ public class BookMarkForm {
     public void setBookmarkname(String bookmarkname) {
         this.bookmarkname = bookmarkname;
     }
-
-  
 
 }
