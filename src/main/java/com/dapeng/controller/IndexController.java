@@ -18,13 +18,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.dapeng.controller.form.BookMarkForm;
+import com.dapeng.controller.form.AddBookMarkForm;
 import com.dapeng.domain.Bookmark;
 import com.dapeng.domain.Category;
 import com.dapeng.service.BookmarkService;
@@ -171,7 +170,7 @@ public class IndexController extends BaseController {
     @RequestMapping(value = "doAddBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public Map<String, Object> doAddBookmark(@Validated
-    BookMarkForm form, BindingResult result) {
+    AddBookMarkForm form, BindingResult result) {
         if (result.hasErrors()) {
             return ajaxValidateError(result);
         }
@@ -312,7 +311,7 @@ public class IndexController extends BaseController {
      */
     @RequestMapping(value = "doChangeCategory", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public int doChangeCategory(BookMarkForm bookMarkForm) {
+    public int doChangeCategory(AddBookMarkForm bookMarkForm) {
         int result = -1;
         BookmarkBO bo = new BookmarkBO();
         // bo.setBookmarkname(bookMarkForm.getBookmarkname());

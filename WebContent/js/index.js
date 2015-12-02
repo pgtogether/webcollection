@@ -2,8 +2,8 @@ $(function() {
 	// 随机背景颜色
 	var $titlelist = $(".content").find(".head-style");
 	for (var i = 0, len = $titlelist.length; i < len; i++) {
-		var rand = parseInt(Math.random() * 20, 10) + 1;
-		$titlelist.eq(i).addClass("randomcolor-" + rand);
+		var rand = parseInt(Math.random() * 20, 10);
+		$titlelist.eq(i).css("background",randomColor[rand]);
 	}
 
 	// 初始化新增功能
@@ -72,10 +72,10 @@ var newCategoryOrBookMarkFunc = {
 			$(".mask").fadeIn(300);
 			$(".pop-category").fadeIn(300);
 		});
-		$("#psw-permission").click(function(){
+		$("#psw-permission").click(function() {
 			$(".psw").show();
 		});
-		$("#normal-permission").click(function(){
+		$("#normal-permission").click(function() {
 			$(".psw").hide();
 		});
 	},
@@ -86,21 +86,23 @@ var newCategoryOrBookMarkFunc = {
 		});
 	},
 	confirmNew : function() {
-		$(".popbox .confirm-btn").click(function() {
-			// 新增分类
-			if($(this).parents(".pop-category").length > 0){
-				var categoryname = $("#categoryname").val();
-				var $clone = $(".blank-category").clone().removeClass("blank-category");
-				$clone.find(".block-head-title").text(categoryname);
-				$(".wrap-box").eq(0).prepend($clone);
-				$clone.slideDown();
-				openSortableFunc.urlSortable();
-			} else {
-				// 新增书签
-			}
-			$(".mask").hide();
-			$(".popbox").hide();
-		});
+		$(".popbox .confirm-btn").click(
+				function() {
+					// 新增分类
+					if ($(this).parents(".pop-category").length > 0) {
+						var categoryname = $("#categoryname").val();
+						var $clone = $(".blank-category").clone().removeClass(
+								"blank-category");
+						$clone.find(".block-head-title").text(categoryname);
+						$(".wrap-box").eq(0).prepend($clone);
+						$clone.slideDown();
+						openSortableFunc.urlSortable();
+					} else {
+						// 新增书签
+					}
+					$(".mask").hide();
+					$(".popbox").hide();
+				});
 	},
 	cancelNew : function() {
 		$(".popbox .cancel-btn").click(function() {
@@ -108,8 +110,8 @@ var newCategoryOrBookMarkFunc = {
 			$(".popbox").hide();
 		});
 	},
-	callbackShow : function(){
-		
+	callbackShow : function() {
+
 	}
 };
 
@@ -138,19 +140,23 @@ var boxHeadOperateFunc = {
 	modifyTitle : function() {
 		// 双击修改分类标题
 		var selfFunc = this;
-		$(".wrap-box").on("dblclick",".block-head",
-			function() {
-				if (!$(this).hasClass("modify")) {
-					selfFunc.closeOtherModifyTitle();
-					var $title = $(this).find(".block-head-title");
-					var titleText = $title.text();
-					var inputHtml = '<input class="updatetitle" type="text" style="background-color:'
-						+ $title.css("background-color") + '">';
-					$title.html(inputHtml).parent().addClass("modify");
-					$title.find("input").focus().val(titleText);
-					selfFunc.appendBoxTitleUpdateBtn($title);
-			}
-		});
+		$(".wrap-box")
+				.on(
+						"dblclick",
+						".block-head",
+						function() {
+							if (!$(this).hasClass("modify")) {
+								selfFunc.closeOtherModifyTitle();
+								var $title = $(this).find(".block-head-title");
+								var titleText = $title.text();
+								var inputHtml = '<input class="updatetitle" type="text" style="background-color:'
+										+ $title.css("background-color") + '">';
+								$title.html(inputHtml).parent().addClass(
+										"modify");
+								$title.find("input").focus().val(titleText);
+								selfFunc.appendBoxTitleUpdateBtn($title);
+							}
+						});
 	},
 	// 确定修改
 	confirmModify : function() {
@@ -262,12 +268,12 @@ var bookmarkOperateFunc = {
 			if ($nextli.find(".editbookmark").length == 0) {
 				// 每次打开新的模板之前，先关闭其他开着的模板
 				selfFunc.closeAllEditBookmarkTemplate();
-				var $li = $this.parents("li").addClass("li-disabled pointto");
+				var $li = $this.parents("li").removeClass("valid-pass").addClass("li-disabled pointto");
 				var $a = $li.find("a");
 				var values = {};
 				values.url = $a.attr("href");
 				values.name = $a.text();
-				selfFunc.appendEditBookmarkTemplate($li,values);
+				selfFunc.appendEditBookmarkTemplate($li, values);
 			} else {
 				selfFunc.closeAllEditBookmarkTemplate();
 			}
@@ -282,7 +288,7 @@ var bookmarkOperateFunc = {
 			if ($this.parents("li").next().find(".delbookmark").length == 0) {
 				// 每次打开新的模板之前，先关闭其他开着的模板
 				selfFunc.closeAllEditBookmarkTemplate();
-				var $li = $this.parents("li").addClass("li-disabled pointto");
+				var $li = $this.parents("li").removeClass("valid-pass").addClass("li-disabled pointto");
 				selfFunc.appendDelBookmarkTemplate($li);
 			} else {
 				selfFunc.closeAllEditBookmarkTemplate();
@@ -320,7 +326,7 @@ var bookmarkOperateFunc = {
 			else if ($thisBtn.parents(".editbookmark").length > 0) {
 				// TODO
 				var $a = $li.prev(".pointto").find("a");
-				$a.prop("href",url);
+				$a.prop("href", url);
 				$a.text(name);
 				selfFunc.closeAllEditBookmarkTemplate();
 			}
@@ -360,8 +366,9 @@ var bookmarkOperateFunc = {
 		$ul.find(".editbookmarktemplate").slideDown();
 	},
 	// 编辑书签模板
-	appendEditBookmarkTemplate : function($li,values) {
-		var operateHtml = this.getAddAndEditBookmarkTemplate("editbookmark",values);
+	appendEditBookmarkTemplate : function($li, values) {
+		var operateHtml = this.getAddAndEditBookmarkTemplate("editbookmark",
+				values);
 		$li.after(operateHtml);
 		$li.next().slideDown();
 	},
@@ -390,9 +397,9 @@ var bookmarkOperateFunc = {
 		});
 	},
 	// 新增书签与编辑书签公用模板
-	getAddAndEditBookmarkTemplate : function(editclass,values) {
-		var url = "",name = "",tags = "",desc = "";
-		if(values){
+	getAddAndEditBookmarkTemplate : function(editclass, values) {
+		var url = "", name = "", tags = "", desc = "";
+		if (values) {
 			url = values.url ? values.url : "";
 			name = values.name ? values.name : "";
 			tags = values.tags ? values.tags : "";
@@ -402,10 +409,14 @@ var bookmarkOperateFunc = {
 		operateHtml += '<li class="editbookmarktemplate li-disabled" style="display:none;">';
 		operateHtml += '<form id="' + editclass + 'form">';
 		operateHtml += '<div class="' + editclass + '">';
-		operateHtml += '	<p><label>网址</label><input type="text" id="url" name="url" placeholder="例:www.52url.com" value="'+url+'"/></p>';
-		operateHtml += '	<p><label>名称</label><input type="text" id="bookmarkname" name="bookmarkname" placeholder="例:网址收藏" value="'+name+'"/></p>';
-		operateHtml += '	<p><label>标签</label><input type="text" id="tags" name="tags" placeholder="例:生活,美食(以逗号,分隔)" value="'+tags+'"/></p>';
-		operateHtml += '	<p><label>描述</label><textarea id="desc" name="desc">'+desc+'</textarea></p>';
+		operateHtml += '	<p><label>网址</label><input type="text" id="url" name="url" placeholder="例:www.52url.com" value="'
+				+ url + '"/></p>';
+		operateHtml += '	<p><label>名称</label><input type="text" id="bookmarkname" name="bookmarkname" placeholder="例:网址收藏" value="'
+				+ name + '"/></p>';
+		operateHtml += '	<p><label>标签</label><input type="text" id="tags" name="tags" placeholder="例:生活,美食(以逗号,分隔)" value="'
+				+ tags + '"/></p>';
+		operateHtml += '	<p><label>描述</label><textarea id="desc" name="desc">'
+				+ desc + '</textarea></p>';
 		operateHtml += '	<p class="btn">';
 		operateHtml += '		<span class="confirmediticon" title="确定"></span>';
 		operateHtml += '		<span class="cancelediticon" title="取消"></span>';
@@ -416,9 +427,10 @@ var bookmarkOperateFunc = {
 		return operateHtml;
 	},
 	// 新增书签
-	getBookmarkTemplate : function(url,name){
+	getBookmarkTemplate : function(url, name) {
 		var operateHtml = '';
-		operateHtml += '<li style="display:none;"><a href="'+url+'">'+name+'</a>';
+		operateHtml += '<li style="display:none;"><a href="' + url + '">'
+				+ name + '</a>';
 		operateHtml += '<div class="operatebtn"></div></li>';
 		return operateHtml;
 	}
@@ -490,11 +502,17 @@ var doAjaxFunc = {
 	addbookmark : function() {
 		formValidateFunc.validateAddBookmarkForm();
 		$addbookmarkform = $("#addbookmarkform");
-		if(!$addbookmarkform.valid()){
+		if (!$addbookmarkform.valid()) {
 			return;
 		}
 		var url = $addbookmarkform.find("#url").val();
+		if (url.indexOf("http") == 0 || url.indexOf("ftp") == 0 ) {
+		} else {
+			url = "http://" + url;
+		}
+		$addbookmarkform.find("#url").val(url);
 		var name = $addbookmarkform.find("#bookmarkname").val();
+		
 		var template = selfFunc.getBookmarkTemplate(url, name);
 		$.ajax({
 			data : $addbookmarkform.serialize(),
@@ -505,25 +523,24 @@ var doAjaxFunc = {
 					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
 					var $ul = $addbookmarkform.parents("ul");
 					$ul.prepend(template);
-					$ul.find("li:eq(0)").addClass("delay-pointto").slideDown(function(){
-						var $newli = $(this);
-						$(".pop-callback").animate({top:"10px",opacity:1},800,function(){
-							$(this).delay(1000).animate({top:"-350px",opacity:0.3},800,function(){
-								$newli.removeClass("delay-pointto");
+					$ul.find("li:eq(0)").addClass("valid-pass").slideDown(
+							function() {
+								$(".pop-callback").animate({
+									top : "10px",
+									opacity : 1
+								}, 800, function() {
+									$(this).delay(1000).animate({
+										top : "-350px",
+										opacity : 0.3
+									}, 800);
+								});
 							});
-						});
-					});
 				} else {
-					var errorlist = json.errors;
-					var errorHtml = "";
-					for (var index in errorlist){
-						errorHtml += errorlist[index].defaultMessage +"\n";
-					}
-					alert(errorHtml);
+					validateErrorsUtil.showValidateErrors($addbookmarkform, json.errors);
 				}
 			},
 			error : function(e) {
-				alert(e);
+				
 			}
 		});
 	}
@@ -533,25 +550,25 @@ var doAjaxFunc = {
 var formValidateFunc = {
 	// 验证新增书签表单
 	validateAddBookmarkForm : function() {
-//		return $("#addbookmarkform").validate({
-//			rules: {
-//			    url	: {
-//			    	required : true,
-//			    	isUrl : true
-//			    },
-//			    bookmarkname : {
-//			      required: true
-//			    }
-//			  },
-//			  messages: {
-//				  url: {
-//					  required : "请输入网址",
-//					  isUrl : "请输入合法的网址"
-//				  },
-//				  bookmarkname : {
-//					  required: "请输入名称"
-//				  }
-//			  }
-//		});
+		return $("#addbookmarkform").validate({
+			rules : {
+				url : {
+					required : true,
+					isUrl : true
+				},
+				bookmarkname : {
+					required : true
+				}
+			},
+			messages : {
+				url : {
+					required : "请输入网址",
+					isUrl : "请输入合法的网址"
+				},
+				bookmarkname : {
+					required : "请输入名称"
+				}
+			}
+		});
 	}
 };

@@ -1,4 +1,4 @@
-/* 以下是sortable插件拖动占位的样式 */
+` /* 以下是sortable插件拖动占位的样式 */
 .hot-url-list-placeholder {
 	width: 24.5%; margin-left: 0.5%; float: left; margin-top: 5px; text-indent: 10px; border-radius: 10px; background: url(../img/icon/xian.png) repeat !important; opacity: 0.6;
 }
@@ -85,8 +85,8 @@
 	background: url(../img/icon/pointto.png) -2px 5px no-repeat !important; box-shadow: 0px -1px 2px #bbb, 0px 1px 2px #bbb; z-index: 100; position: relative;
 }
 
-.delay-pointto {
-	background: url(../img/icon/pointto.png) -2px 5px no-repeat !important; box-shadow: 0px -1px 2px #bbb, 0px 1px 2px #bbb; z-index: 100; position: relative;
+.valid-pass {
+	background-image: url(../img/icon/validpass.png) !important; background-repeat: no-repeat !important; background-position: 0px 0px !important; z-index: 101; position: relative; z-index: 101;
 }
 
 /* 新增书签 */

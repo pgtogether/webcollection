@@ -753,5 +753,6 @@
 	<jsp:include page="pop.jsp"></jsp:include>
 	<jsp:include page="/js/dynamic/plugin.js.jsp"></jsp:include>
 	<jsp:include page="/js/dynamic/index.js.jsp"></jsp:include>
+	<jsp:include page="/js/dynamic/common.js.jsp"></jsp:include>
 </body>
 </html>

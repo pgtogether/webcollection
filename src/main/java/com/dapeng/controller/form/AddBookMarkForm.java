@@ -17,6 +17,8 @@
 
 package com.dapeng.controller.form;
 
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
 
@@ -31,13 +33,13 @@ import org.hibernate.validator.constraints.URL;
  * @since JDK 1.6
  * @see
  */
-public class BookMarkForm {
+public class AddBookMarkForm {
 
-    @NotEmpty(message = "网址不能为空")
-    @URL(message = "网址不合法")
+    @NotEmpty(message = "请输入网址")
+    @URL(message = "请输入合法的网址")
     private String url;
 
-    @NotEmpty(message = "名称不能为空")
+    @NotEmpty(message = "请输入名称")
     private String bookmarkname;
 
     public String getUrl() {
