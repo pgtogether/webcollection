@@ -1,10 +1,10 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/include/constants.jsp"%>
-<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>Insert title here</title>
 <link href="${context_path}/css/base.css" rel="stylesheet"
@@ -18,7 +18,7 @@
 	<div class="header">
 		<div class="header-in">
 			<div class="head-logo">
-				<a href="${context_path}/"><img src="${context_path}/img/logo.png"></a>
+				<a href="${context_path}/"><img src="${context_path}/img/logo.png" /></a>
 			</div>
 			<div class="head-fun-nav">
 				<ul>
@@ -736,7 +736,7 @@
 	<div class="footer">
 		<div class="footer-in"></div>
 	</div>
-	<div class="sideBanner">
+	<div class="sideBanner ie">
 		<div class="fun1">
 			<span>待定功能</span>
 		</div>

@@ -491,14 +491,10 @@ var doAjaxFunc = {
 		if (!$addbookmarkform.valid()) {
 			return;
 		}
-		var url = $addbookmarkform.find("#url").val();
-		// 判断是不是带有Http或者ftp前缀
-		if (url.indexOf("http") == 0 || url.indexOf("ftp") == 0 ) {
-		} else {
-			url = "http://" + url;
-		}
+		var url = this.fillUrl($addbookmarkform.find("#url").val());
 		$addbookmarkform.find("#url").val(url);
 		var name = $addbookmarkform.find("#bookmarkname").val();
+		// 获取新增书签的模板
 		var template = selfFunc.getBookmarkTemplate(url, name);
 		$.ajax({
 			data : $addbookmarkform.serialize(),
@@ -506,6 +502,7 @@ var doAjaxFunc = {
 			url : CONTEXT_PATH + "/doAddBookmark",
 			success : function(json) {
 				if (json.result == "OK") {
+					// 请求成功后的动画效果
 					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
 					var $ul = $addbookmarkform.parents("ul");
 					$ul.prepend(template);
@@ -534,14 +531,10 @@ var doAjaxFunc = {
 		if (!$editbookmarkform.valid()) {
 			return;
 		}
-		var url = $editbookmarkform.find("#url").val();
-		// 判断是不是带有Http或者ftp前缀
-		if (url.indexOf("http") == 0 || url.indexOf("ftp") == 0 ) {
-		} else {
-			url = "http://" + url;
-		}
+		var url = this.fillUrl($editbookmarkform.find("#url").val());
 		$editbookmarkform.find("#url").val(url);
 		var name = $editbookmarkform.find("#bookmarkname").val();
+		
 		var template = selfFunc.getBookmarkTemplate(url, name);
 		$.ajax({
 			data : $editbookmarkform.serialize(),
@@ -570,6 +563,15 @@ var doAjaxFunc = {
 			error : function(e) {
 			}
 		});
+	},
+	// 补足完整的Url
+	fillUrl : function(url){
+		// 判断是不是带有Http或者ftp前缀
+		if (url.indexOf("http") == 0 || url.indexOf("ftp") == 0 ) {
+		} else {
+			url = "http://" + url;
+		}
+		return url;
 	}
 };
 

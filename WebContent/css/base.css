@@ -125,10 +125,10 @@ a:focus,*:focus {
 	float: right; display: inline;
 }
 
-.floatLeft{
-	float:left;
+.floatLeft {
+	float: left;
 }
 
-.floatRight{
-	float:right;
+.floatRight {
+	float: right;
 }
