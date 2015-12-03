@@ -91,8 +91,7 @@ var newCategoryOrBookMarkFunc = {
 					// 新增分类
 					if ($(this).parents(".pop-category").length > 0) {
 						var categoryname = $("#categoryname").val();
-						var $clone = $(".blank-category").clone().removeClass(
-								"blank-category");
+						var $clone = $(".blank-category").clone().removeClass("blank-category");
 						$clone.find(".block-head-title").text(categoryname);
 						$(".wrap-box").eq(0).prepend($clone);
 						$clone.slideDown();
@@ -140,23 +139,19 @@ var boxHeadOperateFunc = {
 	modifyTitle : function() {
 		// 双击修改分类标题
 		var selfFunc = this;
-		$(".wrap-box")
-				.on(
-						"dblclick",
-						".block-head",
-						function() {
-							if (!$(this).hasClass("modify")) {
-								selfFunc.closeOtherModifyTitle();
-								var $title = $(this).find(".block-head-title");
-								var titleText = $title.text();
-								var inputHtml = '<input class="updatetitle" type="text" style="background-color:'
-										+ $title.css("background-color") + '">';
-								$title.html(inputHtml).parent().addClass(
-										"modify");
-								$title.find("input").focus().val(titleText);
-								selfFunc.appendBoxTitleUpdateBtn($title);
-							}
-						});
+		$(".wrap-box").on("dblclick",".block-head",function() {
+			if (!$(this).hasClass("modify")) {
+				selfFunc.closeOtherModifyTitle();
+				var $title = $(this).find(".block-head-title");
+				var titleText = $title.text();
+				var inputHtml = '<input class="updatetitle" type="text" style="background-color:'
+						+ $title.css("background-color") + '">';
+				$title.html(inputHtml).parent().addClass(
+						"modify");
+				$title.find("input").focus().val(titleText);
+				selfFunc.appendBoxTitleUpdateBtn($title);
+			}
+		});
 	},
 	// 确定修改
 	confirmModify : function() {
@@ -225,22 +220,19 @@ var bookmarkOperateFunc = {
 	// 鼠标经过书签
 	hoverBookmark : function() {
 		var selfFunc = this;
-		$(".content").on(
-				"mouseenter mouseleave",
-				".hot-url-list li,.url-list li",
-				function(event) {
-					var $li = $(this);
-					if (event.type == "mouseenter") {
-						var color = $li.parent().parent().siblings(
-								".head-style").css("background-color");
-						$li.css("background-color", color).siblings().attr(
-								"style", "");
-						selfFunc.appendUrlOperateBtn($li);
-					} else if (event.type == "mouseleave") {
-						$li.attr("style", "");
-						selfFunc.removeUrlOperateBtn($li);
-					}
-				});
+		$(".content").on( "mouseenter mouseleave", ".hot-url-list li,.url-list li",function(event) {
+			var $li = $(this);
+			if (event.type == "mouseenter") {
+				var color = $li.parent().parent().siblings(
+						".head-style").css("background-color");
+				$li.css("background-color", color).siblings().attr(
+						"style", "");
+				selfFunc.appendUrlOperateBtn($li);
+			} else if (event.type == "mouseleave") {
+				$li.attr("style", "");
+				selfFunc.removeUrlOperateBtn($li);
+			}
+		});
 	},
 	// 新增书签
 	addBookmark : function() {
@@ -409,14 +401,10 @@ var bookmarkOperateFunc = {
 		operateHtml += '<li class="editbookmarktemplate li-disabled" style="display:none;">';
 		operateHtml += '<form id="' + editclass + 'form">';
 		operateHtml += '<div class="' + editclass + '">';
-		operateHtml += '	<p><label>网址</label><input type="text" id="url" name="url" placeholder="例:www.52url.com" value="'
-				+ url + '"/></p>';
-		operateHtml += '	<p><label>名称</label><input type="text" id="bookmarkname" name="bookmarkname" placeholder="例:网址收藏" value="'
-				+ name + '"/></p>';
-		operateHtml += '	<p><label>标签</label><input type="text" id="tags" name="tags" placeholder="例:生活,美食(以逗号,分隔)" value="'
-				+ tags + '"/></p>';
-		operateHtml += '	<p><label>描述</label><textarea id="desc" name="desc">'
-				+ desc + '</textarea></p>';
+		operateHtml += '	<p><label>网址</label><input type="text" id="url" name="url" placeholder="例:www.52url.com" value="' + url + '"/></p>';
+		operateHtml += '	<p><label>名称</label><input type="text" id="bookmarkname" name="bookmarkname" placeholder="例:网址收藏" value="' + name + '"/></p>';
+		operateHtml += '	<p><label>标签</label><input type="text" id="tags" name="tags" placeholder="例:生活,美食(以逗号,分隔)" value="' + tags + '"/></p>';
+		operateHtml += '	<p><label>描述</label><textarea id="desc" name="desc">' + desc + '</textarea></p>';
 		operateHtml += '	<p class="btn">';
 		operateHtml += '		<span class="confirmediticon" title="确定"></span>';
 		operateHtml += '		<span class="cancelediticon" title="取消"></span>';
@@ -429,8 +417,7 @@ var bookmarkOperateFunc = {
 	// 新增书签
 	getBookmarkTemplate : function(url, name) {
 		var operateHtml = '';
-		operateHtml += '<li style="display:none;"><a href="' + url + '">'
-				+ name + '</a>';
+		operateHtml += '<li style="display:none;"><a href="' + url + '">' + name + '</a>';
 		operateHtml += '<div class="operatebtn"></div></li>';
 		return operateHtml;
 	}
@@ -466,26 +453,25 @@ var flyTool = {
 // 侧边栏
 var sideBannerFunc = {
 	init : function() {
-		$(window).scroll(
-				function() {
-					// 滚动到一定高度后，出现回到顶部按钮
-					if ($(window).scrollTop() > 100) {
-						$(".scrolltop").fadeIn(500);
-					} else {
-						$(".scrolltop").slideUp(500);
-					}
-					// 当侧边框距离底部与footer齐平时，停止跟随
-					var $sideBanner = $(".sideBanner");
-					var footerHeight = $(".footer").height();
-					// 文档高度-滚动上去的高度-显示的页面高度
-					var scrollBottom = $(document).height()
-							- $(document).scrollTop() - $(window).height();
-					if (scrollBottom < footerHeight) {
-						$sideBanner.css("bottom", footerHeight - scrollBottom);
-					} else {
-						$sideBanner.css("bottom", 15);
-					}
-				});
+		$(window).scroll(function() {
+			// 滚动到一定高度后，出现回到顶部按钮
+			if ($(window).scrollTop() > 100) {
+				$(".scrolltop").fadeIn(500);
+			} else {
+				$(".scrolltop").slideUp(500);
+			}
+			// 当侧边框距离底部与footer齐平时，停止跟随
+			var $sideBanner = $(".sideBanner");
+			var footerHeight = $(".footer").height();
+			// 文档高度-滚动上去的高度-显示的页面高度
+			var scrollBottom = $(document).height()
+					- $(document).scrollTop() - $(window).height();
+			if (scrollBottom < footerHeight) {
+				$sideBanner.css("bottom", footerHeight - scrollBottom);
+			} else {
+				$sideBanner.css("bottom", 15);
+			}
+		});
 		// 当点击跳转链接后，回到页面顶部位置
 		$(".scrolltop").click(function() {
 			$('body,html').animate({
@@ -500,19 +486,19 @@ var sideBannerFunc = {
 var doAjaxFunc = {
 	// 新增书签
 	addbookmark : function() {
-		formValidateFunc.validateAddBookmarkForm();
-		$addbookmarkform = $("#addbookmarkform");
+		var $addbookmarkform = $("#addbookmarkform");
+		formValidateFunc.validateBookmarkForm($addbookmarkform);
 		if (!$addbookmarkform.valid()) {
 			return;
 		}
 		var url = $addbookmarkform.find("#url").val();
+		// 判断是不是带有Http或者ftp前缀
 		if (url.indexOf("http") == 0 || url.indexOf("ftp") == 0 ) {
 		} else {
 			url = "http://" + url;
 		}
 		$addbookmarkform.find("#url").val(url);
 		var name = $addbookmarkform.find("#bookmarkname").val();
-		
 		var template = selfFunc.getBookmarkTemplate(url, name);
 		$.ajax({
 			data : $addbookmarkform.serialize(),
@@ -523,24 +509,65 @@ var doAjaxFunc = {
 					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
 					var $ul = $addbookmarkform.parents("ul");
 					$ul.prepend(template);
-					$ul.find("li:eq(0)").addClass("valid-pass").slideDown(
-							function() {
-								$(".pop-callback").animate({
-									top : "10px",
-									opacity : 1
-								}, 800, function() {
-									$(this).delay(1000).animate({
-										top : "-350px",
-										opacity : 0.3
-									}, 800);
-								});
-							});
+					$ul.find("li:eq(0)").addClass("valid-pass").slideDown(function() {
+						$(".pop-callback").animate({
+							top : "10px",
+							opacity : 1
+						}, 800, function() {
+							$(this).delay(1000).animate({
+								top : "-350px",
+								opacity : 0.3
+							}, 800);
+						});
+					});
 				} else {
 					validateErrorsUtil.showValidateErrors($addbookmarkform, json.errors);
 				}
 			},
 			error : function(e) {
-				
+			}
+		});
+	},
+	editBookmark : function() {
+		var $editbookmarkform = $("#editbookmarkform");
+		formValidateFunc.validateBookmarkForm($editbookmarkform);
+		if (!$editbookmarkform.valid()) {
+			return;
+		}
+		var url = $editbookmarkform.find("#url").val();
+		// 判断是不是带有Http或者ftp前缀
+		if (url.indexOf("http") == 0 || url.indexOf("ftp") == 0 ) {
+		} else {
+			url = "http://" + url;
+		}
+		$editbookmarkform.find("#url").val(url);
+		var name = $editbookmarkform.find("#bookmarkname").val();
+		var template = selfFunc.getBookmarkTemplate(url, name);
+		$.ajax({
+			data : $editbookmarkform.serialize(),
+			type : "post",
+			url : CONTEXT_PATH + "/doUpdateBookmark",
+			success : function(json) {
+				if (json.result == "OK") {
+					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
+					var $ul = $editbookmarkform.parents("ul");
+					$ul.prepend(template);
+					$ul.find("li:eq(0)").addClass("valid-pass").slideDown(function() {
+						$(".pop-callback").animate({
+							top : "10px",
+							opacity : 1
+						}, 800, function() {
+							$(this).delay(1000).animate({
+								top : "-350px",
+								opacity : 0.3
+							}, 800);
+						});
+					});
+				} else {
+					validateErrorsUtil.showValidateErrors($editbookmarkform, json.errors);
+				}
+			},
+			error : function(e) {
 			}
 		});
 	}
@@ -548,9 +575,9 @@ var doAjaxFunc = {
 
 // 表单验证操作
 var formValidateFunc = {
-	// 验证新增书签表单
-	validateAddBookmarkForm : function() {
-		return $("#addbookmarkform").validate({
+	// 验证新增书签或者编辑书签表单
+		validateBookmarkForm : function($form) {
+		return $form.validate({
 			rules : {
 				url : {
 					required : true,

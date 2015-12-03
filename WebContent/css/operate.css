@@ -155,7 +155,7 @@
 
 /* екежВубљЪН */
 .mask {
-	display: none; position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 9000; background-color: #A0A0A0; opacity: 0.5;
+	display: none; position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 9000; background-color: #A0A0A0; filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50) !important; opacity: 0.5;
 }
 
 .popbox {
