@@ -86,22 +86,21 @@ var newCategoryOrBookMarkFunc = {
 		});
 	},
 	confirmNew : function() {
-		$(".popbox .confirm-btn").click(
-				function() {
-					// 新增分类
-					if ($(this).parents(".pop-category").length > 0) {
-						var categoryname = $("#categoryname").val();
-						var $clone = $(".blank-category").clone().removeClass("blank-category");
-						$clone.find(".block-head-title").text(categoryname);
-						$(".wrap-box").eq(0).prepend($clone);
-						$clone.slideDown();
-						openSortableFunc.urlSortable();
-					} else {
-						// 新增书签
-					}
-					$(".mask").hide();
-					$(".popbox").hide();
-				});
+		$(".popbox .confirm-btn").click(function() {
+			// 如果父标签是pop-category的话，说明是新增分类
+			if ($(this).parents(".pop-category").length > 0) {
+				var categoryname = $("#categoryname").val();
+				var $clone = $(".blank-category").clone().removeClass("blank-category");
+				$clone.find(".block-head-title").text(categoryname);
+				$(".wrap-box").eq(0).prepend($clone);
+				$clone.slideDown();
+				openSortableFunc.urlSortable();
+			} else {
+				// 新增书签
+			}
+			$(".mask").hide();
+			$(".popbox").hide();
+		});
 	},
 	cancelNew : function() {
 		$(".popbox .cancel-btn").click(function() {
@@ -126,14 +125,13 @@ var boxHeadOperateFunc = {
 	// 鼠标经过标题时候
 	hoverTitle : function() {
 		var selfFunc = this;
-		$(".wrap-box").on("mouseenter mouseleave", ".block-head",
-				function(event) {
-					if (event.type == "mouseenter") {
-						selfFunc.appendBoxHeadOperateBtn($(this));
-					} else if (event.type == "mouseleave") {
-						selfFunc.removeBoxHeadOperateBtn($(this));
-					}
-				});
+		$(".wrap-box").on("mouseenter mouseleave", ".block-head",function(event) {
+			if (event.type == "mouseenter") {
+				selfFunc.appendBoxHeadOperateBtn($(this));
+			} else if (event.type == "mouseleave") {
+				selfFunc.removeBoxHeadOperateBtn($(this));
+			}
+		});
 	},
 	// 修改分类标题
 	modifyTitle : function() {
@@ -305,9 +303,6 @@ var bookmarkOperateFunc = {
 		selfFunc = this;
 		$(".wrap-box").on("click", ".confirmediticon", function() {
 			var $thisBtn = $(this);
-			var $li = $thisBtn.parents("li");
-			var url = $li.find("input[id='url']").val();
-			var name = $li.find("input[id='bookmarkname']").val();
 			// 确认新增书签
 			if ($thisBtn.parents(".addbookmark").length > 0) {
 				// TODO
@@ -317,10 +312,8 @@ var bookmarkOperateFunc = {
 			// 确认编辑书签
 			else if ($thisBtn.parents(".editbookmark").length > 0) {
 				// TODO
-				var $a = $li.prev(".pointto").find("a");
-				$a.prop("href", url);
-				$a.text(name);
-				selfFunc.closeAllEditBookmarkTemplate();
+				// 保存数据
+				doAjaxFunc.editBookmark();
 			}
 			// 确认删除书签
 			else if ($thisBtn.parents(".delbookmark").length > 0) {
@@ -486,6 +479,7 @@ var sideBannerFunc = {
 var doAjaxFunc = {
 	// 新增书签
 	addbookmark : function() {
+		var doAjaxFuncSelf = this;
 		var $addbookmarkform = $("#addbookmarkform");
 		formValidateFunc.validateBookmarkForm($addbookmarkform);
 		if (!$addbookmarkform.valid()) {
@@ -502,20 +496,13 @@ var doAjaxFunc = {
 			url : CONTEXT_PATH + "/doAddBookmark",
 			success : function(json) {
 				if (json.result == "OK") {
-					// 请求成功后的动画效果
 					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
+					// 添加一个新书签
 					var $ul = $addbookmarkform.parents("ul");
 					$ul.prepend(template);
 					$ul.find("li:eq(0)").addClass("valid-pass").slideDown(function() {
-						$(".pop-callback").animate({
-							top : "10px",
-							opacity : 1
-						}, 800, function() {
-							$(this).delay(1000).animate({
-								top : "-350px",
-								opacity : 0.3
-							}, 800);
-						});
+						// 成功后的动画效果
+						doAjaxFuncSelf.saveSuccessAnimate();
 					});
 				} else {
 					validateErrorsUtil.showValidateErrors($addbookmarkform, json.errors);
@@ -526,6 +513,8 @@ var doAjaxFunc = {
 		});
 	},
 	editBookmark : function() {
+		var doAjaxFuncSelf = this;
+		// 表单验证
 		var $editbookmarkform = $("#editbookmarkform");
 		formValidateFunc.validateBookmarkForm($editbookmarkform);
 		if (!$editbookmarkform.valid()) {
@@ -535,7 +524,12 @@ var doAjaxFunc = {
 		$editbookmarkform.find("#url").val(url);
 		var name = $editbookmarkform.find("#bookmarkname").val();
 		
-		var template = selfFunc.getBookmarkTemplate(url, name);
+		// 获取要修改的书签，并修改成新的内容
+		var $updateli = $editbookmarkform.parents("li").prev(".pointto");
+		var $updateli_a = $updateli.find("a");
+		$updateli_a.html(name);
+		$updateli_a.attr("href",url);
+		// 提交后台保存
 		$.ajax({
 			data : $editbookmarkform.serialize(),
 			type : "post",
@@ -543,19 +537,10 @@ var doAjaxFunc = {
 			success : function(json) {
 				if (json.result == "OK") {
 					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
-					var $ul = $editbookmarkform.parents("ul");
-					$ul.prepend(template);
-					$ul.find("li:eq(0)").addClass("valid-pass").slideDown(function() {
-						$(".pop-callback").animate({
-							top : "10px",
-							opacity : 1
-						}, 800, function() {
-							$(this).delay(1000).animate({
-								top : "-350px",
-								opacity : 0.3
-							}, 800);
-						});
-					});
+					// 添加更新成功图标
+					$updateli.addClass("valid-pass");
+					// 更新成功提示动作
+					doAjaxFuncSelf.saveSuccessAnimate();
 				} else {
 					validateErrorsUtil.showValidateErrors($editbookmarkform, json.errors);
 				}
@@ -572,6 +557,18 @@ var doAjaxFunc = {
 			url = "http://" + url;
 		}
 		return url;
+	},
+	// 保存成功后的动画提示
+	saveSuccessAnimate : function(){
+		$(".pop-callback").animate({
+			top : "10px",
+			opacity : 1
+		}, 800, function() {
+			$(this).delay(1000).animate({
+				top : "-350px",
+				opacity : 0.3
+			}, 800);
+		});
 	}
 };
 

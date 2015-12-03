@@ -139,7 +139,6 @@
 		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
 	</update>
 		
-		 
 	<update id="updateBookmarkBySlected" parameterType="com.dapeng.domain.Bookmark">
 		update bookmark
 		set
@@ -147,7 +146,6 @@
 		url = #{url}
 		where bookmarkid = #{bookmarkid}
 	</update>
-	
 
  	<insert id="insertUser" parameterType="com.dapeng.domain.User">
 		insert into user(user_name,user_pwd,user_email)

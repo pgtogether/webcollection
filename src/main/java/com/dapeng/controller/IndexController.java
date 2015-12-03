@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.dapeng.controller.form.AddBookMarkForm;
+import com.dapeng.controller.form.BookMarkForm;
 import com.dapeng.domain.Bookmark;
 import com.dapeng.domain.Category;
 import com.dapeng.service.BookmarkService;
@@ -170,7 +170,7 @@ public class IndexController extends BaseController {
     @RequestMapping(value = "doAddBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public Map<String, Object> doAddBookmark(@Validated
-    AddBookMarkForm form, BindingResult result) {
+    BookMarkForm form, BindingResult result) {
         if (result.hasErrors()) {
             return ajaxValidateError(result);
         }
@@ -234,20 +234,30 @@ public class IndexController extends BaseController {
         return result;
     }
 
+    /**
+     * 编辑书签
+     */
     @RequestMapping(value = "doUpdateBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public int doUpdateBookmark(Bookmark bookmark) {
-        int result = -1;
+    public Map<String, Object> doUpdateBookmark(@Validated
+    BookMarkForm form, BindingResult result) {
+        if (result.hasErrors()) {
+            return ajaxValidateError(result);
+        }
         try {
             Bookmark bmdto = new Bookmark();
-            bmdto.setBookmarkname(bookmark.getBookmarkname());
-            bmdto.setUrl(bookmark.getUrl());
-            result = bookmarkService.updateBookmarkBySlected(bookmark);
-            System.out.println(result);
+            bmdto.setBookmarkid(Integer.valueOf(form.getBookmarkid()));
+            bmdto.setBookmarkname(form.getBookmarkname());
+            bmdto.setUrl(form.getUrl());
+            int rows = bookmarkService.updateBookmarkBySlected(bmdto);
+            if (rows > 0) {
+                return ajaxSuccess();
+            } else {
+                return ajaxFail();
+            }
         } catch (Exception e) {
-            e.printStackTrace();
+            return ajaxExecption(e);
         }
-        return result;
     }
 
     @RequestMapping(value = "doAddCategory", method = { RequestMethod.GET, RequestMethod.POST })
@@ -311,7 +321,7 @@ public class IndexController extends BaseController {
      */
     @RequestMapping(value = "doChangeCategory", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public int doChangeCategory(AddBookMarkForm bookMarkForm) {
+    public int doChangeCategory(BookMarkForm bookMarkForm) {
         int result = -1;
         BookmarkBO bo = new BookmarkBO();
         // bo.setBookmarkname(bookMarkForm.getBookmarkname());
