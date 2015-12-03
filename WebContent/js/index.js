@@ -433,7 +433,7 @@ var flyTool = {
 			'top' : $flyer.offset().top + 'px',
 			'left' : $flyer.offset().left + 'px',
 			'width' : $flyer.width() + 'px',
-			'height' : $flyer.height() + 'px',
+			'height' : $flyer.height() + 'px'
 		});
 		$flyer.slideUp(800, function() {
 			$(this).remove();
