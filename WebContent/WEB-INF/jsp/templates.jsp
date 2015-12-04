@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/include/constants.jsp"%>
 <!-- 分类卡片模板 -->
-<div id="category-template" style="display: none;">
+<div class="templates">
+<div class="category-template" style="display: none;">
 	<div class="block" style="display: none;">
 		<div class="block-head head-style">
 			<div class="block-head-title">默认分类</div>
@@ -23,3 +24,4 @@
 <!-- 书签操作按钮模板 -->
 
 <!-- 分类操作按钮模板 -->
+</div>

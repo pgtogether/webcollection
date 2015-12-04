@@ -750,7 +750,9 @@
 			<span>回到顶部</span>
 		</div>
 	</div>
-	<jsp:include page="pop.jsp"></jsp:include>
+	<jsp:include page="pop.jsp" />
+	<!-- 未来会把各种模板放到这里 -->
+	<jsp:include page="templates.jsp" />
 	<jsp:include page="/js/dynamic/plugin.js.jsp"></jsp:include>
 	<jsp:include page="/js/dynamic/index.js.jsp"></jsp:include>
 	<jsp:include page="/js/dynamic/common.js.jsp"></jsp:include>

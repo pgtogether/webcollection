@@ -1,6 +1,6 @@
 $(function() {
 	// 随机背景颜色
-	var $titlelist = $(".content").find(".head-style");
+	var $titlelist = $(".content,.category-template").find(".head-style");
 	for (var i = 0, len = $titlelist.length; i < len; i++) {
 		var rand = parseInt(Math.random() * 20, 10);
 		$titlelist.eq(i).css("background",randomColor[rand]);
@@ -90,7 +90,7 @@ var newCategoryOrBookMarkFunc = {
 			// 如果父标签是pop-category的话，说明是新增分类
 			if ($(this).parents(".pop-category").length > 0) {
 				var categoryname = $("#categoryname").val();
-				var $clone = $(".blank-category").clone().removeClass("blank-category");
+				var $clone = $(".category-template").clone().removeClass("category-template");
 				$clone.find(".block-head-title").text(categoryname);
 				$(".wrap-box").eq(0).prepend($clone);
 				$clone.slideDown();
