@@ -41,8 +41,8 @@
 		<p>
 			<label>权限</label> <span class="permission"><input
 				id="normal-permission" type="radio" name="categorypermission"
-				checked="checked">普通(可自由查看)</span> <span class="permission"><input
-				id="psw-permission" type="radio" name="categorypermission">保密(查看需要密码)</span>
+				checked="checked" value="1">普通(可自由查看)</span> <span class="permission"><input
+				id="psw-permission" type="radio" name="categorypermission" value="2">保密(查看需要密码)</span>
 		</p>
 		<p class="psw">
 			<label>密码</label><input type="password" id="category" />
