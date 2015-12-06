@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dapeng.dao.CategoryMapper">
+	<resultMap id="BaseResultMap" type="com.dapeng.domain.Category">
+		<id column="categoryid" property="categoryid" jdbcType="INTEGER" />
+		<result column="categoryname" property="categoryname" jdbcType="VARCHAR" />
+		<result column="categorytype" property="categorytype" jdbcType="VARCHAR" />
+		<result column="parentcategoryid" property="parentcategoryid"
+			jdbcType="VARCHAR" />
+		<result column="categorypermission" property="categorypermission"
+			jdbcType="VARCHAR" />
+		<result column="categorypsw" property="categorypsw" jdbcType="VARCHAR" />
+		<result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+		<result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		categoryid, categoryname, categorytype, parentcategoryid, categorypermission,
+		categorypsw,
+		createtime, updatetime
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from category
+		where categoryid = #{categoryid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from category
+		where categoryid = #{categoryid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.dapeng.domain.Category">
+		insert into category (categoryname, categorytype,
+		parentcategoryid, categorypermission, categorypsw,
+		createtime, updatetime)
+		values (#{categoryname,jdbcType=VARCHAR},
+		#{categorytype,jdbcType=VARCHAR},
+		#{parentcategoryid,jdbcType=INTEGER},
+		#{categorypermission,jdbcType=VARCHAR},
+		#{categorypsw,jdbcType=VARCHAR},
+		#{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="com.dapeng.domain.Category">
+		insert into category
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="categoryname != null">
+				categoryname,
+			</if>
+			<if test="categorytype != null">
+				categorytype,
+			</if>
+			<if test="parentcategoryid != null">
+				parentcategoryid,
+			</if>
+			<if test="categorypermission != null">
+				categorypermission,
+			</if>
+			<if test="categorypsw != null">
+				categorypsw,
+			</if>
+			<if test="createtime != null">
+				createtime,
+			</if>
+			<if test="updatetime != null">
+				updatetime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="categoryname != null">
+				#{categoryname,jdbcType=VARCHAR},
+			</if>
+			<if test="categorytype != null">
+				#{categorytype,jdbcType=VARCHAR},
+			</if>
+			<if test="parentcategoryid != null">
+				#{parentcategoryid,jdbcType=INTEGER},
+			</if>
+			<if test="categorypermission != null">
+				#{categorypermission,jdbcType=VARCHAR},
+			</if>
+			<if test="categorypsw != null">
+				#{categorypsw,jdbcType=VARCHAR},
+			</if>
+			<if test="createtime != null">
+				#{createtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatetime != null">
+				#{updatetime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.dapeng.domain.Category">
+		update category
+		<set>
+			<if test="categoryname != null">
+				categoryname = #{categoryname,jdbcType=VARCHAR},
+			</if>
+			<if test="categorytype != null">
+				categorytype = #{categorytype,jdbcType=VARCHAR},
+			</if>
+			<if test="parentcategoryid != null">
+				parentcategoryid = #{parentcategoryid,jdbcType=INTEGER},
+			</if>
+			<if test="categorypermission != null">
+				categorypermission = #{categorypermission,jdbcType=VARCHAR},
+			</if>
+			<if test="categorypsw != null">
+				categorypsw = #{categorypsw,jdbcType=VARCHAR},
+			</if>
+			<if test="createtime != null">
+				createtime = #{createtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatetime != null">
+				updatetime = #{updatetime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where categoryid = #{categoryid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.dapeng.domain.Category">
+		update category
+		set categoryname = #{categoryname,jdbcType=VARCHAR},
+		categorytype = #{categorytype,jdbcType=VARCHAR},
+		parentcategoryid = #{parentcategoryid,jdbcType=INTEGER},
+		categorypermission = #{categorypermission,jdbcType=VARCHAR},
+		categorypsw = #{categorypsw,jdbcType=VARCHAR},
+		createtime = #{createtime,jdbcType=TIMESTAMP},
+		updatetime = #{updatetime,jdbcType=TIMESTAMP}
+		where categoryid = #{categoryid,jdbcType=INTEGER}
+	</update>
+	<!-- 书签类别操作 -->
+	<select id="selectCategoryList" resultType="com.dapeng.domain.Category">
+		select * from
+		bookmark_category
+	</select>
+	<select id="selectCategoryListById" parameterType="int"
+		resultType="com.dapeng.domain.Category">
+		select * from bookmark_category
+		where categoryid = #{categoryid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteCategoryById" parameterType="int">
+		delete from
+		bookmark_category
+		where categoryid = #{categoryid,jdbcType=INTEGER}
+	</delete>
+<!-- 	<insert id="addCategory" parameterType="com.dapeng.domain.Category"> -->
+<!-- 		insert into -->
+<!-- 		bookmark_category ( -->
+<!-- 		categoryname,categorytype,parentcategoryid,categorypermission,categorypsw) -->
+<!-- 		values (#{categoryname,jdbcType=VARCHAR}, -->
+<!-- 		#{categorytype,jdbcType=VARCHAR} -->
+<!-- 		,#{parentcategoryid,jdbcType=INTEGER},#{categorypermission,jdbcType=VARCHAR},#{categorypsw}) -->
+<!-- 	</insert> -->
+	<update id="updateCategoryBySlected" parameterType="com.dapeng.domain.Category">
+		update
+		bookmark_category
+		set
+		categoryname = #{categoryname}
+		where categoryid =
+		#{categoryid}
+	</update>
+	
+	<!-- 获取插入的分类ID -->
+	<select id="selectLastCategoryId" resultType="java.lang.Integer">
+		select last_insert_id();
+	</select>
+</mapper>
