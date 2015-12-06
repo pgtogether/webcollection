@@ -5,6 +5,7 @@ import java.util.List;
 import com.dapeng.domain.Category;
 import com.dapeng.service.bo.BookmarkBO;
 import com.dapeng.service.bo.CategoryBO;
+import com.depeng.web.bo.CategoryMiniBO;
 
 /**
  * 分类操作Service
@@ -16,7 +17,7 @@ import com.dapeng.service.bo.CategoryBO;
 public interface CategoryService {
     
     // 查询所有类别
-    List<Category> selectCategoryList();
+    List<CategoryMiniBO> selectCategoryList();
 
     // 查询类别 根据id
     Category selectCategoryById(int categoryid);

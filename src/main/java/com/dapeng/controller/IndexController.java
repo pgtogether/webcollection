@@ -33,6 +33,7 @@ import com.dapeng.service.BookmarkService;
 import com.dapeng.service.CategoryService;
 import com.dapeng.service.bo.BookmarkBO;
 import com.dapeng.service.bo.CategoryBO;
+import com.depeng.web.bo.CategoryMiniBO;
 
 /**
  * 类的功能描述
@@ -318,11 +319,14 @@ public class IndexController extends BaseController {
         return result;
     }
 
+    /**
+     * 查询用户名下的所有分类
+     */
     @RequestMapping(value = "doSelectCategoryList", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public List<Category> doSelectCategoryList() {
-        List<Category> categoryList = categoryService.selectCategoryList();
-        return categoryList;
+    public Map<String, Object> doSelectCategoryList() {
+        List<CategoryMiniBO> categoryList = categoryService.selectCategoryList();
+        return ajaxSuccess(categoryList);
     }
 
     /**

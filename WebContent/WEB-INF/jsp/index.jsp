@@ -72,7 +72,7 @@
 				<div class="notes-head head-style">快速搜索</div>
 				<div class="notes-body">
 					<div class="fast-search">
-						<input type="text" class="fast-search-input"><span
+						<input type="text" class="fast-search-input" /><span
 							class="fast-search-btn">搜索</span>
 					</div>
 				</div>

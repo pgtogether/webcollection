@@ -38,20 +38,24 @@
 	<div class="popbox-head">新增分类</div>
 	<div class="popbox-body">
 		<p>
-			<label>名称</label><input type="text" id="categoryname" name="categoryname"
-				placeholder="网址所属分类" value="默认分类" />
+			<label>名称</label>
+			<input type="hidden" id="categoryid" name="categoryid" value="" />
+			<input type="text" id="categoryname" name="categoryname" placeholder="网址所属分类" value="默认分类" />
 		</p>
 		<p>
-			<label>权限</label> <span class="permission"><input
-				id="normal-permission" type="radio" name="categorypermission"
-				checked="checked" value="1">普通(可自由查看)</span> <span class="permission"><input
-				id="psw-permission" type="radio" name="categorypermission" value="2">保密(查看需要密码)</span>
+			<label>权限</label> 
+			<span class="permission">
+				<input id="normal-permission" type="radio" name="categorypermission" checked="checked" value="1">普通(可自由查看)
+			</span> 
+			<span class="permission">
+				<input id="psw-permission" type="radio" name="categorypermission" value="2">保密(查看需要密码)
+			</span>
 		</p>
 		<p class="psw">
-			<label>密码</label><input type="password" id="categorypsw" />
+			<label>密码</label><input type="password" name="categorypsw" />
 		</p>
 		<p class="psw">
-			<label>确认密码</label><input type="password" id="categorypswagain" />
+			<label>确认密码</label><input type="password" name="categorypswagain" />
 		</p>
 		<p>
 			<span class="btn"> <a class="confirm-btn">确定</a><a

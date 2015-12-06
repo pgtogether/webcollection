@@ -12,6 +12,7 @@ import com.dapeng.domain.Category;
 import com.dapeng.service.CategoryService;
 import com.dapeng.service.bo.BookmarkBO;
 import com.dapeng.service.bo.CategoryBO;
+import com.depeng.web.bo.CategoryMiniBO;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -53,7 +54,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<Category> selectCategoryList() {
+    public List<CategoryMiniBO> selectCategoryList() {
         return categoryDao.selectCategoryList();
     }
 

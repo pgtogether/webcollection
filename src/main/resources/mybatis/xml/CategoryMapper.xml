@@ -128,23 +128,23 @@
 		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</update>
 	<!-- 书签类别操作 -->
-	<select id="selectCategoryList" resultType="com.dapeng.domain.Category">
-		select * from
-		bookmark_category
+	<select id="selectCategoryList" resultType="com.depeng.web.bo.CategoryMiniBO">
+		select categoryid as i, categoryname as n 
+		from category
 	</select>
 	<select id="selectCategoryListById" parameterType="int"
 		resultType="com.dapeng.domain.Category">
-		select * from bookmark_category
+		select * from category
 		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteCategoryById" parameterType="int">
 		delete from
-		bookmark_category
+		category
 		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</delete>
 <!-- 	<insert id="addCategory" parameterType="com.dapeng.domain.Category"> -->
 <!-- 		insert into -->
-<!-- 		bookmark_category ( -->
+<!-- 		category ( -->
 <!-- 		categoryname,categorytype,parentcategoryid,categorypermission,categorypsw) -->
 <!-- 		values (#{categoryname,jdbcType=VARCHAR}, -->
 <!-- 		#{categorytype,jdbcType=VARCHAR} -->
@@ -152,7 +152,7 @@
 <!-- 	</insert> -->
 	<update id="updateCategoryBySlected" parameterType="com.dapeng.domain.Category">
 		update
-		bookmark_category
+		category
 		set
 		categoryname = #{categoryname}
 		where categoryid =
