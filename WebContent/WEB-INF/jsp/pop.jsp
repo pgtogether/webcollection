@@ -3,6 +3,7 @@
 <%@ include file="/include/constants.jsp"%>
 <div class="mask"></div>
 <div class="popbox pop-bookmark">
+	<form id="newBookmarkForm">
 	<div class="popbox-head">新增网址</div>
 	<div class="popbox-body">
 		<p>
@@ -30,13 +31,15 @@
 			</span>
 		</p>
 	</div>
+	</form>
 </div>
 <div class="popbox pop-category">
+	<form id="newCategoryForm">
 	<div class="popbox-head">新增分类</div>
 	<div class="popbox-body">
 		<p>
-			<label>名称</label><input type="text" id="categoryname"
-				placeholder="网址所属分类" />
+			<label>名称</label><input type="text" id="categoryname" name="categoryname"
+				placeholder="网址所属分类" value="默认分类" />
 		</p>
 		<p>
 			<label>权限</label> <span class="permission"><input
@@ -45,10 +48,10 @@
 				id="psw-permission" type="radio" name="categorypermission">保密(查看需要密码)</span>
 		</p>
 		<p class="psw">
-			<label>密码</label><input type="password" id="category" />
+			<label>密码</label><input type="password" id="categorypsw" />
 		</p>
 		<p class="psw">
-			<label>确认密码</label><input type="password" id="category" />
+			<label>确认密码</label><input type="password" id="categorypswagain" />
 		</p>
 		<p>
 			<span class="btn"> <a class="confirm-btn">确定</a><a
@@ -56,6 +59,7 @@
 			</span>
 		</p>
 	</div>
+	</form>
 </div>
 <div class="popbox pop-callback">
 	<div class="popbox-body">

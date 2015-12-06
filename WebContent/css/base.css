@@ -112,10 +112,6 @@ a:focus,*:focus {
 .hide {
 	display: none !important; visibility: hidden;
 }
-
-.block {
-	display: block !important;
-}
 /* 设置内联, 减少浮动带来的bug */
 .fl {
 	float: left; display: inline;

@@ -5,6 +5,7 @@ import java.util.List;
 import com.dapeng.domain.Bookmark;
 import com.dapeng.domain.Category;
 import com.dapeng.service.bo.BookmarkBO;
+import com.dapeng.service.bo.CategoryBO;
 
 public interface BookmarkService {
 	//查看书签列表
@@ -42,22 +43,4 @@ public interface BookmarkService {
 	int cancelHotbookmark(BookmarkBO bo);
 	
 	List<Bookmark> selectHotBookmarkList();
-	
-	//查询所有类别
-	List<Category> selectCategoryList();
-	
-	//查询类别 根据id
-	Category selectCategoryById(int categoryid);
-	
-	//增加类别
-	int addCategory(Category category);
-	
-	//删除类别 根据id
-	int deleteCategoryById(int categoryid);
-	
-	//更新类别
-	int updateCategoryBySlected(Category category);
-
-	//改变标签的分类
-	int updateBookmarkCategory(BookmarkBO bo);
 }
