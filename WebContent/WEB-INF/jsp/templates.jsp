@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/include/constants.jsp"%>
-<!-- 分类卡片模板 -->
 <div class="templates">
-<div class="category-template" style="display: none;">
-	<div class="block" style="display: none;">
+	<!-- 分类卡片模板 -->
+	<div class="category-template block" style="display: none;">
 		<div class="block-head head-style">
 			<div class="block-head-title">默认分类</div>
 			<div class="block-head-func"></div>
@@ -14,7 +13,6 @@
 			</ul>
 		</div>
 	</div>
-</div>
 <!-- 新增书签模板 -->
 
 <!-- 编辑书签模板 -->

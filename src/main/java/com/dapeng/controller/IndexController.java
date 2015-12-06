@@ -23,12 +23,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dapeng.constants.CategoryPermissionEnum;
+import com.dapeng.constants.CategoryTypeEnum;
 import com.dapeng.controller.form.BookMarkForm;
 import com.dapeng.controller.form.CategoryForm;
 import com.dapeng.domain.Bookmark;
 import com.dapeng.domain.Category;
 import com.dapeng.service.BookmarkService;
+import com.dapeng.service.CategoryService;
 import com.dapeng.service.bo.BookmarkBO;
+import com.dapeng.service.bo.CategoryBO;
 
 /**
  * 类的功能描述
@@ -45,6 +49,9 @@ public class IndexController extends BaseController {
 
     @Autowired
     private BookmarkService bookmarkService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     /**
      * 默认主页
@@ -183,9 +190,7 @@ public class IndexController extends BaseController {
         bmdto.setCategoryid(4);
         bmdto.setCreatetime(new Date());
         bmdto.setDeleteflg("0");
-        bmdto.setDescription(form.getDescription());
         int rows = bookmarkService.insertBookmark(bmdto);
-        System.out.println("doAddBookmark---->"+rows);
         if (rows > 0) {
             return ajaxSuccess();
         } else {
@@ -262,41 +267,28 @@ public class IndexController extends BaseController {
             return ajaxExecption(e);
         }
     }
+
     /**
-     * 添加分类
-     * @param category
-     * @return
+     * 新增分类
      */
     @RequestMapping(value = "doAddCategory", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String, Object> doAddCategory(@Validated
-    	    CategoryForm form, BindingResult result) {
-        	int rows = -1;
-        	String permission = form.getCategorypermission();
-        	if ("1".equals(permission)) {
-        		 Category cgdto = new Category();
-                 cgdto.setCategoryname(form.getCategoryname());
-                 cgdto.setCategorypermission(permission);
-                 cgdto.setCategorypsw(form.getCategorypsw());
-                 cgdto.setCategorytype("1");
-                 cgdto.setParentcategoryid(3);//todo
-                 rows = bookmarkService.addCategory(cgdto);
-			}else {
-				Category cgdto = new Category();
-	            cgdto.setCategoryname(form.getCategoryname());
-	            cgdto.setCategorypermission(permission);
-	            cgdto.setCategorypsw("");
-	            cgdto.setCategorytype("1");
-	            cgdto.setParentcategoryid(3);//todo
-	            rows = bookmarkService.addCategory(cgdto);
-			}
-           
-            System.out.println(result);
-        if (rows > 0) {
-            return ajaxSuccess();
-        } else {
+    public Map<String, Object> doAddCategory(CategoryForm form) {
+        CategoryBO categoryBO = new CategoryBO();
+        categoryBO.setCategoryname(form.getCategoryname());
+        // 权限
+        categoryBO.setCategorypermission(CategoryPermissionEnum.NORMAL.getId());
+        // 密码：暂无
+        categoryBO.setCategorypsw("***");
+        // 默认二级分类
+        categoryBO.setCategorytype(CategoryTypeEnum.DEFAULT_CATEGORY_TYPE.getId());
+        // 默认父分类
+        categoryBO.setParentcategoryid(0);
+        int newCategoryId = categoryService.addCategory(categoryBO);
+        if(newCategoryId == 0){
             return ajaxFail();
         }
+        return ajaxSuccess(newCategoryId);
     }
 
     @RequestMapping(value = "doDeleteCategory", method = { RequestMethod.GET, RequestMethod.POST })
@@ -304,7 +296,7 @@ public class IndexController extends BaseController {
     public int doDeleteCategory(String categoryid) {
         int result = -1;
         try {
-            result = bookmarkService.deleteCategoryById(Integer.parseInt(categoryid));
+            result = categoryService.deleteCategoryById(Integer.parseInt(categoryid));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -319,7 +311,7 @@ public class IndexController extends BaseController {
             Category cgdto = new Category();
             cgdto.setCategoryid(category.getCategoryid());
             cgdto.setCategoryname(category.getCategoryname());
-            result = bookmarkService.updateCategoryBySlected(category);
+            result = categoryService.updateCategoryBySlected(category);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -329,7 +321,7 @@ public class IndexController extends BaseController {
     @RequestMapping(value = "doSelectCategoryList", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public List<Category> doSelectCategoryList() {
-        List<Category> categoryList = bookmarkService.selectCategoryList();
+        List<Category> categoryList = categoryService.selectCategoryList();
         return categoryList;
     }
 
@@ -349,7 +341,7 @@ public class IndexController extends BaseController {
         bo.setBookmarkid(4);
         bo.setSort(5);
         bo.setCategoryid(2);
-        result = bookmarkService.updateBookmarkCategory(bo);
+        result = categoryService.updateBookmarkCategory(bo);
         return result;
     }
 }

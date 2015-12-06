@@ -39,7 +39,6 @@ var openSortableFunc = {
 			handle : ".block-head",
 			distance : 5,
 			dropOnEmpty : true,
-			opacity : 1,
 			placeholder : "block-placeholder",
 			tolerance : "pointer",
 			delay : 100,
@@ -89,18 +88,28 @@ var newCategoryOrBookMarkFunc = {
 		$(".popbox .confirm-btn").click(function() {
 			// 如果父标签是pop-category的话，说明是新增分类
 			if ($(this).parents(".pop-category").length > 0) {
-				var categoryname = $("#categoryname").val();
-				var $clone = $(".category-template").clone().removeClass("category-template");
-				// 添加新分类模板标题颜色
-				var rand = parseInt(Math.random() * 20, 10);
-				$clone.find(".block-head").css("background-color",randomColor[rand]);
-				$clone.find(".block-head-title").text(categoryname);
-				$(".wrap-box").eq(0).prepend($clone);
-				$clone.slideDown();
-				openSortableFunc.urlSortable();
+				// 验证新增分类表单
+				var $newCategoryForm = $(this).parents("form");
+				formValidateFunc.validateNewCategoryForm($newCategoryForm);
+				if (!$newCategoryForm.valid()) {
+					return;
+				}
+				// 提交到后台
+				doAjaxFunc.newcategory(function(){
+					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
+					var categoryname = $("#newcategoryname").val();
+					var $clone = $(".category-template").clone().removeClass("category-template");
+					// 添加新分类模板标题颜色
+					var rand = parseInt(Math.random() * 20, 10);
+					$clone.find(".block-head").css("background-color",randomColor[rand]);
+					$clone.find(".block-head-title").text(categoryname);
+					$(".wrap-box").eq(0).prepend($clone);
+					$clone.slideDown();
+				});
 			} else {
 				// 新增书签
 			}
+			openSortableFunc.boxSortable();
 			$(".mask").hide();
 			$(".popbox").hide();
 		});
@@ -112,7 +121,6 @@ var newCategoryOrBookMarkFunc = {
 		});
 	},
 	callbackShow : function() {
-
 	}
 };
 
@@ -308,9 +316,23 @@ var bookmarkOperateFunc = {
 			var $thisBtn = $(this);
 			// 确认新增书签
 			if ($thisBtn.parents(".addbookmark").length > 0) {
-				// TODO
 				// 保存数据
-				doAjaxFunc.addbookmark();
+				doAjaxFunc.addbookmark(function(){
+					// 保存数据成功后的回调方法
+					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
+					var $addbookmarkform = $("#addbookmarkform");
+					var url = $addbookmarkform.find("#url").val();
+					var name = $addbookmarkform.find("#bookmarkname").val();
+					// 获取新增书签的模板
+					var template = selfFunc.getBookmarkTemplate(url, name);
+					// 添加一个新书签
+					var $ul = $addbookmarkform.parents("ul");
+					$ul.prepend(template);
+					$ul.find("li:eq(0)").addClass("valid-pass").slideDown(function() {
+						// 成功后的动画效果
+						doAjaxFunc.saveSuccessAnimate();
+					});
+				});
 			}
 			// 确认编辑书签
 			else if ($thisBtn.parents(".editbookmark").length > 0) {
@@ -480,33 +502,45 @@ var sideBannerFunc = {
 
 // 提交数据的Ajax的操作
 var doAjaxFunc = {
+	// 新增分类
+	newcategory : function(successCallBack){
+		var $newcategoryform = $("#newCategoryForm");
+		formValidateFunc.validateNewCategoryForm($newcategoryform);
+		if (!$newcategoryform.valid()) {
+			return;
+		}
+		$.ajax({
+			data : $newcategoryform.serialize(),
+			type : "post",
+			url : CONTEXT_PATH + "/doAddCategory",
+			success : function(json) {
+				if (json.result == "OK") {
+					successCallBack();
+				} else {
+					validateErrorsUtil.showValidateErrors($newcategoryform, json.errors);
+				}
+			},
+			error : function(e) {
+			}
+		});
+	},
 	// 新增书签
-	addbookmark : function() {
-		var doAjaxFuncSelf = this;
+	addbookmark : function(successCallBack) {
 		var $addbookmarkform = $("#addbookmarkform");
 		formValidateFunc.validateBookmarkForm($addbookmarkform);
 		if (!$addbookmarkform.valid()) {
 			return;
 		}
+		// 补足URL的HTTP前缀
 		var url = this.fillUrl($addbookmarkform.find("#url").val());
 		$addbookmarkform.find("#url").val(url);
-		var name = $addbookmarkform.find("#bookmarkname").val();
-		// 获取新增书签的模板
-		var template = selfFunc.getBookmarkTemplate(url, name);
 		$.ajax({
 			data : $addbookmarkform.serialize(),
 			type : "post",
 			url : CONTEXT_PATH + "/doAddBookmark",
 			success : function(json) {
 				if (json.result == "OK") {
-					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
-					// 添加一个新书签
-					var $ul = $addbookmarkform.parents("ul");
-					$ul.prepend(template);
-					$ul.find("li:eq(0)").addClass("valid-pass").slideDown(function() {
-						// 成功后的动画效果
-						doAjaxFuncSelf.saveSuccessAnimate();
-					});
+					successCallBack();
 				} else {
 					validateErrorsUtil.showValidateErrors($addbookmarkform, json.errors);
 				}
@@ -526,6 +560,7 @@ var doAjaxFunc = {
 		var url = this.fillUrl($editbookmarkform.find("#url").val());
 		$editbookmarkform.find("#url").val(url);
 		var name = $editbookmarkform.find("#bookmarkname").val();
+		// TODO 还没有完，需要分类ID以及书签ID支持
 		
 		// 获取要修改的书签，并修改成新的内容
 		var $updateli = $editbookmarkform.parents("li").prev(".pointto");
@@ -570,15 +605,30 @@ var doAjaxFunc = {
 			$(this).delay(1000).animate({
 				top : "-350px",
 				opacity : 0.3
-			}, 800);
+			}, 500);
 		});
 	}
 };
 
 // 表单验证操作
 var formValidateFunc = {
+	// 验证新增分类
+	validateNewCategoryForm : function($form){
+		$form.validate({
+			rules : {
+				categoryname : {
+					required : true
+				}
+			},
+			messages : {
+				categoryname : {
+					required : "请输入名称"
+				}
+			}
+		});
+	},
 	// 验证新增书签或者编辑书签表单
-		validateBookmarkForm : function($form) {
+	validateBookmarkForm : function($form) {
 		return $form.validate({
 			rules : {
 				url : {

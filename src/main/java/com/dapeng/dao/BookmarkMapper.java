@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.dapeng.domain.Bookmark;
-import com.dapeng.domain.Category;
-import com.dapeng.service.bo.BookmarkBO;
 
 @Repository
 public interface BookmarkMapper {
@@ -66,20 +64,4 @@ public interface BookmarkMapper {
 	
 	//查询所有热门书签
 	List<Bookmark> selectHotBookmarkList();
-	/**
-	 * 类别检索
-	 * @param categoryid
-	 * @return
-	 */
-	List<Category> selectCategoryList();
-	
-	Category selectCategoryById(int categoryid);
-	
-	int addCategory(Category category);
-	
-	int deleteCategoryById(int categoryid);
-	
-	int updateCategoryBySlected(Category category);
-	//改变标签的分类和排序
-	int updateBookmarkCategory(Bookmark bookmark);
 }

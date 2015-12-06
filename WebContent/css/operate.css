@@ -178,6 +178,10 @@
 	width: 15%; float: left; margin-left: 2.5%; margin-right: 2.5%; text-align: center;
 }
 
+.popbox-body p label.error {
+	margin-left: 12.5%; text-align: left; line-height: 10px;
+}
+
 .popbox-body p input {
 	width: 75%; float: left; text-indent: 5px; height: 25px; margin-top: 5px;
 }
