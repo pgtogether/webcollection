@@ -114,10 +114,10 @@
 		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
 	</update>
 	<insert id="insertBookmark" parameterType="com.dapeng.domain.Bookmark">
-		insert into bookmark ( bookmarkname,url,permission,categoryid,createtime,deleteflg)
+		insert into bookmark ( bookmarkname,url,permission,categoryid,createtime,description,deleteflg)
 		values (#{bookmarkname,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
 		,#{permission,jdbcType=VARCHAR},#{categoryid,jdbcType=VARCHAR},#{createtime}
-		,#{deleteflg,jdbcType=VARCHAR})
+		,#{description,jdbcType=VARCHAR},#{deleteflg,jdbcType=VARCHAR})
 	</insert>
 	<update id="updateBookmarkById" parameterType="com.dapeng.domain.Bookmark">
 		update bookmark
