@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dapeng.controller.form.BookMarkForm;
+import com.dapeng.controller.form.CategoryForm;
 import com.dapeng.domain.Bookmark;
 import com.dapeng.domain.Category;
 import com.dapeng.service.BookmarkService;
@@ -182,7 +183,9 @@ public class IndexController extends BaseController {
         bmdto.setCategoryid(4);
         bmdto.setCreatetime(new Date());
         bmdto.setDeleteflg("0");
+        bmdto.setDescription(form.getDescription());
         int rows = bookmarkService.insertBookmark(bmdto);
+        System.out.println("doAddBookmark---->"+rows);
         if (rows > 0) {
             return ajaxSuccess();
         } else {
@@ -259,24 +262,41 @@ public class IndexController extends BaseController {
             return ajaxExecption(e);
         }
     }
-
+    /**
+     * 添加分类
+     * @param category
+     * @return
+     */
     @RequestMapping(value = "doAddCategory", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public int doAddCategory(Category category) {
-        int result = -1;
-        try {
-            Category cgdto = new Category();
-            cgdto.setCategoryname(category.getCategoryname());
-            cgdto.setCategorypermission("0");
-            cgdto.setCategorypsw("1111");
-            cgdto.setCategorytype("1");
-            cgdto.setParentcategoryid(3);
-            result = bookmarkService.addCategory(cgdto);
+    public Map<String, Object> doAddCategory(@Validated
+    	    CategoryForm form, BindingResult result) {
+        	int rows = -1;
+        	String permission = form.getCategorypermission();
+        	if ("1".equals(permission)) {
+        		 Category cgdto = new Category();
+                 cgdto.setCategoryname(form.getCategoryname());
+                 cgdto.setCategorypermission(permission);
+                 cgdto.setCategorypsw(form.getCategorypsw());
+                 cgdto.setCategorytype("1");
+                 cgdto.setParentcategoryid(3);//todo
+                 rows = bookmarkService.addCategory(cgdto);
+			}else {
+				Category cgdto = new Category();
+	            cgdto.setCategoryname(form.getCategoryname());
+	            cgdto.setCategorypermission(permission);
+	            cgdto.setCategorypsw("");
+	            cgdto.setCategorytype("1");
+	            cgdto.setParentcategoryid(3);//todo
+	            rows = bookmarkService.addCategory(cgdto);
+			}
+           
             System.out.println(result);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (rows > 0) {
+            return ajaxSuccess();
+        } else {
+            return ajaxFail();
         }
-        return result;
     }
 
     @RequestMapping(value = "doDeleteCategory", method = { RequestMethod.GET, RequestMethod.POST })
