@@ -42,6 +42,8 @@ public class BookMarkForm {
     @NotEmpty(message = "请输入名称")
     private String bookmarkname;
 
+    private String description;
+    
     public String getUrl() {
         return url;
     }
@@ -65,5 +67,14 @@ public class BookMarkForm {
     public void setBookmarkid(String bookmarkid) {
         this.bookmarkid = bookmarkid;
     }
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+    
 
 }
