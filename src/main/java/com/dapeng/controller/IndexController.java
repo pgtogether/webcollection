@@ -23,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dapeng.constants.BookmarkDeleteEnum;
+import com.dapeng.constants.BookmarkHotEnum;
+import com.dapeng.constants.BookmarkPermissionEnum;
 import com.dapeng.constants.CategoryPermissionEnum;
 import com.dapeng.constants.CategoryTypeEnum;
 import com.dapeng.controller.form.BookMarkForm;
@@ -184,14 +187,12 @@ public class IndexController extends BaseController {
             return ajaxValidateError(result);
         }
 
-        Bookmark bmdto = new Bookmark();
-        bmdto.setBookmarkname(form.getBookmarkname());
-        bmdto.setUrl(form.getUrl());
-        bmdto.setPermission("1");
-        bmdto.setCategoryid(4);
-        bmdto.setCreatetime(new Date());
-        bmdto.setDeleteflg("0");
-        int rows = bookmarkService.insertBookmark(bmdto);
+        BookmarkBO bookmarkbo = new BookmarkBO();
+        bookmarkbo.setBookmarkname(form.getBookmarkname());
+        bookmarkbo.setUrl(form.getUrl());
+        bookmarkbo.setCategoryid(Integer.valueOf(form.getCategoryid()));
+        bookmarkbo.setDescription(form.getDescription());
+        int rows = bookmarkService.insertBookmark(bookmarkbo);
         if (rows > 0) {
             return ajaxSuccess();
         } else {

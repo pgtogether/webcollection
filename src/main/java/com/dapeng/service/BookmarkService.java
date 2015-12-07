@@ -3,9 +3,7 @@
 import java.util.List;
 
 import com.dapeng.domain.Bookmark;
-import com.dapeng.domain.Category;
 import com.dapeng.service.bo.BookmarkBO;
-import com.dapeng.service.bo.CategoryBO;
 
 public interface BookmarkService {
 	//查看书签列表
@@ -21,7 +19,7 @@ public interface BookmarkService {
 	Bookmark selectBookmarkListById(int bookmarkId);
 	
 	//插入书签
-	int insertBookmark(Bookmark bookmark);
+	int insertBookmark(BookmarkBO bookmarkbo);
 	
 	//逻辑删除  放入回收站
 	int deleteBookmarkById(int id);

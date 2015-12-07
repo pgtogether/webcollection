@@ -1,10 +1,14 @@
 ﻿package com.dapeng.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dapeng.constants.BookmarkDeleteEnum;
+import com.dapeng.constants.BookmarkHotEnum;
+import com.dapeng.constants.BookmarkPermissionEnum;
 import com.dapeng.dao.BookmarkMapper;
 import com.dapeng.domain.Bookmark;
 import com.dapeng.service.BookmarkService;
@@ -38,7 +42,18 @@ public class BookmarkServiceImpl implements BookmarkService {
     }
 
     @Override
-    public int insertBookmark(Bookmark bookmark) {
+    public int insertBookmark(BookmarkBO bookmarkbo) {
+        Bookmark bookmark = new Bookmark();
+        bookmark.setBookmarkname(bookmarkbo.getBookmarkname());
+        bookmark.setUrl(bookmarkbo.getUrl());
+        bookmark.setPermission(BookmarkPermissionEnum.PRIVATEE.getId());
+        bookmark.setCategoryid(Integer.valueOf(bookmarkbo.getCategoryid()));
+        bookmark.setDescription(bookmarkbo.getDescription());
+        bookmark.setHot(BookmarkHotEnum.NORMAL.getId());
+        bookmark.setDeleteflg(BookmarkDeleteEnum.LOGIC_DELETE.getId());
+        Date sys = new Date();
+        bookmark.setCreatetime(sys);
+        bookmark.setUpdatetime(sys);
         return bookmarkDao.insertBookmark(bookmark);
     }
 

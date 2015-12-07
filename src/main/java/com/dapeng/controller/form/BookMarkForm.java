@@ -35,6 +35,9 @@ public class BookMarkForm {
 
     private String bookmarkid;
     
+    @NotEmpty(message = "分类ID不存在")
+    private String categoryid;
+    
     @NotEmpty(message = "请输入网址")
     @URL(message = "请输入合法的网址")
     private String url;
@@ -42,6 +45,8 @@ public class BookMarkForm {
     @NotEmpty(message = "请输入名称")
     private String bookmarkname;
 
+    private String tags;
+    
     private String description;
     
     public String getUrl() {
@@ -75,6 +80,21 @@ public class BookMarkForm {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-    
+
+    public String getCategoryid() {
+        return categoryid;
+    }
+
+    public void setCategoryid(String categoryid) {
+        this.categoryid = categoryid;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
 
 }
