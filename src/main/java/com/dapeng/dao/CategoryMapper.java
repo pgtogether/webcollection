@@ -42,7 +42,10 @@ public interface CategoryMapper {
 
     // 改变标签的分类和排序
     int updateBookmarkCategory(Bookmark bookmark);
-    
+
     // 获取刚插入的分类ID
     int selectLastCategoryId();
+
+    // 获取用户下最大的分类编号
+    int selectMaxCategoryNoByUserId(String userId);
 }

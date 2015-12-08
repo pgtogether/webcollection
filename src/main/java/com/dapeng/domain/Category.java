@@ -25,6 +25,10 @@ public class Category {
     private Date createtime;
 
     private Date updatetime;
+    
+    private String userid;
+    
+    private int categoryno;
 
     public int getCategoryid() {
         return categoryid;
@@ -89,4 +93,22 @@ public class Category {
     public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
     }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public int getCategoryno() {
+        return categoryno;
+    }
+
+    public void setCategoryno(int categoryno) {
+        this.categoryno = categoryno;
+    }
+
+    
 }

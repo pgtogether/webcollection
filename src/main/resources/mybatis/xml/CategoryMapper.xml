@@ -12,11 +12,13 @@
 		<result column="categorypsw" property="categorypsw" jdbcType="VARCHAR" />
 		<result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
 		<result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+		<result column="userid" property="userid" jdbcType="VARCHAR" />
+		<result column="categoryno" property="categoryno" jdbcType="INTEGER" />
 	</resultMap>
 	<sql id="Base_Column_List">
 		categoryid, categoryname, categorytype, parentcategoryid, categorypermission,
 		categorypsw,
-		createtime, updatetime
+		createtime, updatetime,userid ,categoryid
 	</sql>
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.String">
@@ -32,13 +34,15 @@
 	<insert id="insert" parameterType="com.dapeng.domain.Category">
 		insert into category (categoryname, categorytype,
 		parentcategoryid, categorypermission, categorypsw,
-		createtime, updatetime)
+		createtime, updatetime, userid, categoryno)
 		values (#{categoryname,jdbcType=VARCHAR},
 		#{categorytype,jdbcType=VARCHAR},
 		#{parentcategoryid,jdbcType=INTEGER},
 		#{categorypermission,jdbcType=VARCHAR},
 		#{categorypsw,jdbcType=VARCHAR},
-		#{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+		#{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP},
+		#{userid,jdbcType=VARCHAR},
+		#{categoryno,jdbcType=INTEGER})
 	</insert>
 	<insert id="insertSelective" parameterType="com.dapeng.domain.Category">
 		insert into category
@@ -64,6 +68,12 @@
 			<if test="updatetime != null">
 				updatetime,
 			</if>
+			<if test="userid != null">
+				userid,
+			</if>
+			<if test="categoryno != null">
+				categoryno,
+			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="categoryname != null">
@@ -86,6 +96,12 @@
 			</if>
 			<if test="updatetime != null">
 				#{updatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="categoryno != null">
+				#{categoryno,jdbcType=INTEGER},
 			</if>
 		</trim>
 	</insert>
@@ -113,6 +129,12 @@
 			<if test="updatetime != null">
 				updatetime = #{updatetime,jdbcType=TIMESTAMP},
 			</if>
+			<if test="userid != null">
+				userid = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="categoryno != null">
+				categoryno = #{categoryno,jdbcType=INTEGER},
+			</if>
 		</set>
 		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</update>
@@ -124,13 +146,16 @@
 		categorypermission = #{categorypermission,jdbcType=VARCHAR},
 		categorypsw = #{categorypsw,jdbcType=VARCHAR},
 		createtime = #{createtime,jdbcType=TIMESTAMP},
-		updatetime = #{updatetime,jdbcType=TIMESTAMP}
+		updatetime = #{updatetime,jdbcType=TIMESTAMP},
+		userid = #{userid,jdbcType=VARCHAR},
+		categoryno = #{categoryno,jdbcType=INTEGER}
 		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</update>
 	<!-- 书签类别操作 -->
 	<select id="selectCategoryList" resultType="com.depeng.web.bo.CategoryMiniBO">
 		select categoryid as i, categoryname as n 
 		from category
+		order by createtime desc
 	</select>
 	<select id="selectCategoryListById" parameterType="int"
 		resultType="com.dapeng.domain.Category">
@@ -142,14 +167,6 @@
 		category
 		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</delete>
-<!-- 	<insert id="addCategory" parameterType="com.dapeng.domain.Category"> -->
-<!-- 		insert into -->
-<!-- 		category ( -->
-<!-- 		categoryname,categorytype,parentcategoryid,categorypermission,categorypsw) -->
-<!-- 		values (#{categoryname,jdbcType=VARCHAR}, -->
-<!-- 		#{categorytype,jdbcType=VARCHAR} -->
-<!-- 		,#{parentcategoryid,jdbcType=INTEGER},#{categorypermission,jdbcType=VARCHAR},#{categorypsw}) -->
-<!-- 	</insert> -->
 	<update id="updateCategoryBySlected" parameterType="com.dapeng.domain.Category">
 		update
 		category
@@ -158,9 +175,15 @@
 		where categoryid =
 		#{categoryid}
 	</update>
-	
 	<!-- 获取插入的分类ID -->
 	<select id="selectLastCategoryId" resultType="java.lang.Integer">
-		select last_insert_id();
+		select last_insert_id()
+	</select>
+	<!-- 获取当前用户下最大的分类编号 -->
+	<select id="selectMaxCategoryNoByUserId" resultType="java.lang.Integer" 
+		parameterType="java.lang.String">
+		select IFNULL(max(categoryno),0)
+		from category
+		where userid = #{userid,jdbcType=VARCHAR}
 	</select>
 </mapper>

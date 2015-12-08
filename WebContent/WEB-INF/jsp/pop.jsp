@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/include/constants.jsp"%>
 <div class="mask"></div>
-<div class="popbox pop-bookmark">
+<div class="popbox popbox-for-new pop-bookmark">
 	<form id="newBookmarkForm">
 	<div class="popbox-head">新增网址</div>
 	<div class="popbox-body">
@@ -33,7 +33,7 @@
 	</div>
 	</form>
 </div>
-<div class="popbox pop-category">
+<div class="popbox popbox-for-new pop-category">
 	<form id="newCategoryForm">
 	<div class="popbox-head">新增分类</div>
 	<div class="popbox-body">

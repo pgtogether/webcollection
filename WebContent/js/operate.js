@@ -1,25 +1,41 @@
 var initLoadFunc = {
 	init : function(){
-		this.loadCategoryList();
+		this.loadAllBookmarkList();
 	},
-	// 加载所有分类
-	loadCategoryList : function(){
+	// 加载所有书签
+	loadAllBookmarkList : function(){
 		$.ajax({
 			type : "post",
-			url : CONTEXT_PATH + "/doSelectCategoryList",
+			url : CONTEXT_PATH + "/doSelectBookmarkList",
 			success : function(json) {
-				for(var i=0;i<json.data.length;i++){
-					var categoryid = json.data[i].i;
-					var categoryname = json.data[i].n;
-					// 复制一个模板
-					var $clone = $(".category-template").clone().attr("style","").removeClass("category-template");
-					// 添加新分类模板标题颜色
-					var rand = parseInt(Math.random() * 20, 10);
-					$clone.find("input:hidden").attr("id","categoryid_"+categoryid).val(categoryid);
-					$clone.find(".block-head").css("background-color",randomColor[rand]);
-					$clone.find(".block-head-title").text(categoryname);
-					$(".wrap-box").eq(0).append($clone);
-				}    
+				if(json.result == "OK") {
+					if (json.data && json.data.length > 0) {
+						for(var i=0; i<json.data.length; i++){
+							var categoryno = json.data[i].i;
+							var categoryname = json.data[i].n;
+							var bookmarklist = json.data[i].list;
+							// 复制一个分类模板
+							var $clone = $(".category-template").clone().attr("style","").removeClass("category-template");
+							// 添加新分类模板标题颜色
+							var rand = parseInt(Math.random() * 20, 10);
+							$clone.find("input:hidden").attr("id","categoryno_"+categoryno).val(categoryno);
+							$clone.find(".block-head").css("background-color",randomColor[rand]);
+							$clone.find(".block-head-title").text(categoryname);
+							// 绘制分类下的书签列
+							if (bookmarklist && bookmarklist.length > 0) {
+								var bookmarkHtml = '';
+								for (var n in bookmarklist) {
+									var id = bookmarklist[n].i;
+									var url = bookmarklist[n].u;
+									var name = bookmarklist[n].n;
+									bookmarkHtml += bookmarkOperateFunc.getBookmarkTemplate(id, url, name, true);
+								}
+								$clone.find(".url-list").append(bookmarkHtml);
+							}
+							$(".wrap-box").eq(0).append($clone);
+						} 
+					}
+				}
 			},
 			error : function(e) {
 				alert(e);
@@ -31,7 +47,7 @@ var initLoadFunc = {
 // 提交数据的Ajax的操作
 var doAjaxFunc = {
 	// 新增分类
-	newcategory : function(successCallBack){
+	doNewcategory : function(successCallBack){
 		var $newcategoryform = $("#newCategoryForm");
 		formValidateFunc.validateNewCategoryForm($newcategoryform);
 		if (!$newcategoryform.valid()) {
@@ -43,8 +59,8 @@ var doAjaxFunc = {
 			url : CONTEXT_PATH + "/doAddCategory",
 			success : function(json) {
 				if (json.result == "OK") {
-					var newCategoryId = json.data;
-					successCallBack(newCategoryId);
+					var newCategoryNo = json.data;
+					successCallBack(newCategoryNo);
 				} else {
 					validateErrorsUtil.showValidateErrors($newcategoryform, json.errors);
 				}
@@ -54,7 +70,7 @@ var doAjaxFunc = {
 		});
 	},
 	// 新增书签
-	addbookmark : function(successCallBack) {
+	doAddbookmark : function(successCallBack) {
 		var $addbookmarkform = $("#addbookmarkform");
 		formValidateFunc.validateBookmarkForm($addbookmarkform);
 		if (!$addbookmarkform.valid()) {
@@ -63,9 +79,9 @@ var doAjaxFunc = {
 		// 补足URL的HTTP前缀
 		var url = this.fillUrl($addbookmarkform.find("#url").val());
 		$addbookmarkform.find("#url").val(url);
-		var categoryid = $addbookmarkform.parents(".block").find(".categoryid").val();
+		var categoryno = $addbookmarkform.parents(".block").find(".categoryno").val();
 		var params = $addbookmarkform.serialize();
-		params += "&categoryid=" + categoryid;
+		params += "&categoryno=" + categoryno;
 		$.ajax({
 			data : params,
 			type : "post",
@@ -81,7 +97,7 @@ var doAjaxFunc = {
 			}
 		});
 	},
-	editBookmark : function() {
+	doEditBookmark : function() {
 		var doAjaxFuncSelf = this;
 		// 表单验证
 		var $editbookmarkform = $("#editbookmarkform");
@@ -133,7 +149,7 @@ var doAjaxFunc = {
 		$(".pop-callback").animate({
 			top : "10px",
 			opacity : 1
-		}, 800, function() {
+		}, 500, function() {
 			$(this).delay(1000).animate({
 				top : "-350px",
 				opacity : 0.3

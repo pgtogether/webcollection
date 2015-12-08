@@ -97,14 +97,14 @@ var newCategoryOrBookMarkFunc = {
 					return;
 				}
 				// 提交到后台
-				doAjaxFunc.newcategory(function(newCategoryId){
+				doAjaxFunc.doNewcategory(function(newCategoryNo){
 					// 保存成功后的回调方法
 					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
 					var categoryname = $("#categoryname").val();
 					var $clone = $(".category-template").clone().removeClass("category-template");
 					// 添加新分类模板标题颜色
 					var rand = parseInt(Math.random() * 20, 10);
-					$clone.find("input:hidden").attr("id","categoryid_"+newCategoryId);
+					$clone.find("input:hidden").attr("id","categoryno_"+newCategoryNo).val(newCategoryNo);
 					$clone.find(".block-head").css("background-color",randomColor[rand]);
 					$clone.find(".block-head-title").text(categoryname);
 					$(".wrap-box").eq(0).prepend($clone);
@@ -115,13 +115,13 @@ var newCategoryOrBookMarkFunc = {
 			}
 			openSortableFunc.boxSortable();
 			$(".mask").hide();
-			$(".popbox").hide();
+			$(".popbox-for-new").hide();
 		});
 	},
 	cancelNew : function() {
 		$(".popbox .cancel-btn").click(function() {
 			$(".mask").hide();
-			$(".popbox").hide();
+			$(".popbox-for-new").hide();
 		});
 	},
 	callbackShow : function() {
@@ -321,14 +321,14 @@ var bookmarkOperateFunc = {
 			// 确认新增书签
 			if ($thisBtn.parents(".addbookmark").length > 0) {
 				// 保存数据
-				doAjaxFunc.addbookmark(function(){
+				doAjaxFunc.doAddbookmark(function(){
 					// 保存数据成功后的回调方法
 					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
 					var $addbookmarkform = $("#addbookmarkform");
 					var url = $addbookmarkform.find("#url").val();
 					var name = $addbookmarkform.find("#bookmarkname").val();
 					// 获取新增书签的模板
-					var template = selfFunc.getBookmarkTemplate(url, name);
+					var template = selfFunc.getBookmarkTemplate("", url, name, false);
 					// 添加一个新书签
 					var $ul = $addbookmarkform.parents("ul");
 					$ul.prepend(template);
@@ -342,7 +342,7 @@ var bookmarkOperateFunc = {
 			else if ($thisBtn.parents(".editbookmark").length > 0) {
 				// TODO
 				// 保存数据
-				doAjaxFunc.editBookmark();
+				doAjaxFunc.doEditBookmark();
 			}
 			// 确认删除书签
 			else if ($thisBtn.parents(".delbookmark").length > 0) {
@@ -438,9 +438,14 @@ var bookmarkOperateFunc = {
 		return operateHtml;
 	},
 	// 新增书签
-	getBookmarkTemplate : function(url, name) {
+	getBookmarkTemplate : function(id, url, name, isDisplay) {
 		var operateHtml = '';
-		operateHtml += '<li style="display:none;"><a href="' + url + '" target="blank">' + name + '</a>';
+		if (isDisplay){
+			operateHtml += '<li';	
+		} else {
+			operateHtml += '<li style="display:none;"';
+		}
+		operateHtml += ' value="'+ id +'"><a href="' + url + '" target="_blank">' + name + '</a>';
 		operateHtml += '<div class="operatebtn"></div></li>';
 		return operateHtml;
 	}

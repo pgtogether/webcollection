@@ -17,6 +17,8 @@
 
 package com.dapeng.controller.form;
 
+import javax.validation.constraints.Digits;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
 
@@ -33,11 +35,12 @@ import org.hibernate.validator.constraints.URL;
  */
 public class BookMarkForm {
 
-    private String bookmarkid;
-    
-    @NotEmpty(message = "分类ID不存在")
-    private String categoryid;
-    
+    private String bookmarkno;
+
+    @NotEmpty(message = "非法操作")
+    @Digits(integer = 11, fraction = 0, message = "非法操作")
+    private String categoryno;
+
     @NotEmpty(message = "请输入网址")
     @URL(message = "请输入合法的网址")
     private String url;
@@ -46,9 +49,9 @@ public class BookMarkForm {
     private String bookmarkname;
 
     private String tags;
-    
+
     private String description;
-    
+
     public String getUrl() {
         return url;
     }
@@ -65,28 +68,28 @@ public class BookMarkForm {
         this.bookmarkname = bookmarkname;
     }
 
-    public String getBookmarkid() {
-        return bookmarkid;
+    public String getBookmarkno() {
+        return bookmarkno;
     }
 
-    public void setBookmarkid(String bookmarkid) {
-        this.bookmarkid = bookmarkid;
+    public void setBookmarkno(String bookmarkno) {
+        this.bookmarkno = bookmarkno;
     }
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-    public String getCategoryid() {
-        return categoryid;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCategoryid(String categoryid) {
-        this.categoryid = categoryid;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCategoryno() {
+        return categoryno;
+    }
+
+    public void setCategoryno(String categoryno) {
+        this.categoryno = categoryno;
     }
 
     public String getTags() {

@@ -5,7 +5,7 @@
 	<!-- 分类卡片模板 -->
 	<div class="category-template block" style="display: none;">
 		<div class="block-head head-style">
-			<input type="hidden" id="categoryid_" class="categoryid" />
+			<input type="hidden" id="categoryno_" class="categoryno" />
 			<div class="block-head-title">默认分类</div>
 			<div class="block-head-func"></div>
 		</div>

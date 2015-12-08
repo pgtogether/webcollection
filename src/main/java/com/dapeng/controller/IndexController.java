@@ -11,7 +11,6 @@
  */
 package com.dapeng.controller;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -23,9 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.dapeng.constants.BookmarkDeleteEnum;
-import com.dapeng.constants.BookmarkHotEnum;
-import com.dapeng.constants.BookmarkPermissionEnum;
 import com.dapeng.constants.CategoryPermissionEnum;
 import com.dapeng.constants.CategoryTypeEnum;
 import com.dapeng.controller.form.BookMarkForm;
@@ -37,6 +33,7 @@ import com.dapeng.service.CategoryService;
 import com.dapeng.service.bo.BookmarkBO;
 import com.dapeng.service.bo.CategoryBO;
 import com.depeng.web.bo.CategoryMiniBO;
+import com.depeng.web.bo.CategoryWithBookmarkMiniBO;
 
 /**
  * 类的功能描述
@@ -86,7 +83,8 @@ public class IndexController extends BaseController {
     @RequestMapping(value = "doSelectBookmarkList", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public Map<String, Object> doSelectBookmarkList() {
-        List<Bookmark> bookmarkList = bookmarkService.selectBookmarkList();
+        String userid = "testUser";
+        List<CategoryWithBookmarkMiniBO> bookmarkList = bookmarkService.selectBookmarkList(userid);
         return ajaxSuccess(bookmarkList);
     }
 
@@ -98,8 +96,9 @@ public class IndexController extends BaseController {
     @RequestMapping(value = "doSelectSametypeBookmarkList", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public Map<String, Object> doSelectSametypeBookmarkList() {
-        List<Bookmark> bookmarkList = bookmarkService.selectBookmarkList();
-        return ajaxSuccess(bookmarkList);
+        // List<Bookmark> bookmarkList = bookmarkService.selectBookmarkList();
+        // return ajaxSuccess(bookmarkList);
+        return ajaxSuccess();
     }
 
     /**
@@ -188,13 +187,14 @@ public class IndexController extends BaseController {
         }
 
         BookmarkBO bookmarkbo = new BookmarkBO();
+        bookmarkbo.setUserid("testUser");
         bookmarkbo.setBookmarkname(form.getBookmarkname());
         bookmarkbo.setUrl(form.getUrl());
-        bookmarkbo.setCategoryid(Integer.valueOf(form.getCategoryid()));
+        bookmarkbo.setCategoryno(Integer.valueOf(form.getCategoryno()));
         bookmarkbo.setDescription(form.getDescription());
-        int rows = bookmarkService.insertBookmark(bookmarkbo);
-        if (rows > 0) {
-            return ajaxSuccess();
+        int maxBookmarkNo = bookmarkService.insertBookmark(bookmarkbo);
+        if (maxBookmarkNo > 0) {
+            return ajaxSuccess(maxBookmarkNo);
         } else {
             return ajaxFail();
         }
@@ -256,7 +256,7 @@ public class IndexController extends BaseController {
         }
         try {
             Bookmark bmdto = new Bookmark();
-            bmdto.setBookmarkid(Integer.valueOf(form.getBookmarkid()));
+            bmdto.setBookmarkno(Integer.valueOf(form.getBookmarkno()));
             bmdto.setBookmarkname(form.getBookmarkname());
             bmdto.setUrl(form.getUrl());
             int rows = bookmarkService.updateBookmarkBySlected(bmdto);
@@ -286,8 +286,10 @@ public class IndexController extends BaseController {
         categoryBO.setCategorytype(CategoryTypeEnum.DEFAULT_CATEGORY_TYPE.getId());
         // 默认父分类
         categoryBO.setParentcategoryid(0);
+        // 默认测试
+        categoryBO.setUserid("testUser");
         int newCategoryId = categoryService.addCategory(categoryBO);
-        if(newCategoryId == 0){
+        if (newCategoryId == 0) {
             return ajaxFail();
         }
         return ajaxSuccess(newCategoryId);
@@ -345,7 +347,7 @@ public class IndexController extends BaseController {
         // bo.setUrl(bookMarkForm.getUrl());
         bo.setBookmarkid(4);
         bo.setSort(5);
-        bo.setCategoryid(2);
+        // bo.setCategoryid(2);
         result = categoryService.updateBookmarkCategory(bo);
         return result;
     }

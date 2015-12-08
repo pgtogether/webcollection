@@ -22,22 +22,28 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * 新增分类
+     * 
      * @param categoryBO
      * @return 新增分类ID
      */
     @Override
     public int addCategory(CategoryBO categoryBO) {
+        // 获取最大的分类编号
+        int maxCategoryNo = categoryDao.selectMaxCategoryNoByUserId(categoryBO.getUserid()) + 1;
         Category category = new Category();
+        category.setUserid(categoryBO.getUserid());
+        category.setCategoryno(maxCategoryNo);
         category.setCategoryname(categoryBO.getCategoryname());
         category.setCategorypermission(categoryBO.getCategorypermission());
         category.setCategorytype(categoryBO.getCategorytype());
         category.setParentcategoryid(categoryBO.getParentcategoryid());
         category.setCategorypsw(categoryBO.getCategorypsw());
-        category.setCreatetime(new Date());
-        category.setUpdatetime(new Date());
+        Date systime = new Date();
+        category.setCreatetime(systime);
+        category.setUpdatetime(systime);
         int result = categoryDao.insert(category);
         if (result > 0) {
-            return categoryDao.selectLastCategoryId();
+            return maxCategoryNo;
         } else {
             return 0;
         }
@@ -73,7 +79,7 @@ public class CategoryServiceImpl implements CategoryService {
         Bookmark bm = new Bookmark();
         bm.setBookmarkid(bo.getBookmarkid());
         bm.setSort(bo.getSort());
-        bm.setCategoryid(bo.getCategoryid());
+        bm.setCategoryno(bo.getCategoryno());
         return categoryDao.updateBookmarkCategory(bm);
     }
 

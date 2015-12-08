@@ -9,6 +9,7 @@ import java.util.Date;
  * 
  */
 public class Bookmark {
+
     private int bookmarkid;
 
     private String bookmarkname;
@@ -17,11 +18,8 @@ public class Bookmark {
 
     private String permission;
 
-    private int categoryid;
+    private int categoryno;
 
-    /**
-     * 访问次数
-     */
     private int usetimes;
 
     private String fastletters;
@@ -41,6 +39,10 @@ public class Bookmark {
     private String hot;
 
     private String deleteflg;
+
+    private String userid;
+
+    private int bookmarkno;
 
     public int getBookmarkid() {
         return bookmarkid;
@@ -74,16 +76,19 @@ public class Bookmark {
         this.permission = permission;
     }
 
+    public int getCategoryno() {
+        return categoryno;
+    }
 
-    public int getCategoryid() {
-		return categoryid;
-	}
+    public void setCategoryno(int categoryno) {
+        this.categoryno = categoryno;
+    }
 
-	public void setCategoryid(int categoryid) {
-		this.categoryid = categoryid;
-	}
+    public void setBookmarkno(int bookmarkno) {
+        this.bookmarkno = bookmarkno;
+    }
 
-	public int getUsetimes() {
+    public int getUsetimes() {
         return usetimes;
     }
 
@@ -161,6 +166,14 @@ public class Bookmark {
 
     public void setDeleteflg(String deleteflg) {
         this.deleteflg = deleteflg;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
 }

@@ -19,6 +19,10 @@ public class CategoryBO {
 
     private String categorypsw;
     
+    private String userid;
+    
+    private String categoryno;
+    
     public int getCategoryid() {
         return categoryid;
     }
@@ -65,6 +69,22 @@ public class CategoryBO {
 
     public void setCategorypsw(String categorypsw) {
         this.categorypsw = categorypsw;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getCategoryno() {
+        return categoryno;
+    }
+
+    public void setCategoryno(String categoryno) {
+        this.categoryno = categoryno;
     }
 
 }

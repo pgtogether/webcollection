@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dapeng.dao.BookmarkMapper" >
+  <resultMap id="BaseResultMap" type="com.dapeng.domain.Bookmark" >
+    <id column="bookmarkid" property="bookmarkid" jdbcType="INTEGER" />
+    <result column="bookmarkname" property="bookmarkname" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="bookmarkno" property="bookmarkno" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="permission" property="permission" jdbcType="VARCHAR" />
+    <result column="categoryid" property="categoryid" jdbcType="INTEGER" />
+    <result column="usetimes" property="usetimes" jdbcType="INTEGER" />
+    <result column="fastletters" property="fastletters" jdbcType="VARCHAR" />
+    <result column="pinyinhead" property="pinyinhead" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="lastusetime" property="lastusetime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="hot" property="hot" jdbcType="VARCHAR" />
+    <result column="deleteflg" property="deleteflg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bookmarkid, bookmarkname, userid, bookmarkno, url, permission, categoryid, usetimes, 
+    fastletters, pinyinhead, createtime, lastusetime, updatetime, description, sort, 
+    hot, deleteflg
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bookmark
+    where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bookmark
+    where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dapeng.domain.Bookmark" >
+    insert into bookmark (bookmarkid, bookmarkname, userid, 
+      bookmarkno, url, permission, 
+      categoryid, usetimes, fastletters, 
+      pinyinhead, createtime, lastusetime, 
+      updatetime, description, sort, 
+      hot, deleteflg)
+    values (#{bookmarkid,jdbcType=INTEGER}, #{bookmarkname,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{bookmarkno,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR}, 
+      #{categoryid,jdbcType=INTEGER}, #{usetimes,jdbcType=INTEGER}, #{fastletters,jdbcType=VARCHAR}, 
+      #{pinyinhead,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{lastusetime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{hot,jdbcType=VARCHAR}, #{deleteflg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dapeng.domain.Bookmark" >
+    insert into bookmark
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bookmarkid != null" >
+        bookmarkid,
+      </if>
+      <if test="bookmarkname != null" >
+        bookmarkname,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="bookmarkno != null" >
+        bookmarkno,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="permission != null" >
+        permission,
+      </if>
+      <if test="categoryid != null" >
+        categoryid,
+      </if>
+      <if test="usetimes != null" >
+        usetimes,
+      </if>
+      <if test="fastletters != null" >
+        fastletters,
+      </if>
+      <if test="pinyinhead != null" >
+        pinyinhead,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="lastusetime != null" >
+        lastusetime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="hot != null" >
+        hot,
+      </if>
+      <if test="deleteflg != null" >
+        deleteflg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bookmarkid != null" >
+        #{bookmarkid,jdbcType=INTEGER},
+      </if>
+      <if test="bookmarkname != null" >
+        #{bookmarkname,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="bookmarkno != null" >
+        #{bookmarkno,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null" >
+        #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryid != null" >
+        #{categoryid,jdbcType=INTEGER},
+      </if>
+      <if test="usetimes != null" >
+        #{usetimes,jdbcType=INTEGER},
+      </if>
+      <if test="fastletters != null" >
+        #{fastletters,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyinhead != null" >
+        #{pinyinhead,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastusetime != null" >
+        #{lastusetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="hot != null" >
+        #{hot,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteflg != null" >
+        #{deleteflg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dapeng.domain.Bookmark" >
+    update bookmark
+    <set >
+      <if test="bookmarkname != null" >
+        bookmarkname = #{bookmarkname,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="bookmarkno != null" >
+        bookmarkno = #{bookmarkno,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null" >
+        permission = #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryid != null" >
+        categoryid = #{categoryid,jdbcType=INTEGER},
+      </if>
+      <if test="usetimes != null" >
+        usetimes = #{usetimes,jdbcType=INTEGER},
+      </if>
+      <if test="fastletters != null" >
+        fastletters = #{fastletters,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyinhead != null" >
+        pinyinhead = #{pinyinhead,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastusetime != null" >
+        lastusetime = #{lastusetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="hot != null" >
+        hot = #{hot,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteflg != null" >
+        deleteflg = #{deleteflg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dapeng.domain.Bookmark" >
+    update bookmark
+    set bookmarkname = #{bookmarkname,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=VARCHAR},
+      bookmarkno = #{bookmarkno,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      permission = #{permission,jdbcType=VARCHAR},
+      categoryid = #{categoryid,jdbcType=INTEGER},
+      usetimes = #{usetimes,jdbcType=INTEGER},
+      fastletters = #{fastletters,jdbcType=VARCHAR},
+      pinyinhead = #{pinyinhead,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      lastusetime = #{lastusetime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      hot = #{hot,jdbcType=VARCHAR},
+      deleteflg = #{deleteflg,jdbcType=VARCHAR}
+    where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -14,15 +14,18 @@ public class BookmarkBO {
 
     private String bookmarkname;
 
+    private String userid;
+
+    private int bookmarkno;
+
     private String url;
 
     private String permission;
 
-    private int categoryid;
+    private int categoryno;
 
-    /**
-     * 访问次数
-     */
+    private String categoryname;
+
     private int usetimes;
 
     private String fastletters;
@@ -74,14 +77,6 @@ public class BookmarkBO {
     public void setPermission(String permission) {
         this.permission = permission;
     }
-
-    public int getCategoryid() {
-		return categoryid;
-	}
-
-	public void setCategoryid(int categoryid) {
-		this.categoryid = categoryid;
-	}
 
     public int getUsetimes() {
         return usetimes;
@@ -161,6 +156,38 @@ public class BookmarkBO {
 
     public void setDeleteflg(String deleteflg) {
         this.deleteflg = deleteflg;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getCategoryname() {
+        return categoryname;
+    }
+
+    public void setCategoryname(String categoryname) {
+        this.categoryname = categoryname;
+    }
+
+    public int getBookmarkno() {
+        return bookmarkno;
+    }
+
+    public void setBookmarkno(int bookmarkno) {
+        this.bookmarkno = bookmarkno;
+    }
+
+    public int getCategoryno() {
+        return categoryno;
+    }
+
+    public void setCategoryno(int categoryno) {
+        this.categoryno = categoryno;
     }
 
 }

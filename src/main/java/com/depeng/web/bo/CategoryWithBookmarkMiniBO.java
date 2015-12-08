@@ -17,6 +17,8 @@
 
 package com.depeng.web.bo;
 
+import java.util.List;
+
 /**
  * ClassName:BookmarkMiniBO <br/>
  * Function: TODO ADD FUNCTION. <br/>
@@ -28,17 +30,16 @@ package com.depeng.web.bo;
  * @since JDK 1.6
  * @see
  */
-public class BookmarkMiniBO {
-    
-    // bookmarkno
+public class CategoryWithBookmarkMiniBO {
+    // categoryno
     private int i;
 
-    // bookmarkname
+    // categoryname
     private String n;
 
-    // url
-    private String u;
-
+    // bookmarklist
+    private List<BookmarkMiniBO> list;
+    
     public int getI() {
         return i;
     }
@@ -55,12 +56,12 @@ public class BookmarkMiniBO {
         this.n = n;
     }
 
-    public String getU() {
-        return u;
+    public List<BookmarkMiniBO> getList() {
+        return list;
     }
 
-    public void setU(String u) {
-        this.u = u;
+    public void setList(List<BookmarkMiniBO> list) {
+        this.list = list;
     }
 
 }

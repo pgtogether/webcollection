@@ -4,10 +4,12 @@ import java.util.List;
 
 import com.dapeng.domain.Bookmark;
 import com.dapeng.service.bo.BookmarkBO;
+import com.depeng.web.bo.CategoryWithBookmarkMiniBO;
 
 public interface BookmarkService {
+    
 	//查看书签列表
-	List<Bookmark> selectBookmarkList(); 
+	List<CategoryWithBookmarkMiniBO> selectBookmarkList(String userid);
 	
 	//查找同一类别的书签
 	List<Bookmark> selectBookmarkListByCategoryid(int categoryid); 
