@@ -31,14 +31,14 @@
             		data: $("#loginform").serialize(), 
             		url: "${context_path}/doLogin",
             		success : function(json) {
-            			if(json.result="OK"){
-        					alert("登录成功");
-        				}else{
-        					alert("登录失败");
-        				}
+            			if(json.result=="OK"){
+            				alert("登录成功");
+            			}else{
+            				alert("用户名或密码错误！");
+            			}
             		},
             		error : function(e) {
-            			alert(e);
+            			alert("服务器错误！");
             		}
             	});
             }
