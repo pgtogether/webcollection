@@ -420,6 +420,7 @@ var bookmarkOperateFunc = {
 			desc = values.desc ? values.desc : "";
 		}
 		var operateHtml = '';
+		// addbookmarkform or editbookmarkform
 		operateHtml += '<li class="editbookmarktemplate li-disabled" style="display:none;">';
 		operateHtml += '<form id="' + editclass + 'form">';
 		operateHtml += '<div class="' + editclass + '">';
@@ -439,7 +440,7 @@ var bookmarkOperateFunc = {
 	// 新增书签
 	getBookmarkTemplate : function(url, name) {
 		var operateHtml = '';
-		operateHtml += '<li style="display:none;"><a href="' + url + '">' + name + '</a>';
+		operateHtml += '<li style="display:none;"><a href="' + url + '" target="blank">' + name + '</a>';
 		operateHtml += '<div class="operatebtn"></div></li>';
 		return operateHtml;
 	}

@@ -19,7 +19,7 @@ public interface BookmarkService {
 	Bookmark selectBookmarkListById(int bookmarkId);
 	
 	//插入书签
-	int insertBookmark(Bookmark bookmark);
+	int insertBookmark(BookmarkBO bookmarkbo);
 	
 	//逻辑删除  放入回收站
 	int deleteBookmarkById(int id);

@@ -90,11 +90,11 @@
 	</update>
 	<insert id="insertBookmark" parameterType="com.dapeng.domain.Bookmark">
 		insert into bookmark (
-		bookmarkname,url,permission,categoryid,createtime,deleteflg)
+		bookmarkname,url,permission,categoryid,createtime,hot,deleteflg)
 		values
 		(#{bookmarkname,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
 		,#{permission,jdbcType=VARCHAR},#{categoryid,jdbcType=INTEGER},#{createtime}
-		,#{deleteflg,jdbcType=VARCHAR})
+		,#{hot,jdbcType=VARCHAR},#{deleteflg,jdbcType=VARCHAR})
 	</insert>
 	<update id="updateBookmarkById" parameterType="com.dapeng.domain.Bookmark">
 		update bookmark
