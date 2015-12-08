@@ -32,12 +32,12 @@ public class TestServiceImpl implements TestService {
 
 	@Override
 	public int insertUser(User user) {
-		User userdto = new User();
-		userdto.setUser_name(user.getUser_name());
-		userdto.setUser_pwd(user.getUser_pwd());
-		userdto.setUser_email(user.getUser_email());
-		
-		return  testDao.insertUser(userdto);
+//		User userdto = new User();
+//		userdto.setUser_name(user.getUser_name());
+//		userdto.setUser_pwd(user.getUser_pwd());
+//		userdto.setUser_email(user.getUser_email());
+//		
+		return  testDao.insertUser(null);
 	}
 
 }

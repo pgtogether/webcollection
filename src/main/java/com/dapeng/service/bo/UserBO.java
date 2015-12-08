@@ -1,13 +1,15 @@
-package com.dapeng.domain;
+/**
+ * 
+ */
+package com.dapeng.service.bo;
 
 import java.util.Date;
 
 /**
- * 用户类
- * @author Administrator
+ * @author lixf
  *
  */
-public class User {
+public class UserBO {
 	private int userid ;
 	private String username;
 	private String password;
@@ -64,5 +66,4 @@ public class User {
 	public void setPswquestion(String pswquestion) {
 		this.pswquestion = pswquestion;
 	}
-	
 }

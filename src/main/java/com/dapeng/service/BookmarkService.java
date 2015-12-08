@@ -3,9 +3,7 @@
 import java.util.List;
 
 import com.dapeng.domain.Bookmark;
-import com.dapeng.domain.Category;
 import com.dapeng.service.bo.BookmarkBO;
-import com.dapeng.service.bo.CategoryBO;
 
 public interface BookmarkService {
 	//查看书签列表

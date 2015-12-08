@@ -45,7 +45,7 @@ public class RegisterController {
 			RequestMethod.POST })
 	@ResponseBody
 	public String doUserRegist(User user) {
-		System.out.println(user.getUser_name()+"用户名...");
+/*		System.out.println(user.getUser_name()+"用户名...");
 		User userdto = new User();
 		userdto.setUser_name(user.getUser_name());
 		userdto.setUser_pwd(user.getUser_pwd());
@@ -56,7 +56,8 @@ public class RegisterController {
 			return "OK";
 		} else {
 			return "NG";
-		}
+		}*/
+		return null;
 	}
 
 }
