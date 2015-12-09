@@ -8,14 +8,18 @@
 */
 package com.dapeng.controller;
 
+import java.util.Date;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.dapeng.domain.User;
-import com.dapeng.service.TestService;
+import com.dapeng.controller.form.RegistForm;
+import com.dapeng.service.RegistService;
+import com.dapeng.service.bo.UserBO;
 
 /**
  * 
@@ -29,35 +33,40 @@ import com.dapeng.service.TestService;
  */
 @Controller
 @RequestMapping("/*")
-public class RegisterController {
+public class RegisterController extends BaseController{
 	
 	@Autowired
-	private TestService testService;
+	private RegistService registService;
 	
 	
-	@RequestMapping("userRegist")
+	@RequestMapping("regist")
 	public String name(){
-		return "userRegist";
+		return "regist";
 	}
 	
 	
-	@RequestMapping(value = "doUserRegist", method = { RequestMethod.GET,
+	@RequestMapping(value = "doRegist", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	@ResponseBody
-	public String doUserRegist(User user) {
-/*		System.out.println(user.getUser_name()+"用户名...");
-		User userdto = new User();
-		userdto.setUser_name(user.getUser_name());
-		userdto.setUser_pwd(user.getUser_pwd());
-		userdto.setUser_email(user.getUser_email());
-		int result = testService.insertUser(userdto);
+	public Map<String, Object> doRegist(RegistForm registForm) {
+		System.out.println(registForm.getUsername()+"用户名...");
+		UserBO userBO = new UserBO();
+		userBO.setUsername(registForm.getUsername());
+		userBO.setBirthday(new Date());
+		userBO.setSex(registForm.getSex());
+		userBO.setPhone(registForm.getPhone());
+		userBO.setPswquestion(registForm.getPswquestion());
+		userBO.setPswanswer(registForm.getPswanswer());
+		userBO.setPassword(registForm.getPassword());
+		userBO.setEmail(registForm.getEmail());
+		
+		int result = registService.registUser(userBO);
 		
 		if (result > 0) {
-			return "OK";
+			return ajaxSuccess();
 		} else {
-			return "NG";
-		}*/
-		return null;
+			return ajaxFail();
+		}
 	}
 
 }

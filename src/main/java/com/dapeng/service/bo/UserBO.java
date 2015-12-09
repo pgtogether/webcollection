@@ -18,6 +18,7 @@ public class UserBO {
 	private String phone;
 	private String email;
 	private String pswquestion;
+	private String pswanswer;
 	public int getUserid() {
 		return userid;
 	}
@@ -66,4 +67,11 @@ public class UserBO {
 	public void setPswquestion(String pswquestion) {
 		this.pswquestion = pswquestion;
 	}
+	public String getPswanswer() {
+		return pswanswer;
+	}
+	public void setPswanswer(String pswanswer) {
+		this.pswanswer = pswanswer;
+	}
+	
 }

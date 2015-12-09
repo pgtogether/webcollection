@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.dapeng.dao.RegistMapper">
+	<resultMap id="BaseResultMap" type="com.dapeng.domain.User">
+		<id column="userid" property="userid" jdbcType="INTEGER" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+		<result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="pswquestion" property="pswquestion" jdbcType="VARCHAR" />
+		<result column="pswanswer" property="pswanswer" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<insert id="registUser" parameterType="com.dapeng.domain.User" >
+		insert into user_info
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="username != null">
+				username,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="sex != null">
+				sex,
+			</if>
+			<if test="birthday != null">
+				birthday,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+			<if test="pswquestion != null">
+				pswquestion,
+			</if>
+			<if test="pswanswer != null">
+				pswanswer,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				#{birthday,jdbcType=TIMESTAMP},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="pswquestion != null">
+				#{pswquestion,jdbcType=VARCHAR},
+			</if>
+			<if test="pswanswer != null">
+				#{pswanswer,jdbcType=VARCHAR},
+			</if>
+		</trim>
+		
+		
+		
+		
+<!-- 		(username,password,sex,birthday,phone,email,pswquestion,pswanswer)
+		values(#{username,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR}
+		,#{birthday},#{phone,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{pswquestion,jdbcType=VARCHAR}
+		,#{pswanswer,jdbcType=VARCHAR}) -->
+	</insert>
+	
+</mapper>
