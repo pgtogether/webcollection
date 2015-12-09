@@ -33,9 +33,7 @@ import org.hibernate.validator.constraints.URL;
  * @since JDK 1.6
  * @see
  */
-public class BookMarkForm {
-
-    private String bookmarkno;
+public class AddBookMarkForm {
 
     @NotEmpty(message = "非法操作")
     @Digits(integer = 11, fraction = 0, message = "非法操作")
@@ -68,14 +66,6 @@ public class BookMarkForm {
         this.bookmarkname = bookmarkname;
     }
 
-    public String getBookmarkno() {
-        return bookmarkno;
-    }
-
-    public void setBookmarkno(String bookmarkno) {
-        this.bookmarkno = bookmarkno;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -99,5 +89,5 @@ public class BookMarkForm {
     public void setTags(String tags) {
         this.tags = tags;
     }
-
+    
 }

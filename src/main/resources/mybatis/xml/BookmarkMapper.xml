@@ -76,7 +76,7 @@
 			<if test="permission != null">
 				permission,
 			</if>
-			<if test="categoryno != null">
+			<if test="categoryno != 0">
 				categoryno,
 			</if>
 			<if test="usetimes != null">
@@ -129,7 +129,7 @@
 			<if test="permission != null">
 				#{permission,jdbcType=VARCHAR},
 			</if>
-			<if test="categoryno != null">
+			<if test="categoryno != 0">
 				#{categoryno,jdbcType=INTEGER},
 			</if>
 			<if test="usetimes != null">
@@ -182,7 +182,7 @@
 			<if test="permission != null">
 				permission = #{permission,jdbcType=VARCHAR},
 			</if>
-			<if test="categoryno != null">
+			<if test="categoryno != 0">
 				categoryno = #{categoryno,jdbcType=INTEGER},
 			</if>
 			<if test="usetimes != null">
@@ -284,7 +284,6 @@
 		select * from bookmark
 		where deleteflg="1"
 	</select>
-
 	<select id="selectBookmarkListById" parameterType="int"
 		resultType="com.dapeng.domain.Bookmark">
 		select * from bookmark
@@ -292,10 +291,11 @@
 		#{bookmarkid,jdbcType=INTEGER}
 	</select>
 	<!-- 逻辑删除书签 -->
-	<update id="deleteBookmarkById" parameterType="int">
+	<update id="deleteBookmarkByUnique" parameterType="com.dapeng.domain.Bookmark">
 		update bookmark
-		set deleteflg = "1"
-		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+		set deleteflg = #{deleteflg,jdbcType=VARCHAR}
+		where bookmarkno = #{bookmarkno,jdbcType=INTEGER}
+		and userid = #{userid,jdbcType=VARCHAR}
 	</update>
 	<!-- 物理删除书签 -->
 	<delete id="deletePhysicsBookmarkById" parameterType="int">
@@ -342,15 +342,6 @@
 			hot = #{hot,jdbcType=VARCHAR}, deleteflg = #{deleteflg,jdbcType=VARCHAR} -->
 		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
 	</update>
-	<update id="updateBookmarkBySlected" parameterType="com.dapeng.domain.Bookmark">
-		update
-		bookmark
-		set
-		bookmarkname = #{bookmarkname},
-		url = #{url}
-		where bookmarkid
-		= #{bookmarkid}
-	</update>
 	<insert id="insertUser" parameterType="com.dapeng.domain.User">
 		insert into
 		user(user_name,user_pwd,user_email)
@@ -364,6 +355,61 @@
 		where
 		userid = #{userid,jdbcType=VARCHAR}
 	</select>
+	<update id="updateBookmarkByUnique" parameterType="com.dapeng.domain.Bookmark">
+		update bookmark
+		<set>
+			<if test="bookmarkname != null">
+				bookmarkname = #{bookmarkname,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				userid = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="bookmarkno != null and bookmarkno != 0">
+				bookmarkno = #{bookmarkno,jdbcType=INTEGER},
+			</if>
+			<if test="url != null">
+				url = #{url,jdbcType=VARCHAR},
+			</if>
+			<if test="permission != null">
+				permission = #{permission,jdbcType=VARCHAR},
+			</if>
+			<if test="categoryno != null and categoryno != 0">
+				categoryno = #{categoryno,jdbcType=INTEGER},
+			</if>
+			<if test="usetimes != null and usetimes != 0">
+				usetimes = #{usetimes,jdbcType=INTEGER},
+			</if>
+			<if test="fastletters != null">
+				fastletters = #{fastletters,jdbcType=VARCHAR},
+			</if>
+			<if test="pinyinhead != null">
+				pinyinhead = #{pinyinhead,jdbcType=VARCHAR},
+			</if>
+			<if test="createtime != null">
+				createtime = #{createtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastusetime != null">
+				lastusetime = #{lastusetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatetime != null">
+				updatetime = #{updatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="description != null">
+				description = #{description,jdbcType=VARCHAR},
+			</if>
+			<if test="sort != null and sort != 0">
+				sort = #{sort,jdbcType=INTEGER},
+			</if>
+			<if test="hot != null">
+				hot = #{hot,jdbcType=VARCHAR},
+			</if>
+			<if test="deleteflg != null">
+				deleteflg = #{deleteflg,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where bookmarkno = #{bookmarkno,jdbcType=INTEGER}
+		and userid = #{userid,jdbcType=VARCHAR}
+	</update>
 </mapper>
 
 <!-- permission = #{permission,jdbcType=VARCHAR}, categoryno = #{categoryno,jdbcType=VARCHAR}, 

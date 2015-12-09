@@ -88,7 +88,9 @@ var doAjaxFunc = {
 			url : CONTEXT_PATH + "/doAddBookmark",
 			success : function(json) {
 				if (json.result == "OK") {
-					successCallBack();
+					// 返回新增的书签编号
+					var newBookmarkNo = json.data;
+					successCallBack(newBookmarkNo);
 				} else {
 					validateErrorsUtil.showValidateErrors($addbookmarkform, json.errors);
 				}
@@ -97,8 +99,7 @@ var doAjaxFunc = {
 			}
 		});
 	},
-	doEditBookmark : function() {
-		var doAjaxFuncSelf = this;
+	doEditBookmark : function(successCallBack) {
 		// 表单验证
 		var $editbookmarkform = $("#editbookmarkform");
 		formValidateFunc.validateBookmarkForm($editbookmarkform);
@@ -107,28 +108,39 @@ var doAjaxFunc = {
 		}
 		var url = this.fillUrl($editbookmarkform.find("#url").val());
 		$editbookmarkform.find("#url").val(url);
-		var name = $editbookmarkform.find("#bookmarkname").val();
-		// TODO 还没有完，需要分类ID以及书签ID支持
-		
-		// 获取要修改的书签，并修改成新的内容
-		var $updateli = $editbookmarkform.parents("li").prev(".pointto");
-		var $updateli_a = $updateli.find("a");
-		$updateli_a.html(name);
-		$updateli_a.attr("href",url);
+		var bookmarkno = $editbookmarkform.parents("li").prev(".pointto").attr("value");
+		var params = $editbookmarkform.serialize();
+		params += "&bookmarkno=" + bookmarkno;
 		// 提交后台保存
 		$.ajax({
-			data : $editbookmarkform.serialize(),
 			type : "post",
 			url : CONTEXT_PATH + "/doUpdateBookmark",
+			data : params,
 			success : function(json) {
 				if (json.result == "OK") {
-					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
-					// 添加更新成功图标
-					$updateli.addClass("valid-pass");
-					// 更新成功提示动作
-					doAjaxFuncSelf.saveSuccessAnimate();
+					successCallBack();
 				} else {
 					validateErrorsUtil.showValidateErrors($editbookmarkform, json.errors);
+				}
+			},
+			error : function(e) {
+			}
+		});
+	},
+	doDeleteBookmark : function(bookmarkno){
+		var $this = this;
+		// 提交后台保存
+		$.ajax({
+			type : "post",
+			url : CONTEXT_PATH + "/doDeleteBookmark",
+			data : {
+				bookmarkno : bookmarkno
+			},
+			success : function(json) {
+				if (json.result == "OK") {
+					$this.saveSuccessAnimate("删除成功");
+				} else {
+					alert(json.msg);
 				}
 			},
 			error : function(e) {
@@ -145,11 +157,13 @@ var doAjaxFunc = {
 		return url;
 	},
 	// 保存成功后的动画提示
-	saveSuccessAnimate : function(){
-		$(".pop-callback").animate({
+	saveSuccessAnimate : function(msg){
+		var $popCallBack = $(".pop-callback");
+		$popCallBack.find(".callbackmsg").html(msg);
+		$popCallBack.animate({
 			top : "10px",
 			opacity : 1
-		}, 500, function() {
+		}, 800, function() {
 			$(this).delay(1000).animate({
 				top : "-350px",
 				opacity : 0.3

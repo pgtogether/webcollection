@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import com.dapeng.constants.BookmarkDeleteEnum;
 import com.dapeng.constants.BookmarkHotEnum;
@@ -110,8 +109,12 @@ public class BookmarkServiceImpl implements BookmarkService {
     }
 
     @Override
-    public int deleteBookmarkById(int id) {
-        return bookmarkDao.deleteBookmarkById(id);
+    public int deleteBookmarkByUnique(String userid,int bookmarkno) {
+        Bookmark bookmark = new Bookmark();
+        bookmark.setUserid(userid);
+        bookmark.setBookmarkno(bookmarkno);
+        bookmark.setDeleteflg(BookmarkDeleteEnum.LOGIC_DELETE.getId());
+        return bookmarkDao.deleteBookmarkByUnique(bookmark);
     }
 
     @Override
@@ -125,8 +128,16 @@ public class BookmarkServiceImpl implements BookmarkService {
     }
 
     @Override
-    public int updateBookmarkBySlected(Bookmark bookmark) {
-        return bookmarkDao.updateBookmarkBySlected(bookmark);
+    public int updateBookmark(BookmarkBO bo) {
+        Bookmark bookmark = new Bookmark();
+        bookmark.setUserid(bo.getUserid());
+        bookmark.setBookmarkno(bo.getBookmarkno());
+        bookmark.setBookmarkname(bo.getBookmarkname());
+        bookmark.setUrl(bo.getUrl());
+        bookmark.setUpdatetime(new Date());
+        // bookmark.setTags(bo.getTags());
+        bookmark.setDescription(bo.getDescription());
+        return bookmarkDao.updateBookmarkByUnique(bookmark);
     }
 
     @Override

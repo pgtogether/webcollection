@@ -110,7 +110,7 @@ body {
 }
 
 .block .block-body ul li {
-	width: 100%; float: left; background: #F7F7F7;
+	width: 100%; float: left;
 }
 
 .block .block-body ul li:hover {

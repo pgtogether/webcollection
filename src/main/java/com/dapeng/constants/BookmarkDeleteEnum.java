@@ -16,7 +16,7 @@ package com.dapeng.constants;
 
 public enum BookmarkDeleteEnum {
 
-    NORMAL_SHOW("0", "正常显示，没有删除"), PHYSICS_DELETE("1", "逻辑删除，放入回收站");
+    NORMAL_SHOW("0", "正常显示，没有删除"), LOGIC_DELETE("1", "逻辑删除，放入回收站");
 
     private String id;
 

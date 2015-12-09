@@ -14,8 +14,13 @@ package com.dapeng.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +29,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dapeng.constants.CategoryPermissionEnum;
 import com.dapeng.constants.CategoryTypeEnum;
-import com.dapeng.controller.form.BookMarkForm;
+import com.dapeng.controller.form.AddBookMarkForm;
 import com.dapeng.controller.form.CategoryForm;
+import com.dapeng.controller.form.EditBookMarkForm;
 import com.dapeng.domain.Bookmark;
 import com.dapeng.domain.Category;
 import com.dapeng.service.BookmarkService;
@@ -82,9 +88,8 @@ public class IndexController extends BaseController {
      */
     @RequestMapping(value = "doSelectBookmarkList", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String, Object> doSelectBookmarkList() {
-        String userid = "testUser";
-        List<CategoryWithBookmarkMiniBO> bookmarkList = bookmarkService.selectBookmarkList(userid);
+    public Map<String, Object> doSelectBookmarkList(HttpSession session) {
+        List<CategoryWithBookmarkMiniBO> bookmarkList = bookmarkService.selectBookmarkList(getSessionUserId(session));
         return ajaxSuccess(bookmarkList);
     }
 
@@ -181,17 +186,17 @@ public class IndexController extends BaseController {
     @RequestMapping(value = "doAddBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public Map<String, Object> doAddBookmark(@Validated
-    BookMarkForm form, BindingResult result) {
+    AddBookMarkForm form, BindingResult result, HttpSession session) {
         if (result.hasErrors()) {
             return ajaxValidateError(result);
         }
 
         BookmarkBO bookmarkbo = new BookmarkBO();
-        bookmarkbo.setUserid("testUser");
-        bookmarkbo.setBookmarkname(form.getBookmarkname());
-        bookmarkbo.setUrl(form.getUrl());
+        bookmarkbo.setUserid(getSessionUserId(session));
+        bookmarkbo.setBookmarkname(StringUtils.trimWhitespace(form.getBookmarkname()));
+        bookmarkbo.setUrl(StringUtils.trimWhitespace(form.getUrl()));
         bookmarkbo.setCategoryno(Integer.valueOf(form.getCategoryno()));
-        bookmarkbo.setDescription(form.getDescription());
+        bookmarkbo.setDescription(StringUtils.trimWhitespace(form.getDescription()));
         int maxBookmarkNo = bookmarkService.insertBookmark(bookmarkbo);
         if (maxBookmarkNo > 0) {
             return ajaxSuccess(maxBookmarkNo);
@@ -209,14 +214,16 @@ public class IndexController extends BaseController {
      */
     @RequestMapping(value = "doDeleteBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public int doDeleteBookmark(String bookmarkid) {
-        int result = -1;
-        try {
-            result = bookmarkService.deleteBookmarkById(Integer.parseInt(bookmarkid));
-        } catch (Exception e) {
-            e.printStackTrace();
+    public Map<String, Object> doDeleteBookmark(HttpServletRequest request, HttpSession session) {
+        String bookmarkno = request.getParameter("bookmarkno");
+        if (StringUtils.isEmpty(bookmarkno)) {
+            return ajaxFail("删除异常");
         }
-        return result;
+        int result = bookmarkService.deleteBookmarkByUnique(getSessionUserId(session), Integer.valueOf(bookmarkno));
+        if (result == 0) {
+            return ajaxFail("删除失败");
+        }
+        return ajaxSuccess();
     }
 
     /**
@@ -250,23 +257,23 @@ public class IndexController extends BaseController {
     @RequestMapping(value = "doUpdateBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public Map<String, Object> doUpdateBookmark(@Validated
-    BookMarkForm form, BindingResult result) {
+    EditBookMarkForm form, BindingResult result, HttpSession session) {
         if (result.hasErrors()) {
             return ajaxValidateError(result);
         }
-        try {
-            Bookmark bmdto = new Bookmark();
-            bmdto.setBookmarkno(Integer.valueOf(form.getBookmarkno()));
-            bmdto.setBookmarkname(form.getBookmarkname());
-            bmdto.setUrl(form.getUrl());
-            int rows = bookmarkService.updateBookmarkBySlected(bmdto);
-            if (rows > 0) {
-                return ajaxSuccess();
-            } else {
-                return ajaxFail();
-            }
-        } catch (Exception e) {
-            return ajaxExecption(e);
+
+        BookmarkBO bo = new BookmarkBO();
+        bo.setUserid(getSessionUserId(session));
+        bo.setUrl(StringUtils.trimWhitespace(form.getUrl()));
+        bo.setBookmarkno(Integer.valueOf(form.getBookmarkno()));
+        bo.setBookmarkname(StringUtils.trimWhitespace(form.getBookmarkname()));
+        bo.setTags(StringUtils.trimWhitespace(form.getTags()));
+        bo.setDescription(StringUtils.trimWhitespace(form.getDescription()));
+        int rows = bookmarkService.updateBookmark(bo);
+        if (rows > 0) {
+            return ajaxSuccess();
+        } else {
+            return ajaxFail();
         }
     }
 
@@ -275,7 +282,7 @@ public class IndexController extends BaseController {
      */
     @RequestMapping(value = "doAddCategory", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String, Object> doAddCategory(CategoryForm form) {
+    public Map<String, Object> doAddCategory(CategoryForm form, HttpSession session) {
         CategoryBO categoryBO = new CategoryBO();
         categoryBO.setCategoryname(form.getCategoryname());
         // 权限
@@ -287,7 +294,7 @@ public class IndexController extends BaseController {
         // 默认父分类
         categoryBO.setParentcategoryid(0);
         // 默认测试
-        categoryBO.setUserid("testUser");
+        categoryBO.setUserid(getSessionUserId(session));
         int newCategoryId = categoryService.addCategory(categoryBO);
         if (newCategoryId == 0) {
             return ajaxFail();
@@ -340,7 +347,7 @@ public class IndexController extends BaseController {
      */
     @RequestMapping(value = "doChangeCategory", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public int doChangeCategory(BookMarkForm bookMarkForm) {
+    public int doChangeCategory(AddBookMarkForm bookMarkForm) {
         int result = -1;
         BookmarkBO bo = new BookmarkBO();
         // bo.setBookmarkname(bookMarkForm.getBookmarkname());

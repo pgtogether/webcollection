@@ -45,6 +45,8 @@ public class BookmarkBO {
     private String hot;
 
     private String deleteflg;
+    
+    private String tags;
 
     public int getBookmarkid() {
         return bookmarkid;
@@ -188,6 +190,14 @@ public class BookmarkBO {
 
     public void setCategoryno(int categoryno) {
         this.categoryno = categoryno;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 
 }

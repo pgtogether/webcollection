@@ -26,7 +26,7 @@ import org.springframework.validation.ObjectError;
  * @date 2015年11月12日 下午7:34:32
  * @version V1.0
  */
-public class BaseController {
+public class BaseController extends SessionController {
 
     public Map<String, Object> ajaxSuccess() {
         Map<String, Object> map = new HashMap<String, Object>();
@@ -87,5 +87,4 @@ public class BaseController {
         map.put("msg", e.getMessage());
         return map;
     }
-
 }

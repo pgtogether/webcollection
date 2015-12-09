@@ -321,28 +321,40 @@ var bookmarkOperateFunc = {
 			// 确认新增书签
 			if ($thisBtn.parents(".addbookmark").length > 0) {
 				// 保存数据
-				doAjaxFunc.doAddbookmark(function(){
+				doAjaxFunc.doAddbookmark(function(newBookmarkNo){
 					// 保存数据成功后的回调方法
 					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
 					var $addbookmarkform = $("#addbookmarkform");
 					var url = $addbookmarkform.find("#url").val();
 					var name = $addbookmarkform.find("#bookmarkname").val();
 					// 获取新增书签的模板
-					var template = selfFunc.getBookmarkTemplate("", url, name, false);
+					var template = selfFunc.getBookmarkTemplate(newBookmarkNo, url, name, false);
 					// 添加一个新书签
 					var $ul = $addbookmarkform.parents("ul");
 					$ul.prepend(template);
 					$ul.find("li:eq(0)").addClass("valid-pass").slideDown(function() {
 						// 成功后的动画效果
-						doAjaxFunc.saveSuccessAnimate();
+						doAjaxFunc.saveSuccessAnimate("保存成功");
 					});
 				});
 			}
 			// 确认编辑书签
 			else if ($thisBtn.parents(".editbookmark").length > 0) {
-				// TODO
 				// 保存数据
-				doAjaxFunc.doEditBookmark();
+				doAjaxFunc.doEditBookmark(function(){
+					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
+					// 获取要修改的书签，并修改成新的内容
+					var $editbookmarkform = $("#editbookmarkform");
+					var name = $editbookmarkform.find("#bookmarkname").val();
+					var $updateli = $editbookmarkform.parents("li").prev(".pointto");
+					var $updateli_a = $updateli.find("a");
+					$updateli_a.html(name);
+					$updateli_a.attr("href",url);
+					// 添加更新成功图标
+					$updateli.addClass("valid-pass");
+					// 更新成功提示动作
+					doAjaxFunc.saveSuccessAnimate("更新成功");
+				});
 			}
 			// 确认删除书签
 			else if ($thisBtn.parents(".delbookmark").length > 0) {
@@ -454,6 +466,7 @@ var bookmarkOperateFunc = {
 // 放入回收站的飞行动作
 var flyTool = {
 	play : function($flyer) {
+		var bookmarkno = $flyer.attr("value");
 		var $clone = $flyer.clone().removeClass().addClass("flystyle");
 		$flyer.removeClass("pointto").find("a").text("");
 		$('body').append($clone);
@@ -475,6 +488,8 @@ var flyTool = {
 		}, 1000, function() {
 			$clone.remove();
 			new JumpObj($('.trashcan')[0], 10).jump();
+			// 放入回收站后再执行删除处理
+			doAjaxFunc.doDeleteBookmark(bookmarkno);
 		});
 	}
 };

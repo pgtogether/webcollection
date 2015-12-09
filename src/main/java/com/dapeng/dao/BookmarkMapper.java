@@ -9,7 +9,7 @@ import com.dapeng.service.bo.BookmarkBO;
 
 @Repository
 public interface BookmarkMapper {
-    
+
     int deleteByPrimaryKey(Integer bookmarkid);
 
     int insert(Bookmark record);
@@ -21,7 +21,7 @@ public interface BookmarkMapper {
     int updateByPrimaryKeySelective(Bookmark record);
 
     int updateByPrimaryKey(Bookmark record);
-    
+
     /**
      * 查找所有标签
      */
@@ -54,11 +54,8 @@ public interface BookmarkMapper {
 
     /**
      * 逻辑删除书签
-     * 
-     * @param id
-     * @return
      */
-    int deleteBookmarkById(int id);
+    int deleteBookmarkByUnique(Bookmark bookmark);
 
     /**
      * 物理删除书签
@@ -74,7 +71,7 @@ public interface BookmarkMapper {
 
     int updateBookmarkById(int id);
 
-    int updateBookmarkBySlected(Bookmark bookmark);
+    int updateBookmarkByUnique(Bookmark bookmark);
 
     // 设置热门书签
     int setHotbookmark(Bookmark bookmark);
@@ -84,7 +81,7 @@ public interface BookmarkMapper {
 
     // 查询所有热门书签
     List<Bookmark> selectHotBookmarkList();
-    
+
     // 获取用户下最大的书签编号
     int selectMaxBookmarkNoByUserId(String userId);
 }
