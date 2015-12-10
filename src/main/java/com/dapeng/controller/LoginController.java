@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dapeng.commons.MD5;
 import com.dapeng.controller.form.LoginForm;
 import com.dapeng.service.LoginService;
 import com.dapeng.service.bo.UserBO;
@@ -60,7 +61,7 @@ public class LoginController extends BaseController{
     public Map<String, Object> doLogin(LoginForm loginForm) {
     	UserBO userBO = new UserBO();
     	userBO.setUsername(loginForm.getUsername());
-    	userBO.setPassword(loginForm.getPassword());
+    	userBO.setPassword(MD5.MD5Encode(loginForm.getPassword()));
     	int count = loginService.login(userBO);
     	System.out.println(count);
     	if (count>0) {

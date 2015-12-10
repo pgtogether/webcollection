@@ -8,7 +8,6 @@
 */
 package com.dapeng.controller;
 
-import java.util.Date;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dapeng.commons.MD5;
 import com.dapeng.controller.form.RegistForm;
 import com.dapeng.service.RegistService;
 import com.dapeng.service.bo.UserBO;
@@ -52,12 +52,7 @@ public class RegisterController extends BaseController{
 		System.out.println(registForm.getUsername()+"用户名...");
 		UserBO userBO = new UserBO();
 		userBO.setUsername(registForm.getUsername());
-		userBO.setBirthday(new Date());
-		userBO.setSex(registForm.getSex());
-		userBO.setPhone(registForm.getPhone());
-		userBO.setPswquestion(registForm.getPswquestion());
-		userBO.setPswanswer(registForm.getPswanswer());
-		userBO.setPassword(registForm.getPassword());
+		userBO.setPassword(MD5.MD5Encode(registForm.getPassword()));
 		userBO.setEmail(registForm.getEmail());
 		
 		int result = registService.registUser(userBO);
