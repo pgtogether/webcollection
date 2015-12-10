@@ -24,7 +24,7 @@ import com.dapeng.session.UserSession;
  * @date 2015年11月12日 下午7:34:32
  * @version V1.0
  */
-public class SessionController {
+public class UserSessionController extends BaseController{
 
     public UserSession getUserSession(HttpSession session) {
         UserSession userSession = (UserSession) session.getAttribute("USER_SESSION");

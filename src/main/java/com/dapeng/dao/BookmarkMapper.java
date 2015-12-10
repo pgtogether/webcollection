@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dapeng.domain.Bookmark;
 import com.dapeng.service.bo.BookmarkBO;
+import com.depeng.web.bo.BookmarkMiniBO;
 
 @Repository
 public interface BookmarkMapper {
@@ -71,16 +72,17 @@ public interface BookmarkMapper {
 
     int updateBookmarkById(int id);
 
+    // 根据唯一索引更新记录
     int updateBookmarkByUnique(Bookmark bookmark);
 
-    // 设置热门书签
-    int setHotbookmark(Bookmark bookmark);
+    // 设置热门书签 / 废弃
+//    int setHotbookmark(Bookmark bookmark);
 
-    // 取消热门书签
-    int cancelHotbookmark(Bookmark bookmark);
+    // 取消热门书签 / 废弃
+//    int cancelHotbookmark(Bookmark bookmark);
 
     // 查询所有热门书签
-    List<Bookmark> selectHotBookmarkList();
+    List<BookmarkMiniBO> selectHotBookmarkList(Bookmark bookmark);
 
     // 获取用户下最大的书签编号
     int selectMaxBookmarkNoByUserId(String userId);

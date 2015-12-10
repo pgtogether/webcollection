@@ -260,23 +260,28 @@
 		select *
 		from bookmark where deleteflg!="1" and categoryno = #{categoryno}
 	</select>
-	<update id="setHotbookmark" parameterType="com.dapeng.domain.Bookmark">
-		update bookmark
-		set
-		hot
-		= "1"
-		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
-	</update>
-	<update id="cancelHotbookmark" parameterType="com.dapeng.domain.Bookmark">
-		update bookmark
-		set
-		hot = "2"
-		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
-	</update>
-
-	<select id="selectHotBookmarkList" resultType="com.dapeng.domain.Bookmark">
-		select * from
-		bookmark where deleteflg!="1" and hot="1"
+<!-- 	<update id="setHotbookmark" parameterType="com.dapeng.domain.Bookmark"> -->
+<!-- 		update bookmark -->
+<!-- 		set hot = #{hot,jdbcType=VARCHAR}, -->
+<!-- 		updatetime = #{updatetime,jdbcType=TIMESTAMP} -->
+<!-- 		where bookmarkno = #{bookmarkno,jdbcType=INTEGER} -->
+<!-- 		and userid = #{bookmarkid,jdbcType=VARCHAR} -->
+<!-- 	</update> -->
+<!-- 	<update id="cancelHotbookmark" parameterType="com.dapeng.domain.Bookmark"> -->
+<!-- 		update bookmark -->
+<!-- 		set -->
+<!-- 		hot = "2" -->
+<!-- 		where bookmarkid = #{bookmarkid,jdbcType=INTEGER} -->
+<!-- 	</update> -->
+	<select id="selectHotBookmarkList" parameterType="com.dapeng.domain.Bookmark"
+		resultType="com.depeng.web.bo.BookmarkMiniBO">
+		select bookmarkno as i, bookmarkname as n, url as u
+		from bookmark
+		where
+			deleteflg = #{deleteflg,jdbcType=VARCHAR}
+			and hot = #{hot,jdbcType=VARCHAR}
+			and userid = #{userid,jdbcType=VARCHAR}
+		order by updatetime asc
 	</select>
 
 	<!-- 回收站 -->

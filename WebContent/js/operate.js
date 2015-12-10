@@ -1,9 +1,9 @@
 var initLoadFunc = {
-	init : function(){
-		this.loadAllBookmarkList();
+	init : function(activeBookmarkFunc){
+		this.loadAllBookmarkList(activeBookmarkFunc);
 	},
 	// 加载所有书签
-	loadAllBookmarkList : function(){
+	loadAllBookmarkList : function(activeBookmarkFunc){
 		$.ajax({
 			type : "post",
 			url : CONTEXT_PATH + "/doSelectBookmarkList",
@@ -28,7 +28,8 @@ var initLoadFunc = {
 									var id = bookmarklist[n].i;
 									var url = bookmarklist[n].u;
 									var name = bookmarklist[n].n;
-									bookmarkHtml += bookmarkOperateFunc.getBookmarkTemplate(id, url, name, true);
+									var hot = bookmarklist[n].h;
+									bookmarkHtml += bookmarkOperateFunc.getBookmarkTemplate(id, url, name, hot, true);
 								}
 								$clone.find(".url-list").append(bookmarkHtml);
 							}
@@ -36,6 +37,8 @@ var initLoadFunc = {
 						} 
 					}
 				}
+				// 激活操作书签的各种功能
+				activeBookmarkFunc();
 			},
 			error : function(e) {
 				alert(e);
@@ -127,8 +130,7 @@ var doAjaxFunc = {
 			}
 		});
 	},
-	doDeleteBookmark : function(bookmarkno){
-		var $this = this;
+	doDeleteBookmark : function(bookmarkno,successCallback){
 		// 提交后台保存
 		$.ajax({
 			type : "post",
@@ -138,7 +140,45 @@ var doAjaxFunc = {
 			},
 			success : function(json) {
 				if (json.result == "OK") {
-					$this.saveSuccessAnimate("删除成功");
+					successCallback();
+				} else {
+					alert(json.msg);
+				}
+			},
+			error : function(e) {
+			}
+		});
+	},
+	// 设置常用书签
+	doSetHotBookmark : function(bookmarkno,successCallBack){
+		$.ajax({
+			type : "post",
+			url : CONTEXT_PATH + "/doSetHotBookmark",
+			data : {
+				bookmarkno : bookmarkno
+			},
+			success : function(json) {
+				if (json.result == "OK") {
+					successCallBack();
+				} else {
+					alert(json.msg);
+				}
+			},
+			error : function(e) {
+			}
+		});
+	},
+	// 取消常用书签
+	doCancelHotBookmark : function(bookmarkno,successCallBack){
+		$.ajax({
+			type : "post",
+			url : CONTEXT_PATH + "/doCancelHotBookmark",
+			data : {
+				bookmarkno : bookmarkno
+			},
+			success : function(json) {
+				if (json.result == "OK") {
+					successCallBack();
 				} else {
 					alert(json.msg);
 				}

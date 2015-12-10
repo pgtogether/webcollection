@@ -39,13 +39,11 @@
 				</div>
 				<div class="content-left-top-body">
 					<ul class="hot-url-list">
-						<li><a href="###">中文网址测试</a></li>
-						<li><a href="###">6666666</a></li>
-						<li><a href="###">7777777</a></li>
-						<li><a href="###">中文网址测试</a></li>
-						<li><a href="###">6666666</a></li>
-						<li><a href="###">7777777</a></li>
-						<li><a href="###">中文网址测试</a></li>
+					<c:if test="${not empty hotBookmarkList}">
+						<c:forEach items="${hotBookmarkList}" var="bookmark">
+							<li value="${bookmark.i}" title="${bookmark.n}"><a href="${bookmark.u}" target="_blank">${bookmark.n}</a></li>
+						</c:forEach>
+					</c:if>
 					</ul>
 				</div>
 			</div>

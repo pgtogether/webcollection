@@ -48,6 +48,7 @@ public class BookmarkServiceImpl implements BookmarkService {
                     miniBO.setI(bo.getBookmarkno());
                     miniBO.setN(bo.getBookmarkname());
                     miniBO.setU(bo.getUrl());
+                    miniBO.setH(bo.getHot());
                     withBO.getList().add(miniBO);
                 } else {
                     // 新增分类以及书签
@@ -60,6 +61,7 @@ public class BookmarkServiceImpl implements BookmarkService {
                         miniBO.setI(bo.getBookmarkno());
                         miniBO.setN(bo.getBookmarkname());
                         miniBO.setU(bo.getUrl());
+                        miniBO.setH(bo.getHot());
                         bookmarklist.add(miniBO);
                         withBO.setList(bookmarklist);
                     }
@@ -109,7 +111,7 @@ public class BookmarkServiceImpl implements BookmarkService {
     }
 
     @Override
-    public int deleteBookmarkByUnique(String userid,int bookmarkno) {
+    public int deleteBookmarkByUnique(String userid, int bookmarkno) {
         Bookmark bookmark = new Bookmark();
         bookmark.setUserid(userid);
         bookmark.setBookmarkno(bookmarkno);
@@ -151,44 +153,35 @@ public class BookmarkServiceImpl implements BookmarkService {
         return bookmarkDao.doRecoverBookmark(id);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * com.dapeng.service.BookmarkService#setHotbookmark(com.dapeng.service.
-     * bo.BookmarkBO)
-     */
+    // 标记为常用书签
     @Override
     public int setHotbookmark(BookmarkBO bo) {
         Bookmark bm = new Bookmark();
-        bm.setBookmarkid(bo.getBookmarkid());
-        return bookmarkDao.setHotbookmark(bm);
+        bm.setUserid(bo.getUserid());
+        bm.setBookmarkno(bo.getBookmarkno());
+        bm.setHot(BookmarkHotEnum.HOT.getId());
+        bm.setUpdatetime(new Date());
+        return bookmarkDao.updateBookmarkByUnique(bm);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * com.dapeng.service.BookmarkService#cancelHotbookmark(com.dapeng.service
-     * .bo.BookmarkBO)
-     */
+    // 取消为常用书签
     @Override
     public int cancelHotbookmark(BookmarkBO bo) {
         Bookmark bm = new Bookmark();
-        bm.setBookmarkid(bo.getBookmarkid());
-        return bookmarkDao.cancelHotbookmark(bm);
+        bm.setUserid(bo.getUserid());
+        bm.setBookmarkno(bo.getBookmarkno());
+        bm.setHot(BookmarkHotEnum.NORMAL.getId());
+        bm.setUpdatetime(new Date());
+        return bookmarkDao.updateBookmarkByUnique(bm);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * com.dapeng.service.BookmarkService#selectHotBookmarkList(com.dapeng.service
-     * .bo.BookmarkBO)
-     */
     @Override
-    public List<Bookmark> selectHotBookmarkList() {
-        return bookmarkDao.selectHotBookmarkList();
+    public List<BookmarkMiniBO> selectHotBookmarkList(String userid) {
+        Bookmark bookmark = new Bookmark();
+        bookmark.setUserid(userid);
+        bookmark.setDeleteflg(BookmarkDeleteEnum.NORMAL_SHOW.getId());
+        bookmark.setHot(BookmarkHotEnum.HOT.getId());
+        return bookmarkDao.selectHotBookmarkList(bookmark);
     }
 
 }
