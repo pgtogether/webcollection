@@ -41,7 +41,7 @@
 						<td class="right"><input type="text" id="emailtxt"
 							name="email"></td>
 					</tr>
-					<tr>
+					<!-- <tr>
 						<td><label for="1">性 别：</label></td>
 						<td class="right"><input type="radio" id="r1" name="sex"
 							value="1" checked />男 <input type="radio"
@@ -67,7 +67,7 @@
 					<tr>
 						<td><label for="phonetxt">手机号：</label></td>
 						<td><input id="phonetxt" type="text" name="phone"></input></td>
-					</tr>
+					</tr> -->
 					<tr>
 						<td rowspan=2><input id="registbtn" type="button"
 							value="立即注册" /></td>
