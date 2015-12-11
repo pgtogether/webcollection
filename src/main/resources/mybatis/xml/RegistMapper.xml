@@ -14,7 +14,7 @@
 		<result column="pswanswer" property="pswanswer" jdbcType="VARCHAR" />
 	</resultMap>
 	
-	<insert id="registUser" parameterType="com.dapeng.domain.User" >
+	<insert id="registUser" parameterType="com.dapeng.domain.User"  useGeneratedKeys="true" keyProperty="userid">
 		insert into user_info
 	<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="username != null">

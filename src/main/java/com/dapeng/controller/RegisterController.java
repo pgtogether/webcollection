@@ -56,7 +56,6 @@ public class RegisterController extends BaseController{
 		userBO.setEmail(registForm.getEmail());
 		
 		int result = registService.registUser(userBO);
-		
 		if (result > 0) {
 			return ajaxSuccess();
 		} else {

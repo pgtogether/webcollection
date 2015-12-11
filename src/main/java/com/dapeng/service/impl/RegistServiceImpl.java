@@ -24,7 +24,9 @@ public class RegistServiceImpl implements RegistService {
 		user.setUsername(userBO.getUsername());
 		user.setPassword(userBO.getPassword());
 		user.setEmail(userBO.getEmail());
-		return  registDao.registUser(user);
+		int result = registDao.registUser(user);
+		System.out.println("返回的主键"+user.getUserid());
+		return  result;
 	}
 
 

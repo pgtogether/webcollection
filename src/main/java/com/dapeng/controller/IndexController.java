@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
@@ -79,6 +78,11 @@ public class IndexController extends BaseController {
     @RequestMapping(value = "recycle", method = { RequestMethod.GET, RequestMethod.POST })
     public String recycle1() {
         return "recycle";
+    }
+    
+    @RequestMapping(value = "donate", method = { RequestMethod.GET, RequestMethod.POST })
+    public String donate() {
+        return "donate";
     }
 
     /**
