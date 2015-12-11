@@ -54,15 +54,15 @@ body {
 }
 
 .content-left .content-left-top-body ul li {
-	width: 24.5%; height: 30px; margin-left: 0.5%; float: left; margin-top: 5px; text-indent: 10px; border-radius: 10px; background: #EAEAEA; margin-left: 0.5%;
+	width: 24.5%; height: 30px; margin-left: 0.5%; float: left; margin-top: 5px; text-indent: 10px; border-radius: 10px; background: #EAEAEA; overflow: hidden;
 }
 
 .content-left .content-left-top-body ul li:hover {
-	width: 24.5%; height: 30px; margin-left: 0.5%; float: left; cursor: pointer;
+	width: 24.5%; height: 30px; margin-left: 0.5%; float: left; cursor: pointer; overflow: hidden;
 }
 
 .content-left .content-left-top-body ul li a {
-	height: 30px; line-height: 30px; text-indent: 10px; cursor: pointer; color: #000;
+	height: 30px; line-height: 30px; cursor: pointer; color: #000; overflow: hidden; margin-right: 10px;
 }
 
 .content-left .content-left-body {
@@ -110,15 +110,15 @@ body {
 }
 
 .block .block-body ul li {
-	width: 100%; float: left;
+	width: 100%; float: left; overflow: hidden;
 }
 
 .block .block-body ul li:hover {
-	width: 100%; float: left; background: #EFEFEF;
+	width: 100%; float: left; overflow: hidden; background: #EFEFEF;
 }
 
 .block .block-body ul li a {
-	float: left; height: 25px; line-height: 28px; text-indent: 10px; cursor: pointer; color: #000;
+	width: 205px; float: left; height: 25px; text-indent: 10px; line-height: 28px; cursor: pointer; color: #000; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 28px;
 }
 
 .footer {

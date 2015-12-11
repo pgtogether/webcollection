@@ -29,7 +29,7 @@ package com.depeng.web.bo;
  * @see
  */
 public class BookmarkMiniBO {
-    
+
     // bookmarkno
     private int i;
 
@@ -38,6 +38,9 @@ public class BookmarkMiniBO {
 
     // url
     private String u;
+
+    // hot
+    private String h;
 
     public int getI() {
         return i;
@@ -61,6 +64,14 @@ public class BookmarkMiniBO {
 
     public void setU(String u) {
         this.u = u;
+    }
+
+    public String getH() {
+        return h;
+    }
+
+    public void setH(String h) {
+        this.h = h;
     }
 
 }

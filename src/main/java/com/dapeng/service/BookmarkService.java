@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dapeng.domain.Bookmark;
 import com.dapeng.service.bo.BookmarkBO;
+import com.depeng.web.bo.BookmarkMiniBO;
 import com.depeng.web.bo.CategoryWithBookmarkMiniBO;
 
 public interface BookmarkService {
@@ -44,5 +45,5 @@ public interface BookmarkService {
     // 取消热门书签
     int cancelHotbookmark(BookmarkBO bo);
 
-    List<Bookmark> selectHotBookmarkList();
+    List<BookmarkMiniBO> selectHotBookmarkList(String userid);
 }

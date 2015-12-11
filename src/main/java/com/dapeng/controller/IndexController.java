@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -37,6 +38,7 @@ import com.dapeng.service.BookmarkService;
 import com.dapeng.service.CategoryService;
 import com.dapeng.service.bo.BookmarkBO;
 import com.dapeng.service.bo.CategoryBO;
+import com.depeng.web.bo.BookmarkMiniBO;
 import com.depeng.web.bo.CategoryMiniBO;
 import com.depeng.web.bo.CategoryWithBookmarkMiniBO;
 
@@ -51,7 +53,7 @@ import com.depeng.web.bo.CategoryWithBookmarkMiniBO;
  */
 @Controller
 @RequestMapping("/*")
-public class IndexController extends BaseController {
+public class IndexController extends UserSessionController {
 
     @Autowired
     private BookmarkService bookmarkService;
@@ -61,12 +63,12 @@ public class IndexController extends BaseController {
 
     /**
      * 默认主页
-     * 
-     * @param @return
-     * @return String
      */
     @RequestMapping(value = "index", method = { RequestMethod.GET, RequestMethod.POST })
-    public String index() {
+    public String index(Model model, HttpSession session) {
+        // 获取热门书签
+        List<BookmarkMiniBO> hotBookmarkList = bookmarkService.selectHotBookmarkList(getSessionUserId(session));
+        model.addAttribute("hotBookmarkList", hotBookmarkList);
         return "index";
     }
 
@@ -115,12 +117,21 @@ public class IndexController extends BaseController {
      * 标记为热点书签
      * 
      */
-    @RequestMapping(value = "doSethotbookmark", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "doSetHotBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String, Object> doSethotbookmark(BookmarkBO bo) {
-        int result = -1;
-        result = bookmarkService.setHotbookmark(bo);
-        return ajaxSuccess(result);
+    public Map<String, Object> doSetHotBookmark(HttpServletRequest request, HttpSession session) {
+        String bookmarkno = request.getParameter("bookmarkno");
+        if (StringUtils.isEmpty(bookmarkno)) {
+            return ajaxFail("标记失败");
+        }
+        BookmarkBO bo = new BookmarkBO();
+        bo.setUserid(getSessionUserId(session));
+        bo.setBookmarkno(Integer.valueOf(bookmarkno));
+        int result = bookmarkService.setHotbookmark(bo);
+        if (result == 0) {
+            return ajaxFail("标记失败");
+        }
+        return ajaxSuccess();
     }
 
     /**
@@ -128,12 +139,21 @@ public class IndexController extends BaseController {
      * 取消热点书签
      * 
      */
-    @RequestMapping(value = "doCancelhotbookmark", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "doCancelHotBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String, Object> doCancelhotbookmark(BookmarkBO bo) {
-        int result = -1;
-        result = bookmarkService.cancelHotbookmark(bo);
-        return ajaxSuccess(result);
+    public Map<String, Object> doCancelHotBookmark(HttpServletRequest request, HttpSession session) {
+        String bookmarkno = request.getParameter("bookmarkno");
+        if (StringUtils.isEmpty(bookmarkno)) {
+            return ajaxFail("取消失败");
+        }
+        BookmarkBO bo = new BookmarkBO();
+        bo.setUserid(getSessionUserId(session));
+        bo.setBookmarkno(Integer.valueOf(bookmarkno));
+        int result = bookmarkService.cancelHotbookmark(bo);
+        if (result == 0) {
+            return ajaxFail("取消失败");
+        }
+        return ajaxSuccess();
     }
 
     /**
@@ -141,8 +161,8 @@ public class IndexController extends BaseController {
      */
     @RequestMapping(value = "doSelectHotBookmarkList", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String, Object> doSelectHotBookmarkList() {
-        List<Bookmark> bookmarkList = bookmarkService.selectHotBookmarkList();
+    public Map<String, Object> doSelectHotBookmarkList(HttpSession session) {
+        List<BookmarkMiniBO> bookmarkList = bookmarkService.selectHotBookmarkList(getSessionUserId(session));
         return ajaxSuccess(bookmarkList);
     }
 
@@ -194,7 +214,6 @@ public class IndexController extends BaseController {
         if (result.hasErrors()) {
             return ajaxValidateError(result);
         }
-
         BookmarkBO bookmarkbo = new BookmarkBO();
         bookmarkbo.setUserid(getSessionUserId(session));
         bookmarkbo.setBookmarkname(StringUtils.trimWhitespace(form.getBookmarkname()));
