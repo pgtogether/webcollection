@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dapeng.commons.MD5;
+import com.dapeng.constants.Constants;
 import com.dapeng.controller.form.RegistForm;
 import com.dapeng.service.RegistService;
 import com.dapeng.service.bo.UserBO;
@@ -55,14 +56,15 @@ public class RegisterController extends BaseController{
 		userBO.setEmail(registForm.getEmail());
 		int count = registService.isUsernameExist(userBO);
 		if (count<1) {
+			//返回的是userid
 			int result = registService.registUser(userBO);
 			if (result > 0) {
 				return ajaxSuccess();
 			} else {
-				return ajaxFail("用户名或密码错误");
+				return ajaxFail(Constants.ERR_MSG_1);
 			}
 		}else {
-			return ajaxFail("用户已存在");
+			return ajaxFail(Constants.ERR_MSG_2);
 		}
 		
 		
