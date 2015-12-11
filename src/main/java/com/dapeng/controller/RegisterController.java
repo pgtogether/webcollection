@@ -20,7 +20,6 @@ import com.dapeng.commons.MD5;
 import com.dapeng.controller.form.RegistForm;
 import com.dapeng.service.RegistService;
 import com.dapeng.service.bo.UserBO;
-
 /**
  * 
  * 类的功能描述
@@ -54,13 +53,19 @@ public class RegisterController extends BaseController{
 		userBO.setUsername(registForm.getUsername());
 		userBO.setPassword(MD5.MD5Encode(registForm.getPassword()));
 		userBO.setEmail(registForm.getEmail());
-		
-		int result = registService.registUser(userBO);
-		if (result > 0) {
-			return ajaxSuccess();
-		} else {
-			return ajaxFail();
+		int count = registService.isUsernameExist(userBO);
+		if (count<1) {
+			int result = registService.registUser(userBO);
+			if (result > 0) {
+				return ajaxSuccess();
+			} else {
+				return ajaxFail("用户名或密码错误");
+			}
+		}else {
+			return ajaxFail("用户已存在");
 		}
+		
+		
 	}
 
 }

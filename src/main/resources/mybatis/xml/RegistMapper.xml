@@ -68,14 +68,10 @@
 				#{pswanswer,jdbcType=VARCHAR},
 			</if>
 		</trim>
-		
-		
-		
-		
-<!-- 		(username,password,sex,birthday,phone,email,pswquestion,pswanswer)
-		values(#{username,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR}
-		,#{birthday},#{phone,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{pswquestion,jdbcType=VARCHAR}
-		,#{pswanswer,jdbcType=VARCHAR}) -->
 	</insert>
-	
+	<select id="isUsernameExist" parameterType="com.dapeng.domain.User" resultType="java.lang.Integer">
+		select count(*)
+		from user_info
+		where username=#{username,jdbcType=VARCHAR}
+	</select>
 </mapper>
