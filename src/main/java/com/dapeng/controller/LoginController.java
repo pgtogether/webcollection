@@ -63,7 +63,7 @@ public class LoginController extends BaseController{
     	userBO.setUsername(loginForm.getUsername());
     	userBO.setPassword(MD5.MD5Encode(loginForm.getPassword()));
     	int count = loginService.login(userBO);
-    	System.out.println(count);
+
     	if (count>0) {
     		 return ajaxSuccess();
 		}else {

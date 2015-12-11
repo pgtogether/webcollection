@@ -93,8 +93,12 @@ $(function() {
         		success : function(json) {
         			if(json.result=="OK"){
         				alert("注册成功");
-        			}else{
-        				alert("用户名或密码错误！");
+        			}else if(json.result=="NG"){
+        				if(json.msg=="用户已存在"){
+        					alert("用户已存在！");
+        				}else if(json.msg=="用户名或密码错误"){
+        					alert("用户名或密码错误！");
+        				}
         			}
         		},
         		error : function(e) {

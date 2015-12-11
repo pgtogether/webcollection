@@ -17,6 +17,9 @@ package com.dapeng.constants;
  */
 
 public class Constants {
-    
+	
+	public static final String ERR_MSG_1 = "用户名或密码错误";
+	
+	public static final String ERR_MSG_2 = "用户已存在";
     
 }

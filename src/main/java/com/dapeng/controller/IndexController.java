@@ -81,6 +81,11 @@ public class IndexController extends UserSessionController {
     public String recycle1() {
         return "recycle";
     }
+    
+    @RequestMapping(value = "donate", method = { RequestMethod.GET, RequestMethod.POST })
+    public String donate() {
+        return "donate";
+    }
 
     /**
      * 

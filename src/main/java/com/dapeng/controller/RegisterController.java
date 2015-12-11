@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dapeng.commons.MD5;
+import com.dapeng.constants.Constants;
 import com.dapeng.controller.form.RegistForm;
 import com.dapeng.service.RegistService;
 import com.dapeng.service.bo.UserBO;
-
 /**
  * 
  * 类的功能描述
@@ -54,14 +54,20 @@ public class RegisterController extends BaseController{
 		userBO.setUsername(registForm.getUsername());
 		userBO.setPassword(MD5.MD5Encode(registForm.getPassword()));
 		userBO.setEmail(registForm.getEmail());
-		
-		int result = registService.registUser(userBO);
-		
-		if (result > 0) {
-			return ajaxSuccess();
-		} else {
-			return ajaxFail();
+		int count = registService.isUsernameExist(userBO);
+		if (count<1) {
+			//返回的是userid
+			int result = registService.registUser(userBO);
+			if (result > 0) {
+				return ajaxSuccess();
+			} else {
+				return ajaxFail(Constants.ERR_MSG_1);
+			}
+		}else {
+			return ajaxFail(Constants.ERR_MSG_2);
 		}
+		
+		
 	}
 
 }
