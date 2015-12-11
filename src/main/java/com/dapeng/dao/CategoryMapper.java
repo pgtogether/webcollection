@@ -30,7 +30,7 @@ public interface CategoryMapper {
     /**
      * 类别检索
      */
-    List<CategoryMiniBO> selectCategoryList();
+    List<CategoryMiniBO> selectCategoryList(String userid);
 
     Category selectCategoryById(int categoryid);
 

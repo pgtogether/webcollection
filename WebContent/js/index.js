@@ -16,7 +16,7 @@ $(function() {
 		// 初始化操作书签的功能
 		bookmarkOperateFunc.init();
 	});
-	// 初始化新增功能
+	// 初始化添加功能
 	newCategoryOrBookMarkFunc.init();
 	// 侧边栏功能
 	sideBannerFunc.init();
@@ -84,8 +84,27 @@ var newCategoryOrBookMarkFunc = {
 	},
 	newBookMark : function() {
 		$(".bookmarkbtn").click(function() {
+			// 显示添加书签浮动层之前,筛选出本页所有的分类
+			var categoryHtml = "";
+			$(".category-title").each(function(index){
+				var categoryno = $(this).attr("value");
+				var categoryname = $(this).text();
+				if (((index+1) % 2) == 0) {
+					categoryHtml += "<li class='even' ";
+				} else {
+					categoryHtml += "<li ";
+				}
+				categoryHtml += "value="+categoryno+">"+categoryname+"</li>";
+			});
+			$(".pop-bookmark .exist-category-list").html(categoryHtml);
 			$(".mask").fadeIn(300);
 			$(".pop-bookmark").fadeIn(300);
+		});
+		
+		$(".pop-bookmark #category").focusin(function(){
+			$(".pop-bookmark .exist-category-list").show();
+		}).focusout(function(){
+			$(".pop-bookmark .exist-category-list").hide();
 		});
 	},
 	confirmNew : function() {

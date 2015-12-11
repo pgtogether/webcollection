@@ -18,9 +18,8 @@ var initLoadFunc = {
 							var $clone = $(".category-template").clone().attr("style","").removeClass("category-template");
 							// 添加新分类模板标题颜色
 							var rand = parseInt(Math.random() * 20, 10);
-							$clone.find("input:hidden").attr("id","categoryno_"+categoryno).val(categoryno);
 							$clone.find(".block-head").css("background-color",randomColor[rand]);
-							$clone.find(".block-head-title").text(categoryname);
+							$clone.find(".block-head-title").text(categoryname).attr("value",categoryno);
 							// 绘制分类下的书签列
 							if (bookmarklist && bookmarklist.length > 0) {
 								var bookmarkHtml = '';
@@ -82,7 +81,7 @@ var doAjaxFunc = {
 		// 补足URL的HTTP前缀
 		var url = this.fillUrl($addbookmarkform.find("#url").val());
 		$addbookmarkform.find("#url").val(url);
-		var categoryno = $addbookmarkform.parents(".block").find(".categoryno").val();
+		var categoryno = $addbookmarkform.parents(".block").find(".block-head-title").attr("value");
 		var params = $addbookmarkform.serialize();
 		params += "&categoryno=" + categoryno;
 		$.ajax({

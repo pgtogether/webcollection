@@ -15,7 +15,8 @@
 				placeholder="例:网址收藏" />
 		</p>
 		<p>
-			<label>分类</label><input type="text" id="category" placeholder="例:菜谱" />
+			<label>分类</label>
+			<input type="text" id="category" placeholder="例:菜谱" />
 		</p>
 		<p>
 			<label>标签</label><input type="text" id="tags"
@@ -30,6 +31,8 @@
 				class="cancel-btn">取消</a>
 			</span>
 		</p>
+		<ul class="exist-category-list">
+		</ul>
 	</div>
 	</form>
 </div>

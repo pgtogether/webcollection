@@ -352,8 +352,8 @@ public class IndexController extends UserSessionController {
      */
     @RequestMapping(value = "doSelectCategoryList", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String, Object> doSelectCategoryList() {
-        List<CategoryMiniBO> categoryList = categoryService.selectCategoryList();
+    public Map<String, Object> doSelectCategoryList(HttpSession session) {
+        List<CategoryMiniBO> categoryList = categoryService.selectCategoryList(getSessionUserId(session));
         return ajaxSuccess(categoryList);
     }
 

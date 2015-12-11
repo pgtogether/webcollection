@@ -187,7 +187,7 @@
 }
 
 .popbox-body p textarea {
-	width: 75%; max-width: 78%; float: left; text-indent: 5px; line-height: 30px; margin-top: 5px;
+	width: 75%; max-width: 78%; float: left; text-indent: 5px; line-height: 30px; margin-top: 5px; padding-right: 2px;
 }
 
 .popbox-body p input[type=radio] {
@@ -220,6 +220,22 @@
 
 .pop-bookmark .btn a {
 	background: #7BE693;
+}
+
+.pop-bookmark .exist-category-list {
+	display: none; width: 75%; max-height: 112px; background: #FFFFFF; position: absolute; float: left; margin-left: 20%; margin-top: 117px; padding: 0 2px 4px 2px; overflow: auto; box-shadow: 2px 2px 5px #A0A0A0, -2px 0px 5px #A0A0A0;
+}
+
+.pop-bookmark .exist-category-list li {
+	width: 49%; float: left; height: 22px; line-height: 200%; cursor: pointer; color: #0087C5; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-indent: 5px;
+}
+
+.pop-bookmark .exist-category-list li:hover {
+	background: #DCDCDC; color: #FB7E23; box-shadow: 1px 1px 1px #bbb, -1px -1px 1px #bbb;
+}
+
+.pop-bookmark .exist-category-list li.even {
+	float: right;
 }
 
 .pop-category .popbox-head {

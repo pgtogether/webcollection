@@ -60,8 +60,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<CategoryMiniBO> selectCategoryList() {
-        return categoryDao.selectCategoryList();
+    public List<CategoryMiniBO> selectCategoryList(String userid) {
+        return categoryDao.selectCategoryList(userid);
     }
 
     @Override

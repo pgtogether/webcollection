@@ -152,9 +152,11 @@
 		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</update>
 	<!-- 书签类别操作 -->
-	<select id="selectCategoryList" resultType="com.depeng.web.bo.CategoryMiniBO">
+	<select id="selectCategoryList" parameterType="java.lang.String"
+		resultType="com.depeng.web.bo.CategoryMiniBO">
 		select categoryid as i, categoryname as n 
 		from category
+		where userid = #{userid,jdbcType=VARCHAR}
 		order by createtime desc
 	</select>
 	<select id="selectCategoryListById" parameterType="int"

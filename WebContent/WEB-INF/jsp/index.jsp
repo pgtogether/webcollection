@@ -59,11 +59,11 @@
 			<div class="newbtnsbox">
 				<div class="newbtns floatLeft">
 					<span class="newbtn categorybtn">添加分类</span> <span
-						class="count categorybtn">15</span> <span class="desc">分类个数</span>
+						class="count categorycount">15</span> <span class="desc">分类个数</span>
 				</div>
 				<div class="newbtns floatRight">
 					<span class="newbtn bookmarkbtn">添加书签</span> <span
-						class="count bookmarkbtn">123</span> <span class="desc">网址个数</span>
+						class="count bookmarkcount">123</span> <span class="desc">网址个数</span>
 				</div>
 			</div>
 			<div class="notes">

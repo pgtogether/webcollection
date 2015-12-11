@@ -220,11 +220,11 @@ body {
 	width: 100%; float: left; height: 50px; line-height: 50px; font-size: 30px; font-weight: bold;
 }
 
-.content-right .count.categorybtn {
+.content-right .categorycount {
 	width: 100%; float: left; height: 50px; line-height: 50px; color: #046BD8; font-size: 30px; font-weight: bold;
 }
 
-.content-right .count.bookmarkbtn {
+.content-right .bookmarkcount {
 	width: 100%; float: left; height: 50px; line-height: 50px; color: #00A726; font-size: 30px; font-weight: bold;
 }
 
