@@ -18,6 +18,8 @@ $(function() {
 	});
 	// 初始化添加功能
 	newCategoryOrBookMarkFunc.init();
+	// 加载验证默认规则
+	formValidateFunc.init();
 	// 侧边栏功能
 	sideBannerFunc.init();
 });
@@ -101,22 +103,42 @@ var newCategoryOrBookMarkFunc = {
 			$(".pop-bookmark").fadeIn(300);
 		});
 		
-		$(".pop-bookmark #category").focusin(function(){
-			$(".pop-bookmark .exist-category-list").show();
-		}).focusout(function(){
+		$(".pop-bookmark #categoryname").focusin(function(){
+			if (!$(this).val()){
+				$(".pop-bookmark .exist-category-list").show();
+			}
+		});
+		
+		$(document).bind("click", function(e) {
+			var target = $(e.target);
+			if (target.closest(".choose-category").length == 0 && target.closest(".exist-category-list").length == 0 ) {
+				$(".pop-bookmark .exist-category-list").hide();
+			}
+		});
+		
+		$(".exist-category-list").on("click","li",function(){
+			var $this = $(this);
+			var categoryname = $this.text();
+			var categoryno = $this.attr("value");
+			$pop_bookmark = $(".pop-bookmark");
+			$pop_bookmark.find("#categoryno").val(categoryno);
+			$pop_bookmark.find("#categoryname").val(categoryname).focus();
 			$(".pop-bookmark .exist-category-list").hide();
 		});
+		
+		$(".pop-bookmark #categoryname").bind('input propertychange', function() {
+			if (!$(this).val()){
+				$(".pop-bookmark .exist-category-list").show();
+			} else {
+				$(this).siblings("input").val("");
+				$(".pop-bookmark .exist-category-list").hide();
+			}
+		}); 
 	},
 	confirmNew : function() {
 		$(".popbox .confirm-btn").click(function() {
 			// 如果父标签是pop-category的话，说明是新增分类
 			if ($(this).parents(".pop-category").length > 0) {
-				// 验证新增分类表单
-				var $newCategoryForm = $(this).parents("form");
-				formValidateFunc.validateNewCategoryForm($newCategoryForm);
-				if (!$newCategoryForm.valid()) {
-					return;
-				}
 				// 提交到后台
 				doAjaxFunc.doNewcategory(function(newCategoryNo){
 					// 保存成功后的回调方法
@@ -130,13 +152,23 @@ var newCategoryOrBookMarkFunc = {
 					$clone.find(".block-head-title").text(categoryname);
 					$(".wrap-box").eq(0).prepend($clone);
 					$clone.slideDown();
+					$(".mask").hide();
+					$(".popbox-for-new").hide();
 				});
 			} else {
-				// 新增书签
+				// 添加书签
+				doAjaxFunc.doNewBookmark(function(newCategoryNo){
+					// 添加成功后，在指定分类下添加新的书签
+					
+					bookmarkOperateFunc.getBookmarkTemplate(id, url, name, hot, isDisplay);
+					
+					
+					
+					
+					$(".mask").hide();
+					$(".popbox-for-new").hide();
+				});
 			}
-			openSortableFunc.boxSortable();
-			$(".mask").hide();
-			$(".popbox-for-new").hide();
 		});
 	},
 	cancelNew : function() {

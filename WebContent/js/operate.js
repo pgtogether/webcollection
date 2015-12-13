@@ -48,7 +48,7 @@ var initLoadFunc = {
 
 // 提交数据的Ajax的操作
 var doAjaxFunc = {
-	// 新增分类
+	// 添加分类
 	doNewcategory : function(successCallBack){
 		var $newcategoryform = $("#newCategoryForm");
 		formValidateFunc.validateNewCategoryForm($newcategoryform);
@@ -63,6 +63,32 @@ var doAjaxFunc = {
 				if (json.result == "OK") {
 					var newCategoryNo = json.data;
 					successCallBack(newCategoryNo);
+				} else {
+					validateErrorsUtil.showValidateErrors($newcategoryform, json.errors);
+				}
+			},
+			error : function(e) {
+			}
+		});
+	},
+	// 添加书签
+	doNewBookmark : function(successCallBack){
+		var $newBookmarkForm = $("#newBookmarkForm");
+		formValidateFunc.validateNewBookmarkForm($newBookmarkForm);
+		if (!$newBookmarkForm.valid()) {
+			return;
+		}
+		// 补足URL的HTTP前缀
+		var url = this.fillUrl($newBookmarkForm.find("#url").val());
+		$newBookmarkForm.find("#url").val(url);
+		$.ajax({
+			data : $newBookmarkForm.serialize(),
+			type : "post",
+			url : CONTEXT_PATH + "/doAddBookmark",
+			success : function(json) {
+				if (json.result == "OK") {
+					var newBookmarkNo = json.data;
+					successCallBack($newBookmarkForm,newBookmarkNo);
 				} else {
 					validateErrorsUtil.showValidateErrors($newcategoryform, json.errors);
 				}
@@ -213,7 +239,12 @@ var doAjaxFunc = {
 
 // 表单验证操作
 var formValidateFunc = {
-	// 验证新增分类
+	init : function(){
+		$.validator.setDefaults({
+			focusCleanup : true
+		});
+	},
+	// 验证添加分类
 	validateNewCategoryForm : function($form){
 		$form.validate({
 			rules : {
@@ -224,6 +255,35 @@ var formValidateFunc = {
 			messages : {
 				categoryname : {
 					required : "请输入名称"
+				}
+			}
+		});
+	},
+	// 验证添加书签
+	validateNewBookmarkForm : function($form){
+		return $form.validate({
+			rules : {
+				url : {
+					required : true,
+					isUrl : true
+				},
+				bookmarkname : {
+					required : true
+				},
+				categoryname : {
+					required : true
+				}
+			},
+			messages : {
+				url : {
+					required : "请输入网址",
+					isUrl : "请输入合法的网址"
+				},
+				bookmarkname : {
+					required : "请输入名称"
+				},
+				categoryname : {
+					required : "请输入分类"
 				}
 			}
 		});
