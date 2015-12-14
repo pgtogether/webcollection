@@ -85,7 +85,7 @@
 	background: url(../img/icon/pointto.png) -2px 5px no-repeat !important; box-shadow: 0px -1px 2px #bbb, 0px 1px 2px #bbb; z-index: 100; position: relative;
 }
 
-.valid-pass {
+.save-success {
 	background-image: url(../img/icon/validpass.png) !important; background-repeat: no-repeat !important; background-position: 0px 0px !important; z-index: 101; position: relative; z-index: 101;
 }
 

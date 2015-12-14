@@ -86,6 +86,9 @@ var newCategoryOrBookMarkFunc = {
 	},
 	newBookMark : function() {
 		$(".bookmarkbtn").click(function() {
+			// 首先清空之前的所有输入值
+			var $pop_bookmark = $(".pop-bookmark");
+			$pop_bookmark.find("input").val("");
 			// 显示添加书签浮动层之前,筛选出本页所有的分类
 			var categoryHtml = "";
 			$(".category-title").each(function(index){
@@ -98,9 +101,9 @@ var newCategoryOrBookMarkFunc = {
 				}
 				categoryHtml += "value="+categoryno+">"+categoryname+"</li>";
 			});
-			$(".pop-bookmark .exist-category-list").html(categoryHtml);
+			$pop_bookmark.find(".exist-category-list").html(categoryHtml);
 			$(".mask").fadeIn(300);
-			$(".pop-bookmark").fadeIn(300);
+			$pop_bookmark.fadeIn(300);
 		});
 		
 		$(".pop-bookmark #categoryname").focusin(function(){
@@ -157,14 +160,17 @@ var newCategoryOrBookMarkFunc = {
 				});
 			} else {
 				// 添加书签
-				doAjaxFunc.doNewBookmark(function(newCategoryNo){
+				doAjaxFunc.doNewBookmark(function($newBookmarkForm,newBookmarkNo){
 					// 添加成功后，在指定分类下添加新的书签
-					
-					bookmarkOperateFunc.getBookmarkTemplate(id, url, name, hot, isDisplay);
-					
-					
-					
-					
+					var categoryno = $newBookmarkForm.find("#categoryno").val();
+					var url = $newBookmarkForm.find("#url").val();
+					var name = $newBookmarkForm.find("#bookmarkname").val();
+					// 获取书签模板
+					var newBookmarkTemplate = bookmarkOperateFunc.getBookmarkTemplate(newBookmarkNo, url, name, "", false);
+					// 筛选出应对的分类
+					var $url_list = $("#category_"+categoryno).parents(".block").find(".url-list");
+					$url_list.prepend(newBookmarkTemplate);
+					$url_list.find("li:first").addClass("save-success").slideDown();
 					$(".mask").hide();
 					$(".popbox-for-new").hide();
 				});
@@ -331,7 +337,7 @@ var bookmarkOperateFunc = {
 			if ($nextli.find(".editbookmark").length == 0) {
 				// 每次打开新的模板之前，先关闭其他开着的模板
 				selfFunc.closeAllEditBookmarkTemplate();
-				var $li = $this.parents("li").removeClass("valid-pass").addClass("li-disabled pointto");
+				var $li = $this.parents("li").removeClass("save-success").addClass("li-disabled pointto");
 				var $a = $li.find("a");
 				var values = {};
 				values.url = $a.attr("href");
@@ -351,7 +357,7 @@ var bookmarkOperateFunc = {
 			if ($this.parents("li").next().find(".delbookmark").length == 0) {
 				// 每次打开新的模板之前，先关闭其他开着的模板
 				selfFunc.closeAllEditBookmarkTemplate();
-				var $li = $this.parents("li").removeClass("valid-pass").addClass("li-disabled pointto");
+				var $li = $this.parents("li").removeClass("save-success").addClass("li-disabled pointto");
 				selfFunc.appendDelBookmarkTemplate($li);
 			} else {
 				selfFunc.closeAllEditBookmarkTemplate();
@@ -404,7 +410,7 @@ var bookmarkOperateFunc = {
 					// 添加一个新书签
 					var $ul = $addbookmarkform.parents("ul");
 					$ul.prepend(template);
-					$ul.find("li:eq(0)").addClass("valid-pass").slideDown(function() {
+					$ul.find("li:eq(0)").addClass("save-success").slideDown(function() {
 						// 成功后的动画效果
 						doAjaxFunc.saveSuccessAnimate("保存成功");
 					});
@@ -424,7 +430,7 @@ var bookmarkOperateFunc = {
 					$updateli_a.html(name);
 					$updateli_a.attr("href",url);
 					// 添加更新成功图标
-					$updateli.addClass("valid-pass");
+					$updateli.addClass("save-success");
 					// 如果更新的书签是常用书签，常用书签也要跟着变化
 					var isHotBookmark = $updateli.find(".staricon").hasClass("light");
 					if (isHotBookmark) {

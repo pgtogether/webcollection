@@ -4,7 +4,7 @@
 <div class="mask"></div>
 <div class="popbox popbox-for-new pop-bookmark">
 	<form id="newBookmarkForm">
-	<div class="popbox-head">新增网址</div>
+	<div class="popbox-head">添加书签</div>
 	<div class="popbox-body">
 		<div>
 			<label>网址</label><input type="text" id="url" name="url"
@@ -16,7 +16,7 @@
 		</div>
 		<div class="choose-category">
 			<label>分类</label>
-			<input type="hidden" id="categoryno" />
+			<input type="hidden" id="categoryno" name="categoryno" />
 			<input type="text" id="categoryname" name="categoryname" placeholder="例:菜谱" />
 			<ul class="exist-category-list">
 			</ul>
@@ -39,7 +39,7 @@
 </div>
 <div class="popbox popbox-for-new pop-category">
 	<form id="newCategoryForm">
-	<div class="popbox-head">新增分类</div>
+	<div class="popbox-head">添加分类</div>
 	<div class="popbox-body">
 		<div>
 			<label>名称</label>

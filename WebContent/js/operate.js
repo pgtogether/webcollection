@@ -19,7 +19,8 @@ var initLoadFunc = {
 							// 添加新分类模板标题颜色
 							var rand = parseInt(Math.random() * 20, 10);
 							$clone.find(".block-head").css("background-color",randomColor[rand]);
-							$clone.find(".block-head-title").text(categoryname).attr("value",categoryno);
+							$clone.find(".block-head-title").text(categoryname)
+									.attr("value",categoryno).prop("id","category_" + categoryno);
 							// 绘制分类下的书签列
 							if (bookmarklist && bookmarklist.length > 0) {
 								var bookmarkHtml = '';
@@ -90,7 +91,7 @@ var doAjaxFunc = {
 					var newBookmarkNo = json.data;
 					successCallBack($newBookmarkForm,newBookmarkNo);
 				} else {
-					validateErrorsUtil.showValidateErrors($newcategoryform, json.errors);
+					validateErrorsUtil.showValidateErrors($newBookmarkForm, json.errors);
 				}
 			},
 			error : function(e) {
