@@ -35,9 +35,9 @@ import org.hibernate.validator.constraints.URL;
  */
 public class AddBookMarkForm {
 
-    @NotEmpty(message = "非法操作")
-    @Digits(integer = 11, fraction = 0, message = "非法操作")
     private String categoryno;
+
+    private String categoryname;
 
     @NotEmpty(message = "请输入网址")
     @URL(message = "请输入合法的网址")
@@ -89,5 +89,13 @@ public class AddBookMarkForm {
     public void setTags(String tags) {
         this.tags = tags;
     }
-    
+
+    public String getCategoryname() {
+        return categoryname;
+    }
+
+    public void setCategoryname(String categoryname) {
+        this.categoryname = categoryname;
+    }
+
 }

@@ -11,6 +11,7 @@
  */
 package com.dapeng.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -81,7 +82,7 @@ public class IndexController extends UserSessionController {
     public String recycle1() {
         return "recycle";
     }
-    
+
     @RequestMapping(value = "donate", method = { RequestMethod.GET, RequestMethod.POST })
     public String donate() {
         return "donate";
@@ -214,17 +215,49 @@ public class IndexController extends UserSessionController {
         if (result.hasErrors()) {
             return ajaxValidateError(result);
         }
+        // 如果分类ID为空并且名字不为空，那么需要创建一个新分类
+        Integer categoryno = 0;
+        Map<String, Integer> resultMap = null;
+        if (StringUtils.isEmpty(form.getCategoryno()) && !StringUtils.isEmpty(form.getCategoryname())) {
+            CategoryBO categoryBO = new CategoryBO();
+            categoryBO.setCategoryname(form.getCategoryname());
+            // 权限
+            categoryBO.setCategorypermission(CategoryPermissionEnum.NORMAL.getId());
+            // 密码：暂无
+            categoryBO.setCategorypsw("***");
+            // 默认二级分类
+            categoryBO.setCategorytype(CategoryTypeEnum.DEFAULT_CATEGORY_TYPE.getId());
+            // 默认父分类
+            categoryBO.setParentcategoryid(0);
+            // 默认测试
+            categoryBO.setUserid(getSessionUserId(session));
+            categoryno = categoryService.addCategory(categoryBO);
+            if (categoryno == 0) {
+                return ajaxFail("创建分类失败");
+            }
+            resultMap = new HashMap<String, Integer>();
+            resultMap.put("categoryno", categoryno);
+        } else {
+            categoryno = Integer.valueOf(form.getCategoryno());
+        }
+
         BookmarkBO bookmarkbo = new BookmarkBO();
         bookmarkbo.setUserid(getSessionUserId(session));
         bookmarkbo.setBookmarkname(StringUtils.trimWhitespace(form.getBookmarkname()));
+        bookmarkbo.setCategoryname(StringUtils.trimWhitespace(form.getCategoryname()));
         bookmarkbo.setUrl(StringUtils.trimWhitespace(form.getUrl()));
-        bookmarkbo.setCategoryno(Integer.valueOf(form.getCategoryno()));
+        bookmarkbo.setCategoryno(categoryno);
         bookmarkbo.setDescription(StringUtils.trimWhitespace(form.getDescription()));
-        int maxBookmarkNo = bookmarkService.insertBookmark(bookmarkbo);
-        if (maxBookmarkNo > 0) {
-            return ajaxSuccess(maxBookmarkNo);
+        Integer bookmarkno = bookmarkService.insertBookmark(bookmarkbo);
+        if (bookmarkno > 0) {
+            if (resultMap != null) {
+                resultMap.put("bookmarkno", bookmarkno);
+                return ajaxSuccess(resultMap);
+            } else {
+                return ajaxSuccess(bookmarkno);
+            }
         } else {
-            return ajaxFail();
+            return ajaxFail("添加书签失败");
         }
     }
 

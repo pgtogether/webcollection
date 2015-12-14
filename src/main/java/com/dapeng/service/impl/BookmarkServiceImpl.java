@@ -21,6 +21,7 @@ import com.depeng.web.bo.CategoryWithBookmarkMiniBO;
 
 @Service
 public class BookmarkServiceImpl implements BookmarkService {
+
     @Autowired
     private BookmarkMapper bookmarkDao;
 

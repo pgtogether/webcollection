@@ -88,8 +88,7 @@ var doAjaxFunc = {
 			url : CONTEXT_PATH + "/doAddBookmark",
 			success : function(json) {
 				if (json.result == "OK") {
-					var newBookmarkNo = json.data;
-					successCallBack($newBookmarkForm,newBookmarkNo);
+					successCallBack($newBookmarkForm,json.data);
 				} else {
 					validateErrorsUtil.showValidateErrors($newBookmarkForm, json.errors);
 				}

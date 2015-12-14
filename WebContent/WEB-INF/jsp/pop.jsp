@@ -17,7 +17,7 @@
 		<div class="choose-category">
 			<label>分类</label>
 			<input type="hidden" id="categoryno" name="categoryno" />
-			<input type="text" id="categoryname" name="categoryname" placeholder="例:菜谱" />
+			<input type="text" id="categoryname" name="categoryname" placeholder="例:菜谱(输入分类名可创建新分类)" />
 			<ul class="exist-category-list">
 			</ul>
 		</div>

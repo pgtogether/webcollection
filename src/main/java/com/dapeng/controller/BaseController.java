@@ -15,7 +15,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 
 /**
  * 基类Controller，用于统一Ajax返回的数据结构

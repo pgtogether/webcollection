@@ -145,14 +145,15 @@ var newCategoryOrBookMarkFunc = {
 				// 提交到后台
 				doAjaxFunc.doNewcategory(function(newCategoryNo){
 					// 保存成功后的回调方法
+					var $newcategoryform = $("#newCategoryForm");
 					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
-					var categoryname = $("#categoryname").val();
+					var categoryname = $newcategoryform.find("#categoryname").val();
 					var $clone = $(".category-template").clone().removeClass("category-template");
 					// 添加新分类模板标题颜色
 					var rand = parseInt(Math.random() * 20, 10);
-					$clone.find("input:hidden").attr("id","categoryno_"+newCategoryNo).val(newCategoryNo);
 					$clone.find(".block-head").css("background-color",randomColor[rand]);
-					$clone.find(".block-head-title").text(categoryname);
+					$clone.find(".block-head-title").text(categoryname)
+							.attr("value",newCategoryNo).prop("id","category_" + newCategoryNo);
 					$(".wrap-box").eq(0).prepend($clone);
 					$clone.slideDown();
 					$(".mask").hide();
@@ -160,13 +161,31 @@ var newCategoryOrBookMarkFunc = {
 				});
 			} else {
 				// 添加书签
-				doAjaxFunc.doNewBookmark(function($newBookmarkForm,newBookmarkNo){
-					// 添加成功后，在指定分类下添加新的书签
+				doAjaxFunc.doNewBookmark(function($newBookmarkForm,jsonData){
+					// 获取分类ID
+					var bookmarkno = "";
 					var categoryno = $newBookmarkForm.find("#categoryno").val();
+					// 如果分类ID为空，那么需要同时新增一个分类以及一个书签
+					if (!categoryno) {
+						bookmarkno = jsonData["bookmarkno"];
+						categoryno = jsonData["categoryno"]; 
+						var categoryname = $newBookmarkForm.find("#categoryname").val();
+						var $clone = $(".category-template").clone().removeClass("category-template");
+						// 添加新分类模板标题颜色
+						var rand = parseInt(Math.random() * 20, 10);
+						$clone.find(".block-head").css("background-color",randomColor[rand]);
+						$clone.find(".block-head-title").text(categoryname)
+								.attr("value",categoryno).prop("id","category_" + categoryno);
+						$(".wrap-box").eq(0).prepend($clone);
+						$clone.slideDown();
+					} else {
+						bookmarkno = jsonData;
+					}
+					// 添加成功后，在指定分类下添加新的书签
 					var url = $newBookmarkForm.find("#url").val();
 					var name = $newBookmarkForm.find("#bookmarkname").val();
 					// 获取书签模板
-					var newBookmarkTemplate = bookmarkOperateFunc.getBookmarkTemplate(newBookmarkNo, url, name, "", false);
+					var newBookmarkTemplate = bookmarkOperateFunc.getBookmarkTemplate(bookmarkno, url, name, "", false);
 					// 筛选出应对的分类
 					var $url_list = $("#category_"+categoryno).parents(".block").find(".url-list");
 					$url_list.prepend(newBookmarkTemplate);
