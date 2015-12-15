@@ -55,8 +55,13 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public int updateCategoryBySlected(Category category) {
-        return categoryDao.updateCategoryBySlected(category);
+    public int updateCategoryByUnique(CategoryBO bo) {
+        Category category = new Category();
+        category.setUserid(bo.getUserid());
+        category.setCategoryno(bo.getCategoryno());
+        category.setCategoryname(bo.getCategoryname());
+        category.setUpdatetime(new Date());
+        return categoryDao.updateCategoryByUnique(category);
     }
 
     @Override

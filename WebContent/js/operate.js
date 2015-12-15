@@ -127,6 +127,7 @@ var doAjaxFunc = {
 			}
 		});
 	},
+	// 编辑书签
 	doEditBookmark : function(successCallBack) {
 		// 表单验证
 		var $editbookmarkform = $("#editbookmarkform");
@@ -155,6 +156,7 @@ var doAjaxFunc = {
 			}
 		});
 	},
+	// 删除书签
 	doDeleteBookmark : function(bookmarkno,successCallback){
 		// 提交后台保存
 		$.ajax({
@@ -201,6 +203,23 @@ var doAjaxFunc = {
 			data : {
 				bookmarkno : bookmarkno
 			},
+			success : function(json) {
+				if (json.result == "OK") {
+					successCallBack();
+				} else {
+					alert(json.msg);
+				}
+			},
+			error : function(e) {
+			}
+		});
+	},
+	// 修改分类标题
+	doUpdateCategoryName : function(updateParams,successCallBack){
+		$.ajax({
+			type : "post",
+			url : CONTEXT_PATH + "/doUpdateCategoryName",
+			data : updateParams,
 			success : function(json) {
 				if (json.result == "OK") {
 					successCallBack();

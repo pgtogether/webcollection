@@ -21,7 +21,7 @@ public class CategoryBO {
     
     private String userid;
     
-    private String categoryno;
+    private int categoryno;
     
     public int getCategoryid() {
         return categoryid;
@@ -79,11 +79,11 @@ public class CategoryBO {
         this.userid = userid;
     }
 
-    public String getCategoryno() {
+    public int getCategoryno() {
         return categoryno;
     }
 
-    public void setCategoryno(String categoryno) {
+    public void setCategoryno(int categoryno) {
         this.categoryno = categoryno;
     }
 

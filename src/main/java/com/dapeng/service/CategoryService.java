@@ -29,7 +29,7 @@ public interface CategoryService {
     int deleteCategoryById(int categoryid);
 
     // 更新类别
-    int updateCategoryBySlected(Category category);
+    int updateCategoryByUnique(CategoryBO bo);
 
     // 改变标签的分类
     int updateBookmarkCategory(BookmarkBO bo);

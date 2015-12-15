@@ -169,13 +169,12 @@
 		category
 		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</delete>
-	<update id="updateCategoryBySlected" parameterType="com.dapeng.domain.Category">
-		update
-		category
-		set
-		categoryname = #{categoryname}
-		where categoryid =
-		#{categoryid}
+	<update id="updateCategoryByUnique" parameterType="com.dapeng.domain.Category">
+		update category
+		set categoryname = #{categoryname,jdbcType=VARCHAR},
+		updatetime = #{updatetime,jdbcType=TIMESTAMP}
+		where categoryno = #{categoryno,jdbcType=INTEGER}
+		and userid = #{userid,jdbcType=VARCHAR}
 	</update>
 	<!-- 获取插入的分类ID -->
 	<select id="selectLastCategoryId" resultType="java.lang.Integer">

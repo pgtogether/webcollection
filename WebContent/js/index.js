@@ -74,8 +74,13 @@ var newCategoryOrBookMarkFunc = {
 	},
 	newCategory : function() {
 		$(".categorybtn").click(function() {
+			// 还原到初始状态
+			var $pop_category = $(".pop-category");
+			$pop_category.find("input").val("");
+			$pop_category.find("#normal-permission").prop("checked",true);
+			$(".psw").hide();
 			$(".mask").fadeIn(300);
-			$(".pop-category").fadeIn(300);
+			$pop_category.fadeIn(300);
 		});
 		$("#psw-permission").click(function() {
 			$(".psw").show();
@@ -239,7 +244,7 @@ var boxHeadOperateFunc = {
 						+ $title.css("background-color") + '">';
 				$title.html(inputHtml).parent().addClass(
 						"modify");
-				$title.find("input").focus().val(titleText);
+				$title.find("input").focus().val(titleText).data("title",titleText);
 				selfFunc.appendBoxTitleUpdateBtn($title);
 			}
 		});
@@ -248,15 +253,31 @@ var boxHeadOperateFunc = {
 	confirmModify : function() {
 		var selfFunc = this;
 		$(".wrap-box").on("click", ".confirmicon", function() {
-			var $headFuncSpan = $(this).parent();
-			selfFunc.removeBoxTitleUpdateBtn($headFuncSpan);
+			var $this = $(this);
+			var $block = $this.parents(".block");
+			var categoryno = $block.find(".category-title").attr("value");
+			var categoryname = $block.find(".updatetitle").val();
+			var updateParams = {
+					categoryno : categoryno,
+					categoryname : categoryname
+			};
+			// 保存修改并且回调
+			doAjaxFunc.doUpdateCategoryName(updateParams,function(){
+				var $headFuncSpan = $this.parent();
+				selfFunc.removeBoxTitleUpdateBtn($headFuncSpan);
+			});
 		});
 	},
 	// 取消修改
 	cancelModify : function() {
 		var selfFunc = this;
 		$(".wrap-box").on("click", ".cancelicon", function() {
-			var $headFuncSpan = $(this).parent();
+			var $this = $(this);
+			// 如果没有修改，返回初始值
+			var $input = $this.parents(".block").find(".updatetitle");
+			$input.val($input.data("title"));
+			$input.removeData("title");
+			var $headFuncSpan = $this.parent();
 			selfFunc.removeBoxTitleUpdateBtn($headFuncSpan);
 		});
 	},

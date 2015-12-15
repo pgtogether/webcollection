@@ -34,7 +34,6 @@ import com.dapeng.controller.form.AddBookMarkForm;
 import com.dapeng.controller.form.CategoryForm;
 import com.dapeng.controller.form.EditBookMarkForm;
 import com.dapeng.domain.Bookmark;
-import com.dapeng.domain.Category;
 import com.dapeng.service.BookmarkService;
 import com.dapeng.service.CategoryService;
 import com.dapeng.service.bo.BookmarkBO;
@@ -370,19 +369,24 @@ public class IndexController extends UserSessionController {
         return result;
     }
 
-    @RequestMapping(value = "doUpdateCategory", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "doUpdateCategoryName", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public int doUpdateCategory(Category category) {
-        int result = -1;
-        try {
-            Category cgdto = new Category();
-            cgdto.setCategoryid(category.getCategoryid());
-            cgdto.setCategoryname(category.getCategoryname());
-            result = categoryService.updateCategoryBySlected(category);
-        } catch (Exception e) {
-            e.printStackTrace();
+    public Map<String, Object> doUpdateCategoryName(HttpServletRequest request, HttpSession session) {
+        String categoryno = request.getParameter("categoryno");
+        String categoryname = request.getParameter("categoryname");
+        if (StringUtils.isEmpty(categoryno) || StringUtils.isEmpty(categoryname)) {
+            return ajaxFail("参数异常");
         }
-        return result;
+
+        CategoryBO bo = new CategoryBO();
+        bo.setUserid(getSessionUserId(session));
+        bo.setCategoryno(Integer.valueOf(categoryno));
+        bo.setCategoryname(categoryname);
+        int result = categoryService.updateCategoryByUnique(bo);
+        if (result == 0) {
+            return ajaxFail("修改失败");
+        }
+        return ajaxSuccess();
     }
 
     /**

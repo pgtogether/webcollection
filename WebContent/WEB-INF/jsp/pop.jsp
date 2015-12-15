@@ -44,7 +44,7 @@
 		<div>
 			<label>名称</label>
 			<input type="hidden" id="categoryid" name="categoryid" value="" />
-			<input type="text" id="categoryname" name="categoryname" placeholder="网址所属分类" value="默认分类" />
+			<input type="text" id="categoryname" name="categoryname" placeholder="网址所属分类" value="" />
 		</div>
 		<div>
 			<label>权限</label> 

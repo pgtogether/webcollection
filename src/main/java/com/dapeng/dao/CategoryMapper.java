@@ -38,7 +38,7 @@ public interface CategoryMapper {
     // int addCategory(Category category);
 
     // int deleteCategoryById(int categoryid);
-    int updateCategoryBySlected(Category category);
+    int updateCategoryByUnique(Category category);
 
     // 改变标签的分类和排序
     int updateBookmarkCategory(Bookmark bookmark);
