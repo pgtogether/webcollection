@@ -18,11 +18,15 @@ public class CategoryBO {
     private String categorypermission;
 
     private String categorypsw;
-    
+
     private String userid;
-    
+
     private int categoryno;
-    
+
+    private String sortlist;
+
+    private String colno;
+
     public int getCategoryid() {
         return categoryid;
     }
@@ -87,4 +91,19 @@ public class CategoryBO {
         this.categoryno = categoryno;
     }
 
+    public String getSortlist() {
+        return sortlist;
+    }
+
+    public void setSortlist(String sortlist) {
+        this.sortlist = sortlist;
+    }
+
+    public String getColno() {
+        return colno;
+    }
+
+    public void setColno(String colno) {
+        this.colno = colno;
+    }
 }

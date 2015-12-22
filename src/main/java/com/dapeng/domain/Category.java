@@ -29,6 +29,10 @@ public class Category {
     private String userid;
     
     private int categoryno;
+    
+    private int sort;
+    
+    private String colno;
 
     public int getCategoryid() {
         return categoryid;
@@ -110,5 +114,20 @@ public class Category {
         this.categoryno = categoryno;
     }
 
+    public int getSort() {
+        return sort;
+    }
+
+    public void setSort(int sort) {
+        this.sort = sort;
+    }
+
+    public String getColno() {
+        return colno;
+    }
+
+    public void setColno(String colno) {
+        this.colno = colno;
+    }
     
 }

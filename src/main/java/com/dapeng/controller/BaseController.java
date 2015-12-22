@@ -31,6 +31,7 @@ public class BaseController {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("result", "OK");
         map.put("data", "");
+        map.put("msg", "OK");
         return map;
     }
 

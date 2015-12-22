@@ -30,6 +30,7 @@ var openSortableFunc = {
 		this.hotUrlSortable();
 		this.boxSortable();
 		this.urlSortable();
+		this.getBoxSortArray();
 	},
 	hotUrlSortable : function() {
 		$(".hot-url-list").sortable({
@@ -48,7 +49,31 @@ var openSortableFunc = {
 			placeholder : "block-placeholder",
 			tolerance : "pointer",
 			delay : 100,
-			zIndex : 100
+			zIndex : 100,
+			stop : function(event, ui){
+				// 获取移动后的栏目下的所有分类顺序
+				var $wrapBox = ui.item.parents(".wrap-box");
+				var sortArray = $wrapBox.sortable("toArray");
+				// 获取当前栏位
+				var columnValue = $wrapBox.attr("value");
+				// 保存到DB
+				$.ajax({
+					type : "post",
+					url : CONTEXT_PATH + "/doSaveCategorySort",
+					data : {
+						categorySorts : sortArray.join(","),
+						columnValue : columnValue
+					},
+					success : function(json) {
+						if (json.result == "OK") {
+							alert(json.msg);
+						}
+					},
+					error : function(e) {
+					}
+				});
+				console.log(sortArray);
+			}
 		});
 	},
 	urlSortable : function() {
@@ -61,6 +86,10 @@ var openSortableFunc = {
 			distance : 5,
 			placeholder : "url-list-placeholder"
 		});
+	},
+	getBoxSortArray : function(){
+		var sortArray = $(".wrap-box").sortable("toArray");
+		console.log(sortArray);
 	}
 };
 

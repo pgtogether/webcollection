@@ -12,6 +12,7 @@ import com.dapeng.domain.Category;
 import com.dapeng.service.CategoryService;
 import com.dapeng.service.bo.BookmarkBO;
 import com.dapeng.service.bo.CategoryBO;
+import com.dapeng.util.DateUtils;
 import com.depeng.web.bo.CategoryMiniBO;
 
 @Service
@@ -74,11 +75,6 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryDao.selectCategoryById(categoryid);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.dapeng.service.BookmarkService#updateBookmarkCategory(int)
-     */
     @Override
     public int updateBookmarkCategory(BookmarkBO bo) {
         Bookmark bm = new Bookmark();
@@ -88,4 +84,24 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryDao.updateBookmarkCategory(bm);
     }
 
+    /**
+     * 更新分类的排序
+     */
+    @Override
+    public void updateCategorySort(CategoryBO bo) {
+        String sortlist = bo.getSortlist();
+        String column = bo.getColno();
+        String[] sortArray = sortlist.split(",");
+        Date sysDate = DateUtils.getSysDate();
+        for (int i = 0; i < sortArray.length; i++) {
+            String categoryno = sortArray[i].split("_")[1];
+            Category category = new Category();
+            category.setUserid(bo.getUserid());
+            category.setCategoryno(Integer.valueOf(categoryno));
+            category.setSort(i);
+            category.setColno(column);
+            category.setUpdatetime(sysDate);
+            categoryDao.updateCategorySort(category);
+        }
+    }
 }

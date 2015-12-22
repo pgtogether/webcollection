@@ -18,6 +18,7 @@ var initLoadFunc = {
 							var $clone = $(".category-template").clone().attr("style","").removeClass("category-template");
 							// 添加新分类模板标题颜色
 							var rand = parseInt(Math.random() * 20, 10);
+							$clone.prop("id","c_"+categoryno);
 							$clone.find(".block-head").css("background-color",randomColor[rand]);
 							$clone.find(".block-head-title").text(categoryname)
 									.attr("value",categoryno).prop("id","category_" + categoryno);

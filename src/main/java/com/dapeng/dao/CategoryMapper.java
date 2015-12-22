@@ -48,4 +48,7 @@ public interface CategoryMapper {
 
     // 获取用户下最大的分类编号
     int selectMaxCategoryNoByUserId(String userId);
+    
+    // 更新分类排序
+    int updateCategorySort(Category category);
 }
