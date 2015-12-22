@@ -66,6 +66,7 @@ var openSortableFunc = {
 					},
 					success : function(json) {
 						if (json.result == "OK") {
+						} else {
 							alert(json.msg);
 						}
 					},

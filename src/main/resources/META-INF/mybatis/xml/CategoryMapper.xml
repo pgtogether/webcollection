@@ -234,15 +234,45 @@
 		where
 		userid = #{userid,jdbcType=VARCHAR}
 	</select>
+	<!-- 获取默认栏位下最大排序号 -->
+	<select id="selectMaxSortInDefaultColNo" resultType="java.lang.Integer"
+		parameterType="com.dapeng.domain.Category">
+		select IFNULL(max(sort),0)
+		from category
+		where
+		userid = #{userid,jdbcType=VARCHAR}
+		and colno = #{colno,jdbcType=VARCHAR}
+	</select>
 	<!-- 更新分类排序 -->
 	<update id="updateCategorySort" parameterType="com.dapeng.domain.Category">
 		update category
 		<set>
 			sort = #{sort,jdbcType=INTEGER},
-			colno = #{colno,jdbcType=VARCHAR},
-			updatetime = #{updatetime,jdbcType=TIMESTAMP}
+			colno =
+			#{colno,jdbcType=VARCHAR},
+			updatetime =
+			#{updatetime,jdbcType=TIMESTAMP}
 		</set>
 		where categoryno = #{categoryno,jdbcType=INTEGER}
-		and userid = #{userid,jdbcType=VARCHAR}
+		and userid =
+		#{userid,jdbcType=VARCHAR}
+	</update>
+	<!-- 批量更新分类排序 -->
+	<update id="batchUpdateCategorySort" parameterType="java.util.List">
+		<foreach collection="list" item="category" index="index" open=""
+			close="" separator=";">
+			update category
+			<set>
+				sort = #{category.sort,jdbcType=INTEGER},
+				colno =
+				#{category.colno,jdbcType=VARCHAR},
+				updatetime =
+				#{category.updatetime,jdbcType=TIMESTAMP}
+			</set>
+			where categoryno = #{category.categoryno,jdbcType=INTEGER}
+			and userid
+			=
+			#{category.userid,jdbcType=VARCHAR}
+		</foreach>
 	</update>
 </mapper>

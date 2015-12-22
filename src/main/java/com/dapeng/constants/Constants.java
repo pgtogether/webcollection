@@ -21,5 +21,8 @@ public class Constants {
 	public static final String ERR_MSG_1 = "用户名或密码错误";
 	
 	public static final String ERR_MSG_2 = "用户已存在";
+	
+	// 默认栏位
+	public static final String DEFAULT_COLNO = "0";
     
 }

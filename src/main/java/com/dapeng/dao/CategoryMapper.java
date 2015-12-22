@@ -51,4 +51,10 @@ public interface CategoryMapper {
     
     // 更新分类排序
     int updateCategorySort(Category category);
+    
+    // 批量更新分类排序
+    void batchUpdateCategorySort(List<Category> list);
+    
+    // 获取默认栏位下最大排序号
+    int selectMaxSortInDefaultColNo(Category category);
 }

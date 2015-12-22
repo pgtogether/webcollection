@@ -13,6 +13,7 @@ var initLoadFunc = {
 						for(var i=0; i<json.data.length; i++){
 							var categoryno = json.data[i].i;
 							var categoryname = json.data[i].n;
+							var categorycolno = json.data[i].c;
 							var bookmarklist = json.data[i].list;
 							// 复制一个分类模板
 							var $clone = $(".category-template").clone().attr("style","").removeClass("category-template");
@@ -34,7 +35,7 @@ var initLoadFunc = {
 								}
 								$clone.find(".url-list").append(bookmarkHtml);
 							}
-							$(".wrap-box").eq(0).append($clone);
+							$(".wrap-box").eq(categorycolno).append($clone);
 						} 
 					}
 				}

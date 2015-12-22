@@ -1,11 +1,13 @@
 package com.dapeng.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dapeng.constants.Constants;
 import com.dapeng.dao.CategoryMapper;
 import com.dapeng.domain.Bookmark;
 import com.dapeng.domain.Category;
@@ -31,7 +33,14 @@ public class CategoryServiceImpl implements CategoryService {
     public int addCategory(CategoryBO categoryBO) {
         // 获取最大的分类编号
         int maxCategoryNo = categoryDao.selectMaxCategoryNoByUserId(categoryBO.getUserid()) + 1;
+
+        // 获取最大排序号
+        Category record = new Category();
+        record.setUserid(categoryBO.getUserid());
+        record.setColno(Constants.DEFAULT_COLNO);
+        int maxSort = categoryDao.selectMaxSortInDefaultColNo(record) + 1;
         Category category = new Category();
+        // 默认插入第一栏位
         category.setUserid(categoryBO.getUserid());
         category.setCategoryno(maxCategoryNo);
         category.setCategoryname(categoryBO.getCategoryname());
@@ -39,6 +48,8 @@ public class CategoryServiceImpl implements CategoryService {
         category.setCategorytype(categoryBO.getCategorytype());
         category.setParentcategoryid(categoryBO.getParentcategoryid());
         category.setCategorypsw(categoryBO.getCategorypsw());
+        category.setSort(maxSort);
+        category.setColno(Constants.DEFAULT_COLNO);
         Date systime = new Date();
         category.setCreatetime(systime);
         category.setUpdatetime(systime);
@@ -93,15 +104,18 @@ public class CategoryServiceImpl implements CategoryService {
         String column = bo.getColno();
         String[] sortArray = sortlist.split(",");
         Date sysDate = DateUtils.getSysDate();
-        for (int i = 0; i < sortArray.length; i++) {
+        List<Category> list = new ArrayList<Category>();
+        int listLength = sortArray.length;
+        for (int i = 0; i < listLength; i++) {
             String categoryno = sortArray[i].split("_")[1];
             Category category = new Category();
             category.setUserid(bo.getUserid());
             category.setCategoryno(Integer.valueOf(categoryno));
-            category.setSort(i);
+            category.setSort(listLength - i);
             category.setColno(column);
             category.setUpdatetime(sysDate);
-            categoryDao.updateCategorySort(category);
+            list.add(category);
         }
+        categoryDao.batchUpdateCategorySort(list);
     }
 }

@@ -56,6 +56,7 @@ public class BookmarkServiceImpl implements BookmarkService {
                     CategoryWithBookmarkMiniBO withBO = new CategoryWithBookmarkMiniBO();
                     withBO.setI(bo.getCategoryno());
                     withBO.setN(bo.getCategoryname());
+                    withBO.setC(bo.getColno());
                     if (bo.getBookmarkno() != 0) {
                         List<BookmarkMiniBO> bookmarklist = new ArrayList<BookmarkMiniBO>();
                         BookmarkMiniBO miniBO = new BookmarkMiniBO();

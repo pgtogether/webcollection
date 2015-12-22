@@ -418,24 +418,28 @@ public class IndexController extends UserSessionController {
         result = categoryService.updateBookmarkCategory(bo);
         return result;
     }
-    
+
     /**
      * 保存拖动后的分类排序
      */
     @RequestMapping(value = "doSaveCategorySort", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String,Object> doSaveCategorySort(HttpServletRequest request,HttpSession session) {
+    public Map<String, Object> doSaveCategorySort(HttpServletRequest request, HttpSession session) {
         String categorySorts = request.getParameter("categorySorts");
         String columnValue = request.getParameter("columnValue");
-        if(StringUtils.isEmpty(categorySorts) || StringUtils.isEmpty(columnValue)){
-            return ajaxFail("数据异常");
+        if (StringUtils.isEmpty(categorySorts) || StringUtils.isEmpty(columnValue)) {
+            return ajaxFail("排序异常");
         }
-        
-        CategoryBO bo = new CategoryBO();
-        bo.setSortlist(categorySorts);
-        bo.setColno(columnValue);
-        bo.setUserid(getSessionUserId(session));
-        categoryService.updateCategorySort(bo);
+
+        try {
+            CategoryBO bo = new CategoryBO();
+            bo.setSortlist(categorySorts);
+            bo.setColno(columnValue);
+            bo.setUserid(getSessionUserId(session));
+            categoryService.updateCategorySort(bo);
+        } catch (Exception e) {
+            return ajaxFail("排序异常");
+        }
         return ajaxSuccess();
     }
 }

@@ -49,10 +49,10 @@
 			</div>
 			<div class="adv-show">占位</div>
 			<div class="content-left-body">
+				<div class="wrap-box" value="0"></div>
 				<div class="wrap-box" value="1"></div>
 				<div class="wrap-box" value="2"></div>
 				<div class="wrap-box" value="3"></div>
-				<div class="wrap-box" value="4"></div>
 			</div>
 		</div>
 		<div class="content-right">
