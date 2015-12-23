@@ -8,7 +8,10 @@
 */
 package com.dapeng.controller;
 
+import java.util.Date;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,11 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.dapeng.commons.MD5;
 import com.dapeng.controller.form.IdeaForm;
-import com.dapeng.controller.form.LoginForm;
-import com.dapeng.service.LoginService;
-import com.dapeng.service.bo.UserBO;
+import com.dapeng.service.IdeaService;
+import com.dapeng.service.bo.IdeaBO;
 
 /**
  * 
@@ -28,11 +29,11 @@ import com.dapeng.service.bo.UserBO;
  */
 @Controller
 @RequestMapping("/*")
-public class IdeaController extends BaseController{
+public class IdeaController extends UserSessionController{
 	
 	
 	 @Autowired
-	 private LoginService loginService;
+	 private IdeaService ideaService;
 	 
     /**
      * 用户反馈页面
@@ -52,10 +53,14 @@ public class IdeaController extends BaseController{
      */
     @RequestMapping(value = "doIdea", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String, Object> doIdea(IdeaForm ideaForm) {
+    public Map<String, Object> doIdea(IdeaForm ideaForm,HttpSession session) {
     	
-    	
-    	int count = 0;
+    	IdeaBO ideaBO = new IdeaBO();
+    	ideaBO.setUserid(getSessionUserId(session));
+    	ideaBO.setIdeatitle(ideaForm.getIdeatitle());
+    	ideaBO.setIdeacontent(ideaForm.getIdeacontent());
+    	ideaBO.setIdeatime(new Date());
+    	int count = ideaService.addUserIdea(ideaBO);
     	if (count>0) {
     		 return ajaxSuccess();
 		}else {

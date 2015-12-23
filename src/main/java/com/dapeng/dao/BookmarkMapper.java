@@ -65,10 +65,10 @@ public interface BookmarkMapper {
      * @return
      */
 
-    int deletePhysicsBookmarkById(int id);
+    int deletePhysicsBookmarkById(Bookmark bookmark);
 
     // 从回收站恢复书签
-    int doRecoverBookmark(int id);
+    int doRecoverBookmark(Bookmark bookmark);
 
     int updateBookmarkById(int id);
 

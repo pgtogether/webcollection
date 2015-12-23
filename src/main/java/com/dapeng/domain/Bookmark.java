@@ -176,4 +176,8 @@ public class Bookmark {
         this.userid = userid;
     }
 
+	public int getBookmarkno() {
+		return bookmarkno;
+	}
+
 }

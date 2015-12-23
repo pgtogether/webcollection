@@ -28,13 +28,13 @@ public interface BookmarkService {
     int deleteBookmarkByUnique(String userid, int bookmarkno);
 
     // 物理删除
-    int deletePhysicsBookmarkById(int id);
+    int deletePhysicsBookmarkById(String userid, int bookmarkno);
 
     // 更新书签 todo 未使用
     int updateBookmarkById(int id);
 
     // 从回收站恢复书签
-    int doRecoverBookmark(int id);
+    int doRecoverBookmark(String userid, int bookmarkno);
 
     // 更新书签
     int updateBookmark(BookmarkBO bo);

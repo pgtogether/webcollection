@@ -33,7 +33,6 @@ import com.dapeng.constants.CategoryTypeEnum;
 import com.dapeng.controller.form.AddBookMarkForm;
 import com.dapeng.controller.form.CategoryForm;
 import com.dapeng.controller.form.EditBookMarkForm;
-import com.dapeng.domain.Bookmark;
 import com.dapeng.service.BookmarkService;
 import com.dapeng.service.CategoryService;
 import com.dapeng.service.bo.BookmarkBO;
@@ -186,15 +185,19 @@ public class IndexController extends UserSessionController {
      */
     @RequestMapping(value = "doRecoverBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String, Object> doRecoverBookmark(String bookmarkno) {
+    public Map<String, Object> doRecoverBookmark(String bookmarkno,HttpSession session) {
         System.out.println("从回收站恢复----->  " + bookmarkno);
         String[] bookmarknoarr = bookmarkno.split(";");
+        String userid = getSessionUserId(session);
+        if (bookmarknoarr!=null&&bookmarknoarr.length==0) {
+			return ajaxFail("恢复异常");
+		}
         int result = -1;
         try {
             for (int i = 0; i < bookmarknoarr.length; i++) {
-                result = bookmarkService.doRecoverBookmark(Integer.parseInt(bookmarknoarr[i]));
+                result = bookmarkService.doRecoverBookmark(userid,Integer.parseInt(bookmarknoarr[i]));
                 if (result < 0) {
-                    break;
+                	return ajaxFail("恢复异常");
                 }
             }
         } catch (Exception e) {
@@ -283,26 +286,30 @@ public class IndexController extends UserSessionController {
     /**
      * 物理删除
      * 
-     * @param bookmarkid
+     * @param bookmarkno
      * @return
      */
     @RequestMapping(value = "doPhysicsDelBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public int doPhysicsDelBookmark(String bookmarkid) {
-        System.out.println("物理删除----->  " + bookmarkid);
-        String[] bookmarkidarr = bookmarkid.split(";");
+    public Map<String, Object> doPhysicsDelBookmark(String bookmarkno,HttpSession session) {
+        System.out.println("物理删除----->  " + bookmarkno);
+        String[] bookmarknoarr = bookmarkno.split(";");
+        if (bookmarknoarr.length==0) {
+            return ajaxFail("删除异常");
+        }
+        String userid = getSessionUserId(session);
         int result = -1;
         try {
-            for (int i = 0; i < bookmarkidarr.length; i++) {
-                result = bookmarkService.deletePhysicsBookmarkById(Integer.parseInt(bookmarkidarr[i]));
+            for (int i = 0; i < bookmarknoarr.length; i++) {
+                result = bookmarkService.deletePhysicsBookmarkById(userid,Integer.parseInt(bookmarknoarr[i]));
                 if (result < 0) {
-                    break;
+                	return ajaxFail("删除异常");
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result;
+        return ajaxSuccess(bookmarknoarr);
     }
 
     /**

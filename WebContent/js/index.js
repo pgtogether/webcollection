@@ -698,6 +698,12 @@ var sideBannerFunc = {
 			{
 				window.location.href="recycle";
 			});
+		//进入意见反馈页面
+		$(".fun1").click(
+			function ()
+			{
+				window.location.href="useridea";
+			});
 		//进入资金赞助页面
 		$(".fun2").click(
 			function ()

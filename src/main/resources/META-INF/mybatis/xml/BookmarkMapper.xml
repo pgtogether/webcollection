@@ -304,17 +304,19 @@
 		and userid = #{userid,jdbcType=VARCHAR}
 	</update>
 	<!-- 物理删除书签 -->
-	<delete id="deletePhysicsBookmarkById" parameterType="int">
+	<delete id="deletePhysicsBookmarkById" parameterType="com.dapeng.domain.Bookmark">
 		delete from
 		bookmark
-		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+		where bookmarkno = #{bookmarkno,jdbcType=INTEGER}
+		and userid = #{userid,jdbcType=VARCHAR}
 	</delete>
 	<!-- 从回收站恢复书签 -->
-	<update id="doRecoverBookmark" parameterType="int">
+	<update id="doRecoverBookmark" parameterType="com.dapeng.domain.Bookmark">
 		update bookmark
 		set
-		deleteflg = "0"
+		deleteflg = #{deleteflg,jdbcType=VARCHAR}
 		where bookmarkno = #{bookmarkno,jdbcType=INTEGER}
+		and userid = #{userid,jdbcType=VARCHAR}
 	</update>
 	<update id="updateBookmarkCategory" parameterType="com.dapeng.domain.Bookmark">
 		update

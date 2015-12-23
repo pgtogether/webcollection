@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file="/include/constants.jsp"%>
+<%@ include file="/include/constants.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -101,16 +101,24 @@ $(function() {
 		});
 		//alert(str);
 		$.ajax({
-			data:'bookmarkid='+str,
+			data:'bookmarkno='+str,
 			type : "post",
 			url : "${context_path}/doPhysicsDelBookmark",
 			dataType:"json",
 			success : function(json) {
-				if(json>0){
+				
+				for(var i=0;i<json.data.length;i++){
+					$("[name='recycledmark']:checked").each(function(){
+						if($(this).val()==json.data[i]){
+							$(this).parent().remove();
+						}
+					});
+				}
+				/* if(json.msg=="OK"){
 					alert("删除成功");
 				}else{
 					alert("删除失败");
-				}
+				} */
 			},
 			error : function(e) {
 				alert(e);

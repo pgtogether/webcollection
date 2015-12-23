@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.dapeng.dao.IdeaMapper">
+	<resultMap id="BaseResultMap" type="com.dapeng.domain.Idea">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="userid" property="userid" jdbcType="VARCHAR" />
+		<result column="ideatitle" property="ideatitle" jdbcType="VARCHAR" />
+		<result column="ideacontent" property="ideacontent" jdbcType="VARCHAR" />
+		<result column="ideatime" property="ideatime"/>
+	</resultMap>
+	
+	<insert id="addUserIdea" parameterType="com.dapeng.domain.Idea">
+		insert into user_idea(userid,ideatitle,ideacontent,ideatime)
+		values(#{userid,jdbcType=VARCHAR},#{ideatitle,jdbcType=VARCHAR}
+		,#{ideacontent,jdbcType=VARCHAR},#{ideatime,jdbcType=TIMESTAMP})
+	</insert>
+	
+</mapper>
