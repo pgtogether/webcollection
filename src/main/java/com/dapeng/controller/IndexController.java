@@ -186,7 +186,7 @@ public class IndexController extends UserSessionController {
      */
     @RequestMapping(value = "doRecoverBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public int doRecoverBookmark(String bookmarkid) {
+    public Map<String, Object> doRecoverBookmark(String bookmarkid) {
         System.out.println("从回收站恢复----->  " + bookmarkid);
         String[] bookmarkidarr = bookmarkid.split(";");
         int result = -1;
@@ -197,11 +197,10 @@ public class IndexController extends UserSessionController {
                     break;
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result;
+        return ajaxSuccess(bookmarkidarr);
     }
 
     /**
