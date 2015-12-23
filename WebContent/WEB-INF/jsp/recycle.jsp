@@ -42,12 +42,6 @@ $(function() {
 	   	 	$("[name='recycledmark']").removeProp("checked");//取消全选   
 	    });
 	    
-	    $("#btn3").click(function(){   
-	        
-	    $("[name='recycledmark']:even").prop("checked",'true');//选中所有奇数   
-	     
-	    });   
-	    
 	    
 	    $("#btn4").click(function(){   
 	        
@@ -137,8 +131,8 @@ $(function() {
    <input type="button" id="back" value="恢复所选"></input>
    <input type="button" id="delete" value="删除所选"></input>
 <form id="recyclelist">
+ 	<input type="button" id="btn1" value="全选">    
    <input type="button" id="btn2" value="取消全选">     
-   <input type="button" id="btn3" value="选中所有奇数">     
    <input type="button" id="btn4" value="反选">     
    <br/>
 </form>
