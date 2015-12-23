@@ -25,6 +25,8 @@ public class BookmarkBO {
     private int categoryno;
 
     private String categoryname;
+    
+    private String colno;
 
     private int usetimes;
 
@@ -41,6 +43,8 @@ public class BookmarkBO {
     private String description;
 
     private int sort;
+    
+    private String sortlist;
 
     private String hot;
 
@@ -198,6 +202,22 @@ public class BookmarkBO {
 
     public void setTags(String tags) {
         this.tags = tags;
+    }
+
+    public String getSortlist() {
+        return sortlist;
+    }
+
+    public void setSortlist(String sortlist) {
+        this.sortlist = sortlist;
+    }
+
+    public String getColno() {
+        return colno;
+    }
+
+    public void setColno(String colno) {
+        this.colno = colno;
     }
 
 }

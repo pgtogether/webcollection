@@ -15,7 +15,7 @@ import com.depeng.web.bo.CategoryMiniBO;
  * @date 2015年12月6日 下午5:56:11
  */
 public interface CategoryService {
-    
+
     // 查询所有类别
     List<CategoryMiniBO> selectCategoryList(String userid);
 
@@ -33,4 +33,7 @@ public interface CategoryService {
 
     // 改变标签的分类
     int updateBookmarkCategory(BookmarkBO bo);
+
+    // 更新分类的排序
+    void updateCategorySort(CategoryBO bo);
 }

@@ -12,7 +12,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:/spring/applicationContext.xml</param-value>
+		<param-value>classpath:/META-INF/spring/applicationContext.xml</param-value>
 	</context-param>
 
 	<!-- SpringMVC配置 -->
@@ -21,7 +21,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:/spring/webcollection.xml</param-value>
+			<param-value>classpath:/META-INF/spring/webcollection.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -37,7 +37,7 @@
 	<!-- log4j配置 -->
 	<context-param>
 		<param-name>log4jConfigLocation</param-name>
-		<param-value>classpath:/log4j/log4j.properties</param-value>
+		<param-value>classpath:/META-INF/log4j/log4j.properties</param-value>
 	</context-param>
 	<!-- Spring刷新Log4j配置文件变动的间隔,单位为毫秒 -->
 	<context-param>

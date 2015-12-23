@@ -241,7 +241,7 @@
 	<!-- 书签操作 -->
 	<select id="selectBookmarkBOList" parameterType="com.dapeng.domain.Bookmark"
 			resultType="com.dapeng.service.bo.BookmarkBO">
-		SELECT T1.categoryno, T1.categoryname, T2.bookmarkname, T2.bookmarkno,
+		SELECT T1.categoryno, T1.categoryname, T1.colno, T2.bookmarkname, T2.bookmarkno,
 			   T2.url, T2.fastletters, T2.pinyinhead, T2.hot
 		FROM 
 			category T1
@@ -253,7 +253,7 @@
 		and T2.deleteflg = #{deleteflg,jdbcType=VARCHAR}
 		WHERE
 			T1.userid = #{userid,jdbcType=VARCHAR}
-		ORDER BY T1.createtime desc, T2.createtime desc
+		ORDER BY T1.sort desc, T2.sort desc
 	</select>
 	<!-- 书签操作 获取同一类别书签 -->
 	<select id="selectBookmarkListByCategoryid" resultType="com.dapeng.domain.Bookmark">

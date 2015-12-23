@@ -14,11 +14,15 @@
 		<result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
 		<result column="userid" property="userid" jdbcType="VARCHAR" />
 		<result column="categoryno" property="categoryno" jdbcType="INTEGER" />
+		<result column="sort" property="sort" jdbcType="INTEGER" />
+		<result column="colno" property="colno" jdbcType="VARCHAR" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		categoryid, categoryname, categorytype, parentcategoryid, categorypermission,
+		categoryid, categoryname, categorytype, parentcategoryid,
+		categorypermission,
 		categorypsw,
-		createtime, updatetime,userid ,categoryid
+		createtime, updatetime,userid
+		,categoryid, sort, colno
 	</sql>
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.String">
@@ -28,21 +32,28 @@
 		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-		delete from category
+		delete from
+		category
 		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.dapeng.domain.Category">
-		insert into category (categoryname, categorytype,
-		parentcategoryid, categorypermission, categorypsw,
-		createtime, updatetime, userid, categoryno)
-		values (#{categoryname,jdbcType=VARCHAR},
+		insert into category
+		(categoryname, categorytype,
+		parentcategoryid, categorypermission,
+		categorypsw,
+		createtime, updatetime, userid, categoryno, sort, colno)
+		values
+		(#{categoryname,jdbcType=VARCHAR},
 		#{categorytype,jdbcType=VARCHAR},
 		#{parentcategoryid,jdbcType=INTEGER},
 		#{categorypermission,jdbcType=VARCHAR},
 		#{categorypsw,jdbcType=VARCHAR},
-		#{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP},
+		#{createtime,jdbcType=TIMESTAMP},
+		#{updatetime,jdbcType=TIMESTAMP},
 		#{userid,jdbcType=VARCHAR},
-		#{categoryno,jdbcType=INTEGER})
+		#{categoryno,jdbcType=INTEGER},
+		#{sort,jdbcType=INTEGER},
+		#{colno,jdbcType=INTEGER})
 	</insert>
 	<insert id="insertSelective" parameterType="com.dapeng.domain.Category">
 		insert into category
@@ -74,6 +85,12 @@
 			<if test="categoryno != null">
 				categoryno,
 			</if>
+			<if test="sort != null and sort != 0">
+				categoryno,
+			</if>
+			<if test="colno != null">
+				colno,
+			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="categoryname != null">
@@ -103,6 +120,12 @@
 			<if test="categoryno != null">
 				#{categoryno,jdbcType=INTEGER},
 			</if>
+			<if test="sort != null and sort != 0">
+				#{categoryno,jdbcType=INTEGER},
+			</if>
+			<if test="colno != null">
+				#{colno,jdbcType=VARCHAR},
+			</if>
 		</trim>
 	</insert>
 	<update id="updateByPrimaryKeySelective" parameterType="com.dapeng.domain.Category">
@@ -118,7 +141,8 @@
 				parentcategoryid = #{parentcategoryid,jdbcType=INTEGER},
 			</if>
 			<if test="categorypermission != null">
-				categorypermission = #{categorypermission,jdbcType=VARCHAR},
+				categorypermission =
+				#{categorypermission,jdbcType=VARCHAR},
 			</if>
 			<if test="categorypsw != null">
 				categorypsw = #{categorypsw,jdbcType=VARCHAR},
@@ -135,34 +159,53 @@
 			<if test="categoryno != null">
 				categoryno = #{categoryno,jdbcType=INTEGER},
 			</if>
+			<if test="sort != null and sort != 0">
+				sort = #{sort,jdbcType=INTEGER},
+			</if>
+			<if test="colno != null">
+				colno = #{colno,jdbcType=VARCHAR},
+			</if>
 		</set>
 		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.dapeng.domain.Category">
 		update category
 		set categoryname = #{categoryname,jdbcType=VARCHAR},
-		categorytype = #{categorytype,jdbcType=VARCHAR},
-		parentcategoryid = #{parentcategoryid,jdbcType=INTEGER},
-		categorypermission = #{categorypermission,jdbcType=VARCHAR},
-		categorypsw = #{categorypsw,jdbcType=VARCHAR},
-		createtime = #{createtime,jdbcType=TIMESTAMP},
-		updatetime = #{updatetime,jdbcType=TIMESTAMP},
+		categorytype =
+		#{categorytype,jdbcType=VARCHAR},
+		parentcategoryid =
+		#{parentcategoryid,jdbcType=INTEGER},
+		categorypermission =
+		#{categorypermission,jdbcType=VARCHAR},
+		categorypsw =
+		#{categorypsw,jdbcType=VARCHAR},
+		createtime =
+		#{createtime,jdbcType=TIMESTAMP},
+		updatetime =
+		#{updatetime,jdbcType=TIMESTAMP},
 		userid = #{userid,jdbcType=VARCHAR},
-		categoryno = #{categoryno,jdbcType=INTEGER}
-		where categoryid = #{categoryid,jdbcType=INTEGER}
+		categoryno = #{categoryno,jdbcType=INTEGER},
+		sort =
+		#{sort,jdbcType=INTEGER},
+		colno = #{colno,jdbcType=INTEGER}
+		where
+		categoryid =
+		#{categoryid,jdbcType=INTEGER}
 	</update>
 	<!-- 书签类别操作 -->
 	<select id="selectCategoryList" parameterType="java.lang.String"
 		resultType="com.depeng.web.bo.CategoryMiniBO">
-		select categoryid as i, categoryname as n 
+		select categoryid as i, categoryname as n
 		from category
 		where userid = #{userid,jdbcType=VARCHAR}
-		order by createtime desc
+		order by createtime
+		desc
 	</select>
 	<select id="selectCategoryListById" parameterType="int"
 		resultType="com.dapeng.domain.Category">
 		select * from category
-		where categoryid = #{categoryid,jdbcType=INTEGER}
+		where categoryid =
+		#{categoryid,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteCategoryById" parameterType="int">
 		delete from
@@ -170,21 +213,66 @@
 		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</delete>
 	<update id="updateCategoryByUnique" parameterType="com.dapeng.domain.Category">
-		update category
+		update
+		category
 		set categoryname = #{categoryname,jdbcType=VARCHAR},
 		updatetime = #{updatetime,jdbcType=TIMESTAMP}
-		where categoryno = #{categoryno,jdbcType=INTEGER}
+		where categoryno =
+		#{categoryno,jdbcType=INTEGER}
 		and userid = #{userid,jdbcType=VARCHAR}
 	</update>
 	<!-- 获取插入的分类ID -->
 	<select id="selectLastCategoryId" resultType="java.lang.Integer">
-		select last_insert_id()
+		select
+		last_insert_id()
 	</select>
 	<!-- 获取当前用户下最大的分类编号 -->
-	<select id="selectMaxCategoryNoByUserId" resultType="java.lang.Integer" 
+	<select id="selectMaxCategoryNoByUserId" resultType="java.lang.Integer"
 		parameterType="java.lang.String">
 		select IFNULL(max(categoryno),0)
 		from category
-		where userid = #{userid,jdbcType=VARCHAR}
+		where
+		userid = #{userid,jdbcType=VARCHAR}
 	</select>
+	<!-- 获取默认栏位下最大排序号 -->
+	<select id="selectMaxSortInDefaultColNo" resultType="java.lang.Integer"
+		parameterType="com.dapeng.domain.Category">
+		select IFNULL(max(sort),0)
+		from category
+		where
+		userid = #{userid,jdbcType=VARCHAR}
+		and colno = #{colno,jdbcType=VARCHAR}
+	</select>
+	<!-- 更新分类排序 -->
+	<update id="updateCategorySort" parameterType="com.dapeng.domain.Category">
+		update category
+		<set>
+			sort = #{sort,jdbcType=INTEGER},
+			colno =
+			#{colno,jdbcType=VARCHAR},
+			updatetime =
+			#{updatetime,jdbcType=TIMESTAMP}
+		</set>
+		where categoryno = #{categoryno,jdbcType=INTEGER}
+		and userid =
+		#{userid,jdbcType=VARCHAR}
+	</update>
+	<!-- 批量更新分类排序 -->
+	<update id="batchUpdateCategorySort" parameterType="java.util.List">
+		<foreach collection="list" item="category" index="index" open=""
+			close="" separator=";">
+			update category
+			<set>
+				sort = #{category.sort,jdbcType=INTEGER},
+				colno =
+				#{category.colno,jdbcType=VARCHAR},
+				updatetime =
+				#{category.updatetime,jdbcType=TIMESTAMP}
+			</set>
+			where categoryno = #{category.categoryno,jdbcType=INTEGER}
+			and userid
+			=
+			#{category.userid,jdbcType=VARCHAR}
+		</foreach>
+	</update>
 </mapper>

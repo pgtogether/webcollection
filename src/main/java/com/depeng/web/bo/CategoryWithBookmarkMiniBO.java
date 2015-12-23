@@ -37,9 +37,12 @@ public class CategoryWithBookmarkMiniBO {
     // categoryname
     private String n;
 
+    // colno
+    private String c;
+
     // bookmarklist
     private List<BookmarkMiniBO> list;
-    
+
     public int getI() {
         return i;
     }
@@ -62,6 +65,14 @@ public class CategoryWithBookmarkMiniBO {
 
     public void setList(List<BookmarkMiniBO> list) {
         this.list = list;
+    }
+
+    public String getC() {
+        return c;
+    }
+
+    public void setC(String c) {
+        this.c = c;
     }
 
 }
