@@ -662,5 +662,17 @@ var sideBannerFunc = {
 			}, 500);
 			return false;
 		});
+		//进入回收站页面
+		$(".trashcan").click(
+			function ()
+			{
+				window.location.href="recycle";
+			});
+		//进入资金赞助页面
+		$(".fun2").click(
+			function ()
+			{
+				window.location.href="donate";
+			});
 	}
 };
