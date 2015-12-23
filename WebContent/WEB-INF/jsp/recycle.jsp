@@ -18,16 +18,15 @@ $(function() {
 		url : "${context_path}/doSelectRecycleBookmarkList",
 		dataType:"json",
 		success : function(json) {
-			var id;
-			var url;
+			 var no;
+			 var url;
 			 var name;
-			 for(var i=0;i<json.length;i++){  
+			 for(var count=0;count<json.data.length;count++){  
 			 // $("#recyclelist").append("<li><a href="+json[i].url+">"+json[i].bookmarkname+"</a></li>");
-			 id=json[i].bookmarkid;
-			  url = json[i].url;
-			  name =  json[i].bookmarkname;//'<a href="'+url+'">'+name+'"</a>'
-			  $("#recyclelist").append('<div id="'+id+'"><label><input name="recycledmark" type="checkbox" value="'+id+'" />'+'<a href="'+url+'">'+name+'</a>'+'</label></div>'+'<br>');
-			
+			 	no = json.data[count].i;
+			  	url = json.data[count].u;
+			  	name = json.data[count].n;
+			  	$("#recyclelist").append('<div id="'+no+'"><label><input name="recycledmark" type="checkbox" value="'+no+'" />'+'<a href="'+url+'">'+name+'</a>'+'</label></div>'+'<br>');
 			 }    
 		},
 		error : function(e) {
@@ -44,17 +43,14 @@ $(function() {
 	    
 	    
 	    $("#btn4").click(function(){   
-	        
 		    $("[name='recycledmark']").each(function(){   
 		     if($(this).prop("checked"))   
 			   {   
 			    $(this).removeProp("checked");   
-			       
 			   }   
 			   else  
 			   {   
 			    $(this).prop("checked",'true');   
-			       
 			   }   
 	    	}
 		    );}
@@ -70,7 +66,7 @@ $(function() {
 		});
 		//alert(str);
 		$.ajax({
-			data:'bookmarkid='+str,
+			data:'bookmarkno='+str,
 			type : "post",
 			url : "${context_path}/doRecoverBookmark",
 			success : function(json) {

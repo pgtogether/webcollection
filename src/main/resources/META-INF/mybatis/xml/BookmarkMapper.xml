@@ -285,10 +285,11 @@
 	</select>
 
 	<!-- 回收站 -->
-	<select id="selectrecycleList" resultType="com.dapeng.domain.Bookmark">
-		select * from bookmark
-		where deleteflg="1"
+	<select id="selectrecycleList" parameterType="java.lang.String" resultType="com.depeng.web.bo.BookmarkMiniBO">
+		select bookmarkno as i, bookmarkname as n, url as u from bookmark
+		where deleteflg="1" and userid = #{userid,jdbcType=VARCHAR}
 	</select>
+	
 	<select id="selectBookmarkListById" parameterType="int"
 		resultType="com.dapeng.domain.Bookmark">
 		select * from bookmark
@@ -313,7 +314,7 @@
 		update bookmark
 		set
 		deleteflg = "0"
-		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+		where bookmarkno = #{bookmarkno,jdbcType=INTEGER}
 	</update>
 	<update id="updateBookmarkCategory" parameterType="com.dapeng.domain.Bookmark">
 		update

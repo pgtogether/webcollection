@@ -173,9 +173,9 @@ public class IndexController extends UserSessionController {
      */
     @RequestMapping(value = "doSelectRecycleBookmarkList", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public List<Bookmark> doSelectRecycleBookmarkList() {
-        List<Bookmark> bookmarkList = bookmarkService.selectrecycleList();
-        return bookmarkList;
+    public Map<String, Object> doSelectRecycleBookmarkList(HttpSession session) {
+        List<BookmarkMiniBO> bookmarkList = bookmarkService.selectrecycleList(getSessionUserId(session));
+        return ajaxSuccess(bookmarkList);
     }
 
     /**
@@ -186,13 +186,13 @@ public class IndexController extends UserSessionController {
      */
     @RequestMapping(value = "doRecoverBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String, Object> doRecoverBookmark(String bookmarkid) {
-        System.out.println("从回收站恢复----->  " + bookmarkid);
-        String[] bookmarkidarr = bookmarkid.split(";");
+    public Map<String, Object> doRecoverBookmark(String bookmarkno) {
+        System.out.println("从回收站恢复----->  " + bookmarkno);
+        String[] bookmarknoarr = bookmarkno.split(";");
         int result = -1;
         try {
-            for (int i = 0; i < bookmarkidarr.length; i++) {
-                result = bookmarkService.doRecoverBookmark(Integer.parseInt(bookmarkidarr[i]));
+            for (int i = 0; i < bookmarknoarr.length; i++) {
+                result = bookmarkService.doRecoverBookmark(Integer.parseInt(bookmarknoarr[i]));
                 if (result < 0) {
                     break;
                 }
@@ -200,7 +200,7 @@ public class IndexController extends UserSessionController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return ajaxSuccess(bookmarkidarr);
+        return ajaxSuccess(bookmarknoarr);
     }
 
     /**

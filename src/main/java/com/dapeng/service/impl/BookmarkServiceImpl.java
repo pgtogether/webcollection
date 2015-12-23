@@ -144,9 +144,10 @@ public class BookmarkServiceImpl implements BookmarkService {
         return bookmarkDao.updateBookmarkByUnique(bookmark);
     }
 
+    //回收站
     @Override
-    public List<Bookmark> selectrecycleList() {
-        return bookmarkDao.selectrecycleList();
+    public List<BookmarkMiniBO> selectrecycleList(String userid) {
+        return bookmarkDao.selectrecycleList(userid);
     }
 
     // 从回收站恢复书签

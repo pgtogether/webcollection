@@ -41,7 +41,7 @@ public interface BookmarkMapper {
      * 
      * @return
      */
-    List<Bookmark> selectrecycleList();
+    List<BookmarkMiniBO> selectrecycleList(String userid);
 
     Bookmark selectBookmarkListById(int bookmarkId);
 
