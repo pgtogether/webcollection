@@ -36,6 +36,12 @@
 		category
 		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</delete>
+	<delete id="deleteByUnique" parameterType="com.dapeng.domain.Category">
+		delete from
+		category
+		where categoryno = #{categoryno,jdbcType=INTEGER}
+		and userid = #{userid,jdbcType=VARCHAR}
+	</delete>
 	<insert id="insert" parameterType="com.dapeng.domain.Category">
 		insert into category
 		(categoryname, categorytype,

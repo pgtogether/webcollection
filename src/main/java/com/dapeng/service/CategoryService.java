@@ -25,8 +25,8 @@ public interface CategoryService {
     // 增加类别
     int addCategory(CategoryBO categoryBO);
 
-    // 删除类别 根据id
-    int deleteCategoryById(int categoryid);
+    // 删除类别
+    int deleteCategoryByUnique(String userid, int categoryno);
 
     // 更新类别
     int updateCategoryByUnique(CategoryBO bo);

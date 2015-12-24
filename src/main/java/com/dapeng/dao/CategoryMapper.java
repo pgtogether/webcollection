@@ -17,6 +17,8 @@ public interface CategoryMapper {
 
     int deleteByPrimaryKey(int categoryid);
 
+    int deleteByUnique(Category record);
+    
     int insert(Category record);
 
     int insertSelective(Category record);
@@ -48,13 +50,13 @@ public interface CategoryMapper {
 
     // 获取用户下最大的分类编号
     int selectMaxCategoryNoByUserId(String userId);
-    
+
     // 更新分类排序
     int updateCategorySort(Category category);
-    
+
     // 批量更新分类排序
     void batchUpdateCategorySort(List<Category> list);
-    
+
     // 获取默认栏位下最大排序号
     int selectMaxSortInDefaultColNo(Category category);
 }

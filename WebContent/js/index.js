@@ -12,7 +12,7 @@ $(function() {
 		// 开启sortable功能
 		openSortableFunc.initSortable();
 		// 初始化操作分类的功能
-		boxHeadOperateFunc.init();
+		categoryOperateFunc.init();
 		// 初始化操作书签的功能
 		bookmarkOperateFunc.init();
 	});
@@ -50,7 +50,7 @@ var openSortableFunc = {
 			tolerance : "pointer",
 			delay : 100,
 			zIndex : 100,
-			stop : function(event, ui){
+			update : function(event, ui){
 				// 获取移动后的栏目下的所有分类顺序
 				var $wrapBox = ui.item.parents(".wrap-box");
 				var sortArray = $wrapBox.sortable("toArray");
@@ -66,6 +66,7 @@ var openSortableFunc = {
 					},
 					success : function(json) {
 						if (json.result == "OK") {
+							doAjaxFunc.saveSuccessAnimate("排序成功");
 						} else {
 							alert(json.msg);
 						}
@@ -140,20 +141,17 @@ var newCategoryOrBookMarkFunc = {
 			$(".mask").fadeIn(300);
 			$pop_bookmark.fadeIn(300);
 		});
-		
 		$(".pop-bookmark #categoryname").focusin(function(){
 			if (!$(this).val()){
 				$(".pop-bookmark .exist-category-list").show();
 			}
 		});
-		
 		$(document).bind("click", function(e) {
 			var target = $(e.target);
 			if (target.closest(".choose-category").length == 0 && target.closest(".exist-category-list").length == 0 ) {
 				$(".pop-bookmark .exist-category-list").hide();
 			}
 		});
-		
 		$(".exist-category-list").on("click","li",function(){
 			var $this = $(this);
 			var categoryname = $this.text();
@@ -163,7 +161,6 @@ var newCategoryOrBookMarkFunc = {
 			$pop_bookmark.find("#categoryname").val(categoryname).focus();
 			$(".pop-bookmark .exist-category-list").hide();
 		});
-		
 		$(".pop-bookmark #categoryname").bind('input propertychange', function() {
 			if (!$(this).val()){
 				$(".pop-bookmark .exist-category-list").show();
@@ -183,7 +180,8 @@ var newCategoryOrBookMarkFunc = {
 					var $newcategoryform = $("#newCategoryForm");
 					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
 					var categoryname = $newcategoryform.find("#categoryname").val();
-					var $clone = $(".category-template").clone().removeClass("category-template");
+					var $clone = $(".category-template").clone().removeClass("category-template")
+														.prop("id","c_"+newCategoryNo);
 					// 添加新分类模板标题颜色
 					var rand = parseInt(Math.random() * 20, 10);
 					$clone.find(".block-head").css("background-color",randomColor[rand]);
@@ -193,6 +191,7 @@ var newCategoryOrBookMarkFunc = {
 					$clone.slideDown();
 					$(".mask").hide();
 					$(".popbox-for-new").hide();
+					doAjaxFunc.saveSuccessAnimate("添加成功");
 				});
 			} else {
 				// 添加书签
@@ -227,6 +226,7 @@ var newCategoryOrBookMarkFunc = {
 					$url_list.find("li:first").addClass("save-success").slideDown();
 					$(".mask").hide();
 					$(".popbox-for-new").hide();
+					doAjaxFunc.saveSuccessAnimate("添加成功");
 				});
 			}
 		});
@@ -242,13 +242,14 @@ var newCategoryOrBookMarkFunc = {
 };
 
 // 操作分类标题的功能
-var boxHeadOperateFunc = {
+var categoryOperateFunc = {
 	// 初始化事件
 	init : function() {
 		this.hoverTitle();
 		this.modifyTitle();
 		this.confirmModify();
 		this.cancelModify();
+		this.deleteCategory();
 	},
 	// 鼠标经过标题时候
 	hoverTitle : function() {
@@ -311,6 +312,36 @@ var boxHeadOperateFunc = {
 			selfFunc.removeBoxTitleUpdateBtn($headFuncSpan);
 		});
 	},
+	// 删除分类
+	deleteCategoryNo : "",
+	deleteCategory : function(){
+		var selfFunc = this;
+		$(".wrap-box").on("click", ".closeicon", function() {
+			selfFunc.deleteCategoryNo = $(this).parents(".block").find(".category-title").attr("value");
+			var $urlList = $(this).parents(".block").find(".url-list");
+			if($urlList.find("li").length > 0) {
+				$(".popbox-for-alert").show();
+			} else {
+				$(".popbox-for-confirm").show();
+			}
+		});
+		$(".popbox-for-confirm .tip-confirm-btn").click(function(){
+			$(".popbox-for-confirm").hide();
+			doAjaxFunc.doDeleteCategory(selfFunc.deleteCategoryNo, function(){
+				doAjaxFunc.saveSuccessAnimate("删除成功");
+				$(".wrap-box").find("#c_"+selfFunc.deleteCategoryNo).slideUp(function(){
+					$(this).remove();
+				});
+				selfFunc.deleteCategoryNo = "";
+			});
+		});
+		$(".popbox-for-alert .tip-confirm-btn").click(function(){
+			$(".popbox-for-alert").hide();
+		});
+		$(".popbox-for-confirm .tip-cancel-btn").click(function(){
+			$(".popbox-for-confirm").hide();
+		});
+	},
 	// 关闭其他正在编辑标题的操作
 	closeOtherModifyTitle : function() {
 		var selfFunc = this;
@@ -331,7 +362,7 @@ var boxHeadOperateFunc = {
 		$head.html($head.children().val());
 		$target.html("").parent(".block-head").removeClass("modify");
 	},
-	// 插入删除分类，新增书签按钮模板
+	// 插入[删除分类，新增书签]按钮模板
 	appendBoxHeadOperateBtn : function($target) {
 		if (!$target.hasClass("modify")) {
 			var operateHtml = '';
@@ -482,7 +513,7 @@ var bookmarkOperateFunc = {
 					$ul.prepend(template);
 					$ul.find("li:eq(0)").addClass("save-success").slideDown(function() {
 						// 成功后的动画效果
-						doAjaxFunc.saveSuccessAnimate("保存成功");
+						doAjaxFunc.saveSuccessAnimate("添加成功");
 					});
 				});
 			}

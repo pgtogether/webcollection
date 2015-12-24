@@ -62,8 +62,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public int deleteCategoryById(int categoryid) {
-        return categoryDao.deleteByPrimaryKey(categoryid);
+    public int deleteCategoryByUnique(String userid, int categoryno) {
+        Category record = new Category();
+        record.setUserid(userid);
+        record.setCategoryno(categoryno);
+        return categoryDao.deleteByUnique(record);
     }
 
     @Override

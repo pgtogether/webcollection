@@ -359,14 +359,20 @@ public class IndexController extends UserSessionController {
 
     @RequestMapping(value = "doDeleteCategory", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public int doDeleteCategory(String categoryid) {
-        int result = -1;
-        try {
-            result = categoryService.deleteCategoryById(Integer.parseInt(categoryid));
-        } catch (Exception e) {
-            e.printStackTrace();
+    public Map<String, Object> doDeleteCategory(HttpServletRequest request, HttpSession session) {
+        String categoryno = request.getParameter("categoryno");
+        if (StringUtils.isEmpty(categoryno)) {
+            return ajaxFail();
         }
-        return result;
+        try {
+            int result = categoryService.deleteCategoryByUnique(getSessionUserId(session), Integer.valueOf(categoryno));
+            if (result == 0) {
+                return ajaxFail();
+            }
+        } catch (Exception e) {
+            return ajaxFail();
+        }
+        return ajaxSuccess();
     }
 
     @RequestMapping(value = "doUpdateCategoryName", method = { RequestMethod.GET, RequestMethod.POST })

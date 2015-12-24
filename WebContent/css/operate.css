@@ -242,12 +242,57 @@
 	background: #6FC2FF;
 }
 
-.pop-category   .btn a {
+.pop-category .btn a {
 	background: #6FC2FF;
 }
 
-.pop-callback {
-	top: -350px; display: block; opacity: 0.3;
+.pop-callback-success,.pop-callback-error {
+	top: -350px; display: block; opacity: 0.3; left: 45%; width: 200px;
+}
+
+.pop-callback-error .callbackmsg {
+	color: red;
+}
+
+/* alert */
+.popbox-tip {
+	width: 300px;
+}
+
+.popbox-tip .popbox-head {
+	background: #3885D8; height: 35px; line-height: 35px; font-size: 14px; color: #fff;
+}
+
+.popbox-tip .tipimg {
+	width: 28%; height: 80px; float: left;
+}
+
+.popbox-tip .tipimg img{
+	width: 50px;
+}
+
+.popbox-tip .tipmsg {
+	width: 72%; height: 80px; float: left;
+}
+
+.popbox-tip .tipmsg span {
+	width: 100%; text-align: left; float: left; line-height: 45px;;
+}
+
+.popbox-tip .tipbtn {
+	width: 100%; float: left;
+}
+
+.popbox-tip div .btn a {
+	margin: 5px 0px 10px 0px; width: 70px; height: 30px; line-height: 30px; color: #fff; background: #3885D8;
+}
+
+.popbox-tip div .btn a:hover {
+	margin: 5px 0px 10px 0px; width: 70px; height: 30px; line-height: 30px; color: #fff;
+}
+
+.popbox-tip div .btn .tip-cancel-btn {
+	background: #A0A0A0 !important; margin-left: 10px !important;
 }
 
 /* ¿Õ°×Ä£°å */

@@ -74,6 +74,26 @@ var doAjaxFunc = {
 			}
 		});
 	},
+	// 删除书签
+	doDeleteCategory : function(categoryno,successCallback){
+		// 提交后台保存
+		$.ajax({
+			type : "post",
+			url : CONTEXT_PATH + "/doDeleteCategory",
+			data : {
+				categoryno : categoryno
+			},
+			success : function(json) {
+				if (json.result == "OK") {
+					successCallback();
+				} else {
+					alert(json.msg);
+				}
+			},
+			error : function(e) {
+			}
+		});
+	},
 	// 添加书签
 	doNewBookmark : function(successCallBack){
 		var $newBookmarkForm = $("#newBookmarkForm");
@@ -244,13 +264,26 @@ var doAjaxFunc = {
 	},
 	// 保存成功后的动画提示
 	saveSuccessAnimate : function(msg){
-		var $popCallBack = $(".pop-callback");
+		var $popCallBack = $(".pop-callback-success");
 		$popCallBack.find(".callbackmsg").html(msg);
 		$popCallBack.animate({
 			top : "10px",
 			opacity : 1
 		}, 800, function() {
-			$(this).delay(1000).animate({
+			$(this).delay(800).animate({
+				top : "-350px",
+				opacity : 0.3
+			}, 500);
+		});
+	},
+	saveErrorAnimate : function(msg){
+		var $popCallBack = $(".pop-callback-error");
+		$popCallBack.find(".callbackmsg").html(msg);
+		$popCallBack.animate({
+			top : "5px",
+			opacity : 1
+		}, 800, function() {
+			$(this).delay(800).animate({
 				top : "-350px",
 				opacity : 0.3
 			}, 500);

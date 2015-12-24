@@ -69,13 +69,56 @@
 	</div>
 	</form>
 </div>
-<div class="popbox pop-callback">
+<div class="popbox popbox-tip popbox-for-alert">
+	<div class="popbox-head">提示</div>
+	<div class="popbox-body">
+		<div class="tipimg">
+			<img alt="success" src="${context_path}/img/warning.png">
+		</div>
+		<div class="tipmsg">
+			<span>该分类下还有书签，不可删除！ </span>
+		</div>
+		<div class="tipbtn">
+			<span class="btn">
+				<a class="tip-confirm-btn">确定</a>
+			</span>
+		</div>
+	</div>
+</div>
+<div class="popbox popbox-tip popbox-for-confirm">
+	<div class="popbox-head">确认</div>
+	<div class="popbox-body">
+		<div class="tipimg">
+			<img alt="success" src="${context_path}/img/confirm.png">
+		</div>
+		<div class="tipmsg">
+			<span>您确定删除本分类吗？ </span>
+		</div>
+		<div class="tipbtn">
+			<span class="btn">
+				<a class="tip-confirm-btn">确定</a>
+				<a class="tip-cancel-btn">取消</a>
+			</span>
+		</div>
+	</div>
+</div>
+<div class="popbox pop-callback-success">
 	<div class="popbox-body">
 		<div>
-			<img alt="success" src="${context_path}/img/success.png">
+			<img alt="success" src="${context_path}/img/dosuccess.png">
 		</div>
 		<div>
 			<span class="callbackmsg">保存成功</span>
+		</div>
+	</div>
+</div>
+<div class="popbox pop-callback-error">
+	<div class="popbox-body">
+		<div>
+			<img alt="error" src="${context_path}/img/execption.png">
+		</div>
+		<div>
+			<span class="callbackmsg">保存异常</span>
 		</div>
 	</div>
 </div>
