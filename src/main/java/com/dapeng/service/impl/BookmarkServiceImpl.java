@@ -122,8 +122,11 @@ public class BookmarkServiceImpl implements BookmarkService {
     }
 
     @Override
-    public int deletePhysicsBookmarkById(int id) {
-        return bookmarkDao.deletePhysicsBookmarkById(id);
+    public int deletePhysicsBookmarkById(String userid,int bookmarkno) {
+    	 Bookmark bookmark = new Bookmark();
+         bookmark.setUserid(userid);
+         bookmark.setBookmarkno(bookmarkno);
+        return bookmarkDao.deletePhysicsBookmarkById(bookmark);
     }
 
     @Override
@@ -144,15 +147,20 @@ public class BookmarkServiceImpl implements BookmarkService {
         return bookmarkDao.updateBookmarkByUnique(bookmark);
     }
 
+    //回收站
     @Override
-    public List<Bookmark> selectrecycleList() {
-        return bookmarkDao.selectrecycleList();
+    public List<BookmarkMiniBO> selectrecycleList(String userid) {
+        return bookmarkDao.selectrecycleList(userid);
     }
 
     // 从回收站恢复书签
     @Override
-    public int doRecoverBookmark(int id) {
-        return bookmarkDao.doRecoverBookmark(id);
+    public int doRecoverBookmark(String userid,int bookmarkno) {
+    	Bookmark bookmark = new Bookmark();
+    	bookmark.setBookmarkno(bookmarkno);
+    	bookmark.setUserid(userid);
+    	bookmark.setDeleteflg(BookmarkDeleteEnum.NORMAL_SHOW.getId());
+        return bookmarkDao.doRecoverBookmark(bookmark);
     }
 
     // 标记为常用书签

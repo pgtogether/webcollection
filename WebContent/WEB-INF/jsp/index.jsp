@@ -194,10 +194,10 @@
 	</div>
 	<div class="sideBanner ie">
 		<div class="fun1">
-			<span>待定功能</span>
+			<span>意见反馈</span>
 		</div>
 		<div class="fun2">
-			<span>待定功能</span>
+			<span>资金赞助</span>
 		</div>
 		<div class="trashcan">
 			<span>回收小站</span>

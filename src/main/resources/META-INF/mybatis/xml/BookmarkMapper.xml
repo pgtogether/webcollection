@@ -285,10 +285,11 @@
 	</select>
 
 	<!-- 回收站 -->
-	<select id="selectrecycleList" resultType="com.dapeng.domain.Bookmark">
-		select * from bookmark
-		where deleteflg="1"
+	<select id="selectrecycleList" parameterType="java.lang.String" resultType="com.depeng.web.bo.BookmarkMiniBO">
+		select bookmarkno as i, bookmarkname as n, url as u from bookmark
+		where deleteflg="1" and userid = #{userid,jdbcType=VARCHAR}
 	</select>
+	
 	<select id="selectBookmarkListById" parameterType="int"
 		resultType="com.dapeng.domain.Bookmark">
 		select * from bookmark
@@ -303,17 +304,19 @@
 		and userid = #{userid,jdbcType=VARCHAR}
 	</update>
 	<!-- 物理删除书签 -->
-	<delete id="deletePhysicsBookmarkById" parameterType="int">
+	<delete id="deletePhysicsBookmarkById" parameterType="com.dapeng.domain.Bookmark">
 		delete from
 		bookmark
-		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+		where bookmarkno = #{bookmarkno,jdbcType=INTEGER}
+		and userid = #{userid,jdbcType=VARCHAR}
 	</delete>
 	<!-- 从回收站恢复书签 -->
-	<update id="doRecoverBookmark" parameterType="int">
+	<update id="doRecoverBookmark" parameterType="com.dapeng.domain.Bookmark">
 		update bookmark
 		set
-		deleteflg = "0"
-		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+		deleteflg = #{deleteflg,jdbcType=VARCHAR}
+		where bookmarkno = #{bookmarkno,jdbcType=INTEGER}
+		and userid = #{userid,jdbcType=VARCHAR}
 	</update>
 	<update id="updateBookmarkCategory" parameterType="com.dapeng.domain.Bookmark">
 		update
