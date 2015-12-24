@@ -65,6 +65,9 @@ $(function() {
 			 str+=$(this).val()+";";    
 		});
 		//alert(str);
+		if(str==""){
+			return;
+		}
 		$.ajax({
 			data:'bookmarkno='+str,
 			type : "post",
@@ -100,6 +103,9 @@ $(function() {
 			 str+=$(this).val()+";";    
 		});
 		//alert(str);
+		if(str==""){
+			return;
+		}
 		$.ajax({
 			data:'bookmarkno='+str,
 			type : "post",
