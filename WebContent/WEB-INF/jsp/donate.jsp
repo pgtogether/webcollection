@@ -6,14 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>捐赠</title>
 </head>
-<style>
-/* 	.img{
-		  width:200px;
-		  height:200px;
-	}
-	
- */	
-</style>
 
 <body>
 
@@ -21,7 +13,7 @@
 		action="https://shenghuo.alipay.com/send/payment/fill.htm"
 		target="_blank" accept-charset="GBK"
 		onsubmit="document.charset='gbk';">
-		<input type="hidden" value="792283901@qq.com" name="optEmail">
+		<input type="hidden" value="yclixiaofeng@sohu.com" name="optEmail">
 		<!--<input type="hidden" value="10" name="payAmount">-->
 		<input type="hidden" name="title"  value="为了我们发展更好感谢大家支持">
 		<label> ￥</label> <input id="payAmount" type="text" value="1"  name="payAmount">
