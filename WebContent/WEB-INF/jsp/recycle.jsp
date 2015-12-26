@@ -22,7 +22,6 @@ $(function() {
 			 var url;
 			 var name;
 			 for(var count=0;count<json.data.length;count++){  
-			 // $("#recyclelist").append("<li><a href="+json[i].url+">"+json[i].bookmarkname+"</a></li>");
 			 	no = json.data[count].i;
 			  	url = json.data[count].u;
 			  	name = json.data[count].n;
@@ -44,12 +43,10 @@ $(function() {
 	    
 	    $("#btn4").click(function(){   
 		    $("[name='recycledmark']").each(function(){   
-		     if($(this).prop("checked"))   
-			   {   
+		     if($(this).prop("checked")){   
 			    $(this).removeProp("checked");   
 			   }   
-			   else  
-			   {   
+			   else{   
 			    $(this).prop("checked",'true');   
 			   }   
 	    	}
@@ -61,8 +58,8 @@ $(function() {
 	 $("#back").click(function(){
 		 var str = "";
 		$("[name='recycledmark']:checked").each(function(){
-			
-			 str+=$(this).val()+";";    
+
+			str+=$(this).val()+";";    
 		});
 		//alert(str);
 		if(str==""){
@@ -80,12 +77,6 @@ $(function() {
 						}
 					});
 				}
-				
-				/* if(json>0){
-					alert("恢复成功");
-				}else{
-					alert("恢复失败");
-				} */
 			},
 			error : function(e) {
 				alert(e);
@@ -120,11 +111,6 @@ $(function() {
 						}
 					});
 				}
-				/* if(json.msg=="OK"){
-					alert("删除成功");
-				}else{
-					alert("删除失败");
-				} */
 			},
 			error : function(e) {
 				alert(e);
