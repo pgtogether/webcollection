@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/include/constants.jsp"%>
+<jsp:include page="pop.jsp" />
+<jsp:include page="templates.jsp" />
+<jsp:include page="/js/dynamic/plugin.js.jsp"></jsp:include>
+<jsp:include page="/js/dynamic/common.js.jsp"></jsp:include>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,8 +16,6 @@
 	type="text/css" />
 <link href="${context_path}/css/operate.css" rel="stylesheet"
 	type="text/css" />
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="js/operate.js"></script>
 <script src="js/recycle.js"></script>
 
@@ -29,8 +31,4 @@
    <br/>
 </form>
 </body>
-<jsp:include page="pop.jsp" />
-<jsp:include page="templates.jsp" />
-<jsp:include page="/js/dynamic/plugin.js.jsp"></jsp:include>
-<jsp:include page="/js/dynamic/common.js.jsp"></jsp:include>
 </html>
