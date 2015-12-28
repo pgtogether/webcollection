@@ -12,10 +12,13 @@ import org.springframework.stereotype.Service;
 import com.dapeng.constants.BookmarkDeleteEnum;
 import com.dapeng.constants.BookmarkHotEnum;
 import com.dapeng.constants.BookmarkPermissionEnum;
+import com.dapeng.constants.Constants;
 import com.dapeng.dao.BookmarkMapper;
 import com.dapeng.domain.Bookmark;
+import com.dapeng.domain.Category;
 import com.dapeng.service.BookmarkService;
 import com.dapeng.service.bo.BookmarkBO;
+import com.dapeng.util.DateUtils;
 import com.depeng.web.bo.BookmarkMiniBO;
 import com.depeng.web.bo.CategoryWithBookmarkMiniBO;
 
@@ -92,8 +95,16 @@ public class BookmarkServiceImpl implements BookmarkService {
     public int insertBookmark(BookmarkBO bookmarkbo) {
         // 获取最大的书签编号
         int maxBookmarkNo = bookmarkDao.selectMaxBookmarkNoByUserId(bookmarkbo.getUserid()) + 1;
+        
+        // 获取最大排序号
+        Bookmark record = new Bookmark();
+        record.setUserid(bookmarkbo.getUserid());
+        record.setCategoryno(bookmarkbo.getCategoryno());
+        int maxSort = bookmarkDao.selectMaxSortByCategory(record) + 1;
+        
         Bookmark bookmark = new Bookmark();
         bookmark.setUserid(bookmarkbo.getUserid());
+        bookmark.setSort(maxSort);
         bookmark.setBookmarkno(maxBookmarkNo);
         bookmark.setBookmarkname(bookmarkbo.getBookmarkname());
         bookmark.setUrl(bookmarkbo.getUrl());
@@ -122,10 +133,10 @@ public class BookmarkServiceImpl implements BookmarkService {
     }
 
     @Override
-    public int deletePhysicsBookmarkById(String userid,int bookmarkno) {
-    	 Bookmark bookmark = new Bookmark();
-         bookmark.setUserid(userid);
-         bookmark.setBookmarkno(bookmarkno);
+    public int deletePhysicsBookmarkById(String userid, int bookmarkno) {
+        Bookmark bookmark = new Bookmark();
+        bookmark.setUserid(userid);
+        bookmark.setBookmarkno(bookmarkno);
         return bookmarkDao.deletePhysicsBookmarkById(bookmark);
     }
 
@@ -147,7 +158,7 @@ public class BookmarkServiceImpl implements BookmarkService {
         return bookmarkDao.updateBookmarkByUnique(bookmark);
     }
 
-    //回收站
+    // 回收站
     @Override
     public List<BookmarkMiniBO> selectrecycleList(String userid) {
         return bookmarkDao.selectrecycleList(userid);
@@ -155,11 +166,11 @@ public class BookmarkServiceImpl implements BookmarkService {
 
     // 从回收站恢复书签
     @Override
-    public int doRecoverBookmark(String userid,int bookmarkno) {
-    	Bookmark bookmark = new Bookmark();
-    	bookmark.setBookmarkno(bookmarkno);
-    	bookmark.setUserid(userid);
-    	bookmark.setDeleteflg(BookmarkDeleteEnum.NORMAL_SHOW.getId());
+    public int doRecoverBookmark(String userid, int bookmarkno) {
+        Bookmark bookmark = new Bookmark();
+        bookmark.setBookmarkno(bookmarkno);
+        bookmark.setUserid(userid);
+        bookmark.setDeleteflg(BookmarkDeleteEnum.NORMAL_SHOW.getId());
         return bookmarkDao.doRecoverBookmark(bookmark);
     }
 
@@ -192,6 +203,27 @@ public class BookmarkServiceImpl implements BookmarkService {
         bookmark.setDeleteflg(BookmarkDeleteEnum.NORMAL_SHOW.getId());
         bookmark.setHot(BookmarkHotEnum.HOT.getId());
         return bookmarkDao.selectHotBookmarkList(bookmark);
+    }
+
+    @Override
+    public void updateBookmarkSort(BookmarkBO bo) {
+        String sortlist = bo.getSortlist();
+        int categoryno = bo.getCategoryno();
+        String[] sortArray = sortlist.split(",");
+        Date sysDate = DateUtils.getSysDate();
+        List<Bookmark> list = new ArrayList<Bookmark>();
+        int listLength = sortArray.length;
+        for (int i = 0; i < listLength; i++) {
+            String bookmarkno = sortArray[i].split("_")[1];
+            Bookmark bookmark = new Bookmark();
+            bookmark.setUserid(bo.getUserid());
+            bookmark.setCategoryno(categoryno);
+            bookmark.setSort(listLength - i);
+            bookmark.setUpdatetime(sysDate);
+            bookmark.setBookmarkno(Integer.valueOf(bookmarkno));
+            list.add(bookmark);
+        }
+        bookmarkDao.batchUpdateBookmarkSort(list);
     }
 
 }

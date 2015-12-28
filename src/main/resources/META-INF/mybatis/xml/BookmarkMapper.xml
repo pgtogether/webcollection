@@ -418,6 +418,31 @@
 		where bookmarkno = #{bookmarkno,jdbcType=INTEGER}
 		and userid = #{userid,jdbcType=VARCHAR}
 	</update>
+	<!-- 批量更新分类排序 -->
+	<update id="batchUpdateBookmarkSort" parameterType="java.util.List">
+		<foreach collection="list" item="bookmark" index="index" open=""
+			close="" separator=";">
+			update bookmark
+			<set>
+				sort = #{bookmark.sort,jdbcType=INTEGER},
+				categoryno =
+				#{bookmark.categoryno,jdbcType=VARCHAR},
+				updatetime =
+				#{bookmark.updatetime,jdbcType=TIMESTAMP}
+			</set>
+			where bookmarkno = #{bookmark.bookmarkno,jdbcType=INTEGER}
+			and userid = #{bookmark.userid,jdbcType=VARCHAR}
+		</foreach>
+	</update>
+	<!-- 获取当前用户指定分类下的最大书签排序编号 -->
+	<select id="selectMaxSortByCategory" resultType="java.lang.Integer"
+		parameterType="com.dapeng.domain.Bookmark">
+		select IFNULL(max(sort),0)
+		from bookmark
+		where
+		userid = #{userid,jdbcType=VARCHAR}
+		and categoryno = #{categoryno,jdbcType=INTEGER}
+	</select>
 </mapper>
 
 <!-- permission = #{permission,jdbcType=VARCHAR}, categoryno = #{categoryno,jdbcType=VARCHAR}, 

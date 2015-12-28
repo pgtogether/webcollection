@@ -76,14 +76,20 @@ public interface BookmarkMapper {
     int updateBookmarkByUnique(Bookmark bookmark);
 
     // 设置热门书签 / 废弃
-//    int setHotbookmark(Bookmark bookmark);
+    // int setHotbookmark(Bookmark bookmark);
 
     // 取消热门书签 / 废弃
-//    int cancelHotbookmark(Bookmark bookmark);
+    // int cancelHotbookmark(Bookmark bookmark);
 
     // 查询所有热门书签
     List<BookmarkMiniBO> selectHotBookmarkList(Bookmark bookmark);
 
     // 获取用户下最大的书签编号
     int selectMaxBookmarkNoByUserId(String userId);
+
+    // 获取用户指定分类下的书签最大的排序编号
+    int selectMaxSortByCategory(Bookmark bookmark);
+
+    // 批量更新分类排序
+    void batchUpdateBookmarkSort(List<Bookmark> list);
 }

@@ -86,7 +86,34 @@ var openSortableFunc = {
 			dropOnEmpty : true,
 			tolerance : "pointer",
 			distance : 5,
-			placeholder : "url-list-placeholder"
+			placeholder : "url-list-placeholder",
+			update : function(event, ui){
+				// 获取移动后所属分类的ID
+				var $category = ui.item.parents(".block");
+				var categoryno = $category.find(".category-title").attr("value");
+				// 获取该分类下书签的排序
+				var $urlList = ui.item.parents(".url-list");
+				var sortArray = $urlList.sortable("toArray");
+				// 保存到DB
+				$.ajax({
+					type : "post",
+					url : CONTEXT_PATH + "/doSaveBookmarkSort",
+					data : {
+						bookmarkSorts : sortArray.join(","),
+						categoryno : categoryno
+					},
+					success : function(json) {
+						if (json.result == "OK") {
+							doAjaxFunc.saveSuccessAnimate("排序成功");
+						} else {
+							alert(json.msg);
+						}
+					},
+					error : function(e) {
+					}
+				});
+				console.log(sortArray);
+			}
 		});
 	},
 	getBoxSortArray : function(){
@@ -654,7 +681,7 @@ var bookmarkOperateFunc = {
 		} else {
 			operateHtml += '<li style="display:none;"';
 		}
-		operateHtml += ' value="'+ id +'" title="'+ name +'"><a href="' + url + '" target="_blank">' + name + '</a>';
+		operateHtml += ' id="h_'+ id +'" value="'+ id +'" title="'+ name +'"><a href="' + url + '" target="_blank">' + name + '</a>';
 		operateHtml += '<div class="operatebtn">';
 		if (hot == "1") {
 			operateHtml += '<span title="从常用书签取消" class="staricon light"></span>';

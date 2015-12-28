@@ -412,31 +412,36 @@ public class IndexController extends UserSessionController {
     }
 
     /**
-     * 书签从分类中迁移到另外一个分类 TODO
-     * 
-     * @param bookMarkForm
-     * @return
+     * 保存拖动后的书签排序以及所属分类
      */
-    @RequestMapping(value = "doChangeCategory", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "doSaveBookmarkSort", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public int doChangeCategory(AddBookMarkForm bookMarkForm) {
-        int result = -1;
-        BookmarkBO bo = new BookmarkBO();
-        // bo.setBookmarkname(bookMarkForm.getBookmarkname());
-        // bo.setUrl(bookMarkForm.getUrl());
-        bo.setBookmarkid(4);
-        bo.setSort(5);
-        // bo.setCategoryid(2);
-        result = categoryService.updateBookmarkCategory(bo);
-        return result;
+    public Map<String, Object> doSaveBookmarkSort(HttpServletRequest request, HttpSession session) {
+        // 排序书签需要知道书签所属于的分类以及该分类下书签的排序
+        String bookmarkSorts = request.getParameter("bookmarkSorts");
+        String categoryno = request.getParameter("categoryno");
+        if (StringUtils.isEmpty(bookmarkSorts) || StringUtils.isEmpty(categoryno)) {
+            return ajaxFail("排序异常");
+        }
+        try {
+            BookmarkBO bo = new BookmarkBO();
+            bo.setSortlist(bookmarkSorts);
+            bo.setCategoryno(Integer.valueOf(categoryno));
+            bo.setUserid(getSessionUserId(session));
+            bookmarkService.updateBookmarkSort(bo);
+        } catch (Exception e) {
+            return ajaxFail("排序异常");
+        }
+        return ajaxSuccess();
     }
-
+    
     /**
      * 保存拖动后的分类排序
      */
     @RequestMapping(value = "doSaveCategorySort", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public Map<String, Object> doSaveCategorySort(HttpServletRequest request, HttpSession session) {
+        // 排序分类需要知道分类的栏位以及该栏位下分类的排序
         String categorySorts = request.getParameter("categorySorts");
         String columnValue = request.getParameter("columnValue");
         if (StringUtils.isEmpty(categorySorts) || StringUtils.isEmpty(columnValue)) {
