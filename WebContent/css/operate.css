@@ -267,7 +267,7 @@
 	width: 28%; height: 80px; float: left;
 }
 
-.popbox-tip .tipimg img{
+.popbox-tip .tipimg img {
 	width: 50px;
 }
 
@@ -293,6 +293,43 @@
 
 .popbox-tip div .btn .tip-cancel-btn {
 	background: #A0A0A0 !important; margin-left: 10px !important;
+}
+
+/*筛选标签式样*/
+.popbox-tags {
+	position: fixed; position: fixed; top: 60px; width: 922px; left: 19%; box-shadow: none;
+}
+
+.popbox-tags .popbox-head {
+	width: 100%; float: left; height: 30px; line-height: 30px; font-size: 12px; border-bottom: 1px solid #000; text-indent: 10px; color: #000;
+}
+
+.popbox-tags .popbox-body {
+	padding-top: 5px; min-height: 250px; max-height: 500px; overflow: auto;
+}
+
+.popbox-tags .filter-url-list {
+	width: 100%; margin: 0 auto;
+}
+
+.popbox-tags .filter-url-list li {
+	width: 19%; margin-right: 0.5%; margin-left: 0.5%; margin-bottom: 5px; float: left; text-align: left; background: #ECECEC; text-indent: 5px;
+}
+
+.popbox-tags .filter-url-list li a {
+	color: #fff; width: 100%; float: left; height: 30px; line-height: 30px; background: #046BD8;
+}
+
+.popbox-tags .filter-url-list li a:hover {
+	background: #EC3939;
+}
+
+.popbox-tags .filter-url-list li span {
+	color: #000; width: 100%; float: left; height: 30px; line-height: 30px; text-align: left;
+}
+
+.filter-tags {
+	position: fixed; width: 245px; z-index: 9999; border-radius: 4px;
 }
 
 /* 空白模板 */

@@ -13,6 +13,7 @@
 	type="text/css" />
 <link href="${context_path}/css/operate.css" rel="stylesheet"
 	type="text/css" />
+<script src="${context_path}/js/plugin/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 	<div class="header">
@@ -75,46 +76,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="notes">
-				<div class="notes-head head-style">
-					<div class="notes-head-title">标签</div>
-					<div class="notes-head-func"></div>
-				</div>
-				<div class="notes-body">
-					<ul class="">
-						<li><span>海外网</span></li>
-						<li><span>我单位民</span></li>
-						<li><span>这个事ABVC</span></li>
-						<li><span>mama</span></li>
-						<li><span>哈哈利利</span></li>
-						<li><span>asd</span></li>
-						<li><span>海外网</span></li>
-						<li><span>我单位民</span></li>
-						<li><span>这个事ABVC</span></li>
-						<li><span>mama</span></li>
-						<li><span>哈哈利利</span></li>
-						<li><span>asd</span></li>
-						<li><span>海外网</span></li>
-						<li><span>我单位民</span></li>
-						<li><span>这个事ABVC</span></li>
-						<li><span>mama</span></li>
-						<li><span>哈哈利利</span></li>
-						<li><span>asd</span></li>
-						<li><span>海外网</span></li>
-						<li><span>我单位民</span></li>
-						<li><span>这个事ABVC</span></li>
-						<li><span>mama</span></li>
-						<li><span>哈哈利利</span></li>
-						<li><span>asd</span></li>
-						<li><span>海外网</span></li>
-						<li><span>我单位民</span></li>
-						<li><span>这个事ABVC</span></li>
-						<li><span>mama</span></li>
-						<li><span>哈哈利利</span></li>
-						<li><span>asd</span></li>
-					</ul>
-				</div>
-			</div>
+			<jsp:include page="module/tagmodule.jsp" />
 			<div class="block">
 				<div class="block-head head-style">
 					<div class="block-head-title">最热门网址</div>

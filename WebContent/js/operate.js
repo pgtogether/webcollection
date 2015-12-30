@@ -31,7 +31,7 @@ var initLoadFunc = {
 									var url = bookmarklist[n].u;
 									var name = bookmarklist[n].n;
 									var hot = bookmarklist[n].h;
-									bookmarkHtml += bookmarkOperateFunc.getBookmarkTemplate(id, url, name, hot, true);
+									bookmarkHtml += bookmarkOperateFunc.getBookmarkTemplate(id, url, name, hot, "tool", true);
 								}
 								$clone.find(".url-list").append(bookmarkHtml);
 							}

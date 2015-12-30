@@ -1,6 +1,6 @@
 $(function() {
 	// 随机背景颜色
-	var $titlelist = $(".content").find(".head-style");
+	var $titlelist = $("body").find(".head-style");
 	for (var i = 0, len = $titlelist.length; i < len; i++) {
 		var rand = parseInt(Math.random() * 20, 10);
 		$titlelist.eq(i).css("background",randomColor[rand]);
@@ -30,7 +30,6 @@ var openSortableFunc = {
 		this.hotUrlSortable();
 		this.boxSortable();
 		this.urlSortable();
-		this.getBoxSortArray();
 	},
 	hotUrlSortable : function() {
 		$(".hot-url-list").sortable({
@@ -74,7 +73,6 @@ var openSortableFunc = {
 					error : function(e) {
 					}
 				});
-				console.log(sortArray);
 			}
 		});
 	},
@@ -112,13 +110,8 @@ var openSortableFunc = {
 					error : function(e) {
 					}
 				});
-				console.log(sortArray);
 			}
 		});
-	},
-	getBoxSortArray : function(){
-		var sortArray = $(".wrap-box").sortable("toArray");
-		console.log(sortArray);
 	}
 };
 
@@ -246,7 +239,7 @@ var newCategoryOrBookMarkFunc = {
 					var url = $newBookmarkForm.find("#url").val();
 					var name = $newBookmarkForm.find("#bookmarkname").val();
 					// 获取书签模板
-					var newBookmarkTemplate = bookmarkOperateFunc.getBookmarkTemplate(bookmarkno, url, name, "", false);
+					var newBookmarkTemplate = bookmarkOperateFunc.getBookmarkTemplate(bookmarkno, url, name, "", "", false);
 					// 筛选出应对的分类
 					var $url_list = $("#category_"+categoryno).parents(".block").find(".url-list");
 					$url_list.prepend(newBookmarkTemplate);
@@ -512,7 +505,7 @@ var bookmarkOperateFunc = {
 					$this.addClass("light").attr("title", "从常用书签取消");
 					var url = $parentLi.find("a").prop("href");
 					var name = $parentLi.find("a").text();
-					var hotBookmarkTemplate = selfFunc.getBookmarkTemplate(bookmarkno, url, name, "", true);
+					var hotBookmarkTemplate = selfFunc.getBookmarkTemplate(bookmarkno, url, name, "", "", true);
 					$hotUrlList.append(hotBookmarkTemplate);
 					new JumpObj($hotUrlList.find("li:last")[0], 15).jump();
 				});
@@ -534,7 +527,7 @@ var bookmarkOperateFunc = {
 					var url = $addbookmarkform.find("#url").val();
 					var name = $addbookmarkform.find("#bookmarkname").val();
 					// 获取新增书签的模板
-					var template = selfFunc.getBookmarkTemplate(newBookmarkNo, url, name, "", false);
+					var template = selfFunc.getBookmarkTemplate(newBookmarkNo, url, name, "", "", false);
 					// 添加一个新书签
 					var $ul = $addbookmarkform.parents("ul");
 					$ul.prepend(template);
@@ -674,14 +667,14 @@ var bookmarkOperateFunc = {
 		return operateHtml;
 	},
 	// 新增书签
-	getBookmarkTemplate : function(id, url, name, hot, isDisplay) {
+	getBookmarkTemplate : function(id, url, name, hot, tags, isDisplay) {
 		var operateHtml = '';
 		if (isDisplay){
 			operateHtml += '<li';	
 		} else {
 			operateHtml += '<li style="display:none;"';
 		}
-		operateHtml += ' id="h_'+ id +'" value="'+ id +'" title="'+ name +'"><a href="' + url + '" target="_blank">' + name + '</a>';
+		operateHtml += ' id="h_'+ id +'" value="'+ id +'" title="'+ name +'" class="filter-item '+ tags +'"><a href="' + url + '" target="_blank">' + name + '</a>';
 		operateHtml += '<div class="operatebtn">';
 		if (hot == "1") {
 			operateHtml += '<span title="从常用书签取消" class="staricon light"></span>';
