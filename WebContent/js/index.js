@@ -655,7 +655,7 @@ var bookmarkOperateFunc = {
 		operateHtml += '<div class="' + editclass + '">';
 		operateHtml += '	<p><label>网址</label><input type="text" id="url" name="url" placeholder="例:www.52url.com" value="' + url + '"/></p>';
 		operateHtml += '	<p><label>名称</label><input type="text" id="bookmarkname" name="bookmarkname" placeholder="例:网址收藏" value="' + name + '"/></p>';
-		operateHtml += '	<p><label>标签</label><input type="text" id="tags" name="tags" placeholder="例:生活,美食(以逗号,分隔)" value="' + tags + '"/></p>';
+		operateHtml += '	<p><label>标签</label><input type="text" id="tags" name="tags" placeholder="逗号(,)分隔,最多5个" value="' + tags + '"/></p>';
 		operateHtml += '	<p><label>描述</label><textarea id="desc" name="desc">' + desc + '</textarea></p>';
 		operateHtml += '	<p class="btn">';
 		operateHtml += '		<span class="confirmediticon" title="确定"></span>';

@@ -122,33 +122,3 @@
 		</div>
 	</div>
 </div>
-<div class="popbox popbox-tags">
-	<div class="popbox-head">筛选结果</div>
-	<div class="popbox-body">
-		<ul class="filter-url-list">
-			<li>
-				<a href="#">asdasdasd</a>
-				<span>默默分类</span>
-			</li>
-			<li>
-				<a href="#">asdasdasd</a>
-				<span>默默分类</span>
-			</li><li>
-				<a href="#">asdasdasd</a>
-				<span>默默分类</span>
-			</li><li>
-				<a href="#">asdasdasd</a>
-				<span>默默分类</span>
-			</li><li>
-				<a href="#">asdasdasd</a>
-				<span>默默分类</span>
-			</li><li>
-				<a href="#">asdasdasd</a>
-				<span>默默分类</span>
-			</li><li>
-				<a href="#">asdasdasd</a>
-				<span>默默分类</span>
-			</li>
-		</ul>
-	</div>
-</div>

@@ -43,6 +43,8 @@ public class Bookmark {
     private String userid;
 
     private int bookmarkno;
+    
+    private String tags;
 
     public int getBookmarkid() {
         return bookmarkid;
@@ -179,5 +181,13 @@ public class Bookmark {
 	public int getBookmarkno() {
 		return bookmarkno;
 	}
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
 
 }

@@ -92,4 +92,6 @@ public interface BookmarkMapper {
 
     // 批量更新分类排序
     void batchUpdateBookmarkSort(List<Bookmark> list);
+    
+    List<BookmarkMiniBO> getBookmarkListByTag(Bookmark bookmark);
 }

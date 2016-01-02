@@ -257,8 +257,16 @@ body {
 	width: 100%; float: left;
 }
 
+.notes .notes-body .load {
+	width: 100%; float: left; text-align: center; margin-top: 60px; min-height: 130px;
+}
+
+.filter-load {
+	width: 100%; float: left; text-align: center; margin-top: 70px;
+}
+
 .notes .notes-body ul {
-	min-height: 130px; width: 100%; float: left; margin-top: 5px;
+	width: 100%; float: left; margin-top: 5px; min-height: 130px;
 }
 
 .notes .notes-body ul li {

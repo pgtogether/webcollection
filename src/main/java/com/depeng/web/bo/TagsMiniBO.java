@@ -28,22 +28,13 @@ package com.depeng.web.bo;
  * @since JDK 1.6
  * @see
  */
-public class BookmarkMiniBO {
+public class TagsMiniBO {
 
-    // bookmarkno
+    // tagno
     private int i;
 
-    // bookmarkname
+    // tagname
     private String n;
-
-    // url
-    private String u;
-
-    // hot
-    private String h;
-    
-    // categoryname
-    private String cn;
 
     public int getI() {
         return i;
@@ -60,29 +51,4 @@ public class BookmarkMiniBO {
     public void setN(String n) {
         this.n = n;
     }
-
-    public String getU() {
-        return u;
-    }
-
-    public void setU(String u) {
-        this.u = u;
-    }
-
-    public String getH() {
-        return h;
-    }
-
-    public void setH(String h) {
-        this.h = h;
-    }
-
-    public String getCn() {
-        return cn;
-    }
-
-    public void setCn(String cn) {
-        this.cn = cn;
-    }
-
 }

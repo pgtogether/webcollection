@@ -18,9 +18,9 @@ public class StringUtils {
 
     public static boolean isEmpty(String str) {
         if (str == null || str.trim() == "") {
-            return false;
-        } else {
             return true;
+        } else {
+            return false;
         }
     }
 

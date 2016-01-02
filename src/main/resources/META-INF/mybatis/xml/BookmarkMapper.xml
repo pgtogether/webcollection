@@ -20,12 +20,15 @@
 		<result column="sort" property="sort" jdbcType="INTEGER" />
 		<result column="hot" property="hot" jdbcType="VARCHAR" />
 		<result column="deleteflg" property="deleteflg" jdbcType="VARCHAR" />
+		<result column="tags" property="tags" jdbcType="VARCHAR" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		bookmarkid, bookmarkname, userid, bookmarkno, url, permission, categoryno,
+		bookmarkid, bookmarkname, userid, bookmarkno, url,
+		permission, categoryno,
 		usetimes,
-		fastletters, pinyinhead, createtime, lastusetime, updatetime, description, sort,
-		hot, deleteflg
+		fastletters, pinyinhead, createtime,
+		lastusetime, updatetime, description, sort,
+		hot, deleteflg, tags
 	</sql>
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
@@ -35,25 +38,31 @@
 		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from bookmark
+		delete from
+		bookmark
 		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.dapeng.domain.Bookmark">
-		insert into bookmark (bookmarkid, bookmarkname, userid,
+		insert into bookmark
+		(bookmarkid, bookmarkname, userid,
 		bookmarkno, url, permission,
 		categoryno, usetimes, fastletters,
 		pinyinhead, createtime, lastusetime,
 		updatetime, description, sort,
-		hot, deleteflg)
-		values (#{bookmarkid,jdbcType=INTEGER}, #{bookmarkname,jdbcType=VARCHAR},
+		hot, deleteflg, tags)
+		values
+		(#{bookmarkid,jdbcType=INTEGER}, #{bookmarkname,jdbcType=VARCHAR},
 		#{userid,jdbcType=VARCHAR},
-		#{bookmarkno,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR},
+		#{bookmarkno,jdbcType=INTEGER},
+		#{url,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR},
 		#{categoryno,jdbcType=INTEGER}, #{usetimes,jdbcType=INTEGER},
 		#{fastletters,jdbcType=VARCHAR},
-		#{pinyinhead,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{lastusetime,jdbcType=TIMESTAMP},
+		#{pinyinhead,jdbcType=VARCHAR},
+		#{createtime,jdbcType=TIMESTAMP}, #{lastusetime,jdbcType=TIMESTAMP},
 		#{updatetime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR},
 		#{sort,jdbcType=INTEGER},
-		#{hot,jdbcType=VARCHAR}, #{deleteflg,jdbcType=VARCHAR})
+		#{hot,jdbcType=VARCHAR},
+		#{deleteflg,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insertSelective" parameterType="com.dapeng.domain.Bookmark">
 		insert into bookmark
@@ -109,6 +118,9 @@
 			<if test="deleteflg != null">
 				deleteflg,
 			</if>
+			<if test="tags != null">
+				tags,
+			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="bookmarkid != null">
@@ -161,6 +173,9 @@
 			</if>
 			<if test="deleteflg != null">
 				#{deleteflg,jdbcType=VARCHAR},
+			</if>
+			<if test="tags != null">
+				#{tags,jdbcType=VARCHAR},
 			</if>
 		</trim>
 	</insert>
@@ -215,44 +230,65 @@
 			<if test="deleteflg != null">
 				deleteflg = #{deleteflg,jdbcType=VARCHAR},
 			</if>
+			<if test="tags != null">
+				tags = #{tags,jdbcType=VARCHAR},
+			</if>
 		</set>
 		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.dapeng.domain.Bookmark">
 		update bookmark
 		set bookmarkname = #{bookmarkname,jdbcType=VARCHAR},
-		userid = #{userid,jdbcType=VARCHAR},
-		bookmarkno = #{bookmarkno,jdbcType=INTEGER},
+		userid =
+		#{userid,jdbcType=VARCHAR},
+		bookmarkno =
+		#{bookmarkno,jdbcType=INTEGER},
 		url = #{url,jdbcType=VARCHAR},
 		permission = #{permission,jdbcType=VARCHAR},
-		categoryno = #{categoryno,jdbcType=INTEGER},
-		usetimes = #{usetimes,jdbcType=INTEGER},
-		fastletters = #{fastletters,jdbcType=VARCHAR},
-		pinyinhead = #{pinyinhead,jdbcType=VARCHAR},
-		createtime = #{createtime,jdbcType=TIMESTAMP},
-		lastusetime = #{lastusetime,jdbcType=TIMESTAMP},
-		updatetime = #{updatetime,jdbcType=TIMESTAMP},
-		description = #{description,jdbcType=VARCHAR},
+		categoryno =
+		#{categoryno,jdbcType=INTEGER},
+		usetimes =
+		#{usetimes,jdbcType=INTEGER},
+		fastletters =
+		#{fastletters,jdbcType=VARCHAR},
+		pinyinhead =
+		#{pinyinhead,jdbcType=VARCHAR},
+		createtime =
+		#{createtime,jdbcType=TIMESTAMP},
+		lastusetime =
+		#{lastusetime,jdbcType=TIMESTAMP},
+		updatetime =
+		#{updatetime,jdbcType=TIMESTAMP},
+		description =
+		#{description,jdbcType=VARCHAR},
 		sort = #{sort,jdbcType=INTEGER},
-		hot = #{hot,jdbcType=VARCHAR},
-		deleteflg = #{deleteflg,jdbcType=VARCHAR}
-		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
+		hot =
+		#{hot,jdbcType=VARCHAR},
+		deleteflg = #{deleteflg,jdbcType=VARCHAR},
+		tags = #{tags,jdbcType=VARCHAR}
+		where bookmarkid =
+		#{bookmarkid,jdbcType=INTEGER}
 	</update>
 	<!-- 书签操作 -->
 	<select id="selectBookmarkBOList" parameterType="com.dapeng.domain.Bookmark"
-			resultType="com.dapeng.service.bo.BookmarkBO">
-		SELECT T1.categoryno, T1.categoryname, T1.colno, T2.bookmarkname, T2.bookmarkno,
-			   T2.url, T2.fastletters, T2.pinyinhead, T2.hot
-		FROM 
-			category T1
+		resultType="com.dapeng.service.bo.BookmarkBO">
+		SELECT T1.categoryno, T1.categoryname, T1.colno,
+		T2.bookmarkname, T2.bookmarkno,
+		T2.url, T2.fastletters, T2.pinyinhead,
+		T2.hot
+		FROM
+		category T1
 		left join
-			bookmark T2
+		bookmark T2
 		ON
-			T1.categoryno = T2.categoryno
+		T1.categoryno =
+		T2.categoryno
 		and T1.userid = T2.userid
-		and T2.deleteflg = #{deleteflg,jdbcType=VARCHAR}
+		and T2.deleteflg =
+		#{deleteflg,jdbcType=VARCHAR}
 		WHERE
-			T1.userid = #{userid,jdbcType=VARCHAR}
+		T1.userid =
+		#{userid,jdbcType=VARCHAR}
 		ORDER BY T1.sort desc, T2.sort desc
 	</select>
 	<!-- 书签操作 获取同一类别书签 -->
@@ -260,36 +296,41 @@
 		select *
 		from bookmark where deleteflg!="1" and categoryno = #{categoryno}
 	</select>
-<!-- 	<update id="setHotbookmark" parameterType="com.dapeng.domain.Bookmark"> -->
-<!-- 		update bookmark -->
-<!-- 		set hot = #{hot,jdbcType=VARCHAR}, -->
-<!-- 		updatetime = #{updatetime,jdbcType=TIMESTAMP} -->
-<!-- 		where bookmarkno = #{bookmarkno,jdbcType=INTEGER} -->
-<!-- 		and userid = #{bookmarkid,jdbcType=VARCHAR} -->
-<!-- 	</update> -->
-<!-- 	<update id="cancelHotbookmark" parameterType="com.dapeng.domain.Bookmark"> -->
-<!-- 		update bookmark -->
-<!-- 		set -->
-<!-- 		hot = "2" -->
-<!-- 		where bookmarkid = #{bookmarkid,jdbcType=INTEGER} -->
-<!-- 	</update> -->
+	<!-- <update id="setHotbookmark" parameterType="com.dapeng.domain.Bookmark"> -->
+	<!-- update bookmark -->
+	<!-- set hot = #{hot,jdbcType=VARCHAR}, -->
+	<!-- updatetime = #{updatetime,jdbcType=TIMESTAMP} -->
+	<!-- where bookmarkno = #{bookmarkno,jdbcType=INTEGER} -->
+	<!-- and userid = #{bookmarkid,jdbcType=VARCHAR} -->
+	<!-- </update> -->
+	<!-- <update id="cancelHotbookmark" parameterType="com.dapeng.domain.Bookmark"> -->
+	<!-- update bookmark -->
+	<!-- set -->
+	<!-- hot = "2" -->
+	<!-- where bookmarkid = #{bookmarkid,jdbcType=INTEGER} -->
+	<!-- </update> -->
 	<select id="selectHotBookmarkList" parameterType="com.dapeng.domain.Bookmark"
 		resultType="com.depeng.web.bo.BookmarkMiniBO">
 		select bookmarkno as i, bookmarkname as n, url as u
-		from bookmark
+		from
+		bookmark
 		where
-			deleteflg = #{deleteflg,jdbcType=VARCHAR}
-			and hot = #{hot,jdbcType=VARCHAR}
-			and userid = #{userid,jdbcType=VARCHAR}
-		order by updatetime asc
+		deleteflg = #{deleteflg,jdbcType=VARCHAR}
+		and hot =
+		#{hot,jdbcType=VARCHAR}
+		and userid = #{userid,jdbcType=VARCHAR}
+		order by
+		updatetime asc
 	</select>
 
 	<!-- 回收站 -->
-	<select id="selectrecycleList" parameterType="java.lang.String" resultType="com.depeng.web.bo.BookmarkMiniBO">
-		select bookmarkno as i, bookmarkname as n, url as u from bookmark
+	<select id="selectrecycleList" parameterType="java.lang.String"
+		resultType="com.depeng.web.bo.BookmarkMiniBO">
+		select bookmarkno as i, bookmarkname as n, url as u from
+		bookmark
 		where deleteflg="1" and userid = #{userid,jdbcType=VARCHAR}
 	</select>
-	
+
 	<select id="selectBookmarkListById" parameterType="int"
 		resultType="com.dapeng.domain.Bookmark">
 		select * from bookmark
@@ -298,24 +339,29 @@
 	</select>
 	<!-- 逻辑删除书签 -->
 	<update id="deleteBookmarkByUnique" parameterType="com.dapeng.domain.Bookmark">
-		update bookmark
+		update
+		bookmark
 		set deleteflg = #{deleteflg,jdbcType=VARCHAR}
-		where bookmarkno = #{bookmarkno,jdbcType=INTEGER}
-		and userid = #{userid,jdbcType=VARCHAR}
+		where bookmarkno
+		= #{bookmarkno,jdbcType=INTEGER}
+		and userid =
+		#{userid,jdbcType=VARCHAR}
 	</update>
 	<!-- 物理删除书签 -->
 	<delete id="deletePhysicsBookmarkById" parameterType="com.dapeng.domain.Bookmark">
 		delete from
 		bookmark
 		where bookmarkno = #{bookmarkno,jdbcType=INTEGER}
-		and userid = #{userid,jdbcType=VARCHAR}
+		and userid =
+		#{userid,jdbcType=VARCHAR}
 	</delete>
 	<!-- 从回收站恢复书签 -->
 	<update id="doRecoverBookmark" parameterType="com.dapeng.domain.Bookmark">
 		update bookmark
 		set
 		deleteflg = #{deleteflg,jdbcType=VARCHAR}
-		where bookmarkno = #{bookmarkno,jdbcType=INTEGER}
+		where bookmarkno =
+		#{bookmarkno,jdbcType=INTEGER}
 		and userid = #{userid,jdbcType=VARCHAR}
 	</update>
 	<update id="updateBookmarkCategory" parameterType="com.dapeng.domain.Bookmark">
@@ -334,7 +380,7 @@
 		(#{bookmarkname,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
 		,#{permission,jdbcType=VARCHAR},#{categoryno,jdbcType=INTEGER},#{createtime}
 		,#{hot,jdbcType=VARCHAR},#{deleteflg,jdbcType=VARCHAR},#{userid,jdbcType=VARCHAR}
-		,#{bookmarkno,jdbcType=INTEGER})
+		,#{bookmarkno,jdbcType=INTEGER},,#{tags,jdbcType=INTEGER})
 	</insert>
 	<update id="updateBookmarkById" parameterType="com.dapeng.domain.Bookmark">
 		update bookmark
@@ -414,9 +460,13 @@
 			<if test="deleteflg != null">
 				deleteflg = #{deleteflg,jdbcType=VARCHAR},
 			</if>
+			<if test="tags != null">
+				tags = #{tags,jdbcType=VARCHAR},
+			</if>
 		</set>
 		where bookmarkno = #{bookmarkno,jdbcType=INTEGER}
-		and userid = #{userid,jdbcType=VARCHAR}
+		and userid =
+		#{userid,jdbcType=VARCHAR}
 	</update>
 	<!-- 批量更新分类排序 -->
 	<update id="batchUpdateBookmarkSort" parameterType="java.util.List">
@@ -431,7 +481,8 @@
 				#{bookmark.updatetime,jdbcType=TIMESTAMP}
 			</set>
 			where bookmarkno = #{bookmark.bookmarkno,jdbcType=INTEGER}
-			and userid = #{bookmark.userid,jdbcType=VARCHAR}
+			and userid
+			= #{bookmark.userid,jdbcType=VARCHAR}
 		</foreach>
 	</update>
 	<!-- 获取当前用户指定分类下的最大书签排序编号 -->
@@ -440,8 +491,21 @@
 		select IFNULL(max(sort),0)
 		from bookmark
 		where
-		userid = #{userid,jdbcType=VARCHAR}
-		and categoryno = #{categoryno,jdbcType=INTEGER}
+		userid =
+		#{userid,jdbcType=VARCHAR}
+		and categoryno =
+		#{categoryno,jdbcType=INTEGER}
+	</select>
+	<select id="getBookmarkListByTag" parameterType="com.dapeng.domain.Bookmark"
+		resultType="com.depeng.web.bo.BookmarkMiniBO">
+		select T1.bookmarkno as i, T1.bookmarkname as n, T1.url as u, T2.categoryname as cn
+		from bookmark T1, category T2
+		where T1.userid = #{userid,jdbcType=VARCHAR}
+		and T1.deleteflg = #{deleteflg,jdbcType=VARCHAR}
+		and T1.tags like CONCAT('%',#{tags,jdbcType=VARCHAR},'%') 
+		and T2.userid = #{userid,jdbcType=VARCHAR}
+		and T1.categoryno = T2.categoryno
+		order by T1.usetimes desc
 	</select>
 </mapper>
 

@@ -46,7 +46,9 @@ public interface BookmarkService {
     int cancelHotbookmark(BookmarkBO bo);
 
     List<BookmarkMiniBO> selectHotBookmarkList(String userid);
-    
+
     // 更新书签的排序
     void updateBookmarkSort(BookmarkBO bo);
+
+    List<BookmarkMiniBO> getBookmarkListByTag(String userid, String tag);
 }

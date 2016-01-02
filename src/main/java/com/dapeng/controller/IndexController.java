@@ -35,11 +35,13 @@ import com.dapeng.controller.form.CategoryForm;
 import com.dapeng.controller.form.EditBookMarkForm;
 import com.dapeng.service.BookmarkService;
 import com.dapeng.service.CategoryService;
+import com.dapeng.service.TagsService;
 import com.dapeng.service.bo.BookmarkBO;
 import com.dapeng.service.bo.CategoryBO;
 import com.depeng.web.bo.BookmarkMiniBO;
 import com.depeng.web.bo.CategoryMiniBO;
 import com.depeng.web.bo.CategoryWithBookmarkMiniBO;
+import com.depeng.web.bo.TagsMiniBO;
 
 /**
  * 类的功能描述
@@ -59,6 +61,9 @@ public class IndexController extends UserSessionController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private TagsService tagsService;
 
     /**
      * 默认主页
@@ -185,19 +190,19 @@ public class IndexController extends UserSessionController {
      */
     @RequestMapping(value = "doRecoverBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String, Object> doRecoverBookmark(String bookmarkno,HttpSession session) {
+    public Map<String, Object> doRecoverBookmark(String bookmarkno, HttpSession session) {
         System.out.println("从回收站恢复----->  " + bookmarkno);
         String[] bookmarknoarr = bookmarkno.split(";");
         String userid = getSessionUserId(session);
-        if (bookmarknoarr!=null&&bookmarknoarr.length==0) {
-			return ajaxFail("恢复异常");
-		}
+        if (bookmarknoarr != null && bookmarknoarr.length == 0) {
+            return ajaxFail("恢复异常");
+        }
         int result = -1;
         try {
             for (int i = 0; i < bookmarknoarr.length; i++) {
-                result = bookmarkService.doRecoverBookmark(userid,Integer.parseInt(bookmarknoarr[i]));
+                result = bookmarkService.doRecoverBookmark(userid, Integer.parseInt(bookmarknoarr[i]));
                 if (result < 0) {
-                	return ajaxFail("恢复异常");
+                    return ajaxFail("恢复异常");
                 }
             }
         } catch (Exception e) {
@@ -248,6 +253,7 @@ public class IndexController extends UserSessionController {
         bookmarkbo.setCategoryname(StringUtils.trimWhitespace(form.getCategoryname()));
         bookmarkbo.setUrl(StringUtils.trimWhitespace(form.getUrl()));
         bookmarkbo.setCategoryno(categoryno);
+        bookmarkbo.setTags(StringUtils.trimWhitespace(form.getTags()));
         bookmarkbo.setDescription(StringUtils.trimWhitespace(form.getDescription()));
         Integer bookmarkno = bookmarkService.insertBookmark(bookmarkbo);
         if (bookmarkno > 0) {
@@ -291,19 +297,19 @@ public class IndexController extends UserSessionController {
      */
     @RequestMapping(value = "doPhysicsDelBookmark", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String, Object> doPhysicsDelBookmark(String bookmarkno,HttpSession session) {
+    public Map<String, Object> doPhysicsDelBookmark(String bookmarkno, HttpSession session) {
         System.out.println("物理删除----->  " + bookmarkno);
         String[] bookmarknoarr = bookmarkno.split(";");
-        if (bookmarknoarr.length==0) {
+        if (bookmarknoarr.length == 0) {
             return ajaxFail("删除异常");
         }
         String userid = getSessionUserId(session);
         int result = -1;
         try {
             for (int i = 0; i < bookmarknoarr.length; i++) {
-                result = bookmarkService.deletePhysicsBookmarkById(userid,Integer.parseInt(bookmarknoarr[i]));
+                result = bookmarkService.deletePhysicsBookmarkById(userid, Integer.parseInt(bookmarknoarr[i]));
                 if (result < 0) {
-                	return ajaxFail("删除异常");
+                    return ajaxFail("删除异常");
                 }
             }
         } catch (Exception e) {
@@ -322,7 +328,6 @@ public class IndexController extends UserSessionController {
         if (result.hasErrors()) {
             return ajaxValidateError(result);
         }
-
         BookmarkBO bo = new BookmarkBO();
         bo.setUserid(getSessionUserId(session));
         bo.setUrl(StringUtils.trimWhitespace(form.getUrl()));
@@ -434,7 +439,7 @@ public class IndexController extends UserSessionController {
         }
         return ajaxSuccess();
     }
-    
+
     /**
      * 保存拖动后的分类排序
      */
@@ -459,4 +464,29 @@ public class IndexController extends UserSessionController {
         }
         return ajaxSuccess();
     }
+
+    /**
+     * 加载用户的所有标签
+     */
+    @RequestMapping(value = "loadAllTags", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> loadAllTags(HttpServletRequest request, HttpSession session) {
+        List<TagsMiniBO> list = tagsService.getAllTagsByUserId(getSessionUserId(session));
+        return ajaxSuccess(list);
+    }
+
+    /**
+     * 根据标签过滤书签
+     */
+    @RequestMapping(value = "doFliterBookmarkByTags", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> doFliterBookmarkByTags(HttpServletRequest request, HttpSession session) {
+        String tagid = request.getParameter("tagid");
+        if(StringUtils.isEmpty(tagid)){
+            return ajaxFail();
+        }
+        List<BookmarkMiniBO> list = bookmarkService.getBookmarkListByTag(getSessionUserId(session), tagid);
+        return ajaxSuccess(list);
+    }
+
 }
