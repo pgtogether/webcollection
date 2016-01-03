@@ -51,6 +51,8 @@ public class BookmarkBO {
     private String deleteflg;
     
     private String tags;
+    
+    private String tagids;
 
     public int getBookmarkid() {
         return bookmarkid;
@@ -220,4 +222,11 @@ public class BookmarkBO {
         this.colno = colno;
     }
 
+    public String getTagids() {
+        return tagids;
+    }
+
+    public void setTagids(String tagids) {
+        this.tagids = tagids;
+    }
 }

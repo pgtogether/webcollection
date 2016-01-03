@@ -318,7 +318,7 @@
 	</select>
 	<select id="selectTagsAndDescByBookmarkNo" parameterType="com.dapeng.domain.Bookmark"
 		resultType="com.dapeng.service.bo.BookmarkBO">
-		select group_concat(distinct T3.tagname,",") as tags, T2.description as description
+		select group_concat(distinct T3.tagname) as tags, T2.tags as tagids, T2.description as description
 		from user_bind_tags T1, (
 			select tags, description
 			from bookmark

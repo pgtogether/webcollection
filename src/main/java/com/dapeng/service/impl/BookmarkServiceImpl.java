@@ -20,6 +20,7 @@ import com.dapeng.domain.Tags;
 import com.dapeng.domain.UserBindTags;
 import com.dapeng.service.BookmarkService;
 import com.dapeng.service.bo.BookmarkBO;
+import com.dapeng.service.bo.TagsBO;
 import com.dapeng.service.bo.UserBindTagsBO;
 import com.dapeng.util.DateUtils;
 import com.dapeng.util.StringUtils;
@@ -125,15 +126,27 @@ public class BookmarkServiceImpl implements BookmarkService {
             String[] tagArray = tags.replaceAll("，", ",").split(",");
             for (String tagname : tagArray) {
                 // 查询书签是否存在
-                Tags tag = tagsDao.selectByTagName(tagname);
-                if (tag != null) {
+                TagsBO tagNameBO = new TagsBO();
+                tagNameBO.setUserid(bookmarkbo.getUserid());
+                tagNameBO.setTagname(tagname);
+                TagsBO tagsBO = tagsDao.selectTagsBOByTagName(tagNameBO);
+                if (tagsBO != null) {
                     // 存在关联次数+1
                     Tags updateTag = new Tags();
-                    updateTag.setTagid(tag.getTagid());
-                    updateTag.setTagnum(tag.getTagnum() + 1);
+                    updateTag.setTagid(tagsBO.getTagid());
+                    updateTag.setTagnum(tagsBO.getTagnum() + 1);
                     tagsDao.updateByPrimaryKeySelective(updateTag);
                     // 记录TagId
-                    tagids.add(tag.getTagid());
+                    tagids.add(tagsBO.getTagid());
+
+                    // 说明本用户下没有此标签
+                    if (tagsBO.getTagno() == null) {
+                        UserBindTags userbindtags = new UserBindTags();
+                        userbindtags.setUserid(bookmarkbo.getUserid());
+                        userbindtags.setTagid(tagsBO.getTagid());
+                        userbindtags.setUsetimes(0);
+                        userBindTagsDao.insert(userbindtags);
+                    }
                 } else {
                     // 不存在插入
                     Tags addTag = new Tags();
@@ -204,16 +217,82 @@ public class BookmarkServiceImpl implements BookmarkService {
     }
 
     @Override
-    public int updateBookmark(BookmarkBO bo) {
+    public int updateBookmark(BookmarkBO bookmarkbo) {
+        // 判断标签是否有变化
         Bookmark bookmark = new Bookmark();
-        bookmark.setUserid(bo.getUserid());
-        bookmark.setBookmarkno(bo.getBookmarkno());
-        bookmark.setBookmarkname(bo.getBookmarkname());
-        bookmark.setUrl(bo.getUrl());
-        bookmark.setUpdatetime(new Date());
-        bookmark.setTags(bo.getTags());
-        bookmark.setDescription(bo.getDescription());
-        return bookmarkDao.updateBookmarkByUnique(bookmark);
+        bookmark.setUserid(bookmarkbo.getUserid());
+        bookmark.setBookmarkno(bookmarkbo.getBookmarkno());
+        // 原有便签组
+        BookmarkBO checkTags = bookmarkDao.selectTagsAndDescByBookmarkNo(bookmark);
+        String insertTags = "";
+        List<Integer> tagids = new ArrayList<Integer>();
+        if (StringUtils.isNotEmpty(bookmarkbo.getTags())) {
+            if (!bookmarkbo.getTags().equals(checkTags.getTags())) {
+                // 插入标签
+                String tags = bookmarkbo.getTags();
+                if (StringUtils.isNotEmpty(tags)) {
+                    String[] tagArray = bookmarkbo.getTags().replaceAll("，", ",").split(",");
+                    for (String tagname : tagArray) {
+                        // 查询书签是否存在
+                        TagsBO tagNameBO = new TagsBO();
+                        tagNameBO.setUserid(bookmarkbo.getUserid());
+                        tagNameBO.setTagname(tagname);
+                        TagsBO tagsBO = tagsDao.selectTagsBOByTagName(tagNameBO);
+                        if (tagsBO != null) {
+                            if (tagsBO.getTagno() == null) {
+                                // 存在关联次数+1
+                                Tags updateTag = new Tags();
+                                updateTag.setTagid(tagsBO.getTagid());
+                                updateTag.setTagnum(tagsBO.getTagnum() + 1);
+                                tagsDao.updateByPrimaryKeySelective(updateTag);
+                                // 记录TagId
+                                tagids.add(tagsBO.getTagid());
+                                // 用户名下增加一个标签
+                                UserBindTags userbindtags = new UserBindTags();
+                                userbindtags.setUserid(bookmarkbo.getUserid());
+                                userbindtags.setTagid(tagsBO.getTagid());
+                                userbindtags.setUsetimes(0);
+                                userBindTagsDao.insert(userbindtags);
+                            } else {
+                                // 记录TagId
+                                tagids.add(tagsBO.getTagid());
+                            }
+                        } else {
+                            // 不存在插入
+                            Tags addTag = new Tags();
+                            addTag.setTagname(tagname);
+                            addTag.setTagnum(0);
+                            tagsDao.insert(addTag);
+
+                            // 记录TagId
+                            int addTagId = tagsDao.getLastInsertId();
+                            tagids.add(addTagId);
+
+                            UserBindTags userbindtags = new UserBindTags();
+                            userbindtags.setUserid(bookmarkbo.getUserid());
+                            userbindtags.setTagid(addTagId);
+                            userbindtags.setUsetimes(0);
+                            userBindTagsDao.insert(userbindtags);
+                        }
+                    }
+                    UserBindTagsBO bo = new UserBindTagsBO();
+                    bo.setTagidlist(tagids);
+                    bo.setUserid(bookmarkbo.getUserid());
+                    insertTags = userBindTagsDao.convertTagIdListToTagNos(bo);
+                }
+            } else {
+                insertTags = checkTags.getTagids();
+            }
+        }
+        Bookmark updatebookmark = new Bookmark();
+        updatebookmark.setUserid(bookmarkbo.getUserid());
+        updatebookmark.setBookmarkno(bookmarkbo.getBookmarkno());
+        updatebookmark.setBookmarkname(bookmarkbo.getBookmarkname());
+        updatebookmark.setUrl(bookmarkbo.getUrl());
+        updatebookmark.setUpdatetime(new Date());
+        updatebookmark.setTags(insertTags);
+        updatebookmark.setDescription(bookmarkbo.getDescription());
+        return bookmarkDao.updateBookmarkByUnique(updatebookmark);
     }
 
     // 回收站

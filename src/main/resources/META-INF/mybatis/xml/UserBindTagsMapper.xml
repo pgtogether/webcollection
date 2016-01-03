@@ -101,7 +101,7 @@
 	</select>
 	<select id="convertTagIdListToTagNos" parameterType="com.dapeng.service.bo.UserBindTagsBO"
 		resultType="java.lang.String">
-		select group_concat(distinct tagno,",")
+		select group_concat(distinct tagno)
 		from user_bind_tags
 		where userid =
 		#{userid,jdbcType=VARCHAR}

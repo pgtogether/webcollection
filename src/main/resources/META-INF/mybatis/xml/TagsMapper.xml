@@ -16,12 +16,16 @@
 		from tags
 		where tagid = #{tagid,jdbcType=INTEGER}
 	</select>
-	<select id="selectByTagName" resultMap="BaseResultMap"
-		parameterType="java.lang.String">
-		select
-		<include refid="Base_Column_List" />
-		from tags
-		where tagname = #{tagname,jdbcType=VARCHAR}
+	<select id="selectTagsBOByTagName" resultType="com.dapeng.service.bo.TagsBO"
+		parameterType="com.dapeng.service.bo.TagsBO">
+		select T1.tagid, T1.tagname, T1.tagnum, T2.tagno
+		from
+		tags T1
+		left join
+		user_bind_tags T2
+		on T1.tagid = T2.tagid
+		and T2.userid = #{userid,jdbcType=VARCHAR}
+		where T1.tagname = #{tagname,jdbcType=VARCHAR}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from tags
@@ -76,7 +80,8 @@
 		update tags
 		set
 		tagname = #{tagname,jdbcType=VARCHAR},
-		tagnum = #{tagnum,jdbcType=INTEGER}
+		tagnum =
+		#{tagnum,jdbcType=INTEGER}
 		where
 		tagid = #{tagid,jdbcType=INTEGER}
 	</update>

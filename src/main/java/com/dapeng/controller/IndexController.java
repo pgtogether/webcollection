@@ -505,8 +505,10 @@ public class IndexController extends UserSessionController {
             if (bo != null) {
                 Map<String, Object> map = new HashMap<String, Object>();
                 String tags = bo.getTags();
-                if (!StringUtils.isEmpty(tags)) {
+                if (!StringUtils.isEmpty(tags) && tags.substring(tags.length() - 1).equals(",")) {
                     map.put("tags", tags.substring(0, tags.length() - 1));
+                } else {
+                    map.put("tags", tags);
                 }
                 map.put("desc", bo.getDescription());
                 return ajaxSuccess(map);

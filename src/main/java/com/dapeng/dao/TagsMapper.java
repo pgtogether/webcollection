@@ -1,6 +1,7 @@
 package com.dapeng.dao;
 
 import com.dapeng.domain.Tags;
+import com.dapeng.service.bo.TagsBO;
 
 public interface TagsMapper {
     
@@ -12,7 +13,7 @@ public interface TagsMapper {
 
     Tags selectByPrimaryKey(Integer tagid);
     
-    Tags selectByTagName(String tagname);
+    TagsBO selectTagsBOByTagName(TagsBO record);
 
     int updateByPrimaryKeySelective(Tags record);
 
