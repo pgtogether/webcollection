@@ -43,7 +43,10 @@ public interface BookmarkMapper {
      */
     List<BookmarkMiniBO> selectrecycleList(String userid);
 
-    Bookmark selectBookmarkListById(int bookmarkId);
+    /**
+     * 根据书签编号查询书签
+     */
+    BookmarkBO selectTagsAndDescByBookmarkNo(Bookmark record);
 
     /**
      * 添加书签

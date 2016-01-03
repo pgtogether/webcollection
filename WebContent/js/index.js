@@ -65,7 +65,6 @@ var openSortableFunc = {
 					},
 					success : function(json) {
 						if (json.result == "OK") {
-							doAjaxFunc.saveSuccessAnimate("排序成功");
 						} else {
 							alert(json.msg);
 						}
@@ -102,7 +101,6 @@ var openSortableFunc = {
 					},
 					success : function(json) {
 						if (json.result == "OK") {
-							doAjaxFunc.saveSuccessAnimate("排序成功");
 						} else {
 							alert(json.msg);
 						}
@@ -211,7 +209,6 @@ var newCategoryOrBookMarkFunc = {
 					$clone.slideDown();
 					$(".mask").hide();
 					$(".popbox-for-new").hide();
-					doAjaxFunc.saveSuccessAnimate("添加成功");
 				});
 			} else {
 				// 添加书签
@@ -246,7 +243,6 @@ var newCategoryOrBookMarkFunc = {
 					$url_list.find("li:first").addClass("save-success").slideDown();
 					$(".mask").hide();
 					$(".popbox-for-new").hide();
-					doAjaxFunc.saveSuccessAnimate("添加成功");
 				});
 			}
 		});
@@ -348,7 +344,6 @@ var categoryOperateFunc = {
 		$(".popbox-for-confirm .tip-confirm-btn").click(function(){
 			$(".popbox-for-confirm").hide();
 			doAjaxFunc.doDeleteCategory(selfFunc.deleteCategoryNo, function(){
-				doAjaxFunc.saveSuccessAnimate("删除成功");
 				$(".wrap-box").find("#c_"+selfFunc.deleteCategoryNo).slideUp(function(){
 					$(this).remove();
 				});
@@ -454,7 +449,8 @@ var bookmarkOperateFunc = {
 		$(".wrap-box").on("click", ".editicon", function() {
 			// 如果已经存在,不需要再增加一个模板
 			var $this = $(this);
-			var $nextli = $this.parents("li").next();
+			var $thisli = $this.parents("li");
+			var $nextli = $thisli.next();
 			if ($nextli.find(".editbookmark").length == 0) {
 				// 每次打开新的模板之前，先关闭其他开着的模板
 				selfFunc.closeAllEditBookmarkTemplate();
@@ -463,7 +459,25 @@ var bookmarkOperateFunc = {
 				var values = {};
 				values.url = $a.attr("href");
 				values.name = $a.text();
-				selfFunc.appendEditBookmarkTemplate($li, values);
+				// 编辑书签的时候，需要重新加载标签以及描述
+				$.ajax({
+					type : "post",
+					url : CONTEXT_PATH + "/doGetTagsAndDescByBookmarkNo",
+					data : {
+						bookmarkno : $thisli.attr("value")
+					},
+					success : function(json) {
+						if(json.result == "OK"){
+							var bookmark = json.data;
+							if(bookmark){
+								values.tags = bookmark.tags;
+								values.desc = bookmark.desc;
+							}
+						}
+						// 不管成功与否，直接显示
+						selfFunc.appendEditBookmarkTemplate($li, values);
+					}
+				});
 			} else {
 				selfFunc.closeAllEditBookmarkTemplate();
 			}
@@ -531,10 +545,7 @@ var bookmarkOperateFunc = {
 					// 添加一个新书签
 					var $ul = $addbookmarkform.parents("ul");
 					$ul.prepend(template);
-					$ul.find("li:eq(0)").addClass("save-success").slideDown(function() {
-						// 成功后的动画效果
-						doAjaxFunc.saveSuccessAnimate("添加成功");
-					});
+					$ul.find("li:eq(0)").addClass("save-success").slideDown();
 				});
 			}
 			// 确认编辑书签
@@ -560,8 +571,6 @@ var bookmarkOperateFunc = {
 						$hotBookmark.find("a").html(name);
 						$hotBookmark.find("a").attr("href",url);
 					}
-					// 更新成功提示动作
-					doAjaxFunc.saveSuccessAnimate("更新成功");
 				});
 			}
 			// 确认删除书签

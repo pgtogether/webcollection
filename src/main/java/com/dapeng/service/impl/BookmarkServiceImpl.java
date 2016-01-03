@@ -97,8 +97,11 @@ public class BookmarkServiceImpl implements BookmarkService {
     }
 
     @Override
-    public Bookmark selectBookmarkListById(int bookmarkId) {
-        return bookmarkDao.selectBookmarkListById(bookmarkId);
+    public BookmarkBO selectTagsAndDescByBookmarkNo(String userid, int bookmarkno) {
+        Bookmark bookmark = new Bookmark();
+        bookmark.setUserid(userid);
+        bookmark.setBookmarkno(bookmarkno);
+        return bookmarkDao.selectTagsAndDescByBookmarkNo(bookmark);
     }
 
     @Override
@@ -149,7 +152,7 @@ public class BookmarkServiceImpl implements BookmarkService {
                     userBindTagsDao.insert(userbindtags);
                 }
             }
-            
+
             UserBindTagsBO bo = new UserBindTagsBO();
             bo.setTagidlist(tagids);
             bo.setUserid(bookmarkbo.getUserid());

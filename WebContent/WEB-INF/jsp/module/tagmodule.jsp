@@ -22,7 +22,9 @@
 	$(function() {
 		loadAllTags();
 		$(".content-right").on("click",".notes ul li",function(){
-			var tagid = $(this).attr("value");
+			var $this = $(this);
+			var tagid = $this.attr("value");
+			$this.addClass("flitered").siblings().removeClass("flitered");
 			$(".mask").show();
 			var $nowModule = $(this).parents(".notes");
 			$nowModule.addClass("filter-tags");
@@ -36,7 +38,7 @@
 		$(document).bind("click",function(e){
 			var target = $(e.target);
 			if ($(".popbox-tags").is(":visible") && target.closest(".popbox-tags,.filter-tags").length == 0) {
-				$(".filter-tags").removeClass("filter-tags");
+				$(".filter-tags").removeClass("filter-tags").find(".flitered").removeClass("flitered");
 				$(".mask").fadeOut();
 				$(".popbox-tags").hide();
 			}

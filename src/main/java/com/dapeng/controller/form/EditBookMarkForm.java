@@ -47,7 +47,7 @@ public class EditBookMarkForm {
 
     private String tags;
 
-    private String description;
+    private String desc;
 
     public String getUrl() {
         return url;
@@ -65,12 +65,12 @@ public class EditBookMarkForm {
         this.bookmarkname = bookmarkname;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public String getBookmarkno() {

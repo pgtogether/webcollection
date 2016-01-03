@@ -19,7 +19,7 @@ public interface BookmarkService {
     List<BookmarkMiniBO> selectrecycleList(String userid);
 
     // 根据id查找书签
-    Bookmark selectBookmarkListById(int bookmarkId);
+    BookmarkBO selectTagsAndDescByBookmarkNo(String userid, int bookmarkno);
 
     // 插入书签
     int insertBookmark(BookmarkBO bookmarkbo);

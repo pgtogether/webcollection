@@ -254,7 +254,7 @@ public class IndexController extends UserSessionController {
         bookmarkbo.setUrl(StringUtils.trimWhitespace(form.getUrl()));
         bookmarkbo.setCategoryno(categoryno);
         bookmarkbo.setTags(StringUtils.trimWhitespace(form.getTags()));
-        bookmarkbo.setDescription(StringUtils.trimWhitespace(form.getDescription()));
+        bookmarkbo.setDescription(StringUtils.trimWhitespace(form.getDesc()));
         Integer bookmarkno = bookmarkService.insertBookmark(bookmarkbo);
         if (bookmarkno > 0) {
             if (resultMap != null) {
@@ -334,7 +334,7 @@ public class IndexController extends UserSessionController {
         bo.setBookmarkno(Integer.valueOf(form.getBookmarkno()));
         bo.setBookmarkname(StringUtils.trimWhitespace(form.getBookmarkname()));
         bo.setTags(StringUtils.trimWhitespace(form.getTags()));
-        bo.setDescription(StringUtils.trimWhitespace(form.getDescription()));
+        bo.setDescription(StringUtils.trimWhitespace(form.getDesc()));
         int rows = bookmarkService.updateBookmark(bo);
         if (rows > 0) {
             return ajaxSuccess();
@@ -482,11 +482,38 @@ public class IndexController extends UserSessionController {
     @ResponseBody
     public Map<String, Object> doFliterBookmarkByTags(HttpServletRequest request, HttpSession session) {
         String tagid = request.getParameter("tagid");
-        if(StringUtils.isEmpty(tagid)){
+        if (StringUtils.isEmpty(tagid)) {
             return ajaxFail();
         }
         List<BookmarkMiniBO> list = bookmarkService.getBookmarkListByTag(getSessionUserId(session), tagid);
         return ajaxSuccess(list);
     }
 
+    /**
+     * 获取书签详情
+     */
+    @RequestMapping(value = "doGetTagsAndDescByBookmarkNo", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> doGetTagsAndDescByBookmarkNo(HttpServletRequest request, HttpSession session) {
+        String bookmarkno = request.getParameter("bookmarkno");
+        if (StringUtils.isEmpty(bookmarkno)) {
+            return ajaxFail();
+        }
+        try {
+            BookmarkBO bo = bookmarkService.selectTagsAndDescByBookmarkNo(getSessionUserId(session),
+                    Integer.valueOf(bookmarkno));
+            if (bo != null) {
+                Map<String, Object> map = new HashMap<String, Object>();
+                String tags = bo.getTags();
+                if (!StringUtils.isEmpty(tags)) {
+                    map.put("tags", tags.substring(0, tags.length() - 1));
+                }
+                map.put("desc", bo.getDescription());
+                return ajaxSuccess(map);
+            }
+            return ajaxFail();
+        } catch (Exception e) {
+            return ajaxFail();
+        }
+    }
 }

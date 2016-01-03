@@ -277,6 +277,10 @@ body {
 	cursor: pointer; background: #046BD8; color: #fff;
 }
 
+.notes .notes-body ul li.flitered{
+	cursor: pointer; background: #046BD8; color: #fff;
+}
+
 /* 活跃用户 */
 .users {
 	width: 100%; float: left; margin-bottom: 10px; background: #ffffff;
