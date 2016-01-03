@@ -59,6 +59,8 @@
 						}
 						tagsHtml += '</ul>';
 						$(".load-tags").html(tagsHtml);
+					} else {
+						$(".load-tags").html("");
 					}
 				} else {
 					doAjaxFunc.saveErrorAnimate("标签加载失败");
