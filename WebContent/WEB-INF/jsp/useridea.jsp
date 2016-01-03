@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>意见反馈</title>
+<script src="${context_path}/js/plugin/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 <h1 align="center">意见反馈</h1>
