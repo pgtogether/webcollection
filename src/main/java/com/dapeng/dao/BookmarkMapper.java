@@ -18,6 +18,8 @@ public interface BookmarkMapper {
     int insertSelective(Bookmark record);
 
     Bookmark selectByPrimaryKey(Integer bookmarkid);
+    
+    Bookmark selectByUniqueKey(Bookmark record);
 
     int updateByPrimaryKeySelective(Bookmark record);
 

@@ -1,6 +1,7 @@
 ﻿package com.dapeng.service.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -13,15 +14,12 @@ import com.dapeng.constants.BookmarkDeleteEnum;
 import com.dapeng.constants.BookmarkHotEnum;
 import com.dapeng.constants.BookmarkPermissionEnum;
 import com.dapeng.dao.BookmarkMapper;
-import com.dapeng.dao.TagsMapper;
-import com.dapeng.dao.UserBindTagsMapper;
+import com.dapeng.dao.UserTagsMapper;
+import com.dapeng.dao.UserTagsTempMapper;
 import com.dapeng.domain.Bookmark;
-import com.dapeng.domain.Tags;
-import com.dapeng.domain.UserBindTags;
+import com.dapeng.domain.UserTags;
 import com.dapeng.service.BookmarkService;
 import com.dapeng.service.bo.BookmarkBO;
-import com.dapeng.service.bo.TagsBO;
-import com.dapeng.service.bo.UserBindTagsBO;
 import com.dapeng.util.DateUtils;
 import com.dapeng.util.StringUtils;
 import com.depeng.web.bo.BookmarkMiniBO;
@@ -34,10 +32,10 @@ public class BookmarkServiceImpl implements BookmarkService {
     private BookmarkMapper bookmarkDao;
 
     @Autowired
-    private TagsMapper tagsDao;
+    private UserTagsTempMapper userBindTagsDao;
 
     @Autowired
-    private UserBindTagsMapper userBindTagsDao;
+    private UserTagsMapper userTagsDao;
 
     @Override
     public List<CategoryWithBookmarkMiniBO> selectBookmarkList(String userid) {
@@ -119,59 +117,43 @@ public class BookmarkServiceImpl implements BookmarkService {
         // 插入标签
         String tags = bookmarkbo.getTags();
         String insertTags = "";
-
         if (StringUtils.isNotEmpty(tags)) {
-            List<Integer> tagids = new ArrayList<Integer>();
+            StringBuffer newTags = new StringBuffer("");
             // 拆分标签
             String[] tagArray = tags.replaceAll("，", ",").split(",");
             for (String tagname : tagArray) {
                 // 查询书签是否存在
-                TagsBO tagNameBO = new TagsBO();
-                tagNameBO.setUserid(bookmarkbo.getUserid());
-                tagNameBO.setTagname(tagname);
-                TagsBO tagsBO = tagsDao.selectTagsBOByTagName(tagNameBO);
-                if (tagsBO != null) {
+                UserTags userTags = new UserTags();
+                userTags.setUserid(bookmarkbo.getUserid());
+                userTags.setTagname(tagname);
+                UserTags checkTag = userTagsDao.selectUserTagsByTagName(userTags);
+                if (checkTag != null) {
                     // 存在关联次数+1
-                    Tags updateTag = new Tags();
-                    updateTag.setTagid(tagsBO.getTagid());
-                    updateTag.setTagnum(tagsBO.getTagnum() + 1);
-                    tagsDao.updateByPrimaryKeySelective(updateTag);
+                    UserTags updateTag = new UserTags();
+                    updateTag.setUserid(bookmarkbo.getUserid());
+                    updateTag.setTagno(checkTag.getTagno());
+                    updateTag.setTagnum(checkTag.getTagnum() + 1);
+                    userTagsDao.updateByUniqueKey(updateTag);
                     // 记录TagId
-                    tagids.add(tagsBO.getTagid());
-
-                    // 说明本用户下没有此标签
-                    if (tagsBO.getTagno() == null) {
-                        UserBindTags userbindtags = new UserBindTags();
-                        userbindtags.setUserid(bookmarkbo.getUserid());
-                        userbindtags.setTagid(tagsBO.getTagid());
-                        userbindtags.setUsetimes(0);
-                        userBindTagsDao.insert(userbindtags);
-                    }
+                    newTags.append(String.valueOf(checkTag.getTagno()));
+                    newTags.append(",");
                 } else {
                     // 不存在插入
-                    Tags addTag = new Tags();
+                    UserTags addTag = new UserTags();
+                    addTag.setUserid(bookmarkbo.getUserid());
+                    int tagno = userTagsDao.selectMaxTagNo(bookmarkbo.getUserid()) + 1;
+                    addTag.setTagno(tagno);
                     addTag.setTagname(tagname);
-                    addTag.setTagnum(0);
-                    tagsDao.insert(addTag);
-
+                    addTag.setTagnum(1);
+                    addTag.setUsetimes(0);
+                    userTagsDao.insert(addTag);
                     // 记录TagId
-                    int addTagId = tagsDao.getLastInsertId();
-                    tagids.add(addTagId);
-
-                    UserBindTags userbindtags = new UserBindTags();
-                    userbindtags.setUserid(bookmarkbo.getUserid());
-                    userbindtags.setTagid(addTagId);
-                    userbindtags.setUsetimes(0);
-                    userBindTagsDao.insert(userbindtags);
+                    newTags.append(String.valueOf(tagno));
+                    newTags.append(",");
                 }
             }
-
-            UserBindTagsBO bo = new UserBindTagsBO();
-            bo.setTagidlist(tagids);
-            bo.setUserid(bookmarkbo.getUserid());
-            insertTags = userBindTagsDao.convertTagIdListToTagNos(bo);
+            insertTags = newTags.toString().substring(0, newTags.length() - 1);
         }
-
         Bookmark bookmark = new Bookmark();
         bookmark.setUserid(bookmarkbo.getUserid());
         bookmark.setSort(maxSort);
@@ -218,79 +200,77 @@ public class BookmarkServiceImpl implements BookmarkService {
 
     @Override
     public int updateBookmark(BookmarkBO bookmarkbo) {
-        // 判断标签是否有变化
+        // 原有便签组
         Bookmark bookmark = new Bookmark();
         bookmark.setUserid(bookmarkbo.getUserid());
         bookmark.setBookmarkno(bookmarkbo.getBookmarkno());
-        // 原有便签组
-        BookmarkBO checkTags = bookmarkDao.selectTagsAndDescByBookmarkNo(bookmark);
-        String insertTags = "";
-        List<Integer> tagids = new ArrayList<Integer>();
-        if (StringUtils.isNotEmpty(bookmarkbo.getTags())) {
-            if (!bookmarkbo.getTags().equals(checkTags.getTags())) {
-                // 插入标签
-                String tags = bookmarkbo.getTags();
-                if (StringUtils.isNotEmpty(tags)) {
-                    String[] tagArray = bookmarkbo.getTags().replaceAll("，", ",").split(",");
-                    for (String tagname : tagArray) {
-                        // 查询书签是否存在
-                        TagsBO tagNameBO = new TagsBO();
-                        tagNameBO.setUserid(bookmarkbo.getUserid());
-                        tagNameBO.setTagname(tagname);
-                        TagsBO tagsBO = tagsDao.selectTagsBOByTagName(tagNameBO);
-                        if (tagsBO != null) {
-                            if (tagsBO.getTagno() == null) {
-                                // 存在关联次数+1
-                                Tags updateTag = new Tags();
-                                updateTag.setTagid(tagsBO.getTagid());
-                                updateTag.setTagnum(tagsBO.getTagnum() + 1);
-                                tagsDao.updateByPrimaryKeySelective(updateTag);
-                                // 记录TagId
-                                tagids.add(tagsBO.getTagid());
-                                // 用户名下增加一个标签
-                                UserBindTags userbindtags = new UserBindTags();
-                                userbindtags.setUserid(bookmarkbo.getUserid());
-                                userbindtags.setTagid(tagsBO.getTagid());
-                                userbindtags.setUsetimes(0);
-                                userBindTagsDao.insert(userbindtags);
-                            } else {
-                                // 记录TagId
-                                tagids.add(tagsBO.getTagid());
-                            }
-                        } else {
-                            // 不存在插入
-                            Tags addTag = new Tags();
-                            addTag.setTagname(tagname);
-                            addTag.setTagnum(0);
-                            tagsDao.insert(addTag);
-
-                            // 记录TagId
-                            int addTagId = tagsDao.getLastInsertId();
-                            tagids.add(addTagId);
-
-                            UserBindTags userbindtags = new UserBindTags();
-                            userbindtags.setUserid(bookmarkbo.getUserid());
-                            userbindtags.setTagid(addTagId);
-                            userbindtags.setUsetimes(0);
-                            userBindTagsDao.insert(userbindtags);
-                        }
-                    }
-                    UserBindTagsBO bo = new UserBindTagsBO();
-                    bo.setTagidlist(tagids);
-                    bo.setUserid(bookmarkbo.getUserid());
-                    insertTags = userBindTagsDao.convertTagIdListToTagNos(bo);
-                }
-            } else {
-                insertTags = checkTags.getTagids();
+        Bookmark oldTags = bookmarkDao.selectByUniqueKey(bookmark);
+        List<String> oldTagList = new ArrayList<String>();
+        if (oldTags != null) {
+            String[] tagArray = oldTags.getTags().split(",");
+            for (String tag : tagArray) {
+                oldTagList.add(tag);
             }
         }
+
+        // 判断标签是否有变化
+        // 如果有新增的插入，如果有删除的删除
+        String tags = bookmarkbo.getTags();
+        String insertTags = "";
+        if (StringUtils.isNotEmpty(tags)) {
+            StringBuffer newTags = new StringBuffer("");
+            // 拆分标签
+            String[] tagArray = tags.replaceAll("，", ",").split(",");
+            for (String tagname : tagArray) {
+                // 查询书签是否存在
+                UserTags userTags = new UserTags();
+                userTags.setUserid(bookmarkbo.getUserid());
+                userTags.setTagname(tagname);
+                UserTags checkTag = userTagsDao.selectUserTagsByTagName(userTags);
+                if (checkTag != null) {
+                    // 记录TagId
+                    String tagnoStr = String.valueOf(checkTag.getTagno());
+                    oldTagList.remove(tagnoStr);
+                    newTags.append(tagnoStr);
+                    newTags.append(",");
+                } else {
+                    // 不存在插入
+                    UserTags addTag = new UserTags();
+                    addTag.setUserid(bookmarkbo.getUserid());
+                    int tagno = userTagsDao.selectMaxTagNo(bookmarkbo.getUserid()) + 1;
+                    addTag.setTagno(tagno);
+                    addTag.setTagname(tagname);
+                    addTag.setTagnum(1);
+                    addTag.setUsetimes(0);
+                    userTagsDao.insert(addTag);
+                    // 记录TagId
+                    newTags.append(String.valueOf(tagno));
+                    newTags.append(",");
+                }
+            }
+            insertTags = newTags.toString().substring(0, newTags.length() - 1);
+        }
+
+        // 如果有标签在编辑时删除了
+        if (oldTagList.size() > 0) {
+            // 把本标签关联书签的次数-1
+            for (String tagno : oldTagList) {
+                UserTags updateTag = new UserTags();
+                updateTag.setUserid(bookmarkbo.getUserid());
+                updateTag.setTagno(Integer.valueOf(tagno));
+                userTagsDao.minusTagNum(updateTag);
+            }
+        }
+        // 如果书签关联书签的次数为0，删除该标签
+        userTagsDao.deleteTagNumEqualsZero(bookmarkbo.getUserid());
+
         Bookmark updatebookmark = new Bookmark();
         updatebookmark.setUserid(bookmarkbo.getUserid());
         updatebookmark.setBookmarkno(bookmarkbo.getBookmarkno());
         updatebookmark.setBookmarkname(bookmarkbo.getBookmarkname());
         updatebookmark.setUrl(bookmarkbo.getUrl());
         updatebookmark.setUpdatetime(new Date());
-        updatebookmark.setTags(insertTags);
+        updatebookmark.setTags(insertTags.toString());
         updatebookmark.setDescription(bookmarkbo.getDescription());
         return bookmarkDao.updateBookmarkByUnique(updatebookmark);
     }
@@ -364,10 +344,10 @@ public class BookmarkServiceImpl implements BookmarkService {
     }
 
     @Override
-    public List<BookmarkMiniBO> getBookmarkListByTag(String userid, String tag) {
+    public List<BookmarkMiniBO> getBookmarkListByTag(String userid, String tagno) {
         Bookmark bookmark = new Bookmark();
         bookmark.setUserid(userid);
-        bookmark.setTags(tag);
+        bookmark.setTags(tagno);
         bookmark.setDeleteflg(BookmarkDeleteEnum.NORMAL_SHOW.getId());
         return bookmarkDao.getBookmarkListByTag(bookmark);
     }

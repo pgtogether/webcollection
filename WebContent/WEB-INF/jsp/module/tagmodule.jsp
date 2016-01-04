@@ -23,7 +23,7 @@
 		loadAllTags();
 		$(".content-right").on("click",".notes ul li",function(){
 			var $this = $(this);
-			var tagid = $this.attr("value");
+			var tagno = $this.attr("value");
 			$this.addClass("flitered").siblings().removeClass("flitered");
 			$(".mask").show();
 			var $nowModule = $(this).parents(".notes");
@@ -31,7 +31,7 @@
 			var backgroungColor = $nowModule.find(".head-style").css("background-color");
 			$(".popbox-tags").find(".popbox-head").css("background-color",backgroungColor);
 			$(".popbox-tags").show();
-			filtetBookmarkList(tagid);
+			filtetBookmarkList(tagno);
 		});
 		
 		// 点击空白区域隐藏
@@ -71,12 +71,12 @@
 		});
 	}
 	
-	function filtetBookmarkList(tagid){
+	function filtetBookmarkList(tagno){
 		$.ajax({
 			type : "post",
 			url : "${context_path}/doFliterBookmarkByTags",
 			data : {
-				tagid : tagid
+				tagno : tagno
 			},
 			beforeSend : function(){
 				$(".filter-url-list").hide().attr("style","");

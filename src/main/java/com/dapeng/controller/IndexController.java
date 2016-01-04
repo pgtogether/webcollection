@@ -35,7 +35,7 @@ import com.dapeng.controller.form.CategoryForm;
 import com.dapeng.controller.form.EditBookMarkForm;
 import com.dapeng.service.BookmarkService;
 import com.dapeng.service.CategoryService;
-import com.dapeng.service.TagsService;
+import com.dapeng.service.UserTagsService;
 import com.dapeng.service.bo.BookmarkBO;
 import com.dapeng.service.bo.CategoryBO;
 import com.depeng.web.bo.BookmarkMiniBO;
@@ -63,7 +63,7 @@ public class IndexController extends UserSessionController {
     private CategoryService categoryService;
 
     @Autowired
-    private TagsService tagsService;
+    private UserTagsService userTagsService;
 
     /**
      * 默认主页
@@ -471,7 +471,7 @@ public class IndexController extends UserSessionController {
     @RequestMapping(value = "loadAllTags", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public Map<String, Object> loadAllTags(HttpServletRequest request, HttpSession session) {
-        List<TagsMiniBO> list = tagsService.getAllTagsByUserId(getSessionUserId(session));
+        List<TagsMiniBO> list = userTagsService.getAllTagsByUserId(getSessionUserId(session));
         return ajaxSuccess(list);
     }
 
@@ -481,11 +481,11 @@ public class IndexController extends UserSessionController {
     @RequestMapping(value = "doFliterBookmarkByTags", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public Map<String, Object> doFliterBookmarkByTags(HttpServletRequest request, HttpSession session) {
-        String tagid = request.getParameter("tagid");
-        if (StringUtils.isEmpty(tagid)) {
+        String tagno = request.getParameter("tagno");
+        if (StringUtils.isEmpty(tagno)) {
             return ajaxFail();
         }
-        List<BookmarkMiniBO> list = bookmarkService.getBookmarkListByTag(getSessionUserId(session), tagid);
+        List<BookmarkMiniBO> list = bookmarkService.getBookmarkListByTag(getSessionUserId(session), tagno);
         return ajaxSuccess(list);
     }
 

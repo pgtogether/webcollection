@@ -37,6 +37,15 @@
 		from bookmark
 		where bookmarkid = #{bookmarkid,jdbcType=INTEGER}
 	</select>
+	<select id="selectByUniqueKey" resultType="com.dapeng.domain.Bookmark"
+		parameterType="com.dapeng.domain.Bookmark">
+		select
+		<include refid="Base_Column_List" />
+		from bookmark
+		where bookmarkno = #{bookmarkno,jdbcType=INTEGER}
+		and
+		userid = #{userid,jdbcType=VARCHAR}
+	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from
 		bookmark
@@ -318,17 +327,17 @@
 	</select>
 	<select id="selectTagsAndDescByBookmarkNo" parameterType="com.dapeng.domain.Bookmark"
 		resultType="com.dapeng.service.bo.BookmarkBO">
-		select group_concat(distinct T3.tagname) as tags, T2.tags as tagids, T2.description as description
-		from user_bind_tags T1, (
-			select tags, description
-			from bookmark
-			where userid = #{userid,jdbcType=VARCHAR}
-			and bookmarkno = #{bookmarkno,jdbcType=INTEGER}
-		) T2, tags T3
-		where T1.userid = #{userid,jdbcType=VARCHAR}
+		select group_concat(distinct T1.tagname) as tags, T2.tags
+		as tagids, T2.description as description
+		from user_tags T1, (
+		select tags, description
+		from bookmark
+		where userid = #{userid,jdbcType=VARCHAR}
+		and bookmarkno = #{bookmarkno,jdbcType=INTEGER}
+		) T2
+		where T1.userid =
+		#{userid,jdbcType=VARCHAR}
 		and find_in_set(T1.tagno, T2.tags)
-		and T1.tagid = T3.tagid
-		order by T1.tagno asc
 	</select>
 	<!-- 逻辑删除书签 -->
 	<update id="deleteBookmarkByUnique" parameterType="com.dapeng.domain.Bookmark">
@@ -491,14 +500,20 @@
 	</select>
 	<select id="getBookmarkListByTag" parameterType="com.dapeng.domain.Bookmark"
 		resultType="com.depeng.web.bo.BookmarkMiniBO">
-		select T1.bookmarkno as i, T1.bookmarkname as n, T1.url as u, T2.categoryname as cn
+		select T1.bookmarkno as i, T1.bookmarkname as n, T1.url as
+		u, T2.categoryname as cn
 		from bookmark T1, category T2
-		where T1.userid = #{userid,jdbcType=VARCHAR}
-		and T1.deleteflg = #{deleteflg,jdbcType=VARCHAR}
-		and find_in_set(#{tags,jdbcType=VARCHAR},T1.tags)
-		and T2.userid = #{userid,jdbcType=VARCHAR}
+		where T1.userid =
+		#{userid,jdbcType=VARCHAR}
+		and T1.deleteflg =
+		#{deleteflg,jdbcType=VARCHAR}
+		and
+		find_in_set(#{tags,jdbcType=VARCHAR},T1.tags)
+		and T2.userid =
+		#{userid,jdbcType=VARCHAR}
 		and T1.categoryno = T2.categoryno
-		order by T1.usetimes desc
+		order by
+		T1.usetimes desc
 	</select>
 	<!-- and T1.tags like CONCAT('%',#{tags,jdbcType=VARCHAR},',','%') -->
 </mapper>
