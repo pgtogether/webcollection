@@ -73,6 +73,11 @@ public class IndexController extends UserSessionController {
         // 获取热门书签
         List<BookmarkMiniBO> hotBookmarkList = bookmarkService.selectHotBookmarkList(getSessionUserId(session));
         model.addAttribute("hotBookmarkList", hotBookmarkList);
+
+        // 获取书签，分类总数
+        String userid = getSessionUserId(session);
+        model.addAttribute("bookmarkCnt", bookmarkService.countBookmark(userid));
+        model.addAttribute("categoryCnt", categoryService.countCategory(userid));
         return "index";
     }
 

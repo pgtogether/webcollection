@@ -23,6 +23,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryMapper categoryDao;
 
+    @Override
+    public int countCategory(String userid) {
+        return categoryDao.countCategory(userid);
+    }
+
     /**
      * 新增分类
      * 

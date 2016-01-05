@@ -16,6 +16,9 @@ import com.depeng.web.bo.CategoryMiniBO;
  */
 public interface CategoryService {
 
+    // 查询分类数目
+    int countCategory(String userid);
+
     // 查询所有类别
     List<CategoryMiniBO> selectCategoryList(String userid);
 

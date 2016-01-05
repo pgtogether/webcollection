@@ -8,7 +8,9 @@ import com.depeng.web.bo.BookmarkMiniBO;
 import com.depeng.web.bo.CategoryWithBookmarkMiniBO;
 
 public interface BookmarkService {
-
+    // 获取书签数目
+    int countBookmark(String userid);
+    
     // 查看书签列表
     List<CategoryWithBookmarkMiniBO> selectBookmarkList(String userid);
 

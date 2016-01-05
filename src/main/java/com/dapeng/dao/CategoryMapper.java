@@ -59,4 +59,6 @@ public interface CategoryMapper {
 
     // 获取默认栏位下最大排序号
     int selectMaxSortInDefaultColNo(Category category);
+    
+    int countCategory(String userid);
 }

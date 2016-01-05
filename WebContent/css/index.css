@@ -217,7 +217,11 @@ body {
 }
 
 .content-right .count {
-	width: 100%; float: left; height: 50px; line-height: 50px; font-size: 30px; font-weight: bold;
+	width: 100%; float: left; height: 50px; line-height: 50px; font-size: 30px; font-weight: bold; overflow: hidden;
+}
+
+.content-right .count label {
+	position: relative;
 }
 
 .content-right .categorycount {
@@ -277,7 +281,7 @@ body {
 	cursor: pointer; background: #046BD8; color: #fff;
 }
 
-.notes .notes-body ul li.flitered{
+.notes .notes-body ul li.flitered {
 	cursor: pointer; background: #046BD8; color: #fff;
 }
 

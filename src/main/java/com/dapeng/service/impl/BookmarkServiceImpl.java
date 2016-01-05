@@ -1,7 +1,6 @@
 ﻿package com.dapeng.service.impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -36,6 +35,14 @@ public class BookmarkServiceImpl implements BookmarkService {
 
     @Autowired
     private UserTagsMapper userTagsDao;
+
+    @Override
+    public int countBookmark(String userid) {
+        Bookmark bookmark = new Bookmark();
+        bookmark.setUserid(userid);
+        bookmark.setDeleteflg(BookmarkDeleteEnum.NORMAL_SHOW.getId());
+        return bookmarkDao.countBookmark(bookmark);
+    }
 
     @Override
     public List<CategoryWithBookmarkMiniBO> selectBookmarkList(String userid) {

@@ -281,4 +281,9 @@
 			#{category.userid,jdbcType=VARCHAR}
 		</foreach>
 	</update>
+	<select id="countCategory" resultType="java.lang.Integer">
+		select count(1)
+		from category
+		where userid = #{userid,jdbcType=VARCHAR}
+	</select>
 </mapper>

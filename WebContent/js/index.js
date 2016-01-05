@@ -129,7 +129,7 @@ var newCategoryOrBookMarkFunc = {
 			$pop_category.find("#normal-permission").prop("checked",true);
 			$(".psw").hide();
 			$(".mask").fadeIn(300);
-			$pop_category.fadeIn(300);
+			$pop_category.fadeIn(300).find("input[type=text]:eq(0)").focus();
 		});
 		$("#psw-permission").click(function() {
 			$(".psw").show();
@@ -157,7 +157,7 @@ var newCategoryOrBookMarkFunc = {
 			});
 			$pop_bookmark.find(".exist-category-list").html(categoryHtml);
 			$(".mask").fadeIn(300);
-			$pop_bookmark.fadeIn(300);
+			$pop_bookmark.fadeIn(300).find("input[type=text]:eq(0)").focus();
 		});
 		$(".pop-bookmark #categoryname").focusin(function(){
 			if (!$(this).val()){
@@ -209,6 +209,7 @@ var newCategoryOrBookMarkFunc = {
 					$clone.slideDown();
 					$(".mask").hide();
 					$(".popbox-for-new").hide();
+					commonUtilsFunc.calCategoryCnt(1);
 				});
 			} else {
 				// 添加书签
@@ -243,7 +244,16 @@ var newCategoryOrBookMarkFunc = {
 					$url_list.find("li:first").addClass("save-success").slideDown();
 					$(".mask").hide();
 					$(".popbox-for-new").hide();
+					commonUtilsFunc.calBookmarkCnt(1);
 				});
+			}
+		});
+		// 回车键,ESC监听
+		$(".popbox-for-new :input").keydown(function(e){
+			if(e.keyCode==13){
+				$(".popbox .confirm-btn").click();
+			} else if(e.keyCode == 27) {
+				$(".popbox .cancel-btn").click();
 			}
 		});
 	},
@@ -296,7 +306,7 @@ var categoryOperateFunc = {
 			}
 		});
 	},
-	// 确定修改
+	// 确定修改标题
 	confirmModify : function() {
 		var selfFunc = this;
 		$(".wrap-box").on("click", ".confirmicon", function() {
@@ -313,6 +323,14 @@ var categoryOperateFunc = {
 				var $headFuncSpan = $this.parent();
 				selfFunc.removeBoxTitleUpdateBtn($headFuncSpan);
 			});
+		});
+		// 监听回车键
+		$(".wrap-box").on("keydown",".updatetitle", function(e){
+			if(e.keyCode==13){
+				$(".wrap-box").find(".confirmicon").click();
+			} else if (e.keyCode == 27) {
+				$(".wrap-box").find(".cancelicon").click();
+			}
 		});
 	},
 	// 取消修改
@@ -332,6 +350,7 @@ var categoryOperateFunc = {
 	deleteCategoryNo : "",
 	deleteCategory : function(){
 		var selfFunc = this;
+		// 关闭提示框
 		$(".wrap-box").on("click", ".closeicon", function() {
 			selfFunc.deleteCategoryNo = $(this).parents(".block").find(".category-title").attr("value");
 			var $urlList = $(this).parents(".block").find(".url-list");
@@ -341,12 +360,14 @@ var categoryOperateFunc = {
 				$(".popbox-for-confirm").show();
 			}
 		});
+		// 确认删除分类
 		$(".popbox-for-confirm .tip-confirm-btn").click(function(){
 			$(".popbox-for-confirm").hide();
 			doAjaxFunc.doDeleteCategory(selfFunc.deleteCategoryNo, function(){
 				$(".wrap-box").find("#c_"+selfFunc.deleteCategoryNo).slideUp(function(){
 					$(this).remove();
 				});
+				commonUtilsFunc.calCategoryCnt(-1);
 				selfFunc.deleteCategoryNo = "";
 			});
 		});
@@ -546,6 +567,7 @@ var bookmarkOperateFunc = {
 					var $ul = $addbookmarkform.parents("ul");
 					$ul.prepend(template);
 					$ul.find("li:eq(0)").addClass("save-success").slideDown();
+					commonUtilsFunc.calBookmarkCnt(1);
 				});
 			}
 			// 确认编辑书签
@@ -585,8 +607,17 @@ var bookmarkOperateFunc = {
 							$(this).remove();
 						});
 					}
+					commonUtilsFunc.calBookmarkCnt(-1);
 				});
 				selfFunc.closeAllEditBookmarkTemplate();
+			}
+		});
+		// 监听回车键,ESC键
+		$(".wrap-box").on("keydown",".editbookmarktemplate :input",function(e){
+			if(e.keyCode==13){
+				$(".wrap-box").find(".confirmediticon").click();
+			} else if(e.keyCode==27){
+				$(".wrap-box").find(".cancelediticon").click();
 			}
 		});
 	},
@@ -615,14 +646,18 @@ var bookmarkOperateFunc = {
 	appendAddBookmarkTemplate : function($ul) {
 		var operateHtml = this.getAddAndEditBookmarkTemplate("addbookmark");
 		$ul.prepend(operateHtml);
-		$ul.find(".editbookmarktemplate").slideDown();
+		$ul.find(".editbookmarktemplate").slideDown(function(){
+			$(this).find("input[type=text]:eq(0)").focus();
+		});
 	},
 	// 编辑书签模板
 	appendEditBookmarkTemplate : function($li, values) {
 		var operateHtml = this.getAddAndEditBookmarkTemplate("editbookmark",
 				values);
 		$li.after(operateHtml);
-		$li.next().slideDown();
+		$li.next().slideDown(function(){
+			$(this).find("input[type=text]:eq(0)").focus();
+		});
 	},
 	// 删除书签模板
 	appendDelBookmarkTemplate : function($li) {

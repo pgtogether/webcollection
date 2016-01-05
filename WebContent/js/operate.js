@@ -366,3 +366,28 @@ var formValidateFunc = {
 		});
 	}
 };
+
+var commonUtilsFunc = {
+	// 分类数目计算
+	calCategoryCnt : function(cnt){
+		var $categoryCnt = $(".categorycount label");
+		this.scrollAnimate($categoryCnt,cnt);
+	},
+	// 书签数目计算
+	calBookmarkCnt : function(cnt){
+		var  $bookmarkCnt = $(".bookmarkcount label");
+		this.scrollAnimate($bookmarkCnt,cnt);
+	},
+	// 滚动效果
+	scrollAnimate : function($obj,cnt){
+		var top = (cnt/Math.abs(cnt))* 40;
+		$obj.animate({
+			"top" : top + "px"
+		},400,function(){
+			$obj.text(parseInt($obj.text()) + cnt);
+			$obj.css("top", ((-1) * top) + "px").animate({
+				"top" : "0px"
+			},400);
+		});
+	}
+};

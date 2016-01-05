@@ -330,10 +330,13 @@
 		select group_concat(distinct T1.tagname) as tags, T2.tags
 		as tagids, T2.description as description
 		from user_tags T1, (
-		select tags, description
+		select
+		tags, description
 		from bookmark
-		where userid = #{userid,jdbcType=VARCHAR}
-		and bookmarkno = #{bookmarkno,jdbcType=INTEGER}
+		where userid =
+		#{userid,jdbcType=VARCHAR}
+		and bookmarkno =
+		#{bookmarkno,jdbcType=INTEGER}
 		) T2
 		where T1.userid =
 		#{userid,jdbcType=VARCHAR}
@@ -516,6 +519,13 @@
 		T1.usetimes desc
 	</select>
 	<!-- and T1.tags like CONCAT('%',#{tags,jdbcType=VARCHAR},',','%') -->
+	<select id="countBookmark" resultType="java.lang.Integer"
+		parameterType="com.dapeng.domain.Bookmark">
+		select count(1)
+		from bookmark
+		where userid = #{userid,jdbcType=VARCHAR}
+		and deleteflg = #{deleteflg,jdbcType=VARCHAR}
+	</select>
 </mapper>
 
 <!-- permission = #{permission,jdbcType=VARCHAR}, categoryno = #{categoryno,jdbcType=VARCHAR}, 
