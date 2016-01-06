@@ -7,26 +7,26 @@
 	<div class="popbox-head">添加书签</div>
 	<div class="popbox-body">
 		<div>
-			<label>网址</label><input type="text" id="url" name="url"
+			<label class="name">网址</label><input type="text" id="url" name="url"
 				placeholder="例:www.52url.com" />
 		</div>
 		<div>
-			<label>名称</label><input type="text" id="bookmarkname" name="bookmarkname"
+			<label class="name">名称</label><input type="text" id="bookmarkname" name="bookmarkname"
 				placeholder="例:网址收藏" />
 		</div>
 		<div class="choose-category">
-			<label>分类</label>
+			<label class="name">分类</label>
 			<input type="hidden" id="categoryno" name="categoryno" />
 			<input type="text" id="categoryname" name="categoryname" placeholder="例:菜谱(输入分类名可创建新分类)" />
 			<ul class="exist-category-list">
 			</ul>
 		</div>
 		<div>
-			<label>标签</label><input type="text" id="tags" name="tags"
+			<label class="name">标签</label><input type="text" id="tags" name="tags"
 				placeholder="例:生活,美食(以逗号,分隔)" />
 		</div>
 		<div>
-			<label>描述</label>
+			<label class="name">描述</label>
 			<textarea id="desc" name="desc"></textarea>
 		</div>
 		<div>
@@ -42,12 +42,12 @@
 	<div class="popbox-head">添加分类</div>
 	<div class="popbox-body">
 		<div>
-			<label>名称</label>
+			<label class="name">名称</label>
 			<input type="hidden" id="categoryid" name="categoryid" value="" />
 			<input type="text" id="categoryname" name="categoryname" placeholder="网址所属分类" value="" />
 		</div>
 		<div>
-			<label>权限</label> 
+			<label class="name">权限</label> 
 			<span class="permission">
 				<input id="normal-permission" type="radio" name="categorypermission" checked="checked" value="1">普通(可自由查看)
 			</span> 
@@ -56,10 +56,10 @@
 			</span>
 		</div>
 		<div class="psw">
-			<label>密码</label><input type="password" name="categorypsw" />
+			<label class="name">密码</label><input type="password" name="categorypsw" />
 		</div>
 		<div class="psw">
-			<label>确认密码</label><input type="password" name="categorypswagain" />
+			<label class="name">确认密码</label><input type="password" name="categorypswagain" />
 		</div>
 		<div>
 			<span class="btn"> <a class="confirm-btn">确定</a><a

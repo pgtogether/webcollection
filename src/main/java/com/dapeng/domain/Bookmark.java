@@ -22,7 +22,7 @@ public class Bookmark {
 
     private int usetimes;
 
-    private String fastletters;
+    private String pinyin;
 
     private String pinyinhead;
 
@@ -43,7 +43,7 @@ public class Bookmark {
     private String userid;
 
     private int bookmarkno;
-    
+
     private String tags;
 
     public int getBookmarkid() {
@@ -98,12 +98,12 @@ public class Bookmark {
         this.usetimes = usetimes;
     }
 
-    public String getFastletters() {
-        return fastletters;
+    public String getPinyin() {
+        return pinyin;
     }
 
-    public void setFastletters(String fastletters) {
-        this.fastletters = fastletters;
+    public void setPinyin(String pinyin) {
+        this.pinyin = pinyin;
     }
 
     public String getPinyinhead() {
@@ -178,9 +178,9 @@ public class Bookmark {
         this.userid = userid;
     }
 
-	public int getBookmarkno() {
-		return bookmarkno;
-	}
+    public int getBookmarkno() {
+        return bookmarkno;
+    }
 
     public String getTags() {
         return tags;

@@ -5,3 +5,4 @@
 <script src="${context_path}/js/plugin/jquery.validate-1.13.1.min.js"></script>
 <script src="${context_path}/js/plugin/jump.js"></script>
 <script src="${context_path}/js/validate.js"></script>
+<script src="${context_path}/js/plugin/pinyin.js"></script>

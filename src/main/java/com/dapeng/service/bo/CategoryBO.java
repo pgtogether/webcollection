@@ -27,6 +27,10 @@ public class CategoryBO {
 
     private String colno;
 
+    private String pinyin;
+
+    private String pinyinhead;
+
     public int getCategoryid() {
         return categoryid;
     }
@@ -106,4 +110,21 @@ public class CategoryBO {
     public void setColno(String colno) {
         this.colno = colno;
     }
+
+    public String getPinyin() {
+        return pinyin;
+    }
+
+    public void setPinyin(String pinyin) {
+        this.pinyin = pinyin;
+    }
+
+    public String getPinyinhead() {
+        return pinyinhead;
+    }
+
+    public void setPinyinhead(String pinyinhead) {
+        this.pinyinhead = pinyinhead;
+    }
+
 }

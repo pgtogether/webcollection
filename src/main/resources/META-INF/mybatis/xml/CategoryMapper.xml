@@ -16,13 +16,15 @@
 		<result column="categoryno" property="categoryno" jdbcType="INTEGER" />
 		<result column="sort" property="sort" jdbcType="INTEGER" />
 		<result column="colno" property="colno" jdbcType="VARCHAR" />
+		<result column="pinyin" property="pinyin" jdbcType="VARCHAR" />
+		<result column="pinyinhead" property="pinyinhead" jdbcType="VARCHAR" />
 	</resultMap>
 	<sql id="Base_Column_List">
 		categoryid, categoryname, categorytype, parentcategoryid,
 		categorypermission,
 		categorypsw,
 		createtime, updatetime,userid
-		,categoryid, sort, colno
+		,categoryid, sort, colno, pinyin, pinyinhead
 	</sql>
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.String">
@@ -40,14 +42,16 @@
 		delete from
 		category
 		where categoryno = #{categoryno,jdbcType=INTEGER}
-		and userid = #{userid,jdbcType=VARCHAR}
+		and userid =
+		#{userid,jdbcType=VARCHAR}
 	</delete>
 	<insert id="insert" parameterType="com.dapeng.domain.Category">
 		insert into category
 		(categoryname, categorytype,
 		parentcategoryid, categorypermission,
 		categorypsw,
-		createtime, updatetime, userid, categoryno, sort, colno)
+		createtime, updatetime, userid, categoryno, sort, colno,
+		pinyin, pinyinhead)
 		values
 		(#{categoryname,jdbcType=VARCHAR},
 		#{categorytype,jdbcType=VARCHAR},
@@ -59,7 +63,9 @@
 		#{userid,jdbcType=VARCHAR},
 		#{categoryno,jdbcType=INTEGER},
 		#{sort,jdbcType=INTEGER},
-		#{colno,jdbcType=INTEGER})
+		#{colno,jdbcType=VARCHAR},
+		#{pinyin,jdbcType=VARCHAR},
+		#{pinyinhead,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insertSelective" parameterType="com.dapeng.domain.Category">
 		insert into category
@@ -97,6 +103,12 @@
 			<if test="colno != null">
 				colno,
 			</if>
+			<if test="pinyin != null">
+				pinyin,
+			</if>
+			<if test="pinyinhead != null">
+				pinyinhead,
+			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="categoryname != null">
@@ -131,6 +143,12 @@
 			</if>
 			<if test="colno != null">
 				#{colno,jdbcType=VARCHAR},
+			</if>
+			<if test="pinyin != null">
+				#{pinyin,jdbcType=VARCHAR},
+			</if>
+			<if test="pinyinhead != null">
+				#{pinyinhead,jdbcType=VARCHAR},
 			</if>
 		</trim>
 	</insert>
@@ -171,6 +189,12 @@
 			<if test="colno != null">
 				colno = #{colno,jdbcType=VARCHAR},
 			</if>
+			<if test="pinyin != null">
+				pinyin = #{pinyin,jdbcType=VARCHAR},
+			</if>
+			<if test="pinyinhead != null">
+				pinyinhead = #{pinyinhead,jdbcType=VARCHAR},
+			</if>
 		</set>
 		where categoryid = #{categoryid,jdbcType=INTEGER}
 	</update>
@@ -193,7 +217,10 @@
 		categoryno = #{categoryno,jdbcType=INTEGER},
 		sort =
 		#{sort,jdbcType=INTEGER},
-		colno = #{colno,jdbcType=INTEGER}
+		colno = #{colno,jdbcType=VARCHAR},
+		pinyin =
+		#{pinyin,jdbcType=VARCHAR},
+		pinyinhead = #{pinyinhead,jdbcType=VARCHAR}
 		where
 		categoryid =
 		#{categoryid,jdbcType=INTEGER}
@@ -246,7 +273,8 @@
 		select IFNULL(max(sort),0)
 		from category
 		where
-		userid = #{userid,jdbcType=VARCHAR}
+		userid =
+		#{userid,jdbcType=VARCHAR}
 		and colno = #{colno,jdbcType=VARCHAR}
 	</select>
 	<!-- 更新分类排序 -->
@@ -283,7 +311,8 @@
 	</update>
 	<select id="countCategory" resultType="java.lang.Integer">
 		select count(1)
-		from category
+		from
+		category
 		where userid = #{userid,jdbcType=VARCHAR}
 	</select>
 </mapper>

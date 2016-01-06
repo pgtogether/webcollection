@@ -62,7 +62,7 @@ public class IndexController extends UserSessionController {
     @Autowired
     private CategoryService categoryService;
 
-    @Autowired
+    @Autowired 
     private UserTagsService userTagsService;
 
     /**

@@ -214,9 +214,11 @@ public class BookmarkServiceImpl implements BookmarkService {
         Bookmark oldTags = bookmarkDao.selectByUniqueKey(bookmark);
         List<String> oldTagList = new ArrayList<String>();
         if (oldTags != null) {
-            String[] tagArray = oldTags.getTags().split(",");
-            for (String tag : tagArray) {
-                oldTagList.add(tag);
+            if (StringUtils.isNotEmpty(oldTags.getTags())) {
+                String[] tagArray = oldTags.getTags().split(",");
+                for (String tag : tagArray) {
+                    oldTagList.add(tag);
+                }
             }
         }
 

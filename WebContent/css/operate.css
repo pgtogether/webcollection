@@ -171,23 +171,23 @@
 }
 
 .popbox-body div {
-	width: 100%; float: left; line-height: 40px; text-align: center;
+	width: 100%; float: left; min-height: 50px; text-align: center;
 }
 
-.popbox-body div label {
-	width: 15%; float: left; margin-left: 2.5%; margin-right: 2.5%; text-align: center;
+.popbox-body div label.name {
+	width: 15%; float: left; margin-left: 2.5%; margin-right: 2.5%; text-align: center; line-height: 30px; height: 30px;
 }
 
 .popbox-body div label.error {
-	margin-left: 12.5%; text-align: left; line-height: 10px;
+	margin-left: 12.5%; text-align: left; height: 20px; line-height: 20px;
 }
 
 .popbox-body div input {
-	width: 75%; float: left; text-indent: 5px; height: 25px; margin-top: 5px;
+	width: 75%; float: left; text-indent: 5px; height: 25px;
 }
 
 .popbox-body div textarea {
-	width: 75%; max-width: 78%; float: left; text-indent: 5px; line-height: 30px; margin-top: 5px; padding-right: 2px;
+	width: 75%; max-width: 78%; float: left; text-indent: 5px; line-height: 30px; padding-right: 2px;
 }
 
 .popbox-body div input[type=radio] {
@@ -195,7 +195,7 @@
 }
 
 .popbox-body div .permission {
-	float: left; height: 30px; text-align: left; margin-right: 10px;
+	float: left; height: 30px; text-align: left; margin-right: 10px; line-height: 30px;
 }
 
 .popbox-body div .btn {
@@ -207,7 +207,7 @@
 }
 
 .popbox-body div .btn  a {
-	display: inline-block; width: 100px; height: 40px; margin: 15px 0px 15px 25px; text-decoration: none; cursor: pointer; border-radius: 5px; font-size: 14px; color: #000;
+	display: inline-block; width: 100px; height: 40px; margin: 15px 0px 15px 25px; text-decoration: none; cursor: pointer; border-radius: 5px; font-size: 14px; color: #000; line-height: 40px;
 }
 
 .popbox-body div .btn  a:hover {
@@ -223,7 +223,7 @@
 }
 
 .pop-bookmark .exist-category-list {
-	display: none; width: 75%; max-height: 112px; background: #FFFFFF; position: absolute; float: left; margin-left: 20%; margin-top: 38px; padding: 0 2px 4px 2px; overflow: auto; box-shadow: 2px 2px 5px #A0A0A0, -2px 0px 5px #A0A0A0;
+	display: none; width: 75%; max-height: 112px; background: #FFFFFF; position: absolute; float: left; margin-left: 20%; margin-top: 30px; padding: 0 2px 4px 2px; overflow: auto; box-shadow: 2px 2px 5px #A0A0A0, -2px 0px 5px #A0A0A0;
 }
 
 .pop-bookmark .exist-category-list li {

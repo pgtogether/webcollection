@@ -25,12 +25,12 @@ public class BookmarkBO {
     private int categoryno;
 
     private String categoryname;
-    
+
     private String colno;
 
     private int usetimes;
 
-    private String fastletters;
+    private String pinyin;
 
     private String pinyinhead;
 
@@ -43,15 +43,15 @@ public class BookmarkBO {
     private String description;
 
     private int sort;
-    
+
     private String sortlist;
 
     private String hot;
 
     private String deleteflg;
-    
+
     private String tags;
-    
+
     private String tagids;
 
     public int getBookmarkid() {
@@ -94,12 +94,12 @@ public class BookmarkBO {
         this.usetimes = usetimes;
     }
 
-    public String getFastletters() {
-        return fastletters;
+    public String getPinyin() {
+        return pinyin;
     }
 
-    public void setFastletters(String fastletters) {
-        this.fastletters = fastletters;
+    public void setPinyin(String pinyin) {
+        this.pinyin = pinyin;
     }
 
     public String getPinyinhead() {

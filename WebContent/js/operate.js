@@ -2,19 +2,23 @@ var initLoadFunc = {
 	init : function(activeBookmarkFunc){
 		this.loadAllBookmarkList(activeBookmarkFunc);
 	},
+	// 本地缓存
+	cacheList : "",
 	// 加载所有书签
 	loadAllBookmarkList : function(activeBookmarkFunc){
+		var _this = this;
 		$.ajax({
 			type : "post",
 			url : CONTEXT_PATH + "/doSelectBookmarkList",
 			success : function(json) {
 				if(json.result == "OK") {
 					if (json.data && json.data.length > 0) {
+						_this.cacheList = json.data;
 						for(var i=0; i<json.data.length; i++){
-							var categoryno = json.data[i].i;
-							var categoryname = json.data[i].n;
-							var categorycolno = json.data[i].c;
-							var bookmarklist = json.data[i].list;
+							var categoryno = _this.cacheList[i].i;
+							var categoryname = _this.cacheList[i].n;
+							var categorycolno = _this.cacheList[i].c;
+							var bookmarklist = _this.cacheList[i].list;
 							// 复制一个分类模板
 							var $clone = $(".category-template").clone().attr("style","").removeClass("category-template");
 							// 添加新分类模板标题颜色
@@ -32,10 +36,22 @@ var initLoadFunc = {
 									var name = bookmarklist[n].n;
 									var hot = bookmarklist[n].h;
 									bookmarkHtml += bookmarkOperateFunc.getBookmarkTemplate(id, url, name, hot, "tool", true);
+									
+									// 书签名称转成拼音
+									var bookmarkpinyin = PinyinUtil.getFullChars(name).toUpperCase();
+									var bookmarkpinyinhead = PinyinUtil.getCamelChars(name).toUpperCase();
+									bookmarklist[n].py = bookmarkpinyin;
+									bookmarklist[n].pyh = bookmarkpinyinhead;
 								}
 								$clone.find(".url-list").append(bookmarkHtml);
 							}
 							$(".wrap-box").eq(categorycolno).append($clone);
+							
+							// 分类名称转成拼音
+							var categorypinyin = PinyinUtil.getFullChars(categoryname).toUpperCase();
+							var categorypinyinhead = PinyinUtil.getCamelChars(categoryname).toUpperCase();
+							_this.cacheList[i].py = categorypinyin;
+							_this.cacheList[i].pyh = categorypinyinhead;
 						} 
 					}
 				}

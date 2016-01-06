@@ -25,14 +25,18 @@ public class Category {
     private Date createtime;
 
     private Date updatetime;
-    
+
     private String userid;
-    
+
     private int categoryno;
-    
+
     private int sort;
-    
+
     private String colno;
+
+    private String pinyin;
+
+    private String pinyinhead;
 
     public int getCategoryid() {
         return categoryid;
@@ -129,5 +133,21 @@ public class Category {
     public void setColno(String colno) {
         this.colno = colno;
     }
-    
+
+    public String getPinyin() {
+        return pinyin;
+    }
+
+    public void setPinyin(String pinyin) {
+        this.pinyin = pinyin;
+    }
+
+    public String getPinyinhead() {
+        return pinyinhead;
+    }
+
+    public void setPinyinhead(String pinyinhead) {
+        this.pinyinhead = pinyinhead;
+    }
+
 }
