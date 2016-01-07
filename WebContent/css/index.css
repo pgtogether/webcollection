@@ -270,7 +270,7 @@ body {
 }
 
 .notes .notes-body ul {
-	width: 100%; float: left; margin-top: 5px; min-height: 130px;
+	width: 100%; float: left; margin-top: 5px;
 }
 
 .notes .notes-body ul li {
@@ -333,7 +333,7 @@ body {
 
 /* 快速检索 */
 .fast-search {
-	width: 100%; float: left; padding: 10px 0 0 0;
+	width: 98%; margin: 0 auto; padding: 10px 0 0 0;
 }
 
 .fast-search input {
@@ -358,4 +358,45 @@ body {
 
 .fast-search .fast-search-btn:hover {
 	box-shadow: 1px 1px 1px #737373, -1px -1px 1px #737373;
+}
+
+/*快速检索结果列表*/
+.notes .fast-search-list {
+	display: none; width: 100%; float: left; position: relative; background: url(../img/targettop.png) no-repeat 0px 0px; padding-top: 12px;
+}
+
+.notes .fast-search-list a {
+	color: #000; width: 100%; float: left;
+}
+
+.notes .fast-search-list .filter-ul {
+	width: 100%; height: auto; background: #F7F7F7; float: left; overflow: hidden; margin: 0 0 0 0; border-top: 2px solid #046BD8; border-bottom: 2px solid #046BD8; position: absolute; box-shadow: 2px 2px 5px #9C9C9C;
+}
+
+.notes .fast-search-list .filter-ul li {
+	width: 100%; float: left; text-indent: 10px; margin: 0 0 0 0; border-radius: 0px; border: none; box-shadow: none; padding: 0px 0px; overflow: hidden;
+}
+
+.notes .fast-search-list .filter-ul li:hover {
+	background: #00A726;
+}
+
+.notes .fast-search-list .filter-ul li.parent-li {
+	float: left; height: auto; overflow: hidden;
+}
+
+.notes .fast-search-list .filter-ul li.parent-li .catetory-name {
+	width: 100%; float: left; background: #046BD8; cursor: default; color: #fff;
+}
+
+.notes .fast-search-list .filter-ul li.parent-li:hover {
+	color: #0087C5; background: #F7F7F7;
+}
+
+.notes .fast-search-list .filter-ul .child-ul {
+	width: 100%; float: left; margin: 0 0; border-bottom: 1px solid #046BD8;
+}
+
+.notes .fast-search-list .filter-ul .child-ul li {
+	width: 100%; float: left; text-indent: 20px;
 }

@@ -21,7 +21,7 @@
 <script type="text/javascript">
 	$(function() {
 		loadAllTags();
-		$(".content-right").on("click",".notes ul li",function(){
+		$(".content-right").on("click",".notes .load-tags ul li",function(){
 			var $this = $(this);
 			var tagno = $this.attr("value");
 			$this.addClass("flitered").siblings().removeClass("flitered");

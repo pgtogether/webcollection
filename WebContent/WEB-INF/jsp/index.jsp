@@ -67,15 +67,9 @@
 						class="count bookmarkcount"><label>${bookmarkCnt}</label></span><span class="desc">网址个数</span>
 				</div>
 			</div>
-			<div class="notes">
-				<div class="notes-head head-style">快速搜索</div>
-				<div class="notes-body">
-					<div class="fast-search">
-						<input type="text" class="fast-search-input" /><span
-							class="fast-search-btn">搜索</span>
-					</div>
-				</div>
-			</div>
+			<!-- 快速查询 -->
+			<jsp:include page="module/fastsearchmodule.jsp" />
+			<!-- 标签 -->
 			<jsp:include page="module/tagmodule.jsp" />
 			<div class="block">
 				<div class="block-head head-style">
