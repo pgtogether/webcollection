@@ -14,6 +14,9 @@
 <link href="${context_path}/css/operate.css" rel="stylesheet"
 	type="text/css" />
 <script src="${context_path}/js/plugin/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	var CONTEXT_PATH = '${context_path}';
+</script>
 </head>
 <body>
 	<div class="header">

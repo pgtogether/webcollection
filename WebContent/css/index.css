@@ -258,7 +258,7 @@ body {
 }
 
 .notes .notes-body {
-	width: 100%; float: left;
+	width: 100%; float: left; min-height: 50px;
 }
 
 .notes .notes-body .load {
@@ -369,6 +369,10 @@ body {
 	color: #000; width: 100%; float: left;
 }
 
+.notes .fast-search-list a:hover {
+	color: #fff;
+}
+
 .notes .fast-search-list .filter-ul {
 	width: 100%; height: auto; background: #F7F7F7; float: left; overflow: hidden; margin: 0 0 0 0; border-top: 2px solid #046BD8; border-bottom: 2px solid #046BD8; position: absolute; box-shadow: 2px 2px 5px #9C9C9C;
 }
@@ -399,4 +403,12 @@ body {
 
 .notes .fast-search-list .filter-ul .child-ul li {
 	width: 100%; float: left; text-indent: 20px;
+}
+
+.notes .fast-search-list .filter-ul li.selected {
+	background: #00A726;
+}
+
+.notes .fast-search-list .filter-ul li.selected a{
+	color: #fff;
 }
