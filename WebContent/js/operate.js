@@ -2,8 +2,23 @@ var initLoadFunc = {
 	init : function(activeBookmarkFunc){
 		this.loadAllBookmarkList(activeBookmarkFunc);
 	},
-	// 本地缓存
-	cacheList : "",
+	// 本地书签缓存
+	CacheList : "",
+	// 更新本地缓存的方式枚举
+	CacheTypeEnum : {
+		// 新增分类
+		NEW_CATEGORY : "NC",
+		// 编辑分类名称
+		UPDATE_CATEGORY_NAME : "UC",
+		// 删除分类
+		DELETE_CATEGORY : "DC",
+		// 新增书签
+		NEW_BOOKMARK : "NB",
+		// 编辑书签名称
+		UPDATE_BOOKMARK_NAME : "UB",
+		// 删除书签
+		DELETE_BOOKMARK : "DB"
+	},
 	// 加载所有书签
 	loadAllBookmarkList : function(activeBookmarkFunc){
 		var _this = this;
@@ -13,12 +28,12 @@ var initLoadFunc = {
 			success : function(json) {
 				if(json.result == "OK") {
 					if (json.data && json.data.length > 0) {
-						_this.cacheList = json.data;
+						_this.CacheList = json.data;
 						for(var i=0; i<json.data.length; i++){
-							var categoryno = _this.cacheList[i].i;
-							var categoryname = _this.cacheList[i].n;
-							var categorycolno = _this.cacheList[i].c;
-							var bookmarklist = _this.cacheList[i].list;
+							var categoryno = _this.CacheList[i].i;
+							var categoryname = _this.CacheList[i].n;
+							var categorycolno = _this.CacheList[i].c;
+							var bookmarklist = _this.CacheList[i].list;
 							// 复制一个分类模板
 							var $clone = $(".category-template").clone().attr("style","").removeClass("category-template");
 							// 添加新分类模板标题颜色
@@ -46,12 +61,11 @@ var initLoadFunc = {
 								$clone.find(".url-list").append(bookmarkHtml);
 							}
 							$(".wrap-box").eq(categorycolno).append($clone);
-							
 							// 分类名称转成拼音
 							var categorypinyin = PinyinUtil.getFullChars(categoryname).toUpperCase();
 							var categorypinyinhead = PinyinUtil.getCamelChars(categoryname).toUpperCase();
-							_this.cacheList[i].py = categorypinyin;
-							_this.cacheList[i].pyh = categorypinyinhead;
+							_this.CacheList[i].py = categorypinyin;
+							_this.CacheList[i].pyh = categorypinyinhead;
 						} 
 					}
 				}
@@ -62,6 +76,149 @@ var initLoadFunc = {
 				alert(e);
 			}
 		});
+	},
+	setCacheList : function(cacheType , valueObj){
+		if (!valueObj) {
+			return;
+		}
+		switch(cacheType){
+			case this.CacheTypeEnum.NEW_CATEGORY :
+				this._addCategory(valueObj);
+				break;
+			case this.CacheTypeEnum.UPDATE_CATEGORY_NAME :
+				this._updateCategory(valueObj);
+				break;
+			case this.CacheTypeEnum.DELETE_CATEGORY :
+				this._removeCategory(valueObj);
+				break;
+			case this.CacheTypeEnum.NEW_BOOKMARK :
+				this._addBookmark(valueObj);
+				break;
+			case this.CacheTypeEnum.UPDATE_BOOKMARK_NAME :
+				this._updateBookmark(valueObj);
+				break;
+			case this.CacheTypeEnum.DELETE_BOOKMARK :
+				this._removeBookmark(valueObj);
+				break;
+		}
+	},
+	_getCategory : function(categoryno){
+		if (!categoryno){
+			return;
+		}
+		var category = null;
+		var list = this.CacheList;
+		for(var i in list) {
+			var cacheCategory = list[i];
+			if (cacheCategory.i == categoryno) {
+				category = cacheCategory;
+				break;
+			}
+		}
+		return category;
+	},
+	_addCategory : function(valueObj){
+		var setCategory = {};
+		setCategory.i = valueObj.categoryno;
+		var categoryname = valueObj.categoryname;
+		setCategory.n = categoryname;
+		setCategory.py = PinyinUtil.getFullChars(categoryname).toUpperCase();
+		setCategory.pyh = PinyinUtil.getCamelChars(categoryname).toUpperCase();
+		this.CacheList.push(setCategory);
+	},
+	_updateCategory : function(valueObj){
+		if(!valueObj.categoryno){
+			return;
+		}
+		var category = this._getCategory(valueObj.categoryno);
+		if(category){
+			var categoryname = valueObj.categoryname;
+			setCategory.n = categoryname;
+			setCategory.py = PinyinUtil.getFullChars(categoryname).toUpperCase();
+			setCategory.pyh = PinyinUtil.getCamelChars(categoryname).toUpperCase();
+		}
+	},
+	_removeCategory : function(categoryno){
+		if(!categoryno){
+			return;
+		}
+		var list = this.CacheList;
+		var i = -1;
+		for(i in list) {
+			var cacheCategory = list[i];
+			if (cacheCategory.i == categoryno) {
+				break;
+			}
+		}
+		if (i >= 0) {
+			list.splice(i,1);
+		}
+	},
+	_addBookmark : function(valueObj){
+		if (!valueObj.categoryno) {
+			return;
+		}
+		var category = this._getCategory(valueObj.categoryno);
+		if (category) {
+			var bookmark = {};
+			bookmark.i = valueObj.bookmarkno;
+			var bookmarkname = valueObj.bookmarkname;
+			bookmark.n = bookmarkname;
+			bookmark.py = PinyinUtil.getFullChars(bookmarkname).toUpperCase();
+			bookmark.pyh = PinyinUtil.getCamelChars(bookmarkname).toUpperCase();
+			var list = category.list;
+			// 如果该分类存在书签
+			if (list) {
+				list.push(bookmark);
+			} else {
+				var list = [];
+				list.push(bookmark);
+				category.list = list;
+			}
+		}
+	},
+	_updateBookmark : function(valueObj){
+		if(!valueObj.bookmarkno){
+			return;
+		}
+		var bookmark = null;
+		var list = this.CacheList;
+		outerLoop : 
+		for(var i in list) {
+			var booklist = list[i].list;
+			if (!booklist) {
+				continue;
+			}
+			for (var n in booklist) {
+				if (booklist[n].i == valueObj.bookmarkno) {
+					bookmark = booklist[n];
+					break outerLoop;
+				}
+			}
+		}
+		if(bookmark){
+			var bookmarkname = valueObj.bookmarkname;
+			bookmark.n = bookmarkname;
+			bookmark.py = PinyinUtil.getFullChars(bookmarkname).toUpperCase();
+			bookmark.pyh = PinyinUtil.getCamelChars(bookmarkname).toUpperCase();
+		}
+	},
+	_removeBookmark : function(valueObj){
+		if(!valueObj.categoryno || !valueObj.bookmarkno){
+			var category = this._getCategory(valueObj.categoryno);
+			if (category) {
+				var list = category.list;
+				var i = -1;
+				for(i in list){
+					if (list[i].i = valueObj.bookmarkno) {
+						break;
+					}
+				}
+				if (i >= 0) {
+					list.split(i,1);
+				}
+			}
+		}
 	}
 };
 

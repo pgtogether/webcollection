@@ -16,6 +16,7 @@ $(function() {
 		// 初始化操作书签的功能
 		bookmarkOperateFunc.init();
 	});
+	
 	// 初始化添加功能
 	newCategoryOrBookMarkFunc.init();
 	// 加载验证默认规则
@@ -322,6 +323,7 @@ var categoryOperateFunc = {
 			doAjaxFunc.doUpdateCategoryName(updateParams,function(){
 				var $headFuncSpan = $this.parent();
 				selfFunc.removeBoxTitleUpdateBtn($headFuncSpan);
+				initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.UPDATE_CATEGORY_NAME, updateParams);
 			});
 		});
 		// 监听回车键
@@ -368,6 +370,7 @@ var categoryOperateFunc = {
 					$(this).remove();
 				});
 				commonUtilsFunc.calCategoryCnt(-1);
+				initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.DELETE_CATEGORY, selfFunc.deleteCategoryNo);
 				selfFunc.deleteCategoryNo = "";
 			});
 		});
@@ -568,6 +571,7 @@ var bookmarkOperateFunc = {
 					$ul.prepend(template);
 					$ul.find("li:eq(0)").addClass("save-success").slideDown();
 					commonUtilsFunc.calBookmarkCnt(1);
+					initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.NEW_BOOKMARK, valueObj);
 				});
 			}
 			// 确认编辑书签

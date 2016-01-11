@@ -36,7 +36,7 @@ var fastSearchFunc = {
 			var $thisInput = $(this); 
 			var searchKey = $thisInput.val();
 			// 获取缓存的书签列表
-			var cacheList = initLoadFunc.cacheList;
+			var cacheList = initLoadFunc.CacheList;
 			if (searchKey && cacheList) {
 				searchKey = searchKey.toUpperCase();
 				var matchedNum = 0;
@@ -65,7 +65,8 @@ var fastSearchFunc = {
 							checkCategoryFlg = true;
 						}
 					}
-					if (checkCategoryFlg){
+					// 如果有符合的分类并且包含一个以上书签
+					if (checkCategoryFlg && bookmarklist){
 						filterResultHtml += '<li class="parent-li">';
 						filterResultHtml += '<span class="catetory-name">'+category.n+'</span>';
 						filterResultHtml += '<ul class="child-ul">';
