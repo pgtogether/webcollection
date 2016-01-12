@@ -15,7 +15,7 @@ var initLoadFunc = {
 		// 新增书签
 		NEW_BOOKMARK : "NB",
 		// 编辑书签名称
-		UPDATE_BOOKMARK_NAME : "UB",
+		UPDATE_BOOKMARK : "UB",
 		// 删除书签
 		DELETE_BOOKMARK : "DB"
 	},
@@ -50,7 +50,13 @@ var initLoadFunc = {
 									var url = bookmarklist[n].u;
 									var name = bookmarklist[n].n;
 									var hot = bookmarklist[n].h;
-									bookmarkHtml += bookmarkOperateFunc.getBookmarkTemplate(id, url, name, hot, "tool", true);
+									var valueObj = {};
+									valueObj.bookmarkno = id;
+									valueObj.bookmarkname = name;
+									valueObj.url = url;
+									valueObj.hot = hot;
+									valueObj.isDisplay = true;
+									bookmarkHtml += bookmarkOperateFunc.getBookmarkTemplate(valueObj);
 									
 									// 书签名称转成拼音
 									var bookmarkpinyin = PinyinUtil.getFullChars(name).toUpperCase();
@@ -83,21 +89,25 @@ var initLoadFunc = {
 		}
 		switch(cacheType){
 			case this.CacheTypeEnum.NEW_CATEGORY :
+				commonUtilsFunc.calCategoryCnt(1);
 				this._addCategory(valueObj);
 				break;
 			case this.CacheTypeEnum.UPDATE_CATEGORY_NAME :
 				this._updateCategory(valueObj);
 				break;
 			case this.CacheTypeEnum.DELETE_CATEGORY :
+				commonUtilsFunc.calCategoryCnt(-1);
 				this._removeCategory(valueObj);
 				break;
 			case this.CacheTypeEnum.NEW_BOOKMARK :
+				commonUtilsFunc.calBookmarkCnt(1);
 				this._addBookmark(valueObj);
 				break;
-			case this.CacheTypeEnum.UPDATE_BOOKMARK_NAME :
+			case this.CacheTypeEnum.UPDATE_BOOKMARK :
 				this._updateBookmark(valueObj);
 				break;
 			case this.CacheTypeEnum.DELETE_BOOKMARK :
+				commonUtilsFunc.calBookmarkCnt(-1);
 				this._removeBookmark(valueObj);
 				break;
 		}
@@ -133,9 +143,9 @@ var initLoadFunc = {
 		var category = this._getCategory(valueObj.categoryno);
 		if(category){
 			var categoryname = valueObj.categoryname;
-			setCategory.n = categoryname;
-			setCategory.py = PinyinUtil.getFullChars(categoryname).toUpperCase();
-			setCategory.pyh = PinyinUtil.getCamelChars(categoryname).toUpperCase();
+			category.n = categoryname;
+			category.py = PinyinUtil.getFullChars(categoryname).toUpperCase();
+			category.pyh = PinyinUtil.getCamelChars(categoryname).toUpperCase();
 		}
 	},
 	_removeCategory : function(categoryno){
@@ -162,6 +172,7 @@ var initLoadFunc = {
 		if (category) {
 			var bookmark = {};
 			bookmark.i = valueObj.bookmarkno;
+			bookmark.u = valueObj.url;
 			var bookmarkname = valueObj.bookmarkname;
 			bookmark.n = bookmarkname;
 			bookmark.py = PinyinUtil.getFullChars(bookmarkname).toUpperCase();
@@ -197,25 +208,28 @@ var initLoadFunc = {
 			}
 		}
 		if(bookmark){
+			bookmark.u = valueObj.url;
 			var bookmarkname = valueObj.bookmarkname;
 			bookmark.n = bookmarkname;
 			bookmark.py = PinyinUtil.getFullChars(bookmarkname).toUpperCase();
 			bookmark.pyh = PinyinUtil.getCamelChars(bookmarkname).toUpperCase();
 		}
 	},
-	_removeBookmark : function(valueObj){
-		if(!valueObj.categoryno || !valueObj.bookmarkno){
-			var category = this._getCategory(valueObj.categoryno);
-			if (category) {
-				var list = category.list;
-				var i = -1;
-				for(i in list){
-					if (list[i].i = valueObj.bookmarkno) {
-						break;
-					}
-				}
-				if (i >= 0) {
-					list.split(i,1);
+	_removeBookmark : function(bookmarkno){
+		if(!bookmarkno){
+			return;
+		}
+		var list = this.CacheList;
+		outerLoop : 
+		for(var i in list) {
+			var booklist = list[i].list;
+			if (!booklist) {
+				continue;
+			}
+			for (var n in booklist) {
+				if (booklist[n].i == bookmarkno) {
+					booklist.splice(n,1);
+					break outerLoop;
 				}
 			}
 		}
@@ -313,7 +327,7 @@ var doAjaxFunc = {
 				if (json.result == "OK") {
 					// 返回新增的书签编号
 					var newBookmarkNo = json.data;
-					successCallBack(newBookmarkNo);
+					successCallBack(newBookmarkNo,categoryno);
 				} else {
 					validateErrorsUtil.showValidateErrors($addbookmarkform, json.errors);
 				}
@@ -548,7 +562,7 @@ var commonUtilsFunc = {
 	},
 	// 书签数目计算
 	calBookmarkCnt : function(cnt){
-		var  $bookmarkCnt = $(".bookmarkcount label");
+		var $bookmarkCnt = $(".bookmarkcount label");
 		this.scrollAnimate($bookmarkCnt,cnt);
 	},
 	// 滚动效果

@@ -210,7 +210,10 @@ var newCategoryOrBookMarkFunc = {
 					$clone.slideDown();
 					$(".mask").hide();
 					$(".popbox-for-new").hide();
-					commonUtilsFunc.calCategoryCnt(1);
+					var valueObj = {};
+					valueObj.categoryno = newCategoryNo;
+					valueObj.categoryname = categoryname;
+					initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.NEW_CATEGORY, valueObj);
 				});
 			} else {
 				// 添加书签
@@ -226,11 +229,16 @@ var newCategoryOrBookMarkFunc = {
 						var $clone = $(".category-template").clone().removeClass("category-template");
 						// 添加新分类模板标题颜色
 						var rand = parseInt(Math.random() * 20, 10);
+						$clone.prop("id","c_"+categoryno);
 						$clone.find(".block-head").css("background-color",randomColor[rand]);
 						$clone.find(".block-head-title").text(categoryname)
 								.attr("value",categoryno).prop("id","category_" + categoryno);
 						$(".wrap-box").eq(0).prepend($clone);
 						$clone.slideDown();
+						var valueObj = {};
+						valueObj.categoryno = categoryno;
+						valueObj.categoryname = categoryname;
+						initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.NEW_CATEGORY, valueObj);
 					} else {
 						bookmarkno = jsonData;
 					}
@@ -238,23 +246,30 @@ var newCategoryOrBookMarkFunc = {
 					var url = $newBookmarkForm.find("#url").val();
 					var name = $newBookmarkForm.find("#bookmarkname").val();
 					// 获取书签模板
-					var newBookmarkTemplate = bookmarkOperateFunc.getBookmarkTemplate(bookmarkno, url, name, "", "", false);
+					var valuesObj = {};
+					valuesObj.categoryno = categoryno;
+					valuesObj.bookmarkno = bookmarkno;
+					valuesObj.url = url;
+					valuesObj.bookmarkname = name;
+					valuesObj.isDisplay = true;
+					var newBookmarkTemplate = bookmarkOperateFunc.getBookmarkTemplate(valuesObj);
 					// 筛选出应对的分类
-					var $url_list = $("#category_"+categoryno).parents(".block").find(".url-list");
+					var $url_list = $(".wrap-box").find("#c_"+categoryno + " .url-list");
 					$url_list.prepend(newBookmarkTemplate);
 					$url_list.find("li:first").addClass("save-success").slideDown();
 					$(".mask").hide();
 					$(".popbox-for-new").hide();
-					commonUtilsFunc.calBookmarkCnt(1);
+					initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.NEW_BOOKMARK, valuesObj);
 				});
 			}
 		});
 		// 回车键,ESC监听
 		$(".popbox-for-new :input").keydown(function(e){
-			if(e.keyCode==13){
-				$(".popbox .confirm-btn").click();
+			var $popbox = $(this).parents(".popbox");
+			if(e.keyCode == 13){
+				$popbox.find(".confirm-btn").click();
 			} else if(e.keyCode == 27) {
-				$(".popbox .cancel-btn").click();
+				$popbox.find(".cancel-btn").click();
 			}
 		});
 	},
@@ -369,7 +384,7 @@ var categoryOperateFunc = {
 				$(".wrap-box").find("#c_"+selfFunc.deleteCategoryNo).slideUp(function(){
 					$(this).remove();
 				});
-				commonUtilsFunc.calCategoryCnt(-1);
+				// 从缓存中清除数据
 				initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.DELETE_CATEGORY, selfFunc.deleteCategoryNo);
 				selfFunc.deleteCategoryNo = "";
 			});
@@ -543,7 +558,12 @@ var bookmarkOperateFunc = {
 					$this.addClass("light").attr("title", "从常用书签取消");
 					var url = $parentLi.find("a").prop("href");
 					var name = $parentLi.find("a").text();
-					var hotBookmarkTemplate = selfFunc.getBookmarkTemplate(bookmarkno, url, name, "", "", true);
+					var valuesObj = {};
+					valuesObj.bookmarkno = bookmarkno;
+					valuesObj.url = url;
+					valuesObj.bookmarkname = name;
+					valuesObj.isDisplay = true;
+					var hotBookmarkTemplate = selfFunc.getBookmarkTemplate(valuesObj);
 					$hotUrlList.append(hotBookmarkTemplate);
 					new JumpObj($hotUrlList.find("li:last")[0], 15).jump();
 				});
@@ -558,20 +578,25 @@ var bookmarkOperateFunc = {
 			// 确认新增书签
 			if ($thisBtn.parents(".addbookmark").length > 0) {
 				// 保存数据
-				doAjaxFunc.doAddbookmark(function(newBookmarkNo){
+				doAjaxFunc.doAddbookmark(function(newBookmarkNo,categoryno){
 					// 保存数据成功后的回调方法
 					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
 					var $addbookmarkform = $("#addbookmarkform");
 					var url = $addbookmarkform.find("#url").val();
 					var name = $addbookmarkform.find("#bookmarkname").val();
 					// 获取新增书签的模板
-					var template = selfFunc.getBookmarkTemplate(newBookmarkNo, url, name, "", "", false);
+					var valuesObj = {};
+					valuesObj.bookmarkno = newBookmarkNo;
+					valuesObj.bookmarkname = name;
+					valuesObj.url = url;
+					var template = selfFunc.getBookmarkTemplate(valuesObj);
 					// 添加一个新书签
 					var $ul = $addbookmarkform.parents("ul");
 					$ul.prepend(template);
 					$ul.find("li:eq(0)").addClass("save-success").slideDown();
-					commonUtilsFunc.calBookmarkCnt(1);
-					initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.NEW_BOOKMARK, valueObj);
+					// 缓存数据
+					valuesObj.categoryno = categoryno;
+					initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.NEW_BOOKMARK, valuesObj);
 				});
 			}
 			// 确认编辑书签
@@ -591,12 +616,18 @@ var bookmarkOperateFunc = {
 					$updateli.addClass("save-success");
 					// 如果更新的书签是常用书签，常用书签也要跟着变化
 					var isHotBookmark = $updateli.find(".staricon").hasClass("light");
+					var bookmarkno = $updateli.attr("value");
 					if (isHotBookmark) {
-						var bookmarkno = $updateli.attr("value");
 						var $hotBookmark = $(".hot-url-list").find("li[value='"+ bookmarkno +"']");
 						$hotBookmark.find("a").html(name);
 						$hotBookmark.find("a").attr("href",url);
 					}
+					// 缓存数据
+					var valuesObj = {};
+					valuesObj.bookmarkno = bookmarkno;
+					valuesObj.bookmarkname = name;
+					valuesObj.url = url;
+					initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.UPDATE_BOOKMARK, valuesObj);
 				});
 			}
 			// 确认删除书签
@@ -611,7 +642,8 @@ var bookmarkOperateFunc = {
 							$(this).remove();
 						});
 					}
-					commonUtilsFunc.calBookmarkCnt(-1);
+					// 从缓存中清除数据
+					initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.DELETE_BOOKMARK, bookmarkno);
 				});
 				selfFunc.closeAllEditBookmarkTemplate();
 			}
@@ -715,7 +747,16 @@ var bookmarkOperateFunc = {
 		return operateHtml;
 	},
 	// 新增书签
-	getBookmarkTemplate : function(id, url, name, hot, tags, isDisplay) {
+	getBookmarkTemplate : function(values) {
+		var id="",url="",name="",hot="",tags="",isDisplay = false;
+		if (values) {
+			id = values.bookmarkno ? values.bookmarkno : "";
+			name = values.bookmarkname ? values.bookmarkname : "";
+			url = values.url ? values.url : "";
+			hot = values.hot ? values.hot : "";
+			tags = values.tags ? values.tags : "";
+			isDisplay = values.isDisplay ? values.isDisplay : false;
+		}
 		var operateHtml = '';
 		if (isDisplay){
 			operateHtml += '<li';	
