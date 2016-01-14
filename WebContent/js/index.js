@@ -21,6 +21,8 @@ $(function() {
 	newCategoryOrBookMarkFunc.init();
 	// 加载验证默认规则
 	formValidateFunc.init();
+	// 大分类栏功能
+	categoryBannerFunc.init();
 	// 侧边栏功能
 	sideBannerFunc.init();
 });
@@ -802,6 +804,16 @@ var flyTool = {
 			doAjaxFunc.doDeleteBookmark(bookmarkno,delCallback);
 		});
 	}
+};
+// 大分类栏
+var categoryBannerFunc = {
+		init : function(){
+			$(".category-tabs .tab-item:not(.add-tab)").click(function(){
+				var $this = $(this);
+				var selectedClass = "selected";
+				$this.addClass(selectedClass).siblings().removeClass(selectedClass);
+			});
+		}
 };
 // 侧边栏
 var sideBannerFunc = {

@@ -13,7 +13,8 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
 }
 /* 要注意表单元素并不继承父级 font 的问题 */
 body,button,input,select,textarea {
-	font-size: 12px; font-family: Arial, "\5B8B\4F53", Helvetica, sans-serif; font-size: 12px;
+	font-family: Arial, "\5B8B\4F53", Helvetica, sans-serif; 
+	font-size: 12px;
 }
 
 input,select,textarea {

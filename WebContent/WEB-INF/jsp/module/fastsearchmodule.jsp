@@ -6,7 +6,7 @@
 	<div class="notes-body">
 		<div class="fast-search">
 			<input id="fastSearchKey" type="text" class="fast-search-input" placeholder="输入名称/拼音/首字母/url"/><span
-				class="fast-search-btn">搜索</span>
+				class="fast-search-btn">GO</span>
 		</div>
 		<div class="fast-search-list">
 			<ul class="filter-ul">
@@ -127,6 +127,13 @@ var fastSearchFunc = {
 				if ($(this).find("li.selected").length > 0){
 					$selectedLi.find("a")[0].click();
 				}
+			}
+		});
+		// 空白区域点击消失
+		$(document).bind("click", function(e) {
+			var target = $(e.target);
+			if (target.closest(".fast-search-note").length == 0) {
+				$(".fast-search-list").hide();
 			}
 		});
 	},

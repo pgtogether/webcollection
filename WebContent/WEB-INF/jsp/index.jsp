@@ -52,6 +52,15 @@
 				</div>
 			</div>
 			<div class="adv-show">占位</div>
+			<div class="category-tabs">
+				<span class="tab-item first selected">Tab1</span>
+				<span class="tab-item">Tab1</span>
+				<span class="tab-item">Tab1</span>
+				<span class="tab-item">Tab1</span>
+				<span class="tab-item">Tab1</span>
+				<span class="tab-item add-tab">+</span>
+			</div>
+			<!-- 书签主体 -->
 			<div class="content-left-body">
 				<div class="wrap-box" value="0"></div>
 				<div class="wrap-box" value="1"></div>
