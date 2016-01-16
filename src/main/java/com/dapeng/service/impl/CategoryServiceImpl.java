@@ -51,7 +51,7 @@ public class CategoryServiceImpl implements CategoryService {
         category.setCategoryname(categoryBO.getCategoryname());
         category.setCategorypermission(categoryBO.getCategorypermission());
         category.setCategorytype(categoryBO.getCategorytype());
-        category.setParentcategoryid(categoryBO.getParentcategoryid());
+        category.setParentcategoryno(categoryBO.getParentcategoryno());
         category.setCategorypsw(categoryBO.getCategorypsw());
         category.setSort(maxSort);
         category.setColno(Constants.DEFAULT_COLNO);

@@ -19,7 +19,7 @@ var initLoadFunc = {
 		// 删除书签
 		DELETE_BOOKMARK : "DB"
 	},
-	// 加载所有书签
+	// 默认加载第一栏位所有书签
 	loadAllBookmarkList : function(activeBookmarkFunc){
 		var _this = this;
 		$.ajax({
@@ -33,6 +33,7 @@ var initLoadFunc = {
 							var categoryno = _this.CacheList[i].i;
 							var categoryname = _this.CacheList[i].n;
 							var categorycolno = _this.CacheList[i].c;
+							var parentcategoryno = _this.CacheList[i].pc;
 							var bookmarklist = _this.CacheList[i].list;
 							// 复制一个分类模板
 							var $clone = $(".category-template").clone().attr("style","").removeClass("category-template");
@@ -66,7 +67,7 @@ var initLoadFunc = {
 								}
 								$clone.find(".url-list").append(bookmarkHtml);
 							}
-							$(".wrap-box").eq(categorycolno).append($clone);
+							$(".content-item").eq(parentcategoryno).find(".wrap-box:eq("+categorycolno+")").append($clone);
 							// 分类名称转成拼音
 							var categorypinyin = PinyinUtil.getFullChars(categoryname).toUpperCase();
 							var categorypinyinhead = PinyinUtil.getCamelChars(categoryname).toUpperCase();

@@ -1,4 +1,3 @@
-
 /**   
  * @Title: CategoryForm.java 
  * @Package: com.dapeng.controller.form 
@@ -7,27 +6,28 @@
  * @date 2015年12月6日 下午5:24:53 
  */
 
-
 package com.dapeng.controller.form;
 
-/** 
- * @Description 
+/**
+ * @Description
  * @author jiangdp
- * @date 2015年12月6日 下午5:24:53 
+ * @date 2015年12月6日 下午5:24:53
  */
 
 public class CategoryForm {
 
     private String categoryid;
-   
+
     private String categoryname;
 
     private String categorypermission;
-    
+
     private String categorypsw;
-    
+
     private String categorypswagain;
-    
+
+    private String parentcategoryno;
+
     public String getCategoryid() {
         return categoryid;
     }
@@ -67,6 +67,14 @@ public class CategoryForm {
     public void setCategorypswagain(String categorypswagain) {
         this.categorypswagain = categorypswagain;
     }
-    
-    
+
+    public String getParentcategoryno() {
+        return parentcategoryno;
+    }
+
+    public void setParentcategoryno(String parentcategoryno) {
+        this.parentcategoryno = parentcategoryno;
+    }
+
+
 }

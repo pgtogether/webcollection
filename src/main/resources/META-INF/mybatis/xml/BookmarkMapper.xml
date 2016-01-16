@@ -279,9 +279,9 @@
 		#{bookmarkid,jdbcType=INTEGER}
 	</update>
 	<!-- 书签操作 -->
-	<select id="selectBookmarkBOList" parameterType="com.dapeng.domain.Bookmark"
+	<select id="selectBookmarkBOList" parameterType="com.dapeng.service.bo.BookmarkBO"
 		resultType="com.dapeng.service.bo.BookmarkBO">
-		SELECT T1.categoryno, T1.categoryname, T1.colno,
+		SELECT T1.categoryno, T1.categoryname, T1.colno, T1.parentcategoryno,
 		T2.bookmarkname, T2.bookmarkno,
 		T2.url, T2.pinyin, T2.pinyinhead,
 		T2.hot

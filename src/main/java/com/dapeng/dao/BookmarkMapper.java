@@ -28,7 +28,7 @@ public interface BookmarkMapper {
     /**
      * 查找所有标签
      */
-    List<BookmarkBO> selectBookmarkBOList(Bookmark record);
+    List<BookmarkBO> selectBookmarkBOList(BookmarkBO record);
 
     /**
      * 查找相同类别的标签

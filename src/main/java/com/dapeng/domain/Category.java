@@ -16,7 +16,7 @@ public class Category {
 
     private String categorytype;
 
-    private int parentcategoryid;
+    private int parentcategoryno;
 
     private String categorypermission;
 
@@ -62,12 +62,12 @@ public class Category {
         this.categorytype = categorytype;
     }
 
-    public int getParentcategoryid() {
-        return parentcategoryid;
+    public int getParentcategoryno() {
+        return parentcategoryno;
     }
 
-    public void setParentcategoryid(int parentcategoryid) {
-        this.parentcategoryid = parentcategoryid;
+    public void setParentcategoryno(int parentcategoryno) {
+        this.parentcategoryno = parentcategoryno;
     }
 
     public String getCategorypermission() {

@@ -23,6 +23,8 @@ public class BookmarkBO {
     private String permission;
 
     private int categoryno;
+    
+    private int parentcategoryno;
 
     private String categoryname;
 
@@ -229,4 +231,13 @@ public class BookmarkBO {
     public void setTagids(String tagids) {
         this.tagids = tagids;
     }
+
+    public int getParentcategoryno() {
+        return parentcategoryno;
+    }
+
+    public void setParentcategoryno(int parentcategoryno) {
+        this.parentcategoryno = parentcategoryno;
+    }
+    
 }

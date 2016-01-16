@@ -78,8 +78,14 @@ var openSortableFunc = {
 			}
 		});
 	},
-	urlSortable : function() {
-		$(".url-list").sortable({
+	urlSortable : function(index) {
+		var $urlList;
+		if (index) {
+			$urlList = $(".content-item:eq("+ index +")").find(".url-list");
+		} else {
+			$urlList = $(".url-list");
+		}
+		$urlList.sortable({
 			connectWith : ".url-list",
 			items : "li:not(.li-disabled)",
 			cancel : ".li-disabled",
@@ -128,7 +134,7 @@ var newCategoryOrBookMarkFunc = {
 		$(".categorybtn").click(function() {
 			// 还原到初始状态
 			var $pop_category = $(".pop-category");
-			$pop_category.find("input").val("");
+			$pop_category.find("input:not('#parentcategoryno')").val("");
 			$pop_category.find("#normal-permission").prop("checked",true);
 			$(".psw").hide();
 			$(".mask").fadeIn(300);
@@ -208,8 +214,11 @@ var newCategoryOrBookMarkFunc = {
 					$clone.find(".block-head").css("background-color",randomColor[rand]);
 					$clone.find(".block-head-title").text(categoryname)
 							.attr("value",newCategoryNo).prop("id","category_" + newCategoryNo);
-					$(".wrap-box").eq(0).prepend($clone);
+					// 放入当前显示大分类的栏位下
+					var index = $(".category-tabs").find(".tab-item.selected").index();
+					$(".content-item:eq("+ index +")").find(".wrap-box").first().prepend($clone);
 					$clone.slideDown();
+					openSortableFunc.urlSortable(index);
 					$(".mask").hide();
 					$(".popbox-for-new").hide();
 					var valueObj = {};
@@ -808,10 +817,18 @@ var flyTool = {
 // 大分类栏
 var categoryBannerFunc = {
 		init : function(){
-			$(".category-tabs .tab-item:not(.add-tab)").click(function(){
+			$(".category-tabs .tab-item:not(.tab-func)").click(function(){
 				var $this = $(this);
+				var index = $this.index();
 				var selectedClass = "selected";
 				$this.addClass(selectedClass).siblings().removeClass(selectedClass);
+				$(".content-item:eq("+ index +")").show().siblings().hide();
+				$("#parentcategoryno").val(index);
+			});
+			$(".tab-func").hover(function(){
+				$(this).css("overflow","visible");
+			},function(){
+				$(this).css("overflow","hidden");
 			});
 		}
 };

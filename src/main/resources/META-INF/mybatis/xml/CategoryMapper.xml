@@ -5,8 +5,8 @@
 		<id column="categoryid" property="categoryid" jdbcType="INTEGER" />
 		<result column="categoryname" property="categoryname" jdbcType="VARCHAR" />
 		<result column="categorytype" property="categorytype" jdbcType="VARCHAR" />
-		<result column="parentcategoryid" property="parentcategoryid"
-			jdbcType="VARCHAR" />
+		<result column="parentcategoryno" property="parentcategoryno"
+			jdbcType="INTEGER" />
 		<result column="categorypermission" property="categorypermission"
 			jdbcType="VARCHAR" />
 		<result column="categorypsw" property="categorypsw" jdbcType="VARCHAR" />
@@ -20,7 +20,7 @@
 		<result column="pinyinhead" property="pinyinhead" jdbcType="VARCHAR" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		categoryid, categoryname, categorytype, parentcategoryid,
+		categoryid, categoryname, categorytype, parentcategoryno,
 		categorypermission,
 		categorypsw,
 		createtime, updatetime,userid
@@ -48,14 +48,14 @@
 	<insert id="insert" parameterType="com.dapeng.domain.Category">
 		insert into category
 		(categoryname, categorytype,
-		parentcategoryid, categorypermission,
+		parentcategoryno, categorypermission,
 		categorypsw,
 		createtime, updatetime, userid, categoryno, sort, colno,
 		pinyin, pinyinhead)
 		values
 		(#{categoryname,jdbcType=VARCHAR},
 		#{categorytype,jdbcType=VARCHAR},
-		#{parentcategoryid,jdbcType=INTEGER},
+		#{parentcategoryno,jdbcType=INTEGER},
 		#{categorypermission,jdbcType=VARCHAR},
 		#{categorypsw,jdbcType=VARCHAR},
 		#{createtime,jdbcType=TIMESTAMP},
@@ -76,8 +76,8 @@
 			<if test="categorytype != null">
 				categorytype,
 			</if>
-			<if test="parentcategoryid != null">
-				parentcategoryid,
+			<if test="parentcategoryno != null">
+				parentcategoryno,
 			</if>
 			<if test="categorypermission != null">
 				categorypermission,
@@ -117,8 +117,8 @@
 			<if test="categorytype != null">
 				#{categorytype,jdbcType=VARCHAR},
 			</if>
-			<if test="parentcategoryid != null">
-				#{parentcategoryid,jdbcType=INTEGER},
+			<if test="parentcategoryno != null">
+				#{parentcategoryno,jdbcType=INTEGER},
 			</if>
 			<if test="categorypermission != null">
 				#{categorypermission,jdbcType=VARCHAR},
@@ -161,8 +161,8 @@
 			<if test="categorytype != null">
 				categorytype = #{categorytype,jdbcType=VARCHAR},
 			</if>
-			<if test="parentcategoryid != null">
-				parentcategoryid = #{parentcategoryid,jdbcType=INTEGER},
+			<if test="parentcategoryno != null">
+				parentcategoryno = #{parentcategoryno,jdbcType=INTEGER},
 			</if>
 			<if test="categorypermission != null">
 				categorypermission =
@@ -203,8 +203,8 @@
 		set categoryname = #{categoryname,jdbcType=VARCHAR},
 		categorytype =
 		#{categorytype,jdbcType=VARCHAR},
-		parentcategoryid =
-		#{parentcategoryid,jdbcType=INTEGER},
+		parentcategoryno =
+		#{parentcategoryno,jdbcType=INTEGER},
 		categorypermission =
 		#{categorypermission,jdbcType=VARCHAR},
 		categorypsw =

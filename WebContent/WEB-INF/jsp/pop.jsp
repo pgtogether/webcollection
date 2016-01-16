@@ -39,6 +39,7 @@
 </div>
 <div class="popbox popbox-for-new pop-category">
 	<form id="newCategoryForm">
+	<input type="hidden" id="parentcategoryno" name="parentcategoryno" value="">
 	<div class="popbox-head">添加分类</div>
 	<div class="popbox-body">
 		<div>

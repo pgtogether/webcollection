@@ -47,7 +47,7 @@ public class BookmarkServiceImpl implements BookmarkService {
     @Override
     public List<CategoryWithBookmarkMiniBO> selectBookmarkList(String userid) {
         List<CategoryWithBookmarkMiniBO> showList = null;
-        Bookmark record = new Bookmark();
+        BookmarkBO record = new BookmarkBO();
         record.setUserid(userid);
         record.setDeleteflg(BookmarkDeleteEnum.NORMAL_SHOW.getId());
         List<BookmarkBO> list = bookmarkDao.selectBookmarkBOList(record);
@@ -76,6 +76,7 @@ public class BookmarkServiceImpl implements BookmarkService {
                     withBO.setI(bo.getCategoryno());
                     withBO.setN(bo.getCategoryname());
                     withBO.setC(bo.getColno());
+                    withBO.setPc(bo.getParentcategoryno());
                     if (bo.getBookmarkno() != 0) {
                         List<BookmarkMiniBO> bookmarklist = new ArrayList<BookmarkMiniBO>();
                         BookmarkMiniBO miniBO = new BookmarkMiniBO();

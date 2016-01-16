@@ -39,6 +39,9 @@ public class CategoryWithBookmarkMiniBO {
 
     // colno
     private String c;
+    
+    // parentcategoryno
+    private int pc;
 
     // bookmarklist
     private List<BookmarkMiniBO> list;
@@ -74,5 +77,14 @@ public class CategoryWithBookmarkMiniBO {
     public void setC(String c) {
         this.c = c;
     }
+
+    public int getPc() {
+        return pc;
+    }
+
+    public void setPc(int pc) {
+        this.pc = pc;
+    }
+
 
 }

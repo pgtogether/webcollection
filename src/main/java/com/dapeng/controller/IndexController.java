@@ -21,7 +21,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +37,7 @@ import com.dapeng.service.CategoryService;
 import com.dapeng.service.UserTagsService;
 import com.dapeng.service.bo.BookmarkBO;
 import com.dapeng.service.bo.CategoryBO;
+import com.dapeng.util.StringUtils;
 import com.depeng.web.bo.BookmarkMiniBO;
 import com.depeng.web.bo.CategoryMiniBO;
 import com.depeng.web.bo.CategoryWithBookmarkMiniBO;
@@ -62,7 +62,7 @@ public class IndexController extends UserSessionController {
     @Autowired
     private CategoryService categoryService;
 
-    @Autowired 
+    @Autowired
     private UserTagsService userTagsService;
 
     /**
@@ -103,7 +103,7 @@ public class IndexController extends UserSessionController {
      */
     @RequestMapping(value = "doSelectBookmarkList", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public Map<String, Object> doSelectBookmarkList(HttpSession session) {
+    public Map<String, Object> doSelectBookmarkList(HttpSession session, HttpServletRequest request) {
         List<CategoryWithBookmarkMiniBO> bookmarkList = bookmarkService.selectBookmarkList(getSessionUserId(session));
         return ajaxSuccess(bookmarkList);
     }
@@ -239,7 +239,7 @@ public class IndexController extends UserSessionController {
             // 默认二级分类
             categoryBO.setCategorytype(CategoryTypeEnum.DEFAULT_CATEGORY_TYPE.getId());
             // 默认父分类
-            categoryBO.setParentcategoryid(0);
+            categoryBO.setParentcategoryno(0);
             // 默认测试
             categoryBO.setUserid(getSessionUserId(session));
             categoryno = categoryService.addCategory(categoryBO);
@@ -254,12 +254,12 @@ public class IndexController extends UserSessionController {
 
         BookmarkBO bookmarkbo = new BookmarkBO();
         bookmarkbo.setUserid(getSessionUserId(session));
-        bookmarkbo.setBookmarkname(StringUtils.trimWhitespace(form.getBookmarkname()));
-        bookmarkbo.setCategoryname(StringUtils.trimWhitespace(form.getCategoryname()));
-        bookmarkbo.setUrl(StringUtils.trimWhitespace(form.getUrl()));
+        bookmarkbo.setBookmarkname(StringUtils.trim(form.getBookmarkname()));
+        bookmarkbo.setCategoryname(StringUtils.trim(form.getCategoryname()));
+        bookmarkbo.setUrl(StringUtils.trim(form.getUrl()));
         bookmarkbo.setCategoryno(categoryno);
-        bookmarkbo.setTags(StringUtils.trimWhitespace(form.getTags()));
-        bookmarkbo.setDescription(StringUtils.trimWhitespace(form.getDesc()));
+        bookmarkbo.setTags(StringUtils.trim(form.getTags()));
+        bookmarkbo.setDescription(StringUtils.trim(form.getDesc()));
         Integer bookmarkno = bookmarkService.insertBookmark(bookmarkbo);
         if (bookmarkno > 0) {
             if (resultMap != null) {
@@ -335,11 +335,11 @@ public class IndexController extends UserSessionController {
         }
         BookmarkBO bo = new BookmarkBO();
         bo.setUserid(getSessionUserId(session));
-        bo.setUrl(StringUtils.trimWhitespace(form.getUrl()));
+        bo.setUrl(StringUtils.trim(form.getUrl()));
         bo.setBookmarkno(Integer.valueOf(form.getBookmarkno()));
-        bo.setBookmarkname(StringUtils.trimWhitespace(form.getBookmarkname()));
-        bo.setTags(StringUtils.trimWhitespace(form.getTags()));
-        bo.setDescription(StringUtils.trimWhitespace(form.getDesc()));
+        bo.setBookmarkname(StringUtils.trim(form.getBookmarkname()));
+        bo.setTags(StringUtils.trim(form.getTags()));
+        bo.setDescription(StringUtils.trim(form.getDesc()));
         int rows = bookmarkService.updateBookmark(bo);
         if (rows > 0) {
             return ajaxSuccess();
@@ -363,14 +363,23 @@ public class IndexController extends UserSessionController {
         // 默认二级分类
         categoryBO.setCategorytype(CategoryTypeEnum.DEFAULT_CATEGORY_TYPE.getId());
         // 默认父分类
-        categoryBO.setParentcategoryid(0);
-        // 默认测试
-        categoryBO.setUserid(getSessionUserId(session));
-        int newCategoryId = categoryService.addCategory(categoryBO);
-        if (newCategoryId == 0) {
+        try {
+            String parentCategoryNo = form.getParentcategoryno();
+            if (StringUtils.isEmpty(parentCategoryNo)) {
+                categoryBO.setParentcategoryno(0);
+            } else {
+                categoryBO.setParentcategoryno(Integer.valueOf(parentCategoryNo));
+            }
+            // 默认测试
+            categoryBO.setUserid(getSessionUserId(session));
+            int newCategoryId = categoryService.addCategory(categoryBO);
+            if (newCategoryId == 0) {
+                return ajaxFail();
+            }
+            return ajaxSuccess(newCategoryId);
+        } catch (Exception e) {
             return ajaxFail();
         }
-        return ajaxSuccess(newCategoryId);
     }
 
     @RequestMapping(value = "doDeleteCategory", method = { RequestMethod.GET, RequestMethod.POST })

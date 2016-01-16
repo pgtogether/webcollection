@@ -69,6 +69,10 @@ body {
 	width: 100%; margin-top: 10px;
 }
 
+.content-left .content-left-body .content-item {
+	
+}
+
 .content-right {
 	width: 245px; min-height: 768px; float: right; margin-right: 6px;
 }
@@ -106,7 +110,7 @@ body {
 }
 
 .block .block-body ul {
-	min-height: 130px; width: 100%; float: left;
+	min-height: 75px; width: 100%; float: left;
 }
 
 .block .block-body ul li {
@@ -156,7 +160,7 @@ body {
 }
 
 .category-tabs .tab-item.first {
-	margin-left: 5px;
+	margin-left: 5px; border-left: 1px solid #EDEFF0;
 }
 
 .category-tabs .tab-item.selected {
@@ -167,12 +171,32 @@ body {
 	background: #EFEFEF;
 }
 
-.category-tabs .add-tab {
-	width: 30px; color: #E6E6E6; font-size: 20px;
+.category-tabs .tab-func {
+	width: 30px; color: #E6E6E6; font-size: 20px; float: right; border-right: none; overflow: hidden;
 }
 
-.category-tabs .add-tab:hover {
-	background: #00A726; color: #fff;
+.category-tabs .tab-func .btn {
+	width: 100%; height: 100%; float: left; text-decoration: none; cursor: pointer; position: relative; border: 1px solid #EAEAEA; border-top: none;
+}
+
+.category-tabs .tab-func .btn:hover {
+	background-color: #EFEFEF;
+}
+
+.category-tabs .tab-func .menu {
+	background: #fff url(../img/icon/menu.png) no-repeat center; border-bottom: 1px solid #00A726; cursor: default;
+}
+
+.category-tabs .tab-func .add {
+	background: #fff url(../img/icon/add.png) no-repeat center;
+}
+
+.category-tabs .tab-func .upd {
+	background: #fff url(../img/icon/edit.png) no-repeat center;
+}
+
+.category-tabs .tab-func .del {
+	background: #fff url(../img/icon/del.png) no-repeat center;
 }
 
 /* 侧边栏式样  */
@@ -440,4 +464,9 @@ body {
 
 .notes .fast-search-list .filter-ul li.selected a {
 	color: #fff;
+}
+
+/*公用CSS*/
+.display-none {
+	display: none;
 }

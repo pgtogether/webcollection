@@ -58,14 +58,39 @@
 				<span class="tab-item">Tab1</span>
 				<span class="tab-item">Tab1</span>
 				<span class="tab-item">Tab1</span>
-				<span class="tab-item add-tab">+</span>
+				<span class="tab-item tab-func">
+					<a class="btn menu"></a>
+					<a class="btn add" title="新增大分类"></a>
+					<a class="btn upd" title="修改大分类"></a>
+					<a class="btn del" title="删除大分类"></a>
+				</span>
 			</div>
 			<!-- 书签主体 -->
 			<div class="content-left-body">
-				<div class="wrap-box" value="0"></div>
-				<div class="wrap-box" value="1"></div>
-				<div class="wrap-box" value="2"></div>
-				<div class="wrap-box" value="3"></div>
+				<div class="content-item">
+					<div class="wrap-box" value="0"></div>
+					<div class="wrap-box" value="1"></div>
+					<div class="wrap-box" value="2"></div>
+					<div class="wrap-box" value="3"></div>
+				</div>
+				<div class="content-item display-none">
+					<div class="wrap-box" value="0"></div>
+					<div class="wrap-box" value="1"></div>
+					<div class="wrap-box" value="2"></div>
+					<div class="wrap-box" value="3"></div>
+				</div>
+				<div class="content-item display-none">
+					<div class="wrap-box" value="0"></div>
+					<div class="wrap-box" value="1"></div>
+					<div class="wrap-box" value="2"></div>
+					<div class="wrap-box" value="3"></div>
+				</div>
+				<div class="content-item display-none">
+					<div class="wrap-box" value="0"></div>
+					<div class="wrap-box" value="1"></div>
+					<div class="wrap-box" value="2"></div>
+					<div class="wrap-box" value="3"></div>
+				</div>
 			</div>
 		</div>
 		<div class="content-right">

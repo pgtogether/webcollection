@@ -28,4 +28,11 @@ public class StringUtils {
         return !isEmpty(str);
     }
 
+    public static String trim(String str) {
+        if (str == null || "".equals(str)) {
+            return str;
+        }
+        return str.trim();
+    }
+
 }
