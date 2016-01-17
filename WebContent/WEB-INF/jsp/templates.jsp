@@ -11,6 +11,9 @@
 		<div class="block-body">
 			<ul class="url-list">
 			</ul>
+			<div class="add-url">
+				<span class="addicon" title="添加网址"></span>
+			</div>
 		</div>
 	</div>
 <!-- 新增书签模板 -->

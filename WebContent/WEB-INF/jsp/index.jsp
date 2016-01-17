@@ -53,11 +53,21 @@
 			</div>
 			<div class="adv-show">占位</div>
 			<div class="category-tabs">
-				<span class="tab-item first selected">Tab1</span>
-				<span class="tab-item">Tab1</span>
-				<span class="tab-item">Tab1</span>
-				<span class="tab-item">Tab1</span>
-				<span class="tab-item">Tab1</span>
+				<c:choose>
+					<c:when test="${not empty parentCategoryList}">
+						<c:forEach items="${parentCategoryList}" var="parentcategoryname" varStatus="index">
+							<c:if test="${index.first}">
+								<span class="tab-item first selected">${parentcategoryname}</span>
+							</c:if>	
+							<c:if test="${!index.first}">
+								<span class="tab-item">${parentcategoryname}</span>
+							</c:if>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<span class="tab-item first selected">默认</span>
+					</c:otherwise>
+				</c:choose>
 				<span class="tab-item tab-func">
 					<a class="btn menu"></a>
 					<a class="btn add" title="新增大分类"></a>
@@ -68,40 +78,62 @@
 			<!-- 书签主体 -->
 			<div class="content-left-body">
 				<div class="content-item">
-					<div class="wrap-box" value="0"></div>
+					<div class="wrap-box" value="0">
+						<div class="block block-disabled add-block">
+							<span class="add-block-btn categorybtn" title="添加分类">+</span>
+						</div>
+					</div>
 					<div class="wrap-box" value="1"></div>
 					<div class="wrap-box" value="2"></div>
 					<div class="wrap-box" value="3"></div>
 				</div>
 				<div class="content-item display-none">
-					<div class="wrap-box" value="0"></div>
+					<div class="wrap-box" value="0">
+						<div class="block add-block">
+							<span class="add-block-btn categorybtn" title="添加分类">+</span>
+						</div>
+					</div>
+					<div class="wrap-box" value="1"></div>
+					<div class="wrap-box" value="2"></div>
+					<div class="wrap-box" value="3"></div>
+				</div>
+				
+				
+				<div class="content-item display-none">
+					<div class="wrap-box" value="0">
+						<div class="block add-block">
+							<span class="add-block-btn categorybtn" title="添加分类">+</span>
+						</div>
+					</div>
 					<div class="wrap-box" value="1"></div>
 					<div class="wrap-box" value="2"></div>
 					<div class="wrap-box" value="3"></div>
 				</div>
 				<div class="content-item display-none">
-					<div class="wrap-box" value="0"></div>
+					<div class="wrap-box" value="0">
+						<div class="block add-block">
+							<span class="add-block-btn categorybtn" title="添加分类">+</span>
+						</div>
+					</div>
 					<div class="wrap-box" value="1"></div>
 					<div class="wrap-box" value="2"></div>
 					<div class="wrap-box" value="3"></div>
 				</div>
-				<div class="content-item display-none">
-					<div class="wrap-box" value="0"></div>
-					<div class="wrap-box" value="1"></div>
-					<div class="wrap-box" value="2"></div>
-					<div class="wrap-box" value="3"></div>
-				</div>
+				
+				
 			</div>
 		</div>
 		<div class="content-right">
 			<div class="newbtnsbox">
 				<div class="newbtns floatLeft">
-					<span class="newbtn categorybtn">添加分类</span> <span
-						class="count categorycount"><label>${categoryCnt}</label></span> <span class="desc">分类个数</span>
+					<span class="newbtn categorybtn">添加分类</span> 
+					<span class="count categorycount"><label>${categoryCnt}</label></span>
+					<span class="desc">分类个数</span>
 				</div>
 				<div class="newbtns floatRight">
-					<span class="newbtn bookmarkbtn">添加书签</span> <span
-						class="count bookmarkcount"><label>${bookmarkCnt}</label></span><span class="desc">网址个数</span>
+					<span class="newbtn bookmarkbtn">添加网址</span> 
+					<span class="count bookmarkcount"><label>${bookmarkCnt}</label></span>
+					<span class="desc">网址个数</span>
 				</div>
 			</div>
 			<!-- 快速查询 -->

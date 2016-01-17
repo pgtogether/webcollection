@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dapeng.domain.Bookmark;
 import com.dapeng.domain.Category;
+import com.dapeng.service.bo.CategoryBO;
 import com.depeng.web.bo.CategoryMiniBO;
 
 /**
@@ -33,6 +34,8 @@ public interface CategoryMapper {
      * 类别检索
      */
     List<CategoryMiniBO> selectCategoryList(String userid);
+    
+    List<String> selectParentCategoryList(Category category);
 
     Category selectCategoryById(int categoryid);
 

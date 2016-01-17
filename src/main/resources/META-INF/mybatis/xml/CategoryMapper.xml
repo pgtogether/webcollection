@@ -315,4 +315,12 @@
 		category
 		where userid = #{userid,jdbcType=VARCHAR}
 	</select>
+	<select id="selectParentCategoryList" parameterType="com.dapeng.domain.Category"
+		resultType="java.lang.String">
+		select categoryname
+		from category
+		where userid = #{userid,jdbcType=VARCHAR}
+		and categorytype = #{categorytype,jdbcType=VARCHAR}
+		order by parentcategoryno asc
+	</select>
 </mapper>

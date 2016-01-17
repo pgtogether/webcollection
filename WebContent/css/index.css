@@ -85,6 +85,14 @@ body {
 	width: 100%; float: left; margin-bottom: 10px; background: #ffffff;
 }
 
+.add-block-btn {
+	display: block; text-align: center; font-size: 100px; color: #E0E0E0; cursor: pointer; border: 2px dashed #dedede; height: 101px; line-height: 101px;
+}
+
+.add-block-btn:hover {
+	background: #F7F7F7; color: #85BEFB;
+}
+
 .block .block-head {
 	float: left; cursor: move;
 }
@@ -110,7 +118,7 @@ body {
 }
 
 .block .block-body ul {
-	min-height: 75px; width: 100%; float: left;
+	min-height: 25px; width: 100%; float: left;
 }
 
 .block .block-body ul li {
@@ -156,7 +164,7 @@ body {
 }
 
 .category-tabs .tab-item {
-	width: 100px; height: 100%; float: left; background: white; border-right: 1px solid #EDEFF0; text-align: center; cursor: pointer;
+	height: 100%; float: left; background: white; border-right: 1px solid #EDEFF0; text-align: center; cursor: pointer; padding: 0 20px 0 20px;
 }
 
 .category-tabs .tab-item.first {
@@ -172,7 +180,7 @@ body {
 }
 
 .category-tabs .tab-func {
-	width: 30px; color: #E6E6E6; font-size: 20px; float: right; border-right: none; overflow: hidden;
+	width: 30px; color: #E6E6E6; font-size: 20px; float: right; border-right: none; overflow: hidden; padding: 0 0 0 0;
 }
 
 .category-tabs .tab-func .btn {
@@ -377,7 +385,7 @@ body {
 }
 
 .modules .addmodules {
-	width: 100%; float: left; text-align: center; font-size: 100px; color: #E0E0E0; cursor: pointer;
+	width: 100%; float: left; text-align: center; font-size: 100px; color: #E0E0E0; cursor: pointer; margin-bottom: 20px;
 }
 
 .modules .addmodules:hover {

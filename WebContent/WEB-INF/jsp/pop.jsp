@@ -45,12 +45,12 @@
 		<div>
 			<label class="name">名称</label>
 			<input type="hidden" id="categoryid" name="categoryid" value="" />
-			<input type="text" id="categoryname" name="categoryname" placeholder="网址所属分类" value="" />
+			<input type="text" id="categoryname" name="categoryname" placeholder="网址所属分类" />
 		</div>
 		<div>
 			<label class="name">权限</label> 
 			<span class="permission">
-				<input id="normal-permission" type="radio" name="categorypermission" checked="checked" value="1">普通(可自由查看)
+				<input id="normal-permission" type="radio" name="categorypermission" checked="checked" value="1">普通
 			</span> 
 			<span class="permission">
 				<input id="psw-permission" type="radio" name="categorypermission" value="2">保密(查看需要密码)
@@ -61,6 +61,22 @@
 		</div>
 		<div class="psw">
 			<label class="name">确认密码</label><input type="password" name="categorypswagain" />
+		</div>
+		<div>
+			<span class="btn"> <a class="confirm-btn">确定</a><a
+				class="cancel-btn">取消</a>
+			</span>
+		</div>
+	</div>
+	</form>
+</div>
+<div class="popbox popbox-for-new pop-parentcategory">
+	<form id="newParentCategoryForm">
+	<div class="popbox-head">添加大分类</div>
+	<div class="popbox-body">
+		<div>
+			<label class="name">名称</label>
+			<input type="text" id="parentcategoryname" name="parentcategoryname" placeholder="网址所属分类" />
 		</div>
 		<div>
 			<span class="btn"> <a class="confirm-btn">确定</a><a

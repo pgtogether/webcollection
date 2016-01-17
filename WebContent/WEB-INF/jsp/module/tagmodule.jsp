@@ -11,7 +11,7 @@
 	</div>
 </div>
 <div class="popbox popbox-tags">
-	<div class="popbox-head">筛选结果</div>
+	<div class="popbox-head">筛选结果<span class="close closeicon"></span></div>
 	<div class="popbox-body">
 		<span class="filter-load"><img src="${context_path}/img/load1.gif"></span>
 		<ul class="filter-url-list">
@@ -33,7 +33,11 @@
 			$(".popbox-tags").show();
 			filtetBookmarkList(tagno);
 		});
-		
+		$(".popbox-tags .close").click(function(){
+			$(".filter-tags").removeClass("filter-tags").find(".flitered").removeClass("flitered");
+			$(".mask").fadeOut();
+			$(".popbox-tags").hide();
+		});
 		// 点击空白区域隐藏
 		$(document).bind("click",function(e){
 			var target = $(e.target);

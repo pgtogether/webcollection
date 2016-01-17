@@ -21,6 +21,9 @@ public interface CategoryService {
 
     // 查询所有类别
     List<CategoryMiniBO> selectCategoryList(String userid);
+    
+    // 查询用户名下大分类
+    List<String> selectParentCategoryList(String userid);
 
     // 查询类别 根据id
     Category selectCategoryById(int categoryid);

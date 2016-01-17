@@ -16,13 +16,12 @@ $(function() {
 		// 初始化操作书签的功能
 		bookmarkOperateFunc.init();
 	});
-	
+	// 初始化大分类功能
+	categoryTabsOperateFunc.init();
 	// 初始化添加功能
 	newCategoryOrBookMarkFunc.init();
 	// 加载验证默认规则
 	formValidateFunc.init();
-	// 大分类栏功能
-	categoryBannerFunc.init();
 	// 侧边栏功能
 	sideBannerFunc.init();
 });
@@ -46,6 +45,8 @@ var openSortableFunc = {
 		$(".wrap-box").sortable({
 			connectWith : ".wrap-box",
 			handle : ".block-head",
+			items : ".block:not(.block-disabled)",
+			cancel : ".block-disabled",
 			distance : 5,
 			dropOnEmpty : true,
 			placeholder : "block-placeholder",
@@ -216,7 +217,7 @@ var newCategoryOrBookMarkFunc = {
 							.attr("value",newCategoryNo).prop("id","category_" + newCategoryNo);
 					// 放入当前显示大分类的栏位下
 					var index = $(".category-tabs").find(".tab-item.selected").index();
-					$(".content-item:eq("+ index +")").find(".wrap-box").first().prepend($clone);
+					$(".content-item:eq("+ index +")").find(".wrap-box .add-block").after($clone);
 					$clone.slideDown();
 					openSortableFunc.urlSortable(index);
 					$(".mask").hide();
@@ -291,6 +292,40 @@ var newCategoryOrBookMarkFunc = {
 		});
 	},
 	callbackShow : function() {
+	}
+};
+// 操作大分类Tab的功能
+var categoryTabsOperateFunc = {
+	init : function(){
+		$(".category-tabs .tab-item:not(.tab-func)").click(function(){
+			var $this = $(this);
+			var index = $this.index();
+			var selectedClass = "selected";
+			$this.addClass(selectedClass).siblings().removeClass(selectedClass);
+			$(".content-item:eq("+ index +")").show().siblings().hide();
+			$("#parentcategoryno").val(index);
+		});
+		$(".tab-func").hover(function(){
+			$(this).css("overflow","visible");
+		},function(){
+			$(this).css("overflow","hidden");
+		});
+		//
+		this.addTab();
+	},
+	addTab : function(){
+		$(".category-tabs .tab-func .add").click(function(){
+			var $pop_parentcategory = $(".pop-parentcategory");
+			$pop_parentcategory.find("input").val("");
+			$(".mask").fadeIn(300);
+			$pop_parentcategory.fadeIn(300).find("input[type=text]:eq(0)").focus();
+		});
+	},
+	modifyTab : function(){
+		
+	},
+	deleteTab : function(){
+		
 	}
 };
 
@@ -431,7 +466,7 @@ var categoryOperateFunc = {
 	appendBoxHeadOperateBtn : function($target) {
 		if (!$target.hasClass("modify")) {
 			var operateHtml = '';
-			operateHtml += '<span title="新增书签" class="addicon"></span>';
+//			operateHtml += '<span title="新增书签" class="addicon"></span>';
 			operateHtml += '<span title="删除分类" class="closeicon"></span>';
 			$target.find(".block-head-func").append(operateHtml);
 		}
@@ -692,7 +727,7 @@ var bookmarkOperateFunc = {
 	// 新增书签模板
 	appendAddBookmarkTemplate : function($ul) {
 		var operateHtml = this.getAddAndEditBookmarkTemplate("addbookmark");
-		$ul.prepend(operateHtml);
+		$ul.append(operateHtml);
 		$ul.find(".editbookmarktemplate").slideDown(function(){
 			$(this).find("input[type=text]:eq(0)").focus();
 		});
@@ -813,24 +848,6 @@ var flyTool = {
 			doAjaxFunc.doDeleteBookmark(bookmarkno,delCallback);
 		});
 	}
-};
-// 大分类栏
-var categoryBannerFunc = {
-		init : function(){
-			$(".category-tabs .tab-item:not(.tab-func)").click(function(){
-				var $this = $(this);
-				var index = $this.index();
-				var selectedClass = "selected";
-				$this.addClass(selectedClass).siblings().removeClass(selectedClass);
-				$(".content-item:eq("+ index +")").show().siblings().hide();
-				$("#parentcategoryno").val(index);
-			});
-			$(".tab-func").hover(function(){
-				$(this).css("overflow","visible");
-			},function(){
-				$(this).css("overflow","hidden");
-			});
-		}
 };
 // 侧边栏
 var sideBannerFunc = {

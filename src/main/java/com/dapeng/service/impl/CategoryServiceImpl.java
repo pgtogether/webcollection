@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dapeng.constants.CategoryTypeEnum;
 import com.dapeng.constants.Constants;
 import com.dapeng.dao.CategoryMapper;
 import com.dapeng.domain.Bookmark;
@@ -125,5 +126,13 @@ public class CategoryServiceImpl implements CategoryService {
             list.add(category);
         }
         categoryDao.batchUpdateCategorySort(list);
+    }
+
+    @Override
+    public List<String> selectParentCategoryList(String userid) {
+        Category category = new Category();
+        category.setUserid(userid);
+        category.setCategorytype(CategoryTypeEnum.FIRST_CATEGORY_TYPE.getId());
+        return categoryDao.selectParentCategoryList(category);
     }
 }
