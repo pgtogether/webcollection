@@ -321,6 +321,6 @@
 		from category
 		where userid = #{userid,jdbcType=VARCHAR}
 		and categorytype = #{categorytype,jdbcType=VARCHAR}
-		order by parentcategoryno asc
+		order by categoryno asc
 	</select>
 </mapper>

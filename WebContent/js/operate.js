@@ -36,7 +36,7 @@ var initLoadFunc = {
 							var parentcategoryno = _this.CacheList[i].pc;
 							var bookmarklist = _this.CacheList[i].list;
 							// 复制一个分类模板
-							var $clone = $(".category-template").clone().attr("style","").removeClass("category-template");
+							var $clone = $(".category-template").clone().removeClass("category-template display-none");
 							// 添加新分类模板标题颜色
 							var rand = parseInt(Math.random() * 20, 10);
 							$clone.prop("id","c_"+categoryno);
@@ -239,6 +239,33 @@ var initLoadFunc = {
 
 // 提交数据的Ajax的操作
 var doAjaxFunc = {
+	// 添加分类导航
+	doAddParentCategory : function(successCallBack){
+		var $newParentCategoryForm = $("#newParentCategoryForm");
+		formValidateFunc.validateAddParentCategoryForm($newParentCategoryForm);
+		if (!$newParentCategoryForm.valid()) {
+			return;
+		}
+		var parentCategoryName = $newParentCategoryForm.find("#parentcategoryname").val();
+		var parentCategoryNo = $(".category-tabs .tab-item").length + 1;
+		$.ajax({
+			type : "post",
+			url : CONTEXT_PATH + "/doAddParentCategory",
+			data : {
+				parentcategoryname : parentCategoryName,
+				parentcategoryno : parentCategoryNo
+			},
+			success : function(json) {
+				if (json.result == "OK") {
+					successCallBack(parentCategoryName);
+				} else {
+					validateErrorsUtil.showValidateErrors($newParentCategoryForm, json.errors);
+				}
+			},
+			error : function(e) {
+			}
+		});
+	},
 	// 添加分类
 	doNewcategory : function(successCallBack){
 		var $newcategoryform = $("#newCategoryForm");
@@ -484,6 +511,21 @@ var formValidateFunc = {
 	init : function(){
 		$.validator.setDefaults({
 			focusCleanup : true
+		});
+	},
+	// 验证添加分类导航
+	validateAddParentCategoryForm : function($form){
+		$form.validate({
+			rules : {
+				parentcategoryname : {
+					required : true
+				}
+			},
+			messages : {
+				parentcategoryname : {
+					required : "请输入导航名称"
+				}
+			}
 		});
 	},
 	// 验证添加分类

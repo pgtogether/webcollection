@@ -32,6 +32,7 @@ import com.dapeng.constants.CategoryTypeEnum;
 import com.dapeng.controller.form.AddBookMarkForm;
 import com.dapeng.controller.form.CategoryForm;
 import com.dapeng.controller.form.EditBookMarkForm;
+import com.dapeng.controller.form.ParentCategoryForm;
 import com.dapeng.service.BookmarkService;
 import com.dapeng.service.CategoryService;
 import com.dapeng.service.UserTagsService;
@@ -78,7 +79,7 @@ public class IndexController extends UserSessionController {
         // 获取大分类
         List<String> parentCategoryList = categoryService.selectParentCategoryList(userid);
         model.addAttribute("parentCategoryList", parentCategoryList);
-        
+
         // 获取书签，分类总数
         model.addAttribute("bookmarkCnt", bookmarkService.countBookmark(userid));
         model.addAttribute("categoryCnt", categoryService.countCategory(userid));
@@ -348,6 +349,41 @@ public class IndexController extends UserSessionController {
         if (rows > 0) {
             return ajaxSuccess();
         } else {
+            return ajaxFail();
+        }
+    }
+
+    /**
+     * 新增分类导航
+     */
+    @RequestMapping(value = "doAddParentCategory", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> doAddParentCategory(ParentCategoryForm form, HttpSession session) {
+        if (StringUtils.isEmpty(form.getParentcategoryname())) {
+            return ajaxFail();
+        }
+        CategoryBO categoryBO = new CategoryBO();
+        categoryBO.setCategoryname(form.getParentcategoryname());
+        categoryBO.setCategoryno(Integer.valueOf(form.getParentcategoryno()));
+
+        // 默认二级分类
+        categoryBO.setCategorytype(CategoryTypeEnum.FIRST_CATEGORY_TYPE.getId());
+        // 默认父分类
+        try {
+            String parentCategoryNo = form.getParentcategoryno();
+            if (StringUtils.isEmpty(parentCategoryNo)) {
+                categoryBO.setParentcategoryno(1);
+            } else {
+                categoryBO.setParentcategoryno(Integer.valueOf(parentCategoryNo));
+            }
+            // 默认测试
+            categoryBO.setUserid(getSessionUserId(session));
+            int newCategoryId = categoryService.addParentCategory(categoryBO);
+            if (newCategoryId == 0) {
+                return ajaxFail();
+            }
+            return ajaxSuccess();
+        } catch (Exception e) {
             return ajaxFail();
         }
     }

@@ -72,11 +72,11 @@
 </div>
 <div class="popbox popbox-for-new pop-parentcategory">
 	<form id="newParentCategoryForm">
-	<div class="popbox-head">添加大分类</div>
+	<div class="popbox-head">添加导航</div>
 	<div class="popbox-body">
 		<div>
 			<label class="name">名称</label>
-			<input type="text" id="parentcategoryname" name="parentcategoryname" placeholder="网址所属分类" />
+			<input type="text" id="parentcategoryname" name="parentcategoryname" placeholder="导航名称" />
 		</div>
 		<div>
 			<span class="btn"> <a class="confirm-btn">确定</a><a

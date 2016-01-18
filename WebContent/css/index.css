@@ -180,7 +180,7 @@ body {
 }
 
 .category-tabs .tab-func {
-	width: 30px; color: #E6E6E6; font-size: 20px; float: right; border-right: none; overflow: hidden; padding: 0 0 0 0;
+	width: 30px; height: 100%; color : #E6E6E6; font-size: 20px; float: right; border-right: none; overflow: hidden; padding: 0 0 0 0; color: #E6E6E6;
 }
 
 .category-tabs .tab-func .btn {

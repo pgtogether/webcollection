@@ -64,11 +64,8 @@
 							</c:if>
 						</c:forEach>
 					</c:when>
-					<c:otherwise>
-						<span class="tab-item first selected">默认</span>
-					</c:otherwise>
 				</c:choose>
-				<span class="tab-item tab-func">
+				<span class="tab-func">
 					<a class="btn menu"></a>
 					<a class="btn add" title="新增大分类"></a>
 					<a class="btn upd" title="修改大分类"></a>
@@ -77,50 +74,27 @@
 			</div>
 			<!-- 书签主体 -->
 			<div class="content-left-body">
-				<div class="content-item">
-					<div class="wrap-box" value="0">
-						<div class="block block-disabled add-block">
-							<span class="add-block-btn categorybtn" title="添加分类">+</span>
-						</div>
-					</div>
-					<div class="wrap-box" value="1"></div>
-					<div class="wrap-box" value="2"></div>
-					<div class="wrap-box" value="3"></div>
-				</div>
-				<div class="content-item display-none">
-					<div class="wrap-box" value="0">
-						<div class="block add-block">
-							<span class="add-block-btn categorybtn" title="添加分类">+</span>
-						</div>
-					</div>
-					<div class="wrap-box" value="1"></div>
-					<div class="wrap-box" value="2"></div>
-					<div class="wrap-box" value="3"></div>
-				</div>
-				
-				
-				<div class="content-item display-none">
-					<div class="wrap-box" value="0">
-						<div class="block add-block">
-							<span class="add-block-btn categorybtn" title="添加分类">+</span>
-						</div>
-					</div>
-					<div class="wrap-box" value="1"></div>
-					<div class="wrap-box" value="2"></div>
-					<div class="wrap-box" value="3"></div>
-				</div>
-				<div class="content-item display-none">
-					<div class="wrap-box" value="0">
-						<div class="block add-block">
-							<span class="add-block-btn categorybtn" title="添加分类">+</span>
-						</div>
-					</div>
-					<div class="wrap-box" value="1"></div>
-					<div class="wrap-box" value="2"></div>
-					<div class="wrap-box" value="3"></div>
-				</div>
-				
-				
+				<c:choose>
+					<c:when test="${not empty parentCategoryList}">
+						<c:forEach items="${parentCategoryList}" var="parentcategoryname" varStatus="index">
+							<c:if test="${index.first}">
+								<div class="content-item">
+							</c:if>	
+							<c:if test="${!index.first}">
+								<div class="content-item display-none">
+							</c:if>
+								<div class="wrap-box" value="0">
+									<div class="block block-disabled add-block">
+										<span class="add-block-btn categorybtn" title="添加分类">+</span>
+									</div>
+								</div>
+								<div class="wrap-box" value="1"></div>
+								<div class="wrap-box" value="2"></div>
+								<div class="wrap-box" value="3"></div>
+							</div>
+						</c:forEach>
+					</c:when>
+				</c:choose>
 			</div>
 		</div>
 		<div class="content-right">

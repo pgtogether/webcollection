@@ -16,7 +16,7 @@ $(function() {
 		// 初始化操作书签的功能
 		bookmarkOperateFunc.init();
 	});
-	// 初始化大分类功能
+	// 初始化导航功能
 	categoryTabsOperateFunc.init();
 	// 初始化添加功能
 	newCategoryOrBookMarkFunc.init();
@@ -132,7 +132,7 @@ var newCategoryOrBookMarkFunc = {
 		this.cancelNew();
 	},
 	newCategory : function() {
-		$(".categorybtn").click(function() {
+		$(".content").on("click", ".categorybtn", function() {
 			// 还原到初始状态
 			var $pop_category = $(".pop-category");
 			$pop_category.find("input:not('#parentcategoryno')").val("");
@@ -297,7 +297,7 @@ var newCategoryOrBookMarkFunc = {
 // 操作大分类Tab的功能
 var categoryTabsOperateFunc = {
 	init : function(){
-		$(".category-tabs .tab-item:not(.tab-func)").click(function(){
+		$(".category-tabs").on("click", ".tab-item", function(){
 			var $this = $(this);
 			var index = $this.index();
 			var selectedClass = "selected";
@@ -310,7 +310,6 @@ var categoryTabsOperateFunc = {
 		},function(){
 			$(this).css("overflow","hidden");
 		});
-		//
 		this.addTab();
 	},
 	addTab : function(){
@@ -319,6 +318,20 @@ var categoryTabsOperateFunc = {
 			$pop_parentcategory.find("input").val("");
 			$(".mask").fadeIn(300);
 			$pop_parentcategory.fadeIn(300).find("input[type=text]:eq(0)").focus();
+		});
+		// 确认新增
+		$(".pop-parentcategory .confirm-btn").click(function(){
+			doAjaxFunc.doAddParentCategory(function(parentcategoryname){
+				var $tabTemplate = $(".tab-template").clone();
+				$tabTemplate.text(parentcategoryname);
+				var $contentItemTemplate = $(".content-item-template").clone().removeClass("display-none");
+				$(".category-tabs .tab-item:last").after($tabTemplate);
+				$(".content-left-body").append($contentItemTemplate);
+				$tabTemplate.click();
+				$(".mask").hide();
+				$(".pop-parentcategory").hide();
+				$tabTemplate.fadeIn();
+			});
 		});
 	},
 	modifyTab : function(){
@@ -342,7 +355,7 @@ var categoryOperateFunc = {
 	// 鼠标经过标题时候
 	hoverTitle : function() {
 		var selfFunc = this;
-		$(".wrap-box").on("mouseenter mouseleave", ".block-head",function(event) {
+		$(".content-left-body").on("mouseenter mouseleave", ".block-head",function(event) {
 			if (event.type == "mouseenter") {
 				selfFunc.appendBoxHeadOperateBtn($(this));
 			} else if (event.type == "mouseleave") {
@@ -354,7 +367,7 @@ var categoryOperateFunc = {
 	modifyTitle : function() {
 		// 双击修改分类标题
 		var selfFunc = this;
-		$(".wrap-box").on("dblclick",".block-head",function() {
+		$(".content-left-body").on("dblclick",".block-head",function() {
 			if (!$(this).hasClass("modify")) {
 				selfFunc.closeOtherModifyTitle();
 				var $title = $(this).find(".block-head-title");
@@ -371,7 +384,7 @@ var categoryOperateFunc = {
 	// 确定修改标题
 	confirmModify : function() {
 		var selfFunc = this;
-		$(".wrap-box").on("click", ".confirmicon", function() {
+		$(".content-left-body").on("click", ".confirmicon", function() {
 			var $this = $(this);
 			var $block = $this.parents(".block");
 			var categoryno = $block.find(".category-title").attr("value");
@@ -388,18 +401,18 @@ var categoryOperateFunc = {
 			});
 		});
 		// 监听回车键
-		$(".wrap-box").on("keydown",".updatetitle", function(e){
+		$(".content-left-body").on("keydown",".updatetitle", function(e){
 			if(e.keyCode==13){
-				$(".wrap-box").find(".confirmicon").click();
+				$(".content-left-body").find(".confirmicon").click();
 			} else if (e.keyCode == 27) {
-				$(".wrap-box").find(".cancelicon").click();
+				$(".content-left-body").find(".cancelicon").click();
 			}
 		});
 	},
 	// 取消修改
 	cancelModify : function() {
 		var selfFunc = this;
-		$(".wrap-box").on("click", ".cancelicon", function() {
+		$(".content-left-body").on("click", ".cancelicon", function() {
 			var $this = $(this);
 			// 如果没有修改，返回初始值
 			var $input = $this.parents(".block").find(".updatetitle");
@@ -414,7 +427,7 @@ var categoryOperateFunc = {
 	deleteCategory : function(){
 		var selfFunc = this;
 		// 关闭提示框
-		$(".wrap-box").on("click", ".closeicon", function() {
+		$(".content-left-body").on("click", ".closeicon", function() {
 			selfFunc.deleteCategoryNo = $(this).parents(".block").find(".category-title").attr("value");
 			var $urlList = $(this).parents(".block").find(".url-list");
 			if($urlList.find("li").length > 0) {
@@ -515,7 +528,7 @@ var bookmarkOperateFunc = {
 	// 新增书签
 	addBookmark : function() {
 		var selfFunc = this;
-		$(".wrap-box").on("click", ".addicon", function() {
+		$(".content-left-body").on("click", ".addicon", function() {
 			// 如果已经存在,不需要再增加一个模板
 			var $this = $(this);
 			if ($this.parents(".block").find(".addbookmark").length == 0) {
@@ -531,7 +544,7 @@ var bookmarkOperateFunc = {
 	// 编辑书签
 	editBookmark : function() {
 		var selfFunc = this;
-		$(".wrap-box").on("click", ".editicon", function() {
+		$(".content-left-body").on("click", ".editicon", function() {
 			// 如果已经存在,不需要再增加一个模板
 			var $this = $(this);
 			var $thisli = $this.parents("li");
@@ -571,7 +584,7 @@ var bookmarkOperateFunc = {
 	// 删除书签
 	delBookmark : function() {
 		var selfFunc = this;
-		$(".wrap-box").on("click", ".delicon", function() {
+		$(".content-left-body").on("click", ".delicon", function() {
 			// 如果已经存在,不需要再增加一个模板
 			var $this = $(this);
 			if ($this.parents("li").next().find(".delbookmark").length == 0) {
@@ -587,7 +600,7 @@ var bookmarkOperateFunc = {
 	// 标记为常用书签
 	setHotBookmark : function() {
 		var selfFunc = this;
-		$(".wrap-box").on("click", ".operatebtn .staricon", function() {
+		$(".content-left-body").on("click", ".operatebtn .staricon", function() {
 			var $this = $(this);
 			var $parentLi = $this.parents("li");
 			var bookmarkno = $parentLi.attr("value");
@@ -619,7 +632,7 @@ var bookmarkOperateFunc = {
 	// 确定书签
 	confirmEditBookmark : function() {
 		selfFunc = this;
-		$(".wrap-box").on("click", ".confirmediticon", function() {
+		$(".content-left-body").on("click", ".confirmediticon", function() {
 			var $thisBtn = $(this);
 			// 确认新增书签
 			if ($thisBtn.parents(".addbookmark").length > 0) {
@@ -695,18 +708,18 @@ var bookmarkOperateFunc = {
 			}
 		});
 		// 监听回车键,ESC键
-		$(".wrap-box").on("keydown",".editbookmarktemplate :input",function(e){
+		$(".content-left-body").on("keydown",".editbookmarktemplate :input",function(e){
 			if(e.keyCode==13){
-				$(".wrap-box").find(".confirmediticon").click();
+				$(".content-left-body").find(".confirmediticon").click();
 			} else if(e.keyCode==27){
-				$(".wrap-box").find(".cancelediticon").click();
+				$(".content-left-body").find(".cancelediticon").click();
 			}
 		});
 	},
 	// 取消书签
 	cancelEditBookmark : function() {
 		selfFunc = this;
-		$(".wrap-box").on("click", ".cancelediticon", function() {
+		$(".content-left-body").on("click", ".cancelediticon", function() {
 			selfFunc.closeAllEditBookmarkTemplate();
 		});
 	},
@@ -759,7 +772,7 @@ var bookmarkOperateFunc = {
 	},
 	// 关闭其他正在编辑的书签模板
 	closeAllEditBookmarkTemplate : function() {
-		$(".wrap-box").find(".editbookmarktemplate").slideUp(function() {
+		$(".content-left-body").find(".editbookmarktemplate").slideUp(function() {
 			var $this = $(this);
 			$this.prev(".pointto").removeClass("li-disabled pointto");
 			$this.remove();

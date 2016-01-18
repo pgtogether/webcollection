@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.dapeng.constants.BookmarkDeleteEnum;
 import com.dapeng.constants.BookmarkHotEnum;
 import com.dapeng.constants.BookmarkPermissionEnum;
+import com.dapeng.constants.CategoryTypeEnum;
 import com.dapeng.dao.BookmarkMapper;
 import com.dapeng.dao.UserTagsMapper;
 import com.dapeng.dao.UserTagsTempMapper;
@@ -49,6 +50,7 @@ public class BookmarkServiceImpl implements BookmarkService {
         List<CategoryWithBookmarkMiniBO> showList = null;
         BookmarkBO record = new BookmarkBO();
         record.setUserid(userid);
+        record.setCategorytype(CategoryTypeEnum.DEFAULT_CATEGORY_TYPE.getId());
         record.setDeleteflg(BookmarkDeleteEnum.NORMAL_SHOW.getId());
         List<BookmarkBO> list = bookmarkDao.selectBookmarkBOList(record);
         // 对数据结构进行转换，符合页面显示风格

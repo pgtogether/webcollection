@@ -25,6 +25,8 @@ public class BookmarkBO {
     private int categoryno;
     
     private int parentcategoryno;
+    
+    private String categorytype;
 
     private String categoryname;
 
@@ -238,6 +240,14 @@ public class BookmarkBO {
 
     public void setParentcategoryno(int parentcategoryno) {
         this.parentcategoryno = parentcategoryno;
+    }
+
+    public String getCategorytype() {
+        return categorytype;
+    }
+
+    public void setCategorytype(String categorytype) {
+        this.categorytype = categorytype;
     }
     
 }

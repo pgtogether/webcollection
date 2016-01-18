@@ -30,6 +30,35 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     /**
+     * 新增分类导航
+     * 
+     * @param categoryBO
+     * @return 新增分类ID
+     */
+    @Override
+    public int addParentCategory(CategoryBO categoryBO) {
+        // 获取最大的分类编号
+        int maxCategoryNo = categoryDao.selectMaxCategoryNoByUserId(categoryBO.getUserid()) + 1;
+
+        // 获取最大排序号
+        Category category = new Category();
+        category.setUserid(categoryBO.getUserid());
+        category.setCategoryno(maxCategoryNo);
+        category.setCategoryname(categoryBO.getCategoryname());
+        category.setCategorytype(categoryBO.getCategorytype());
+        
+        Date systime = new Date();
+        category.setCreatetime(systime);
+        category.setUpdatetime(systime);
+        int result = categoryDao.insert(category);
+        if (result > 0) {
+            return maxCategoryNo;
+        } else {
+            return 0;
+        }
+    }
+    
+    /**
      * 新增分类
      * 
      * @param categoryBO

@@ -298,6 +298,7 @@
 		WHERE
 		T1.userid =
 		#{userid,jdbcType=VARCHAR}
+		and T1.categorytype = #{categorytype,jdbcType=VARCHAR}
 		ORDER BY T1.sort desc, T2.sort desc
 	</select>
 	<!-- 书签操作 获取同一类别书签 -->
