@@ -55,12 +55,13 @@
 			<div class="category-tabs">
 				<c:choose>
 					<c:when test="${not empty parentCategoryList}">
-						<c:forEach items="${parentCategoryList}" var="parentcategoryname" varStatus="index">
+						<c:forEach items="${parentCategoryList}" var="pc" varStatus="index">
 							<c:if test="${index.first}">
-								<span class="tab-item first selected">${parentcategoryname}</span>
+								<input type="hidden" id="parentcategoryno" name="parentcategoryno" value="${pc.categoryno}" />
+								<span id="pc_${pc.categoryno}" class="tab-item first selected">${pc.categoryname}</span>
 							</c:if>	
 							<c:if test="${!index.first}">
-								<span class="tab-item">${parentcategoryname}</span>
+								<span id="pc_${pc.categoryno}" class="tab-item">${pc.categoryname}</span>
 							</c:if>
 						</c:forEach>
 					</c:when>

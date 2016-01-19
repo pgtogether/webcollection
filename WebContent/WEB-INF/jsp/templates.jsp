@@ -3,7 +3,7 @@
 <%@ include file="/include/constants.jsp"%>
 <div class="templates">
 	<!-- 新增分类导航模板 -->
-	<span class="tab-template tab-item display-none"></span>
+	<span class="tab-template tab-item selected display-none"></span>
 	<div class="content-item-template content-item display-none">
 		<div class="wrap-box" value="0">
 			<div class="block add-block">

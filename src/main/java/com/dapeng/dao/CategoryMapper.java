@@ -35,7 +35,7 @@ public interface CategoryMapper {
      */
     List<CategoryMiniBO> selectCategoryList(String userid);
     
-    List<String> selectParentCategoryList(Category category);
+    List<CategoryBO> selectParentCategoryList(Category category);
 
     Category selectCategoryById(int categoryid);
 

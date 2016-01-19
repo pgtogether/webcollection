@@ -158,7 +158,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<String> selectParentCategoryList(String userid) {
+    public List<CategoryBO> selectParentCategoryList(String userid) {
         Category category = new Category();
         category.setUserid(userid);
         category.setCategorytype(CategoryTypeEnum.FIRST_CATEGORY_TYPE.getId());

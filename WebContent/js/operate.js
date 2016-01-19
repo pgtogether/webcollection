@@ -3,7 +3,7 @@ var initLoadFunc = {
 		this.loadAllBookmarkList(activeBookmarkFunc);
 	},
 	// 本地书签缓存
-	CacheList : "",
+	CacheList : [],
 	// 更新本地缓存的方式枚举
 	CacheTypeEnum : {
 		// 新增分类
@@ -67,7 +67,8 @@ var initLoadFunc = {
 								}
 								$clone.find(".url-list").append(bookmarkHtml);
 							}
-							$(".content-item").eq(parentcategoryno).find(".wrap-box:eq("+categorycolno+")").append($clone);
+							var index = $(".tab-item").index($("#pc_"+parentcategoryno));
+							$(".content-item").eq(index).find(".wrap-box:eq("+categorycolno+")").append($clone);
 							// 分类名称转成拼音
 							var categorypinyin = PinyinUtil.getFullChars(categoryname).toUpperCase();
 							var categorypinyinhead = PinyinUtil.getCamelChars(categoryname).toUpperCase();
@@ -257,7 +258,7 @@ var doAjaxFunc = {
 			},
 			success : function(json) {
 				if (json.result == "OK") {
-					successCallBack(parentCategoryName);
+					successCallBack(json.data,parentCategoryName);
 				} else {
 					validateErrorsUtil.showValidateErrors($newParentCategoryForm, json.errors);
 				}
@@ -273,8 +274,9 @@ var doAjaxFunc = {
 		if (!$newcategoryform.valid()) {
 			return;
 		}
+		var parentcategoryno = $("#parentcategoryno").val();
 		$.ajax({
-			data : $newcategoryform.serialize(),
+			data : $newcategoryform.serialize() + "&parentcategoryno="+parentcategoryno,
 			type : "post",
 			url : CONTEXT_PATH + "/doAddCategory",
 			success : function(json) {
@@ -289,7 +291,7 @@ var doAjaxFunc = {
 			}
 		});
 	},
-	// 删除书签
+	// 删除分类
 	doDeleteCategory : function(categoryno,successCallback){
 		// 提交后台保存
 		$.ajax({
@@ -620,4 +622,25 @@ var commonUtilsFunc = {
 			},400);
 		});
 	}
+};
+
+var alertUtilsFunc = {
+		init : function(){
+			$(".popbox-for-alert .tip-confirm-btn").click(function(){
+				$(".popbox-for-alert").hide();
+			});
+			$(".popbox-for-confirm .tip-cancel-btn").click(function(){
+				$(".popbox-for-confirm").hide();
+			});
+		},
+		alert : function(msg){
+			var $alert = $(".popbox-for-alert");
+			$alert.find(".tipmsg span").text(msg);
+			$alert.show();
+		},
+		confirm : function(msg){
+			var $confirm = $(".popbox-for-confirm");
+			$confirm.find(".tipmsg span").text(msg);
+			$confirm.show();
+		}
 };

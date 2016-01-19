@@ -23,7 +23,7 @@ public interface CategoryService {
     List<CategoryMiniBO> selectCategoryList(String userid);
 
     // 查询用户名下大分类
-    List<String> selectParentCategoryList(String userid);
+    List<CategoryBO> selectParentCategoryList(String userid);
 
     // 查询类别 根据id
     Category selectCategoryById(int categoryid);

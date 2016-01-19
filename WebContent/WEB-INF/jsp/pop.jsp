@@ -39,7 +39,6 @@
 </div>
 <div class="popbox popbox-for-new pop-category">
 	<form id="newCategoryForm">
-	<input type="hidden" id="parentcategoryno" name="parentcategoryno" value="">
 	<div class="popbox-head">添加分类</div>
 	<div class="popbox-body">
 		<div>
@@ -93,7 +92,7 @@
 			<img alt="success" src="${context_path}/img/warning.png">
 		</div>
 		<div class="tipmsg">
-			<span>该分类下还有书签，不可删除！ </span>
+			<span></span>
 		</div>
 		<div class="tipbtn">
 			<span class="btn">

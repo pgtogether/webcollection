@@ -77,7 +77,7 @@ public class IndexController extends UserSessionController {
         model.addAttribute("hotBookmarkList", hotBookmarkList);
 
         // 获取大分类
-        List<String> parentCategoryList = categoryService.selectParentCategoryList(userid);
+        List<CategoryBO> parentCategoryList = categoryService.selectParentCategoryList(userid);
         model.addAttribute("parentCategoryList", parentCategoryList);
 
         // 获取书签，分类总数
@@ -364,25 +364,16 @@ public class IndexController extends UserSessionController {
         }
         CategoryBO categoryBO = new CategoryBO();
         categoryBO.setCategoryname(form.getParentcategoryname());
-        categoryBO.setCategoryno(Integer.valueOf(form.getParentcategoryno()));
-
         // 默认二级分类
         categoryBO.setCategorytype(CategoryTypeEnum.FIRST_CATEGORY_TYPE.getId());
-        // 默认父分类
         try {
-            String parentCategoryNo = form.getParentcategoryno();
-            if (StringUtils.isEmpty(parentCategoryNo)) {
-                categoryBO.setParentcategoryno(1);
-            } else {
-                categoryBO.setParentcategoryno(Integer.valueOf(parentCategoryNo));
-            }
             // 默认测试
             categoryBO.setUserid(getSessionUserId(session));
             int newCategoryId = categoryService.addParentCategory(categoryBO);
             if (newCategoryId == 0) {
                 return ajaxFail();
             }
-            return ajaxSuccess();
+            return ajaxSuccess(newCategoryId);
         } catch (Exception e) {
             return ajaxFail();
         }
@@ -394,6 +385,9 @@ public class IndexController extends UserSessionController {
     @RequestMapping(value = "doAddCategory", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public Map<String, Object> doAddCategory(CategoryForm form, HttpSession session) {
+        if (StringUtils.isEmpty(form.getCategoryname()) || StringUtils.isEmpty(form.getParentcategoryno())) {
+            return ajaxFail();
+        }
         CategoryBO categoryBO = new CategoryBO();
         categoryBO.setCategoryname(form.getCategoryname());
         // 权限
@@ -404,12 +398,7 @@ public class IndexController extends UserSessionController {
         categoryBO.setCategorytype(CategoryTypeEnum.DEFAULT_CATEGORY_TYPE.getId());
         // 默认父分类
         try {
-            String parentCategoryNo = form.getParentcategoryno();
-            if (StringUtils.isEmpty(parentCategoryNo)) {
-                categoryBO.setParentcategoryno(0);
-            } else {
-                categoryBO.setParentcategoryno(Integer.valueOf(parentCategoryNo));
-            }
+            categoryBO.setParentcategoryno(Integer.valueOf(form.getParentcategoryno()));
             // 默认测试
             categoryBO.setUserid(getSessionUserId(session));
             int newCategoryId = categoryService.addCategory(categoryBO);
