@@ -248,7 +248,7 @@ var doAjaxFunc = {
 			return;
 		}
 		var parentCategoryName = $newParentCategoryForm.find("#parentcategoryname").val();
-		var parentCategoryNo = $(".category-tabs .tab-item").length + 1;
+		var parentCategoryNo = $("#parentCategoryNo").val();
 		$.ajax({
 			type : "post",
 			url : CONTEXT_PATH + "/doAddParentCategory",
@@ -259,6 +259,33 @@ var doAjaxFunc = {
 			success : function(json) {
 				if (json.result == "OK") {
 					successCallBack(json.data,parentCategoryName);
+				} else {
+					validateErrorsUtil.showValidateErrors($newParentCategoryForm, json.errors);
+				}
+			},
+			error : function(e) {
+			}
+		});
+	},
+	// 添加分类导航
+	doUpdParentCategory : function(successCallBack){
+		var $newParentCategoryForm = $("#newParentCategoryForm");
+		formValidateFunc.validateAddParentCategoryForm($newParentCategoryForm);
+		if (!$newParentCategoryForm.valid()) {
+			return;
+		}
+		var parentCategoryName = $newParentCategoryForm.find("#parentcategoryname").val();
+		var parentCategoryNo = $("#parentcategoryno").val();
+		$.ajax({
+			type : "post",
+			url : CONTEXT_PATH + "/doUpdParentCategory",
+			data : {
+				parentcategoryname : parentCategoryName,
+				parentcategoryno : parentCategoryNo
+			},
+			success : function(json) {
+				if (json.result == "OK") {
+					successCallBack(parentCategoryNo,parentCategoryName);
 				} else {
 					validateErrorsUtil.showValidateErrors($newParentCategoryForm, json.errors);
 				}

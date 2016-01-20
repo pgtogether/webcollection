@@ -46,7 +46,7 @@ public class CategoryServiceImpl implements CategoryService {
         category.setCategoryno(maxCategoryNo);
         category.setCategoryname(categoryBO.getCategoryname());
         category.setCategorytype(categoryBO.getCategorytype());
-        
+
         Date systime = new Date();
         category.setCreatetime(systime);
         category.setUpdatetime(systime);
@@ -57,7 +57,24 @@ public class CategoryServiceImpl implements CategoryService {
             return 0;
         }
     }
-    
+
+    /**
+     * 修改分类导航
+     * 
+     * @param categoryBO
+     * @return 新增分类ID
+     */
+    @Override
+    public int updParentCategory(CategoryBO categoryBO) {
+        // 获取最大排序号
+        Category category = new Category();
+        category.setUserid(categoryBO.getUserid());
+        category.setCategoryno(categoryBO.getCategoryno());
+        category.setCategoryname(categoryBO.getCategoryname());
+        category.setUpdatetime(new Date());
+        return categoryDao.updateCategoryByUnique(category);
+    }
+
     /**
      * 新增分类
      * 

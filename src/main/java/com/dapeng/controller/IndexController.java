@@ -380,6 +380,30 @@ public class IndexController extends UserSessionController {
     }
 
     /**
+     * 修改分类导航
+     */
+    @RequestMapping(value = "doUpdParentCategory", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> doUpdParentCategory(ParentCategoryForm form, HttpSession session) {
+        if (StringUtils.isEmpty(form.getParentcategoryname()) || StringUtils.isEmpty(form.getParentcategoryno())) {
+            return ajaxFail();
+        }
+        try {
+            CategoryBO categoryBO = new CategoryBO();
+            categoryBO.setCategoryno(Integer.valueOf(form.getParentcategoryno()));
+            categoryBO.setCategoryname(form.getParentcategoryname());
+            categoryBO.setUserid(getSessionUserId(session));
+            int row = categoryService.updParentCategory(categoryBO);
+            if (row == 0) {
+                return ajaxFail();
+            }
+            return ajaxSuccess();
+        } catch (Exception e) {
+            return ajaxFail();
+        }
+    }
+
+    /**
      * 新增分类
      */
     @RequestMapping(value = "doAddCategory", method = { RequestMethod.GET, RequestMethod.POST })

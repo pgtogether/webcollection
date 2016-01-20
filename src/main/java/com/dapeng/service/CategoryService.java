@@ -30,6 +30,9 @@ public interface CategoryService {
 
     // 增加分类导航
     int addParentCategory(CategoryBO categoryBO);
+    
+    // 修改分类导航
+    int updParentCategory(CategoryBO categoryBO);
 
     // 增加类别
     int addCategory(CategoryBO categoryBO);

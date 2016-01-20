@@ -311,40 +311,37 @@ var categoryTabsOperateFunc = {
 			$(this).css("overflow","hidden");
 		});
 		this.addTab();
+		this.modifyTab();
 		this.deleteTab();
+		this.confirm();
 	},
+	UpdTypeEnum : {
+		ADD_TAB : 1,
+		UPD_TAB : 2
+	},
+	// 操作Tab类型：1增加/2修改
+	updType : "",
 	addTab : function(){
+		var _this = this;
 		$(".category-tabs .tab-func .add").click(function(){
+			_this.tabType = _this.UpdTypeEnum.ADD_TAB;
 			var $pop_parentcategory = $(".pop-parentcategory");
+			$pop_parentcategory.find(".popbox-head").text("添加导航");
 			$pop_parentcategory.find("input").val("");
 			$(".mask").fadeIn(300);
 			$pop_parentcategory.fadeIn(300).find("input[type=text]:eq(0)").focus();
 		});
-		// 确认新增
-		$(".pop-parentcategory .confirm-btn").click(function(){
-			doAjaxFunc.doAddParentCategory(function(parentcategoryno,parentcategoryname){
-				$("#parentcategoryno").val(parentcategoryno);
-				var $tabTemplate = $(".tab-template").clone().removeClass("tab-template");
-				$tabTemplate.prop("id","pc_" + parentcategoryno).text(parentcategoryname);
-				var $contentItemTemplate = $(".content-item-template").clone().removeClass("content-item-template");
-				var $categoryTabs = $(".category-tabs");
-				var $tabItems = $categoryTabs.find(".tab-item");
-				$tabItems.removeClass("selected").last().after($tabTemplate);
-				$tabTemplate.fadeIn();
-				// 隐藏其他分类导航
-				var $contentLeftBody = $(".content-left-body");
-				$contentLeftBody.find(".content-item").hide();
-				$contentLeftBody.append($contentItemTemplate);
-				$(".mask").hide();
-				$(".pop-parentcategory").hide();
-				$tabTemplate.fadeIn();
-				$contentItemTemplate.fadeIn();
-			});
-			return false;
-		});
 	},
 	modifyTab : function(){
-		
+		var _this = this;
+		$(".category-tabs .tab-func .upd").click(function(){
+			_this.tabType = _this.UpdTypeEnum.UPD_TAB;
+			var $pop_parentcategory = $(".pop-parentcategory");
+			$pop_parentcategory.find(".popbox-head").text("修改导航");
+			$pop_parentcategory.find("input").val($(".category-tabs").find(".tab-item.selected").text());
+			$(".mask").fadeIn(300);
+			$pop_parentcategory.fadeIn(300).find("input[type=text]:eq(0)").focus();
+		});
 	},
 	deleteTab : function(){
 		$(".category-tabs .tab-func .del").click(function(){
@@ -365,9 +362,45 @@ var categoryTabsOperateFunc = {
 					$selectedTab.fadeOut(500,function(){
 						$(this).remove();
 						$contentItem.remove();
-						$(".category-tabs").find(".tab-item:first").addClass("selected");
+						$(".category-tabs").find(".tab-item:eq(0)").addClass("first selected");
 						$(".content-left-body").find(".content-item:first").fadeIn();
 					});
+				});
+			}
+		});
+	},
+	confirm : function(){
+		var _this = this;
+		$(".pop-parentcategory .confirm-btn").click(function(){
+			// 确认新增
+			if (_this.tabType == _this.UpdTypeEnum.ADD_TAB) {
+				doAjaxFunc.doAddParentCategory(function(parentcategoryno,parentcategoryname){
+					$("#parentcategoryno").val(parentcategoryno);
+					var $tabTemplate = $(".tab-template").clone().removeClass("tab-template");
+					$tabTemplate.prop("id","pc_" + parentcategoryno).text(parentcategoryname);
+					var $contentItemTemplate = $(".content-item-template").clone().removeClass("content-item-template");
+					var $categoryTabs = $(".category-tabs");
+					var $tabItems = $categoryTabs.find(".tab-item");
+					$tabItems.removeClass("selected").last().after($tabTemplate);
+					$tabTemplate.fadeIn();
+					// 隐藏其他分类导航
+					var $contentLeftBody = $(".content-left-body");
+					$contentLeftBody.find(".content-item").hide();
+					$contentLeftBody.append($contentItemTemplate);
+					$(".mask").hide();
+					$(".pop-parentcategory").hide();
+					$tabTemplate.fadeIn();
+					$contentItemTemplate.fadeIn();
+					_this.tabType = null;
+				});
+			} else 
+			// 确认修改	
+			if (_this.tabType == _this.UpdTypeEnum.UPD_TAB) {
+				doAjaxFunc.doUpdParentCategory(function(parentcategoryno,parentcategoryname){
+					$("#pc_" + parentcategoryno).text(parentcategoryname);
+					$(".mask").hide();
+					$(".pop-parentcategory").hide();
+					_this.tabType = null;
 				});
 			}
 		});
