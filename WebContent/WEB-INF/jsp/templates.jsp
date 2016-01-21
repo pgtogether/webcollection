@@ -22,12 +22,24 @@
 		</div>
 		<div class="block-body">
 			<ul class="url-list">
+				<li class="li-disabled lock-url"></li>
 			</ul>
 			<div class="add-url">
 				<span class="addicon" title="添加网址"></span>
 			</div>
 		</div>
 	</div>
+	<!-- 加密分类模板 -->
+	<ul class="lock-category-template display-none">
+		<li class="li-disabled lock-url"></li>
+	</ul>
+	<!-- 解密分类模板 -->
+	<ul class="unlock-category-template display-none">
+		<li class="li-disabled unlock-url">
+			<label class="unlocktxt">密码:</label><input type="password" class="unlockpsw"><span class="unlockbtn" title="开锁"></span>
+		</li>
+	</ul>
+	
 	<!-- 新增书签模板 -->
 	
 	<!-- 编辑书签模板 -->

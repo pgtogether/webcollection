@@ -27,7 +27,7 @@
 			<div class="head-fun-nav">
 				<ul>
 					<li>个性设置</li>
-					<li>书签插件</li>
+					<li>网址插件</li>
 					<li>淘淘看</li>
 					<li>我的主页</li>
 					<li>首页</li>
@@ -73,7 +73,7 @@
 					<a class="btn del" title="删除大分类"></a>
 				</span>
 			</div>
-			<!-- 书签主体 -->
+			<!-- 网址主体 -->
 			<div class="content-left-body">
 				<c:choose>
 					<c:when test="${not empty parentCategoryList}">

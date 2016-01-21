@@ -8,12 +8,12 @@ $(function() {
 
 	// 加载数据
 	initLoadFunc.init(function(){
-		// 数据加载完成后，通过回调函数激活操作书签的功能
+		// 数据加载完成后，通过回调函数激活操作网址的功能
 		// 开启sortable功能
 		openSortableFunc.initSortable();
 		// 初始化操作分类的功能
 		categoryOperateFunc.init();
-		// 初始化操作书签的功能
+		// 初始化操作网址的功能
 		bookmarkOperateFunc.init();
 	});
 	// 初始化导航功能
@@ -100,7 +100,7 @@ var openSortableFunc = {
 				// 获取移动后所属分类的ID
 				var $category = ui.item.parents(".block");
 				var categoryno = $category.find(".category-title").attr("value");
-				// 获取该分类下书签的排序
+				// 获取该分类下网址的排序
 				var $urlList = ui.item.parents(".url-list");
 				var sortArray = $urlList.sortable("toArray");
 				// 保存到DB
@@ -125,7 +125,7 @@ var openSortableFunc = {
 	}
 };
 
-// 新增分类或者书签
+// 新增分类或者网址
 var newCategoryOrBookMarkFunc = {
 	init : function() {
 		this.newCategory();
@@ -155,7 +155,7 @@ var newCategoryOrBookMarkFunc = {
 			// 首先清空之前的所有输入值
 			var $pop_bookmark = $(".pop-bookmark");
 			$pop_bookmark.find("input").val("");
-			// 显示添加书签浮动层之前,筛选出本页所有的分类
+			// 显示添加网址浮动层之前,筛选出本页所有的分类
 			var categoryHtml = "";
 			$(".category-title").each(function(index){
 				var categoryno = $(this).attr("value");
@@ -229,12 +229,12 @@ var newCategoryOrBookMarkFunc = {
 			});
 		});
 		$(".pop-bookmark .confirm-btn").click(function() {
-			// 添加书签
+			// 添加网址
 			doAjaxFunc.doNewBookmark(function($newBookmarkForm,jsonData){
 				// 获取分类ID
 				var bookmarkno = "";
 				var categoryno = $newBookmarkForm.find("#categoryno").val();
-				// 如果分类ID为空，那么需要同时新增一个分类以及一个书签
+				// 如果分类ID为空，那么需要同时新增一个分类以及一个网址
 				if (!categoryno) {
 					bookmarkno = jsonData["bookmarkno"];
 					categoryno = jsonData["categoryno"]; 
@@ -255,10 +255,10 @@ var newCategoryOrBookMarkFunc = {
 				} else {
 					bookmarkno = jsonData;
 				}
-				// 添加成功后，在指定分类下添加新的书签
+				// 添加成功后，在指定分类下添加新的网址
 				var url = $newBookmarkForm.find("#url").val();
 				var name = $newBookmarkForm.find("#bookmarkname").val();
-				// 获取书签模板
+				// 获取网址模板
 				var valuesObj = {};
 				valuesObj.categoryno = categoryno;
 				valuesObj.bookmarkno = bookmarkno;
@@ -416,6 +416,7 @@ var categoryOperateFunc = {
 		this.confirmModify();
 		this.cancelModify();
 		this.deleteCategory();
+		this.unLockCategory();
 	},
 	// 鼠标经过标题时候
 	hoverTitle : function() {
@@ -496,7 +497,7 @@ var categoryOperateFunc = {
 			selfFunc.deleteCategoryNo = $(this).parents(".block").find(".category-title").attr("value");
 			var $urlList = $(this).parents(".block").find(".url-list");
 			if($urlList.find("li").length > 0) {
-				alertUtilsFunc.alert("该分类下还有书签，不可删除！");
+				alertUtilsFunc.alert("该分类下还有网址，不可删除！");
 			} else {
 				$(".popbox-for-confirm").show();
 			}
@@ -512,6 +513,22 @@ var categoryOperateFunc = {
 				initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.DELETE_CATEGORY, selfFunc.deleteCategoryNo);
 				selfFunc.deleteCategoryNo = "";
 			});
+		});
+	},
+	// 解锁分类
+	unLockCategory : function(){
+		$(".content-left-body").on("click", ".lock-url", function() {
+			var _this = $(this);
+			var unlockClass = "unlock";
+			if (_this.hasClass(unlockClass)) {
+				_this.removeClass(unlockClass);
+				_this.next(".unlock-url").remove();
+			} else {
+				_this.addClass(unlockClass);
+				var $unLockTemplate = $(".unlock-category-template").children().clone();
+				_this.after($unLockTemplate);
+				$unLockTemplate.find("input").focus();
+			}
 		});
 	},
 	// 关闭其他正在编辑标题的操作
@@ -534,16 +551,16 @@ var categoryOperateFunc = {
 		$head.html($head.children().val());
 		$target.html("").parent(".block-head").removeClass("modify");
 	},
-	// 插入[删除分类，新增书签]按钮模板
+	// 插入[删除分类，新增网址]按钮模板
 	appendBoxHeadOperateBtn : function($target) {
 		if (!$target.hasClass("modify")) {
 			var operateHtml = '';
-//			operateHtml += '<span title="新增书签" class="addicon"></span>';
+//			operateHtml += '<span title="新增网址" class="addicon"></span>';
 			operateHtml += '<span title="删除分类" class="closeicon"></span>';
 			$target.find(".block-head-func").append(operateHtml);
 		}
 	},
-	// 移除[删除分类，新增书签]按钮
+	// 移除[删除分类，新增网址]按钮
 	removeBoxHeadOperateBtn : function($target) {
 		if (!$target.hasClass("modify")) {
 			$target.find(".block-head-func").html("");
@@ -551,7 +568,7 @@ var categoryOperateFunc = {
 	}
 };
 
-// 操作书签功能
+// 操作网址功能
 var bookmarkOperateFunc = {
 	init : function() {
 		this.hoverBookmark();
@@ -562,7 +579,7 @@ var bookmarkOperateFunc = {
 		this.confirmEditBookmark();
 		this.cancelEditBookmark();
 	},
-	// 鼠标经过书签
+	// 鼠标经过网址
 	hoverBookmark : function() {
 		var selfFunc = this;
 		$(".content").on("mouseenter mouseleave", ".hot-url-list li,.url-list li",function(event) {
@@ -584,7 +601,7 @@ var bookmarkOperateFunc = {
 			}
 		});
 	},
-	// 新增书签
+	// 新增网址
 	addBookmark : function() {
 		var selfFunc = this;
 		$(".content-left-body").on("click", ".addicon", function() {
@@ -600,7 +617,7 @@ var bookmarkOperateFunc = {
 			}
 		});
 	},
-	// 编辑书签
+	// 编辑网址
 	editBookmark : function() {
 		var selfFunc = this;
 		$(".content-left-body").on("click", ".editicon", function() {
@@ -616,7 +633,7 @@ var bookmarkOperateFunc = {
 				var values = {};
 				values.url = $a.attr("href");
 				values.name = $a.text();
-				// 编辑书签的时候，需要重新加载标签以及描述
+				// 编辑网址的时候，需要重新加载标签以及描述
 				$.ajax({
 					type : "post",
 					url : CONTEXT_PATH + "/doGetTagsAndDescByBookmarkNo",
@@ -640,7 +657,7 @@ var bookmarkOperateFunc = {
 			}
 		});
 	},
-	// 删除书签
+	// 删除网址
 	delBookmark : function() {
 		var selfFunc = this;
 		$(".content-left-body").on("click", ".delicon", function() {
@@ -656,7 +673,7 @@ var bookmarkOperateFunc = {
 			}
 		});
 	},
-	// 标记为常用书签
+	// 标记为常用网址
 	setHotBookmark : function() {
 		var selfFunc = this;
 		$(".content-left-body").on("click", ".operatebtn .staricon", function() {
@@ -666,14 +683,14 @@ var bookmarkOperateFunc = {
 			var $hotUrlList = $(".hot-url-list");
 			if ($this.hasClass("light")) {
 				doAjaxFunc.doCancelHotBookmark(bookmarkno, function(){
-					$this.removeClass("light").attr("title", "标记为常用书签");
+					$this.removeClass("light").attr("title", "标记为常用网址");
 					$hotUrlList.find("li[value='"+ bookmarkno +"']").fadeOut(function(){
 						$(this).remove();
 					});
 				});
 			} else {
 				doAjaxFunc.doSetHotBookmark(bookmarkno,function(){
-					$this.addClass("light").attr("title", "从常用书签取消");
+					$this.addClass("light").attr("title", "从常用网址取消");
 					var url = $parentLi.find("a").prop("href");
 					var name = $parentLi.find("a").text();
 					var valuesObj = {};
@@ -688,12 +705,12 @@ var bookmarkOperateFunc = {
 			}
 		});
 	},
-	// 确定书签
+	// 确定网址
 	confirmEditBookmark : function() {
 		selfFunc = this;
 		$(".content-left-body").on("click", ".confirmediticon", function() {
 			var $thisBtn = $(this);
-			// 确认新增书签
+			// 确认新增网址
 			if ($thisBtn.parents(".addbookmark").length > 0) {
 				// 保存数据
 				doAjaxFunc.doAddbookmark(function(newBookmarkNo,categoryno){
@@ -702,13 +719,13 @@ var bookmarkOperateFunc = {
 					var $addbookmarkform = $("#addbookmarkform");
 					var url = $addbookmarkform.find("#url").val();
 					var name = $addbookmarkform.find("#bookmarkname").val();
-					// 获取新增书签的模板
+					// 获取新增网址的模板
 					var valuesObj = {};
 					valuesObj.bookmarkno = newBookmarkNo;
 					valuesObj.bookmarkname = name;
 					valuesObj.url = url;
 					var template = selfFunc.getBookmarkTemplate(valuesObj);
-					// 添加一个新书签
+					// 添加一个新网址
 					var $ul = $addbookmarkform.parents("ul");
 					$ul.prepend(template);
 					$ul.find("li:eq(0)").addClass("save-success").slideDown();
@@ -717,13 +734,13 @@ var bookmarkOperateFunc = {
 					initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.NEW_BOOKMARK, valuesObj);
 				});
 			}
-			// 确认编辑书签
+			// 确认编辑网址
 			else if ($thisBtn.parents(".editbookmark").length > 0) {
 				// 保存数据
 				doAjaxFunc.doEditBookmark(function(){
 					var $editbookmarkform = $("#editbookmarkform");
 					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
-					// 获取要修改的书签，并修改成新的内容
+					// 获取要修改的网址，并修改成新的内容
 					var name = $editbookmarkform.find("#bookmarkname").val();
 					var url = $editbookmarkform.find("#url").val();
 					var $updateli = $editbookmarkform.parents("li").prev(".pointto");
@@ -732,7 +749,7 @@ var bookmarkOperateFunc = {
 					$updateli_a.attr("href",url);
 					// 添加更新成功图标
 					$updateli.addClass("save-success");
-					// 如果更新的书签是常用书签，常用书签也要跟着变化
+					// 如果更新的网址是常用网址，常用网址也要跟着变化
 					var isHotBookmark = $updateli.find(".staricon").hasClass("light");
 					var bookmarkno = $updateli.attr("value");
 					if (isHotBookmark) {
@@ -748,13 +765,13 @@ var bookmarkOperateFunc = {
 					initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.UPDATE_BOOKMARK, valuesObj);
 				});
 			}
-			// 确认删除书签
+			// 确认删除网址
 			else if ($thisBtn.parents(".delbookmark").length > 0) {
 				var $delObj = $thisBtn.parents(".editbookmarktemplate").prev();
 				var bookmarkno = $delObj.attr("value");
 				var isHotBookmark = $delObj.find(".staricon").hasClass("light");
 				flyTool.play($delObj,function(){
-					// 删除后的回调，如果删除的书签是常用书签，那么需要从常用上删除
+					// 删除后的回调，如果删除的网址是常用网址，那么需要从常用上删除
 					if (isHotBookmark){
 						$(".hot-url-list").find("li[value='"+ bookmarkno +"']").fadeOut(function(){
 							$(this).remove();
@@ -775,28 +792,28 @@ var bookmarkOperateFunc = {
 			}
 		});
 	},
-	// 取消书签
+	// 取消网址
 	cancelEditBookmark : function() {
 		selfFunc = this;
 		$(".content-left-body").on("click", ".cancelediticon", function() {
 			selfFunc.closeAllEditBookmarkTemplate();
 		});
 	},
-	// 插入书签操作按钮模板
+	// 插入网址操作按钮模板
 	getUrlOperateBtn : function($li) {
 		var operateHtml = '';
 		if ($li.find(".light").length == 0) {
-			operateHtml += '<span title="标记为常用书签" class="staricon"></span>';
+			operateHtml += '<span title="标记为常用网址" class="staricon"></span>';
 		}
-		operateHtml += '<span title="编辑书签" class="editicon"></span>';
-		operateHtml += '<span title="删除书签" class="delicon"></span>';
+		operateHtml += '<span title="编辑网址" class="editicon"></span>';
+		operateHtml += '<span title="删除网址" class="delicon"></span>';
 		return operateHtml;
 	},
-	// 删除书签操作按钮
+	// 删除网址操作按钮
 	removeUrlOperateBtn : function($li) {
 		$li.find(".operatebtn > span").not(".light").remove();
 	},
-	// 新增书签模板
+	// 新增网址模板
 	appendAddBookmarkTemplate : function($ul) {
 		var operateHtml = this.getAddAndEditBookmarkTemplate("addbookmark");
 		$ul.append(operateHtml);
@@ -804,7 +821,7 @@ var bookmarkOperateFunc = {
 			$(this).find("input[type=text]:eq(0)").focus();
 		});
 	},
-	// 编辑书签模板
+	// 编辑网址模板
 	appendEditBookmarkTemplate : function($li, values) {
 		var operateHtml = this.getAddAndEditBookmarkTemplate("editbookmark",
 				values);
@@ -813,13 +830,13 @@ var bookmarkOperateFunc = {
 			$(this).find("input[type=text]:eq(0)").focus();
 		});
 	},
-	// 删除书签模板
+	// 删除网址模板
 	appendDelBookmarkTemplate : function($li) {
 		var operateHtml = '';
 		operateHtml += '<li class="editbookmarktemplate li-disabled" style="display:none;">';
 		operateHtml += '<div class="delbookmark">';
-		operateHtml += '	<p><span class="delconfirmmsg">您确定删除本书签吗？</span></p>';
-		operateHtml += '	<p><span class="deltip">提示:可以到<font color="#000">回收站</font>找回删除的书签哦!</span></p>';
+		operateHtml += '	<p><span class="delconfirmmsg">您确定删除本网址吗？</span></p>';
+		operateHtml += '	<p><span class="deltip">提示:可以到<font color="#000">回收站</font>找回删除的网址哦!</span></p>';
 		operateHtml += '	<p class="btn">';
 		operateHtml += '		<span class="confirmediticon" title="确定"></span>';
 		operateHtml += '		<span class="cancelediticon" title="取消"></span>';
@@ -829,7 +846,7 @@ var bookmarkOperateFunc = {
 		$li.after(operateHtml);
 		$li.next().slideDown();
 	},
-	// 关闭其他正在编辑的书签模板
+	// 关闭其他正在编辑的网址模板
 	closeAllEditBookmarkTemplate : function() {
 		$(".content-left-body").find(".editbookmarktemplate").slideUp(function() {
 			var $this = $(this);
@@ -837,20 +854,25 @@ var bookmarkOperateFunc = {
 			$this.remove();
 		});
 	},
-	// 新增书签与编辑书签公用模板
+	// 新增网址与编辑网址公用模板
 	getAddAndEditBookmarkTemplate : function(editclass, values) {
 		var url = "", name = "", tags = "", desc = "";
+		var editTitle = "";
 		if (values) {
 			url = values.url ? values.url : "";
 			name = values.name ? values.name : "";
 			tags = values.tags ? values.tags : "";
 			desc = values.desc ? values.desc : "";
+			editTitle = "编辑书签";
+		} else {
+			editTitle = "新增书签";
 		}
 		var operateHtml = '';
 		// addbookmarkform or editbookmarkform
 		operateHtml += '<li class="editbookmarktemplate li-disabled" style="display:none;">';
 		operateHtml += '<form id="' + editclass + 'form">';
 		operateHtml += '<div class="' + editclass + '">';
+		operateHtml += '	<p class="edit-title">' + editTitle + '</p>';
 		operateHtml += '	<p><label>网址</label><input type="text" id="url" name="url" placeholder="例:www.52url.com" value="' + url + '"/></p>';
 		operateHtml += '	<p><label>名称</label><input type="text" id="bookmarkname" name="bookmarkname" placeholder="例:网址收藏" value="' + name + '"/></p>';
 		operateHtml += '	<p><label>标签</label><input type="text" id="tags" name="tags" placeholder="逗号(,)分隔,最多5个" value="' + tags + '"/></p>';
@@ -864,7 +886,7 @@ var bookmarkOperateFunc = {
 		operateHtml += '</li>';
 		return operateHtml;
 	},
-	// 新增书签
+	// 新增网址
 	getBookmarkTemplate : function(values) {
 		var id="",url="",name="",hot="",tags="",isDisplay = false;
 		if (values) {
@@ -884,7 +906,7 @@ var bookmarkOperateFunc = {
 		operateHtml += ' id="h_'+ id +'" value="'+ id +'" title="'+ name +'" class="filter-item '+ tags +'"><a href="' + url + '" target="_blank">' + name + '</a>';
 		operateHtml += '<div class="operatebtn">';
 		if (hot == "1") {
-			operateHtml += '<span title="从常用书签取消" class="staricon light"></span>';
+			operateHtml += '<span title="从常用网址取消" class="staricon light"></span>';
 		}
 		operateHtml += '</div></li>';
 		return operateHtml;
