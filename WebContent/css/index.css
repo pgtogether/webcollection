@@ -33,8 +33,16 @@ body {
 	color: #000000; float: right; padding: 0 4px; line-height: 40px; width: 100px; text-align: center; cursor: pointer;
 }
 
+.header .head-fun-nav ul li a {
+	width: 100%; height: 100%; float: left; color: #000000;
+}
+
 .header .head-fun-nav ul li:hover {
 	color: #fff; float: right; padding: 0 4px; line-height: 40px; width: 100px; text-align: center; background: #313142; cursor: pointer;
+}
+
+.header .head-fun-nav ul li:hover a {
+	color: #ffffff; text-decoration: none;
 }
 
 .content {
@@ -549,7 +557,7 @@ body {
 }
 
 .set_main {
-	float: left; width: 82%;
+	overflow: auto;
 }
 
 .main_hd {
@@ -558,6 +566,10 @@ body {
 
 .main_hd h2 {
 	font-size: 16px; padding: 0 30px; line-height: 75px; font-weight: 400; font-style: normal;
+}
+
+.main_hd h2 a {
+	color: #000;
 }
 
 .main_hd .title_tab {
@@ -602,4 +614,77 @@ body {
 
 .tab_nav a {
 	display: block; text-decoration: none; color: #222; outline: 0; padding: 0 20px;
+}
+
+/*设置：安全中心*/
+.main_bd {
+	padding-bottom: 30px;
+}
+
+.safe_item {
+	padding: 15px 30px; border-bottom: 1px solid #e7e7eb;
+}
+
+.safe_item dl {
+	position: relative;
+}
+
+.safe_item .title {
+	margin-bottom: 5px; font-size: 14px;
+}
+
+.safe_item .opr {
+	float: right;
+}
+
+.safe_item .desc {
+	display: table-cell; vertical-align: top; float: none; width: auto; color: #8d8d8d;
+}
+
+.highlight_box {
+	position: relative; padding: 9px 30px; background-color: #f4f5f9; margin-bottom: 20px; line-height: 1.6;
+}
+
+.highlight_box .desc {
+	color: #8d8d8d; overflow: hidden;
+}
+
+.setpsw-box {
+	padding-top: 40px; width: 500px; margin: 0 auto; height: 400px; margin-top: 50px;
+}
+
+.frm_controls {
+	width: 100%; float: left; padding-bottom: 40px; height: 30px; line-height: 30px;
+}
+
+.frm_controls .input-label {
+	width: 100px; float: left; text-align: center;
+}
+
+.frm_controls .frm_input_box {
+	width: 300px; float: left; height: 100%;
+}
+
+.frm_controls .frm_input_box .frm_input {
+	width: 100%; height: 100%; float: left; text-indent: 10px;
+}
+
+.frm_controls .frm_input_box .frm_msg {
+	width: 100%; float: left;
+}
+
+.frm_controls .frm_submit_box {
+	width: 100px; margin: 0 auto; height: 100%; padding-top: 50px;
+}
+
+.frm_controls .frm_submit_box .frm_submit {
+	width: 100%; height: 100%; text-align: center; float: left; background: #44b549; color: #fff; border-radius: 3px; text-decoration: none;
+}
+
+.frm_controls .frm_submit_box .frm_submit:hover {
+	background: #139619;
+}
+
+.fail {
+	color: red;
 }

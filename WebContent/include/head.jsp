@@ -9,7 +9,7 @@
 		</div>
 		<div class="head-fun-nav">
 			<ul>
-				<li>个性设置</li>
+				<li><a href="${context_path}/setting/home">个性设置</a></li>
 				<li>网址插件</li>
 				<li>淘淘看</li>
 				<li>我的主页</li>

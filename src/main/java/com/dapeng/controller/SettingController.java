@@ -31,9 +31,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("setting/*")
 public class SettingController extends UserSessionController {
 
-    @RequestMapping(value = "index", method = { RequestMethod.GET, RequestMethod.POST })
-    public String index(Model model, HttpSession session) {
-        return "setting";
+    @RequestMapping(value = "home", method = { RequestMethod.GET, RequestMethod.POST })
+    public String home(Model model, HttpSession session) {
+        return "setting/home";
     }
 
+    @RequestMapping(value = "security", method = { RequestMethod.GET, RequestMethod.POST })
+    public String security(Model model, HttpSession session) {
+        return "setting/security";
+    }
+
+    @RequestMapping(value = "security_setcategorypsw", method = { RequestMethod.GET, RequestMethod.POST })
+    public String setcategorypsw(Model model, HttpSession session) {
+        return "setting/setcategorypsw";
+    }
 }
