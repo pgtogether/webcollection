@@ -685,6 +685,11 @@ body {
 	background: #139619;
 }
 
-.fail {
-	color: red;
+/* 表单验证样式 */
+input.error {
+	border: 1px solid red !important; background: #FFEFEF; color: red;
+}
+
+label.error {
+	float: left; width: 100% !important; text-align: left; color: red;
 }

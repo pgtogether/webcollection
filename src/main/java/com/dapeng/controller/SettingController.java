@@ -41,8 +41,13 @@ public class SettingController extends UserSessionController {
         return "setting/security";
     }
 
-    @RequestMapping(value = "security_setcategorypsw", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "security/setcategorypsw", method = { RequestMethod.GET, RequestMethod.POST })
     public String setcategorypsw(Model model, HttpSession session) {
+        return "setting/setcategorypsw";
+    }
+    
+    @RequestMapping(value = "security/doSetcategorypsw", method = { RequestMethod.GET, RequestMethod.POST })
+    public String doSetcategorypsw(Model model, HttpSession session) {
         return "setting/setcategorypsw";
     }
 }

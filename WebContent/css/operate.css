@@ -103,7 +103,7 @@
 }
 
 .addbookmark p,.editbookmark p {
-	width: 100%; float: left; min-height: 25px; height: auto; 
+	width: 100%; float: left; min-height: 25px; height: auto;
 }
 
 .addbookmark p label,.editbookmark p label {
@@ -178,47 +178,51 @@
 	width: 100%; float: left; padding-top: 10px;
 }
 
-.popbox-body div {
+.popbox-body .pop-item {
 	width: 100%; float: left; min-height: 50px; text-align: center;
 }
 
-.popbox-body div label.name {
+.popbox-body .pop-item label.name {
 	width: 15%; float: left; margin-left: 2.5%; margin-right: 2.5%; text-align: center; line-height: 30px; height: 30px;
 }
 
-.popbox-body div label.error {
-	margin-left: 12.5%; text-align: left; height: 20px; line-height: 20px;
+.popbox-body .pop-input {
+	width: 75%; float: left; 
 }
 
-.popbox-body div input {
-	width: 75%; float: left; text-indent: 5px; height: 25px;
+.popbox-body .pop-input label.error {
+	text-align: left; height: 20px; line-height: 20px;
 }
 
-.popbox-body div textarea {
-	width: 75%; max-width: 78%; float: left; text-indent: 5px; line-height: 30px; padding-right: 2px;
+.popbox-body .pop-input input {
+	width: 100%; float: left; text-indent: 5px; height: 25px; line-height: 25px;
 }
 
-.popbox-body div input[type=radio] {
+.popbox-body .pop-input textarea {
+	width: 100%; max-width: 100%; float: left; text-indent: 5px; line-height: 30px; padding-right: 2px;
+}
+
+.popbox-body .pop-input input[type=radio] {
 	width: 20px; height: 30px; margin-right: 3px;
 }
 
-.popbox-body div .permission {
+.popbox-body .pop-input .permission {
 	float: left; height: 30px; text-align: left; margin-right: 10px; line-height: 30px;
 }
 
-.popbox-body div .btn {
+.popbox-body .pop-input .btn {
 	width: 100%;
 }
 
-.popbox-body div.psw {
-	display: none;
+.popbox-body .pop-input.psw {
+	display: none; background: #F9F9F9; line-height: 50px; color: #8C8C8C;
 }
 
-.popbox-body div .btn  a {
+.popbox-body .pop-item .btn  a {
 	display: inline-block; width: 100px; height: 40px; margin: 15px 0px 15px 25px; text-decoration: none; cursor: pointer; border-radius: 5px; font-size: 14px; color: #000; line-height: 40px;
 }
 
-.popbox-body div .btn  a:hover {
+.popbox-body .pop-item .btn  a:hover {
 	display: inline-block; width: 100px; height: 40px; background: #FF8A35; margin: 15px 0px 15px 25px; text-decoration: none; cursor: pointer; color: #fff; -webkit-transition: color .2s linear, background-color .2s linear; transition: color .2s linear, background-color .2s linear;
 }
 
@@ -359,14 +363,4 @@
 /* 空白模板 */
 .blank-category {
 	display: none;
-}
-
-/* 表单验证样式 */
-input.error {
-	border: 1px solid red !important; background: #FFEFEF; color: red;
-}
-
-label.error {
-	/* 	width: 15px !important; height: 15px !important; float: left; background: red; position: absolute; left: 200; border-radius: 10px; top: 2px; overflow: hidden; */
-	float: left; width: 100% !important; text-align: left; text-indent: 30px; color: red;
 }
