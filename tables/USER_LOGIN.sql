@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50627
 File Encoding         : 65001
 
-Date: 2015-11-11 23:25:18
+Date: 2016-02-14 21:49:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,6 +21,8 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `user_login`;
 CREATE TABLE `user_login` (
   `userid` varchar(20) NOT NULL,
+  `loginname` varchar(255) DEFAULT NULL COMMENT '登录名',
+  `logpsw` varchar(64) DEFAULT NULL COMMENT '登录密码MD5加密',
   `logintime` datetime DEFAULT NULL,
   `loginip` varchar(20) DEFAULT NULL,
   `loginerrorcnt` int(11) DEFAULT NULL,
