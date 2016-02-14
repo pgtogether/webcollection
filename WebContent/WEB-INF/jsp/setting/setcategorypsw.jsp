@@ -30,7 +30,7 @@
 						2.设置了分类密码，您可以创建保密分类，分类中可以收藏私密网址。
 					</p>
 				</div>
-				<form id="categorypswform" action="" method="post">
+				<form id="setcategorypswform" action="" method="post">
 				<div class="setpsw-box">
 					<div class="frm_controls">
 						<label class="input-label">分类密码</label>
@@ -61,12 +61,7 @@
 	<script src="${context_path}/js/plugin/jquery.validate-1.13.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			$.validator.setDefaults({
-// 				errorPlacement: function(error, element) {  
-// 				    error.appendTo(element.parent());  
-// 				}
-			});
-			var $form = $("#categorypswform");
+			var $form = $("#setcategorypswform");
 			$form.validate({
 				rules : {
 					categorypsw : {
@@ -96,14 +91,10 @@
 				if (!$form.valid()) {
 					return false;
 				}
-				
 				$.ajax({
 					type : "post",
 					url : CONTEXT_PATH + "/security/doSetcategorypsw",
-					data : {
-						parentcategoryname : parentCategoryName,
-						parentcategoryno : parentCategoryNo
-					},
+					data : $form.serialize(),
 					success : function(json) {
 						if (json.result == "OK") {
 							successCallBack(json.data,parentCategoryName);

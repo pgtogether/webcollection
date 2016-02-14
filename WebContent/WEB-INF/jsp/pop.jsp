@@ -55,17 +55,21 @@
 	<div class="popbox-body">
 		<div class="pop-item">
 			<label class="name">名称</label>
-			<input type="hidden" id="categoryid" name="categoryid" value="" />
-			<input type="text" id="categoryname" name="categoryname" placeholder="网址所属分类" />
+			<div class="pop-input">
+				<input type="hidden" id="categoryid" name="categoryid" value="" />
+				<input type="text" id="categoryname" name="categoryname" placeholder="网址所属分类" />
+			</div>
 		</div>
 		<div class="pop-item">
 			<label class="name">权限</label> 
-			<span class="permission">
-				<input id="normal-permission" type="radio" name="categorypermission" checked="checked" value="1">普通分类
-			</span> 
-			<span class="permission">
-				<input id="psw-permission" type="radio" name="categorypermission" value="2">加密分类
-			</span>
+			<div class="pop-input">
+				<span class="permission">
+					<input id="normal-permission" type="radio" name="categorypermission" checked="checked" value="1">普通分类
+				</span> 
+				<span class="permission">
+					<input id="psw-permission" type="radio" name="categorypermission" value="2">加密分类
+				</span>
+			</div>
 		</div>
 		<div class="pop-item psw">
 			创建加密分类，需要输入密码才能访问。
@@ -82,11 +86,13 @@
 	<form id="newParentCategoryForm">
 	<div class="popbox-head">添加导航</div>
 	<div class="popbox-body">
-		<div>
+		<div class="pop-item">
 			<label class="name">名称</label>
-			<input type="text" id="parentcategoryname" name="parentcategoryname" placeholder="导航名称" />
+			<div class="pop-input">
+				<input type="text" id="parentcategoryname" name="parentcategoryname" placeholder="导航名称" />
+			</div>
 		</div>
-		<div>
+		<div class="pop-item">
 			<span class="btn"> <a class="confirm-btn">确定</a><a
 				class="cancel-btn">取消</a>
 			</span>

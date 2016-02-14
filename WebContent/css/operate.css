@@ -187,7 +187,7 @@
 }
 
 .popbox-body .pop-input {
-	width: 75%; float: left; 
+	width: 75%; float: left;
 }
 
 .popbox-body .pop-input label.error {
@@ -214,7 +214,7 @@
 	width: 100%;
 }
 
-.popbox-body .pop-input.psw {
+.popbox-body .pop-item.psw {
 	display: none; background: #F9F9F9; line-height: 50px; color: #8C8C8C;
 }
 
@@ -288,7 +288,7 @@
 }
 
 .popbox-tip .tipimg img {
-	width: 50px;
+	width: 50px; margin: 0 auto; display: block;
 }
 
 .popbox-tip .tipmsg {
@@ -300,18 +300,15 @@
 }
 
 .popbox-tip .tipbtn {
-	width: 100%; float: left;
+	width: 100%; float: left; text-align: center;
 }
 
-.popbox-tip div .btn a {
-	margin: 5px 0px 10px 0px; width: 70px; height: 30px; line-height: 30px; color: #fff; background: #3885D8;
+.popbox-tip .tipbtn a {
+	margin: 5px 0px 10px 0px; width: 70px; height: 30px; line-height: 30px; color: #fff; background: #3885D8; display: inline-block; 
+	border-radius: 4px; text-decoration: none; cursor: pointer;
 }
 
-.popbox-tip div .btn a:hover {
-	margin: 5px 0px 10px 0px; width: 70px; height: 30px; line-height: 30px; color: #fff;
-}
-
-.popbox-tip div .btn .tip-cancel-btn {
+.popbox-tip .tipbtn .tip-cancel-btn {
 	background: #A0A0A0 !important; margin-left: 10px !important;
 }
 

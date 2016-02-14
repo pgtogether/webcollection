@@ -582,7 +582,7 @@ var bookmarkOperateFunc = {
 	// 鼠标经过网址
 	hoverBookmark : function() {
 		var selfFunc = this;
-		$(".content").on("mouseenter mouseleave", ".hot-url-list li,.url-list li",function(event) {
+		$(".content").on("mouseenter mouseleave", ".url-list li",function(event) {
 			var $li = $(this);
 			if (event.type == "mouseenter") {
 				var color = $li.parent().parent().siblings(
@@ -593,7 +593,7 @@ var bookmarkOperateFunc = {
 				// 18为图标宽度
 				var width = $("<div>"+urlOperateBtnTemplate+"</div>").find("span:not(.staricon)").length * 18;
 				var bookmarkNameWith = $li.find("a").width();
-				$li.find("a").css("width",bookmarkNameWith-width);
+				$li.find("a").css("max-width",bookmarkNameWith-width);
 				$li.find(".operatebtn").append(urlOperateBtnTemplate);
 			} else if (event.type == "mouseleave") {
 				$li.attr("style", "").find("a").attr("style", "");
@@ -836,7 +836,7 @@ var bookmarkOperateFunc = {
 		operateHtml += '<li class="editbookmarktemplate li-disabled" style="display:none;">';
 		operateHtml += '<div class="delbookmark">';
 		operateHtml += '	<p><span class="delconfirmmsg">您确定删除本网址吗？</span></p>';
-		operateHtml += '	<p><span class="deltip">提示:可以到<font color="#000">回收站</font>找回删除的网址哦!</span></p>';
+		operateHtml += '	<p><span class="deltip">提示:删除后可以到<font color="#000">回收小站</font>找回哦!</span></p>';
 		operateHtml += '	<p class="btn">';
 		operateHtml += '		<span class="confirmediticon" title="确定"></span>';
 		operateHtml += '		<span class="cancelediticon" title="取消"></span>';
