@@ -25,7 +25,7 @@
                     <KeyFrame.Operations>
                         <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
                             <Add.Item>
-                                <ContainerBox Thickness="0" Id="32ee0d06-1071-4cdf-a34b-f660eca68795" Panel.Bounds="996,395,274{5,2147483647},1180{5,2147483647}">
+                                <ContainerBox Thickness="0" Id="32ee0d06-1071-4cdf-a34b-f660eca68795" Panel.Bounds="998,370,274{5,2147483647},1180{5,2147483647}">
                                     <ContainerBox.Content>
                                         <Container ClipToContainer="True" Id="e50671dc-5892-459d-8937-e408b392c0e5">
                                             <Container.Children>
