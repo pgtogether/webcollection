@@ -1,0 +1,37 @@
+﻿<?Infragistics.Models format="xaml" version="3"?>
+<ScreenPart xmlns="http://prototypes.infragistics.com/"
+                                                               xmlns:d="http://prototypes.infragistics.com/views/design"
+                                                               Id="4c6d9360-90e3-4674-b15f-d8e97da5e297" d:Design.ShowGuides="False">
+    <ScreenPart.Content>
+        <BorderedContent Width="100" Height="48" Background="#00FFFFFF" Id="89d3aaf3-13d9-4d37-8136-d0b614fb8aa5">
+            <BorderedContent.Layers>
+                <Layer Id="fa7797ef-3830-40ce-b972-cda4e333fd99" Panel.Layout="Stretch" />
+                <AnnotationsLayer Id="914fd0d4-f846-48a4-850f-e47467a26ee1" Panel.Layout="Stretch" />
+            </BorderedContent.Layers>
+            <BorderedContent.Viewbox>
+                <Viewbox Id="e8239aa2-5ee7-4bcd-9737-426657598886" />
+            </BorderedContent.Viewbox>
+            <BorderedContent.GuidesInfo>
+                <GuidesInfo Id="77d9fc99-cdfa-481c-9649-67299e1b3b6a" />
+            </BorderedContent.GuidesInfo>
+        </BorderedContent>
+    </ScreenPart.Content>
+    <ScreenPart.Device>
+        <DeviceInfo Id="none" Orientation="None" />
+    </ScreenPart.Device>
+    <ScreenPart.Scenes>
+        <Scene Title="Initial state" Created="02/18/2016 06:41:13" Id="6924add3-4969-47b5-a1a0-03b06aa798e2">
+            <Scene.KeyFrames>
+                <KeyFrame Id="f1dac1c4-4303-480e-90ab-4b372df3f905">
+                    <KeyFrame.Operations>
+                        <Add Property="Panel.Children" Target="fa7797ef-3830-40ce-b972-cda4e333fd99">
+                            <Add.Item>
+                                <Rectangle Id="cea66dbb-1c62-450c-bdfb-3794c356f732" Panel.Bounds="0,0,100{5,2147483647},48{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                    </KeyFrame.Operations>
+                </KeyFrame>
+            </Scene.KeyFrames>
+        </Scene>
+    </ScreenPart.Scenes>
+</ScreenPart>

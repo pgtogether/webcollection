@@ -1,0 +1,123 @@
+﻿<?Infragistics.Models format="xaml" version="3"?>
+<ScreenPart xmlns="http://prototypes.infragistics.com/"
+                                                               xmlns:d="http://prototypes.infragistics.com/views/design"
+                                                               Id="8f15f4d3-1789-4f83-9ca4-baa56e49ab2c" d:Design.ShowGuides="False">
+    <ScreenPart.Content>
+        <BorderedContent BorderThickness="1" BorderColor="#FFE2E2E2" Width="274" Height="249" Id="f1d3bd3d-bd4a-432a-b72f-b496381afff0">
+            <BorderedContent.Layers>
+                <Layer Id="660acc99-b986-4e7e-80c7-bc375ee0f8f1" Panel.Layout="Stretch" />
+                <AnnotationsLayer Id="a9855345-a3f3-4af8-9b88-7d61b3d46dd9" Panel.Layout="Stretch" />
+            </BorderedContent.Layers>
+            <BorderedContent.Viewbox>
+                <Viewbox Id="f2c7d188-7ab6-4258-b41a-b5c984b43160" />
+            </BorderedContent.Viewbox>
+            <BorderedContent.GuidesInfo>
+                <GuidesInfo Id="bddf9d12-307d-4248-b79e-80c2465c9cbc" />
+            </BorderedContent.GuidesInfo>
+        </BorderedContent>
+    </ScreenPart.Content>
+    <ScreenPart.Device>
+        <DeviceInfo Id="none" Orientation="None" />
+    </ScreenPart.Device>
+    <ScreenPart.Scenes>
+        <Scene Title="Initial state" Created="02/16/2016 13:53:20" Id="9f43d302-9406-44e5-8306-d11c4d0ad2eb">
+            <Scene.KeyFrames>
+                <KeyFrame Id="b1cdc04e-9c98-4bd1-ac0e-8da509061f75">
+                    <KeyFrame.Operations>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Image SourcePath="assets/无标题.jpg" Id="60099ac3-3236-4c49-926d-773791d77760" Panel.Bounds="10,42,56{5,2147483647},56{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Image SourcePath="assets/BIGBANG_Lollipop Pt.2_4.jpg" Id="712c2bbf-ab1e-4ab7-9251-891d988e0bf8" Panel.Bounds="10,101,56{5,2147483647},56{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Image SourcePath="assets/BIGBANG_할렐루야 - 아이리스 Part.3_4.jpg" Id="9dd3b59d-e943-41f2-8d87-d92139941703" Panel.Bounds="10,161,56{5,2147483647},56{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Image SourcePath="assets/7妹_国际范儿_4.jpg" Id="a9fd008b-b1b3-43c7-a394-c7f4a564d946" Panel.Bounds="74,42,56{5,2147483647},56{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Image SourcePath="assets/BIGBANG (빅뱅)_MADE SERIES 《M》_4.jpg" Id="103be2cc-74d5-4d8e-abce-83371c4b8ed8" Panel.Bounds="74,101,56{5,2147483647},56{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Image SourcePath="assets/BIGBANG_BIGBANG EARLY BEST -Korea Edition-_4.jpg" Id="3e15c79d-267e-49ea-8414-13e3232f57dd" Panel.Bounds="74,161,56{5,2147483647},56{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Image SourcePath="assets/A-Lin_寂寞不痛_4.jpg" Id="22fe1ce8-e63c-4137-92fa-4fe51b95de89" Panel.Bounds="140,42,56{5,2147483647},56{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Image SourcePath="assets/BIGBANG_1st Single _ BIGBANG_4.jpg" Id="17f7be42-c962-4553-af89-06bd34adfa20" Panel.Bounds="140,101,56{5,2147483647},56{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Image SourcePath="assets/BIGBANG_So Fresh, So Cool_4.jpg" Id="f8ef1038-11d9-4d1c-bc70-e231a4cb6589" Panel.Bounds="140,161,56{5,2147483647},56{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Image SourcePath="assets/A-Lin_天生歌姬_4.jpg" Id="cb733b12-5b06-4919-9664-7f78712277b9" Panel.Bounds="205,42,56{5,2147483647},56{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Image SourcePath="assets/A-Lin_以前, 以后_4.jpg" Id="4a64abd7-2ed2-4ce0-9b92-f2de3e4070c8" Panel.Bounds="205,101,56{5,2147483647},56{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Image SourcePath="assets/BIGBANG_3rd Single _ BIGBANG 03_4.jpg" Id="6c27742c-54ff-490c-b587-467c51a53b51" Panel.Bounds="205,161,56{5,2147483647},56{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Line Thickness="2" Color="#FF3BAF4A" Background="#00FFFFFF" Id="6f6ef94a-11ca-4732-a300-d846c9b3d7b4" Panel.Bounds="0,33,273{1,2147483647},3{1,2147483647}">
+                                    <Line.StartPoint>
+                                        <Point X="6" Id="b7b182cd-0b52-4e75-8976-c6d19d03bc94" />
+                                    </Line.StartPoint>
+                                    <Line.Segments>
+                                        <Segment Id="75d70f98-b9f7-4a68-91dd-4fa0b0995982">
+                                            <Segment.EndPoint>
+                                                <Point X="279" Id="3e79486c-5d8b-42b8-8de2-14ce550efca8" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Line.Segments>
+                                </Line>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Label RichText="&lt;Run FontSize=&quot;14&quot; FontWeight=&quot;Bold&quot; &gt;关注&lt;/Run&gt;" FontFamily="Arial" Id="7b2acc4e-e4b9-4f0c-bfbd-a5d8a5ec35d0" Panel.Bounds="3,9,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Link Text="查看所有关注" FontFamily="Arial" FontStyle="Normal|Underline" Id="1a45e242-9d50-46b8-b724-9a415e7f9949" Panel.Bounds="179,227,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="660acc99-b986-4e7e-80c7-bc375ee0f8f1">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFC6C6C6&quot; &gt;已关注100人&lt;/Run&gt;" FontFamily="Arial" Id="20531c89-f225-4281-b989-d9abd66d1ea9" Panel.Bounds="10,227,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                    </KeyFrame.Operations>
+                </KeyFrame>
+            </Scene.KeyFrames>
+        </Scene>
+    </ScreenPart.Scenes>
+</ScreenPart>

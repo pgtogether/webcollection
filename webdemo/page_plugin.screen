@@ -37,7 +37,7 @@
                                                                     <ContainerBox.Content>
                                                                         <Container ClipToContainer="True" Id="a1b5a364-23bc-42c5-8361-2aca4f2891ff">
                                                                             <Container.Children>
-                                                                                <Image SourcePath="assets/Albumdefault.png" Id="624cf531-a1aa-425a-a7b9-eed951835aa5" Panel.Bounds="11,27,34{5,2147483647},34{5,2147483647}" />
+                                                                                <Image SourcePath="assets/Astrid Suryanto_Armada Lounge_ The Best Downtempo Songs Vol. 2_4.jpg" Id="624cf531-a1aa-425a-a7b9-eed951835aa5" Panel.Bounds="11,27,34{5,2147483647},34{5,2147483647}" />
                                                                                 <Label RichText="&lt;Run FontSize=&quot;16&quot; &gt;京东(JD.COM)-综合网购首选&#xD;&#xA;&lt;/Run&gt;&lt;Run FontSize=&quot;16&quot; &gt;正品低价、品质保障、配送及时、轻松购物！&lt;/Run&gt;" FontFamily="Arial" Id="a83148fb-93e9-44e3-96c4-38b838d2cdeb" Panel.Bounds="58,24,5*{5,2147483647},5*{5,2147483647}" />
                                                                                 <Line Thickness="1" RotationAngle="-0.440728072761019" Color="#FFE2E2E2" Background="#00FFFFFF" Id="30f538fe-9d10-4ada-b6b9-6b27176804b1" Panel.Bounds="0,65,390{1,2147483647},3{1,2147483647}">
                                                                                     <Line.StartPoint>

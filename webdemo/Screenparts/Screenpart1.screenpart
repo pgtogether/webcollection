@@ -1,0 +1,118 @@
+﻿<?Infragistics.Models format="xaml" version="3"?>
+<ScreenPart xmlns="http://prototypes.infragistics.com/"
+                                                               xmlns:d="http://prototypes.infragistics.com/views/design"
+                                                               Id="831c2726-2d84-4e6d-8c11-c0caab3783f1" d:Design.ShowGuides="False">
+    <ScreenPart.Content>
+        <BorderedContent BorderThickness="1" BorderColor="#FFE2E2E2" Width="972" Height="42" Id="2a3f05b6-3bca-46e9-abcd-cb1e8677e861">
+            <BorderedContent.Layers>
+                <Layer Id="46327921-c6ca-4d71-b87c-64fffed0bae8" Panel.Layout="Stretch" />
+                <AnnotationsLayer Id="d7999a29-82fb-4f3f-959f-02a4d987c43a" Panel.Layout="Stretch" />
+            </BorderedContent.Layers>
+            <BorderedContent.Viewbox>
+                <Viewbox Id="c973ceba-a993-4b97-9fef-75e1d609ddd8" />
+            </BorderedContent.Viewbox>
+            <BorderedContent.GuidesInfo>
+                <GuidesInfo Id="ad704f2c-1d38-4d7c-9d1a-8a868bcb5d5a" />
+            </BorderedContent.GuidesInfo>
+        </BorderedContent>
+    </ScreenPart.Content>
+    <ScreenPart.Device>
+        <DeviceInfo Id="none" Orientation="None" />
+    </ScreenPart.Device>
+    <ScreenPart.Scenes>
+        <Scene Title="Initial state" Created="02/16/2016 14:01:04" Id="1570cc86-a981-4b39-9a5e-9439e2945013">
+            <Scene.KeyFrames>
+                <KeyFrame Id="751637f2-09e8-42b1-a49f-3357a32a72e5">
+                    <KeyFrame.Operations>
+                        <Add Property="Panel.Children" Target="46327921-c6ca-4d71-b87c-64fffed0bae8">
+                            <Add.Item>
+                                <ContainerBox Color="#FFE2E2E2" Id="eb9701f4-d0a4-4878-a451-18fffdecbc68" Panel.Bounds="-1,-1,120{5,2147483647},42{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="810a391f-9ed8-4d1e-b69e-645f44897944">
+                                            <Container.Children>
+                                                <Label RichText="&lt;Run FontSize=&quot;16&quot; FontWeight=&quot;Bold&quot; &gt;书签&lt;/Run&gt;" Align="Center" Foreground="#FF000000" FontFamily="Arial" Id="c2904fa4-db8c-4740-9a40-4efd0c1ef017" Panel.Bounds="1,12,118{5,2147483647},19*{5,2147483647}" />
+                                            </Container.Children>
+                                        </Container>
+                                    </ContainerBox.Content>
+                                    <ContainerBox.Click>
+                                        <CommandNavigate Screen="/page_blank.screen" Created="02/16/2016 14:01:25" Id="bdefe27f-07dc-488e-952d-a2be32e68bf9">
+                                            <CommandNavigate.Transition>
+                                                <NavigateTransition Duration="0" />
+                                            </CommandNavigate.Transition>
+                                        </CommandNavigate>
+                                    </ContainerBox.Click>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="46327921-c6ca-4d71-b87c-64fffed0bae8">
+                            <Add.Item>
+                                <ContainerBox Color="#FFE2E2E2" Background="#FF5FB5CC" Id="479565da-bb08-4c87-b0b9-87769588a678" Panel.Bounds="119,-1,120{5,2147483647},42{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="e1ea7032-c7f9-4d8d-98e3-f641623c330e">
+                                            <Container.Children>
+                                                <Label RichText="&lt;Run FontSize=&quot;16&quot; &gt;专题&lt;/Run&gt;" Align="Center" Foreground="#FFFFFFFF" FontFamily="Arial" Id="b8d9eeec-9d2f-42d2-8119-e54e2c69d2a4" Panel.Bounds="1,12,118{5,2147483647},19*{5,2147483647}" />
+                                            </Container.Children>
+                                        </Container>
+                                    </ContainerBox.Content>
+                                    <ContainerBox.Click>
+                                        <CommandNavigate Screen="/page2.screen" Created="02/16/2016 14:01:35" Id="4f766082-a7f6-49b3-9ca7-32f4adc7ff46">
+                                            <CommandNavigate.Transition>
+                                                <NavigateTransition Duration="0" />
+                                            </CommandNavigate.Transition>
+                                        </CommandNavigate>
+                                    </ContainerBox.Click>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="46327921-c6ca-4d71-b87c-64fffed0bae8">
+                            <Add.Item>
+                                <ContainerBox Color="#FFE2E2E2" Id="1cd53471-8fb6-424c-9cef-7310309959bb" Panel.Bounds="238,-1,120{5,2147483647},42{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="22b15d66-c379-456c-a57b-d12274ae6e93">
+                                            <Container.Children>
+                                                <Label RichText="&lt;Run FontSize=&quot;16&quot; &gt;喜爱&lt;/Run&gt;" Align="Center" FontFamily="Arial" Id="c803e407-e7d7-4da3-bfae-1d4b7826bafd" Panel.Bounds="1,12,118{5,2147483647},19*{5,2147483647}" />
+                                            </Container.Children>
+                                        </Container>
+                                    </ContainerBox.Content>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="46327921-c6ca-4d71-b87c-64fffed0bae8">
+                            <Add.Item>
+                                <ContainerBox Color="#FFE2E2E2" Id="80a535ce-c082-4978-b689-5cf35cd85a7b" Panel.Bounds="358,-1,120{5,2147483647},42{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="e0dc79b3-5da1-4b73-a748-21fd0502f5b8">
+                                            <Container.Children>
+                                                <Label RichText="&lt;Run FontSize=&quot;16&quot; &gt;关注(100)&lt;/Run&gt;" Align="Center" FontFamily="Arial" Id="bed83fe8-95a9-47b0-898a-da1477fc15f8" Panel.Bounds="1,12,118{5,2147483647},19*{5,2147483647}" />
+                                            </Container.Children>
+                                        </Container>
+                                    </ContainerBox.Content>
+                                    <ContainerBox.Click>
+                                        <CommandNavigate Screen="/page3.screen" Created="02/16/2016 14:01:45" Id="e614c599-5c93-4406-9254-fa01d54e3ad2">
+                                            <CommandNavigate.Transition>
+                                                <NavigateTransition Duration="0" />
+                                            </CommandNavigate.Transition>
+                                        </CommandNavigate>
+                                    </ContainerBox.Click>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="46327921-c6ca-4d71-b87c-64fffed0bae8">
+                            <Add.Item>
+                                <ContainerBox Color="#FFE2E2E2" Id="8583b229-2afc-48af-a395-28ae575125c3" Panel.Bounds="478,-1,120{5,2147483647},42{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="a3e97bbe-a81e-4663-8d5c-6304550210c7">
+                                            <Container.Children>
+                                                <Label RichText="&lt;Run FontSize=&quot;16&quot; &gt;粉丝(50)&lt;/Run&gt;" Align="Center" FontFamily="Arial" Id="3aface1c-2ec7-4e8c-83d1-32e4e5d1e5b8" Panel.Bounds="1,12,118{5,2147483647},19*{5,2147483647}" />
+                                            </Container.Children>
+                                        </Container>
+                                    </ContainerBox.Content>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                    </KeyFrame.Operations>
+                </KeyFrame>
+            </Scene.KeyFrames>
+        </Scene>
+    </ScreenPart.Scenes>
+</ScreenPart>

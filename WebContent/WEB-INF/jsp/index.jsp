@@ -37,6 +37,15 @@
 				</div>
 			</div>
 			<div class="adv-show">占位</div>
+			<div class="func-navs-bar">
+				<div class="func-navs">
+					<div class="nav-item selected">书签</div>
+					<div class="nav-item">专题</div>
+					<div class="nav-item">喜爱</div>
+					<div class="nav-item">关注</div>
+					<div class="nav-item">粉丝</div>
+				</div>
+			</div>
 			<div class="category-tabs">
 				<c:choose>
 					<c:when test="${not empty parentCategoryList}">
@@ -60,27 +69,311 @@
 			</div>
 			<!-- 网址主体 -->
 			<div class="content-left-body">
-				<c:choose>
-					<c:when test="${not empty parentCategoryList}">
-						<c:forEach items="${parentCategoryList}" var="parentcategoryname" varStatus="index">
-							<c:if test="${index.first}">
-								<div class="content-item">
-							</c:if>	
-							<c:if test="${!index.first}">
-								<div class="content-item display-none">
-							</c:if>
-								<div class="wrap-box" value="0">
-									<div class="block block-disabled add-block">
-										<span class="add-block-btn categorybtn" title="添加分类">+</span>
-									</div>
+				<div class="subject-item">
+					<div class="subject-box ui-sortable">
+						<div class="subject">
+							<div class="item">
+								<div class="img">
+									<img src="${context_path}/img/demoimg.jpg"  />
 								</div>
-								<div class="wrap-box" value="1"></div>
-								<div class="wrap-box" value="2"></div>
-								<div class="wrap-box" value="3"></div>
 							</div>
-						</c:forEach>
-					</c:when>
-				</c:choose>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">丈夫装窃听器监听妻子和情夫车震 法院:不违法</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">今日Apps：潮汐 置身万物平和 让你保持专注</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">安徽男子因赡养纠纷砍死母亲弟媳 遭警方击伤跳楼</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">国产、欧美等手机盘点 从MWC看全球智能手机市场兴衰</a>
+								</div>
+							</div>
+						</div>
+						<div class="subject">
+							<div class="item">
+								<div class="img">
+									<img src="${context_path}/img/demoimg.jpg"  />
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+						</div>
+						<div class="subject">
+							<div class="item">
+								<div class="img">
+									<img src="${context_path}/img/demoimg.jpg"  />
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+						<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="subject-box ui-sortable">
+						<div class="subject">
+							<div class="item">
+								<div class="img">
+									<img src="${context_path}/img/demoimg.jpg"/>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+						</div>
+						<div class="subject">
+							<div class="item">
+								<div class="img">
+									<img src="${context_path}/img/demoimg.jpg"  />
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+						</div>
+						<div class="subject">
+							<div class="item">
+								<div class="img">
+									<img src="${context_path}/img/demoimg.jpg"  />
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+						<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="subject-box ui-sortable">
+						<div class="subject">
+							<div class="item">
+								<div class="img">
+									<img src="${context_path}/img/demoimg.jpg"  />
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+						<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+						</div>
+						<div class="subject">
+							<div class="item">
+								<div class="img">
+									<img src="${context_path}/img/demoimg.jpg"  />
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+						<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+						</div>
+						<div class="subject">
+							<div class="item">
+								<div class="img">
+									<img src="${context_path}/img/demoimg.jpg"  />
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+						<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+							<div class="item">
+								<div class="con">
+									<i class="dot"></i>
+									<a href="###" class="title">对新型城镇化建设作指示  主持中央深改领导小组会议  国平  这三年</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="content-right">

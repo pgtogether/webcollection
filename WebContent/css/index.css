@@ -77,6 +77,26 @@ body {
 	width: 100%; margin-top: 10px;
 }
 
+.func-navs-bar {
+	width: 100%; height: 40px; float: left; margin-bottom: 20px; border-bottom: 1px solid #BFBFBF;
+}
+
+.func-navs-bar .func-navs {
+	margin-left: 1px;
+}
+
+.func-navs-bar .func-navs .nav-item {
+	width: 100px; height: 40px; float: left; line-height: 40px; border-right: 1px solid #fff; text-align: center; cursor: pointer; background: #F7F7F7;
+}
+
+.func-navs-bar .func-navs .nav-item:hover {
+	border-bottom: 2px solid #046BD8; color: #046BD8;
+}
+
+.func-navs-bar .func-navs .nav-item.selected {
+	border-bottom: 2px solid #046BD8; color: #046BD8; font-weight: bold;
+}
+
 .content-right {
 	width: 245px; min-height: 768px; float: right; margin-right: 6px; padding-top: 20px;
 }
@@ -106,7 +126,7 @@ body {
 }
 
 .block .block-head .block-head-title .updatetitle {
-	outline: none; border: 0; height: 30px;
+	outline: none; border: 0; height: 30px; float: left; text-indent: 10px;
 }
 
 .block .block-head .block-head-func {
@@ -169,6 +189,40 @@ body {
 	opacity: 1;
 }
 
+/*专题式样 start*/
+.subject-item {
+	padding: 0 10px;
+}
+
+.subject-item .subject-box {
+	width: 33.33%; float: left;
+}
+
+.subject-item .subject-box .subject {
+	width: 97%; margin: 0 auto; margin-bottom: 10px; border: 1px solid #EDEFF0; overflow: hidden;
+}
+
+.subject-item .subject-box .subject .item {
+	width: 100%; float: left; border-bottom: 1px solid #EDEFF0;
+}
+
+.subject-item .subject-box .subject .item .img img{
+	width: 100%; height: 120px;
+}
+
+.subject-item .subject-box .subject .item .con {
+	height: 30px; line-height: 30px; position: relative; padding-left: 14px;
+}
+
+.subject-item .subject-box .subject .item .con .dot {
+	position: absolute; top: 14px; left: 6px; width: 3px; height: 3px; background: #ABABAB;
+}
+
+.subject-item .subject-box .subject .item .con .title {
+	width: 100%; float: left; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+
+/*专题式样 end*/
 .footer {
 	bottom: 0; width: 100%; height: 150px; background: #EDEFF0;
 }
@@ -196,7 +250,7 @@ body {
 
 /*大分类Banner*/
 .category-tabs {
-	width: 100%; height: 30px; line-height: 30px; float: left; margin-bottom: 10px; background: #F7F7F7; border: 1px solid #EDEFF0; border-bottom-color: #00A726;
+	width: 100%; height: 30px; line-height: 30px; float: left; margin-bottom: 10px; background: #F7F7F7; border-bottom: 1px solid #EDEFF0; border-bottom-color: #00A726;
 }
 
 .category-tabs .tab-item {
@@ -220,7 +274,7 @@ body {
 }
 
 .category-tabs .tab-func .btn {
-	width: 100%; height: 100%; float: left; text-decoration: none; cursor: pointer; position: relative; border: 1px solid #EAEAEA; border-top: none;
+	width: 100%; height: 100%; float: left; text-decoration: none; cursor: pointer; position: relative; border-top: none;
 }
 
 .category-tabs .tab-func .btn:hover {
@@ -228,19 +282,19 @@ body {
 }
 
 .category-tabs .tab-func .menu {
-	background: #fff url(../img/icon/menu.png) no-repeat center; border-bottom: 1px solid #00A726; cursor: default;
+	background: #F7F7F7 url(../img/icon/menu.png) no-repeat center; cursor: default; border-bottom: 1px solid #fff;
 }
 
 .category-tabs .tab-func .add {
-	background: #fff url(../img/icon/add.png) no-repeat center;
+	background: #F7F7F7 url(../img/icon/add.png) no-repeat center; border-bottom: 1px solid #fff;
 }
 
 .category-tabs .tab-func .upd {
-	background: #fff url(../img/icon/edit.png) no-repeat center;
+	background: #F7F7F7 url(../img/icon/edit.png) no-repeat center; border-bottom: 1px solid #fff;
 }
 
 .category-tabs .tab-func .del {
-	background: #fff url(../img/icon/del.png) no-repeat center;
+	background: #F7F7F7 url(../img/icon/del.png) no-repeat center;
 }
 
 /* 侧边栏式样  */
@@ -330,7 +384,7 @@ body {
 }
 
 .content-right .newbtns .desc {
-	width: 100%; float: left; height: 20px; background: #EAEAEA; line-height: 20px; color: #000000;
+	width: 100%; float: left; height: 20px; background: #EAEAEA; line-height: 20px;
 }
 
 /* 标签样式 */
