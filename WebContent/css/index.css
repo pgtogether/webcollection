@@ -199,19 +199,31 @@ body {
 }
 
 .subject-item .subject-box .subject {
-	width: 97%; margin: 0 auto; margin-bottom: 10px; border: 1px solid #EDEFF0; overflow: hidden;
+	width: 97%; margin: 0 auto; margin-bottom: 10px; display: inline-block;
+}
+
+.subject-item .subject-box .subject:hover {
+	box-shadow: 2px 2px 8px #C1C1C1, -2px -2px 8px #C1C1C1;
 }
 
 .subject-item .subject-box .subject .item {
-	width: 100%; float: left; border-bottom: 1px solid #EDEFF0;
+	width: 100%; float: left; border-bottom: 1px solid #EDEFF0; position: relative;
 }
 
-.subject-item .subject-box .subject .item .img img{
+.subject-item .subject-box .subject .item .img img {
 	width: 100%; height: 120px;
 }
 
+.subject-item .subject-box .subject .item .bg {
+	height: 30px; background: #5D5D5D; opacity: 0.6; width: 100%; position: absolute; top: 90px;
+}
+
+.subject-item .subject-box .subject .item .mt {
+	position: absolute; top: 95px; color: #fff; margin-left: 10px; width: 100%; font-weight: bold; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+
 .subject-item .subject-box .subject .item .con {
-	height: 30px; line-height: 30px; position: relative; padding-left: 14px;
+	height: 30px; line-height: 30px; position: relative; padding-left: 14px; border-left: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0;
 }
 
 .subject-item .subject-box .subject .item .con .dot {
@@ -220,6 +232,14 @@ body {
 
 .subject-item .subject-box .subject .item .con .title {
 	width: 100%; float: left; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+
+.subject-item .subject-box .subject .item .edit-img {
+	height: 30px; width: 100%; background: #EDEFF0 url(../img/icon/edit-subject.png) no-repeat center; cursor: pointer; float: left;
+}
+
+.subject-item .subject-box .subject .item .edit-img:hover {
+	background: #EDEFF0 url(../img/icon/edit-subject-h.png) no-repeat center; 
 }
 
 /*专题式样 end*/
@@ -274,7 +294,7 @@ body {
 }
 
 .category-tabs .tab-func .btn {
-	width: 100%; height: 100%; float: left; text-decoration: none; cursor: pointer; position: relative; border-top: none;
+	width: 100%; height: 100%; float: left; text-decoration: none; cursor: pointer; position: relative; border-top: none; z-index: 9999;
 }
 
 .category-tabs .tab-func .btn:hover {

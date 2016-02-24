@@ -1,0 +1,1042 @@
+﻿<?Infragistics.Models format="xaml" version="29"?>
+<Page xmlns="http://prototypes.infragistics.com/"
+                                                          xmlns:d="http://prototypes.infragistics.com/views/design"
+                                                          Id="1992b587-502e-4012-86b3-50b8f2dac064" d:Design.ShowGuides="False">
+    <Page.Content>
+        <Content Width="1920" Height="2200" Id="7b498680-0046-4d8d-8a37-09b2534c96b1">
+            <Content.Layers>
+                <Layer Id="b52e5c24-0cfe-42d7-ae0b-495278f36a99" Panel.Layout="Stretch" />
+                <AnnotationsLayer Id="0b471e02-dd8a-4c87-a9e2-1d366fb3d5c3" Panel.Layout="Stretch" />
+            </Content.Layers>
+            <Content.Viewbox>
+                <Viewbox Id="e9daf08d-9d2b-44f4-88a9-30d51c8e24e2" />
+            </Content.Viewbox>
+            <Content.GuidesInfo>
+                <GuidesInfo Id="ed24ea75-b95c-4bc9-8352-6d3cb454b2e3" />
+            </Content.GuidesInfo>
+        </Content>
+    </Page.Content>
+    <Page.Device>
+        <DeviceInfo Id="none" Orientation="None" />
+    </Page.Device>
+    <Page.Scenes>
+        <Scene Title="Start" Created="02/15/2016 03:01:24" Id="c478f595-3428-470a-9f9b-534eb28c6e99">
+            <Scene.KeyFrames>
+                <KeyFrame Id="585a2701-e61a-4389-937e-0fde71062e0a">
+                    <KeyFrame.Operations>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <ContainerBox Color="#FFE2E2E2" Thickness="0" Id="3aa0c3d4-64f0-4843-a4fc-94c83e6b957e" Panel.Bounds="158,49,1600{5,2147483647},178{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="9dc83693-13ca-478e-bdf8-9190edc35fee">
+                                            <Container.Children>
+                                                <Rectangle Thickness="0" Background="#FFE2E2E2" Tooltip="logo" Id="37605f66-60bf-4b1d-ae04-5d24f9ba6f6b" Panel.Bounds="8,0,161{5,2147483647},46{5,2147483647}" />
+                                                <Title RichText="logo" FontFamily="Arial" Id="398baa7c-745d-4662-8958-131767b1d364" Panel.Bounds="51,4,5*{5,2147483647},37{5,2147483647}" />
+                                                <Image SourcePath="assets/20101029234349460.jpg" Id="155c8cd2-17be-4726-a1eb-49334f8be867" Panel.Bounds="-3,0,1603{5,2147483647},181{5,2147483647}" />
+                                            </Container.Children>
+                                        </Container>
+                                    </ContainerBox.Content>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Button Text="关注" Background="#FFFF7373" CornerRadius="7" BorderThickness="0" Foreground="#FFFFFFFF" FontFamily="Arial" Id="7d7ee6fd-a6f4-453d-bee7-b6e89eb6cefc" Panel.Bounds="927,167,71{5,2147483647},22{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Button Text="加载更多" BorderColor="#FFFFFFFF" FontFamily="Arial" Id="a02322b4-838d-4acd-99ca-16485d6375f5" Panel.Bounds="759,1309,80{5,2147483647},35{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <ScreenPartInstance TemplateReference="/Screenparts/Screenpart1.screenpart" Id="051cdd68-2200-46df-b717-4dee8892df9e" Panel.Bounds="158,226,1600{5,2147483647},79{5,2147483647}">
+                                    <ScreenPartInstance.Customizations>
+                                        <Add Property="Panel.Children" Target="46327921-c6ca-4d71-b87c-64fffed0bae8">
+                                            <Add.Item>
+                                                <ContainerBox Color="#FFE2E2E2" Background="#FF5FB5CC" Id="2ebef99e-6fcb-432a-80cb-214d576774c3" Panel.Bounds="500,-1,120{5,2147483647},80{5,2147483647}">
+                                                    <ContainerBox.Content>
+                                                        <Container ClipToContainer="True" Id="0daf37ca-f95a-435d-ae24-f4ca685fd3b3">
+                                                            <Container.Children>
+                                                                <Label RichText="&lt;Run FontSize=&quot;16&quot; &gt;书签&lt;/Run&gt;" Align="Center" Foreground="#FFFFFFFF" FontFamily="Arial" Id="88418a20-b9b9-4fa0-8b4f-62aef445038a" Panel.Bounds="1,30,118{5,2147483647},19*{5,2147483647}" />
+                                                            </Container.Children>
+                                                        </Container>
+                                                    </ContainerBox.Content>
+                                                </ContainerBox>
+                                            </Add.Item>
+                                        </Add>
+                                        <Move To="978,-1" Target="8583b229-2afc-48af-a395-28ae575125c3" />
+                                        <Move To="858,-1" Target="80a535ce-c082-4978-b689-5cf35cd85a7b" />
+                                        <Move To="738,-1" Target="1cd53471-8fb6-424c-9cef-7310309959bb" />
+                                        <Set Property="Content.Background" Value="#FFD8E5F0" Target="2a3f05b6-3bca-46e9-abcd-cb1e8677e861" />
+                                        <Set Property="ContainerBox.Background" Value="#FE5EB4CB" Target="1cd53471-8fb6-424c-9cef-7310309959bb" />
+                                        <Set Property="ContainerBox.Background" Value="#FE5EB4CB" Target="80a535ce-c082-4978-b689-5cf35cd85a7b" />
+                                        <Set Property="ContainerBox.Background" Value="#FE5EB4CB" Target="8583b229-2afc-48af-a395-28ae575125c3" />
+                                        <Set Property="Text.Foreground" Value="#FE919191" Target="c803e407-e7d7-4da3-bfae-1d4b7826bafd" />
+                                        <Set Property="Label.RichText" Value="&lt;Run FontSize=&quot;16&quot; Foreground=&quot;#FFFFFFFF&quot; &gt;热门话题&lt;/Run&gt;" Target="c803e407-e7d7-4da3-bfae-1d4b7826bafd" />
+                                        <Set Property="Text.Foreground" Value="#FFFFFFFF" Target="bed83fe8-95a9-47b0-898a-da1477fc15f8" />
+                                        <Set Property="Text.Foreground" Value="#FFFFFFFF" Target="3aface1c-2ec7-4e8c-83d1-32e4e5d1e5b8" />
+                                        <Resize To="120,78" Target="1cd53471-8fb6-424c-9cef-7310309959bb" />
+                                        <Resize To="120,80" Target="80a535ce-c082-4978-b689-5cf35cd85a7b" />
+                                        <Resize To="120,80" Target="8583b229-2afc-48af-a395-28ae575125c3" />
+                                        <Move To="1,30" Target="c803e407-e7d7-4da3-bfae-1d4b7826bafd" />
+                                        <Move To="1,30" Target="bed83fe8-95a9-47b0-898a-da1477fc15f8" />
+                                        <Move To="1,30" Target="3aface1c-2ec7-4e8c-83d1-32e4e5d1e5b8" />
+                                        <Remove Target="eb9701f4-d0a4-4878-a451-18fffdecbc68" />
+                                        <Remove Target="479565da-bb08-4c87-b0b9-87769588a678" />
+                                    </ScreenPartInstance.Customizations>
+                                </ScreenPartInstance>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <ContainerBox Color="#FFE2E2E2" Background="#FE5DB3CA" Id="fac3ba91-9349-492e-b9ff-9b94b01782a1" Panel.Bounds="778,218,120{5,2147483647},100{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="c08cacc1-3a10-48e4-8702-d01e0502eb6a">
+                                            <Container.Children>
+                                                <Label RichText="&lt;Run FontWeight=&quot;Bold&quot; &gt;专栏&lt;/Run&gt;" Align="Center" Foreground="#FFFFFFFF" FontSize="22" FontFamily="Arial" Id="a9ee0fa8-b003-4e42-b1a3-dc6603f301a2" Panel.Bounds="1,35,118{5,2147483647},19*{5,2147483647}" />
+                                            </Container.Children>
+                                        </Container>
+                                    </ContainerBox.Content>
+                                    <ContainerBox.Click>
+                                        <CommandNavigate Screen="/page_blank.screen" Created="02/16/2016 14:01:25" Id="a27acd3d-33a5-4cce-881c-3ea8a5f7183b">
+                                            <CommandNavigate.Transition>
+                                                <NavigateTransition Type="Flip" Duration="300" Direction="Right" />
+                                            </CommandNavigate.Transition>
+                                        </CommandNavigate>
+                                    </ContainerBox.Click>
+                                    <ContainerBox.DoubleClick>
+                                        <CommandSwitchTo SceneId="95caba40-5734-405f-88f8-0d8716a654cc" Created="02/24/2016 07:54:39" Id="ecfffb18-f6c6-4e46-918e-1bd39cc3a1cd" />
+                                    </ContainerBox.DoubleClick>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="1a2413d0-fe7d-49ed-bd0e-7033ea04d4b9" Panel.Bounds="188,356,0*,0*">
+                                    <Group.Children>
+                                        <ContainerBox Color="#00FFFFFF" Thickness="0" Id="8737d69f-e87f-499a-bb66-74a37ed89b2d" Panel.Bounds="9,175,343{5,2147483647},224{5,2147483647}" Viewbox.ContentHeight="313">
+                                            <ContainerBox.Content>
+                                                <Container ClipToContainer="True" Id="60cde91e-86af-4174-aab3-a518bf9491c9">
+                                                    <Container.Children>
+                                                        <ContainerBox Color="#00FFFFFF" Id="ec85c4c5-b1fa-4e29-8d61-69ff93d1e1b4" Panel.Bounds="0,0,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="f3112215-d716-46b7-858b-afd1ffe4a85a" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="7a06669e-e4e6-4ed4-830b-879ccfbf4b51" Panel.Bounds="0,37,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="ba9fe3a4-c79d-4bd4-b93f-661db0f38aed" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="0c180456-0b25-432c-822d-f0455462e8f4" Panel.Bounds="0,74,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="64a412df-56c7-4fd8-8e5f-a49a12311db1" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="5768a4df-776f-4777-80e8-a1e9486e3b13" Panel.Bounds="0,111,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="432b25c0-eb0f-4a11-9402-ea8d49a3e78d" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="447e26c6-b235-4456-8240-dcd620adcc19" Panel.Bounds="0,149,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="be5cbcd8-dd6d-4db6-9f58-bb4250672733" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="18ec4b11-9ffe-4e07-ba74-243995d1365a" Panel.Bounds="0,187,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="152a6be3-1729-4ded-b7e9-c74bd3b35f96" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="d4b37db9-f27e-4de0-98f5-4be2501087f1" Panel.Bounds="0,225,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="f1e83d8d-aa9c-4d5c-b372-b9be4a08967f" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="c222f654-557e-4b7f-8e2a-925315586867" Panel.Bounds="0,264,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="dc65569e-418b-475d-b8f7-943ebae16357" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="8b27e51f-042e-429f-a33b-a65a0bbf90af" Panel.Bounds="0,0,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="d2f3bd8e-ed39-442a-b58b-b6188d706d90" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                    </Container.Children>
+                                                </Container>
+                                            </ContainerBox.Content>
+                                        </ContainerBox>
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="b4f2ca76-640a-46fc-83b6-f6eb42b22b95" Panel.Bounds="569,355,0*,0*">
+                                    <Group.Children>
+                                        <Image SourcePath="assets/Hornbostel _ Donner_Time to Groove - Brazil Lounge Edition_4.jpg" Id="e83f6e22-f8bf-41e9-b9c9-eb0af56184ad" Panel.Bounds="8,0,344{5,2147483647},175{5,2147483647}" />
+                                        <Rectangle Background="#FFC0504D" Opacity="0.6" Id="01ad3e79-cd60-4943-9876-b1e3d780cbbb" Panel.Bounds="0,69,360{5,2147483647},38{5,2147483647}" />
+                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFFFFFFF&quot; FontWeight=&quot;Bold&quot; &gt;精心整理的Tomcat如何发布Web应用文章集锦&lt;/Run&gt;" FontFamily="Arial" Id="5c6f1d8d-4ba0-4f3d-a306-bdc802dc2093" Panel.Bounds="16,79,331{5,2147483647},19{5,2147483647}" />
+                                        <ContainerBox Color="#FFE2E2E2" Thickness="0" Id="b279fe22-939e-40b3-8bff-1bcae4378788" Panel.Bounds="9,175,343{5,2147483647},224{5,2147483647}" Viewbox.ContentHeight="313">
+                                            <ContainerBox.Content>
+                                                <Container ClipToContainer="True" Id="d5f99b6c-eb0d-402f-a0e3-c1a72fd130f9">
+                                                    <Container.Children>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="d6659c46-1582-4f30-9b52-42646a7b3950" Panel.Bounds="0,0,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="1f38593b-5b4c-46b0-af29-9c761d592349" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="1b195d12-8364-4262-a694-c17397a368a5" Panel.Bounds="0,37,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="74fda8bc-8ab1-4cc3-a496-6e16e8dafbeb" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="6224526c-71e6-4cf3-956e-768a95e4b555" Panel.Bounds="0,74,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="e4f545b1-8f39-4460-a9da-0045f8db331e" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="c60f90e2-c827-46eb-8963-5fab2976dd61" Panel.Bounds="0,111,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="02d8aa0c-c4a8-4048-ae3c-e3fea730a301" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="2261c898-e0fa-4c8a-85cb-c18098c320f8" Panel.Bounds="0,149,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="5c96abf1-effe-4ce3-a6f8-dccb922c5e50" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="ffb1b973-a7fc-455b-b196-e90b7081b617" Panel.Bounds="0,187,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="0d824467-11e9-49b0-bc1c-9f6544d1a279" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;习近平谈中共规矩:违纪往往从破坏规矩开始&lt;/Run&gt;" FontFamily="Arial" Id="55c94b7c-2ff0-44d3-81c2-6923f329708b" Panel.Bounds="20,10,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;地方党政&quot;一把手&quot;节后开工 12个省份主官...&lt;/Run&gt;" FontFamily="Arial" Id="4bbe178c-460f-4745-9897-be78c2f9dc08" Panel.Bounds="20,47,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; &gt;苏荣造林大跃进:数百亿工程让田里种树岭...&lt;/Run&gt;" Foreground="#FE5DB3CA" FontFamily="Arial" Id="dd96070d-a15f-424f-bd75-7533fc354ba4" Panel.Bounds="20,84,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;甘肃1名在押嫌犯未擦鼻涕 遭5名同监人员打死&lt;/Run&gt;" FontFamily="Arial" Id="1c6d4e07-ee8b-4045-b10f-b6329347515b" Panel.Bounds="20,124,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;财经头条:汇丰银行放弃总部迁香港计划...&lt;/Run&gt;" FontFamily="Arial" Id="cbdd683e-7a59-459d-ae69-8d3348ef6d8d" Panel.Bounds="20,161,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;电影票在线选座公司如何吸引好莱坞大佬...&lt;/Run&gt;" FontFamily="Arial" Id="5a5729f9-7f2b-45c4-856a-baf7eeba79de" Panel.Bounds="20,196,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <ContainerBox Color="#FFE2E2E2" Id="559f0c10-b27b-47b8-88d7-6cdc66418892" Panel.Bounds="0,225,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="5f61776b-69ce-413b-a105-9d84dfe5ca20" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="e625872a-232b-490c-b48d-f4f85cd76342" Panel.Bounds="0,264,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="24ed2bba-064b-4831-85d1-f41e1df31be0" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                    </Container.Children>
+                                                </Container>
+                                            </ContainerBox.Content>
+                                        </ContainerBox>
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="c45336eb-6fb6-4e2b-902b-58eba2556799" Panel.Bounds="950,356,0*,0*">
+                                    <Group.Children>
+                                        <Image SourcePath="assets/1416191583872(1).jpg" Id="73cffcad-5033-4e67-bba0-8765d2986cc8" Panel.Bounds="8,0,344{5,2147483647},175{5,2147483647}" />
+                                        <Rectangle Background="#FF383838" Opacity="0.6" Id="0cebc6c1-22f7-4c8a-871a-1c129bb75030" Panel.Bounds="0,69,360{5,2147483647},38{5,2147483647}" />
+                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFFFFFFF&quot; FontWeight=&quot;Bold&quot; &gt;精心整理的Tomcat如何发布Web应用文章集锦&lt;/Run&gt;" FontFamily="Arial" Id="8280ea83-b7be-42a6-8be9-51adbc152b64" Panel.Bounds="16,79,331{5,2147483647},19{5,2147483647}" />
+                                        <ContainerBox Color="#FFE2E2E2" Thickness="0" Id="c1968209-f0f8-4cbc-97cf-120b20233aa8" Panel.Bounds="9,175,343{5,2147483647},224{5,2147483647}" Viewbox.ContentHeight="313">
+                                            <ContainerBox.Content>
+                                                <Container ClipToContainer="True" Id="54aab226-4142-4e7b-899a-910d22748951">
+                                                    <Container.Children>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="c2e8ae14-bd26-4454-a55f-f0f2f5591072" Panel.Bounds="0,0,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="dccdb92a-5b8f-49aa-b43f-fc3324a45015" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="3c5529ed-55d0-469b-b286-9fe325a6fb2d" Panel.Bounds="0,37,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="31c7f47f-9b9d-4142-8ef3-564122855786" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="886e67ba-08b1-4d0d-8a7f-1dbdfa4bc999" Panel.Bounds="0,74,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="388d9422-d76e-4fd9-90a6-dc3b76b63604" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="1aa0e1b6-66fe-4eab-9eeb-d84077e58f1f" Panel.Bounds="0,111,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="6c26ff8b-408b-48c6-b51e-258d6faf9ebd" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="7b4d7c31-6d31-4c51-a354-80a454a67f5a" Panel.Bounds="0,149,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="e8d81002-825e-4180-a612-80a22e76f093" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="9ef469e4-8460-417a-9495-a9ee5e72dc12" Panel.Bounds="0,187,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="06988298-3796-4182-92cf-23eff7bec74a" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;习近平谈中共规矩:违纪往往从破坏规矩开始&lt;/Run&gt;" FontFamily="Arial" Id="7e8e4bfc-02c4-4a48-8496-feb007f0e7d9" Panel.Bounds="7,10,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;地方党政&quot;一把手&quot;节后开工 12个省份主官...&lt;/Run&gt;" FontFamily="Arial" Id="dc48a67b-8465-4a4b-86b8-367ddc75cfbc" Panel.Bounds="7,47,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; &gt;苏荣造林大跃进:数百亿工程让田里种树岭...&lt;/Run&gt;" Foreground="#FE5DB3CA" FontFamily="Arial" Id="a99290c0-16dd-468d-ade3-3fa5e2dc7dc8" Panel.Bounds="7,84,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;甘肃1名在押嫌犯未擦鼻涕 遭5名同监人员打死&lt;/Run&gt;" FontFamily="Arial" Id="ced071a8-9d6c-4678-b385-8163b2d6c611" Panel.Bounds="7,124,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;财经头条:汇丰银行放弃总部迁香港计划...&lt;/Run&gt;" FontFamily="Arial" Id="fe1ac0b6-2827-4b38-b534-5f44dda9310b" Panel.Bounds="7,161,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;电影票在线选座公司如何吸引好莱坞大佬...&lt;/Run&gt;" FontFamily="Arial" Id="bae046e8-175a-49cd-8444-ddae38793b61" Panel.Bounds="7,196,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <ContainerBox Color="#FFE2E2E2" Id="ac0eca76-f9dd-4b4b-a140-3385b71015c7" Panel.Bounds="0,225,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="9c3e75ce-be92-4fca-8e36-43200116f051" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="8ce4c177-0799-4469-88df-694fcb8e786f" Panel.Bounds="0,264,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="44b78fc0-397f-44e1-93fc-ea4d56e102d0" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                    </Container.Children>
+                                                </Container>
+                                            </ContainerBox.Content>
+                                        </ContainerBox>
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="3aa0c3d4-64f0-4843-a4fc-94c83e6b957e" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="44fc58e4-18dc-4605-be75-78d6ace3dbd0" Panel.Bounds="1355,305,0*,0*">
+                                    <Group.Children>
+                                        <ContainerBox Color="#00FFFFFF" Background="#00FFFFFF" Id="a91ce25f-f944-41e7-9033-fca52e01c4be" Panel.Bounds="0,0,378{5,2147483647},466{5,2147483647}">
+                                            <ContainerBox.Content>
+                                                <Container ClipToContainer="True" Id="369293e8-d45c-4175-b573-fc6843568bb4">
+                                                    <Container.Children>
+                                                        <Image SourcePath="assets/Jason Derülo_Talk Dirty (Deluxe Edition)_4.jpg" Id="47a8f68d-4368-48e6-97ad-b301c02c0164" Panel.Bounds="10,67,90{5,2147483647},90{5,2147483647}" />
+                                                        <Link Text="查看所有关注" FontFamily="Arial" FontStyle="Normal|Underline" Id="81f84dbe-9532-45d8-aa09-d760085257f5" Panel.Bounds="287,9,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="已关注100人" Foreground="#FFFF7373" FontFamily="Arial" Id="163c3b55-7d21-47a2-bbd3-94d757723769" Panel.Bounds="187,9,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Image SourcePath="assets/Adam Lambert_The Original High (Deluxe Version)_4.jpg" Id="ea61de70-6966-46b7-b640-6e1aa8f90662" Panel.Bounds="10,203,0*{5,2147483647},90{5,2147483647}" />
+                                                        <Image SourcePath="assets/Backstreet Boys_Backstreet's Back_4.jpg" Id="86a319e2-8068-45a0-bc32-c4a2eadb3790" Panel.Bounds="10,352,0*{5,2147483647},90{5,2147483647}" />
+                                                    </Container.Children>
+                                                </Container>
+                                            </ContainerBox.Content>
+                                        </ContainerBox>
+                                        <Button Text="Button" Background="#FFFFFFFF" FontFamily="Arial" Id="45db9b6b-c0c0-4f39-87be-4cb490d5aafe" Panel.Bounds="11,137,90{5,2147483647},22{5,2147483647}" />
+                                        <Button Text="Button" Background="#FFFFFFFF" FontFamily="Arial" Id="9f19ecf1-f167-497b-8ee5-aebabd000345" Panel.Bounds="10,273,92{5,2147483647},23{5,2147483647}" />
+                                        <Button Text="Button" Background="#FFFFFFFF" FontFamily="Arial" Id="62204b80-67af-4082-9139-5f6826c2b0a2" Panel.Bounds="11,425,90{5,2147483647},22{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Title RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFAAAAAA&quot; &gt;很多的时间里我都在想，不具名的人和不想说的事。&lt;/Run&gt;" FontFamily="Arial" Id="42dbca74-5ea0-4ad6-89bf-4e5e635bd4ad" Panel.Bounds="931,130,366{5,2147483647},19{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="42dbca74-5ea0-4ad6-89bf-4e5e635bd4ad" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Image SourcePath="assets/Kevin Kern_Enchanted Piano_4.jpg" Id="3a61516b-eb6a-4305-a459-ee62bfb55ca0" Panel.Bounds="768,65,138{5,2147483647},140{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="3a61516b-eb6a-4305-a459-ee62bfb55ca0" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Title RichText="&lt;Run FontSize=&quot;16&quot; &gt;测试用户名&lt;/Run&gt;" FontFamily="Arial" Id="36994102-6dfb-4e34-8465-5acbdb489548" Panel.Bounds="931,105,82{5,2147483647},19{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="36994102-6dfb-4e34-8465-5acbdb489548" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run FontWeight=&quot;Bold&quot; &gt;关注&lt;/Run&gt;" Foreground="#FFFFFFFF" FontSize="14" FontFamily="Arial" Id="b9134cda-23a9-4fd3-87fd-64c4e92953b0" Panel.Bounds="1366,315,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="b9134cda-23a9-4fd3-87fd-64c4e92953b0" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Background="#FE5DB2C9" Id="686ea883-6c5b-4ae9-909b-e355f4eb5163" Panel.Bounds="1357,309,100{5,2147483647},30{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="3aa0c3d4-64f0-4843-a4fc-94c83e6b957e" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#FE5DB3CA" Background="#FDF0F0F0" Id="7d0168fe-e01b-4ee5-bf11-38e5095d2d10" Panel.Bounds="560,328,378{5,2147483647},459{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Line Thickness="2" Color="#FE5DB2C9" Background="#00FFFFFF" Id="ea1fffa0-7881-4d27-9c39-128bc988c3cb" Panel.Bounds="1337,340,421{1,2147483647},3{1,2147483647}">
+                                    <Line.StartPoint>
+                                        <Point X="-12" Id="4da97fed-21e5-4bb7-8556-2c990390fb70" />
+                                    </Line.StartPoint>
+                                    <Line.Segments>
+                                        <Segment Id="393dd55f-1646-4f74-853e-1e1c8dc46082">
+                                            <Segment.EndPoint>
+                                                <Point X="409" Id="d5f1eb84-d2a4-4146-8d86-e776405fefa4" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Line.Segments>
+                                </Line>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run FontSize=&quot;14&quot; FontWeight=&quot;Bold&quot; &gt;粉丝&lt;/Run&gt;" FontFamily="Arial" Id="a262c765-0254-4d9c-b44d-cc0fd6af7cf1" Panel.Bounds="1366,822,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="a1acb49a-b751-407f-8e36-de13e3fe9bf3" Panel.Bounds="1464,374,0*,0*">
+                                    <Group.Children>
+                                        <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; FontWeight=&quot;Bold&quot; &gt;      精心整理的Tomcat如何发布Web应用文章集锦关于她搭上打了款金额非的说法是打发地方噶三人的阿萨德法师打发斯蒂芬阿斯顿发&lt;/Run&gt;" FontSize="12" FontFamily="Arial" Id="38d9a648-010e-40e1-a30a-c90422e8c0c4" Panel.Bounds="0,37,264{5,2147483647},53{5,2147483647}" />
+                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; FontWeight=&quot;Bold&quot; &gt;精心整理的Tomcat如何发布Web应用文&#xD;&#xA;&lt;/Run&gt;&lt;Run FontSize=&quot;14&quot; FontWeight=&quot;Bold&quot; &gt;章集锦&lt;/Run&gt;" Foreground="#FF555555" FontFamily="Corbel" Id="712823fa-03c1-4b98-b540-d6882056680b" Panel.Bounds="0,0,266{5,2147483647},35{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="31c62865-57ef-4960-b313-d126beb5d557" Panel.Bounds="1463,510,0*,0*">
+                                    <Group.Children>
+                                        <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; FontWeight=&quot;Bold&quot; &gt;      精心整理的Tomcat如何发布Web应用文章集锦关于她搭上打了款金额非的说法是打发地方噶三人的阿萨德法师打发斯蒂芬阿斯顿发&lt;/Run&gt;" FontSize="12" FontFamily="Arial" Id="fca56b2c-4d9c-4a80-94c1-2217c235b189" Panel.Bounds="0,37,264{5,2147483647},53{5,2147483647}" />
+                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; FontWeight=&quot;Bold&quot; &gt;精心整理的Tomcat如何发布Web应用文&#xD;&#xA;&lt;/Run&gt;&lt;Run FontSize=&quot;14&quot; FontWeight=&quot;Bold&quot; &gt;章集锦&lt;/Run&gt;" Foreground="#FF555555" FontFamily="Corbel" Id="b15dee70-88e7-4a15-9198-16d209d29284" Panel.Bounds="0,0,266{5,2147483647},35{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="11f3ded5-d243-44f9-a518-5fc69453bb4f" Panel.Bounds="1464,658,0*,0*">
+                                    <Group.Children>
+                                        <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; FontWeight=&quot;Bold&quot; &gt;      精心整理的Tomcat如何发布Web应用文章集锦关于她搭上打了款金额非的说法是打发地方噶三人的阿萨德法师打发斯蒂芬阿斯顿发&lt;/Run&gt;" FontSize="12" FontFamily="Arial" Id="6f54de1e-a06d-4c07-922c-c129d37ac570" Panel.Bounds="0,37,264{5,2147483647},53{5,2147483647}" />
+                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; FontWeight=&quot;Bold&quot; &gt;精心整理的Tomcat如何发布Web应用文&#xD;&#xA;&lt;/Run&gt;&lt;Run FontSize=&quot;14&quot; FontWeight=&quot;Bold&quot; &gt;章集锦&lt;/Run&gt;" Foreground="#FF555555" FontFamily="Corbel" Id="de4328de-10e8-4f59-b477-d73964e70221" Panel.Bounds="0,0,266{5,2147483647},35{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFFFFFFF" CatalogId="fa-search" Id="463bc199-083c-4b0f-b241-5cf53ac0e186" Panel.Bounds="188,249,32{5,2147483647},32{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <TextBox FontFamily="Corbel" Opacity="0.52" Id="175e5284-c964-4934-8e3e-71f6bdac6ea0" Panel.Bounds="230,255,339{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="f2f30dd3-23c0-41fc-a41f-7eb88779583e" Panel.Bounds="188,821,0*,0*">
+                                    <Group.Children>
+                                        <Image SourcePath="assets/1354001635609.jpg" Id="e1d6e294-d714-4c7f-b95a-31250de6af86" Panel.Bounds="8,0,344{5,2147483647},175{5,2147483647}" />
+                                        <Rectangle Background="#FF383838" Opacity="0.6" Id="1236f844-9ec3-4fab-8d31-84521e2d7c98" Panel.Bounds="0,69,360{5,2147483647},38{5,2147483647}" />
+                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFFFFFFF&quot; FontWeight=&quot;Bold&quot; &gt;精心整理的Tomcat如何发布Web应用文章集锦&lt;/Run&gt;" FontFamily="Arial" Id="dfec7ef4-fa2d-42b8-93c2-440a6facc848" Panel.Bounds="16,79,331{5,2147483647},19{5,2147483647}" />
+                                        <ContainerBox Color="#FFE2E2E2" Thickness="0" Id="0b1c86ce-e0e9-403d-8875-64552fc01f48" Panel.Bounds="9,175,343{5,2147483647},224{5,2147483647}" Viewbox.ContentHeight="313">
+                                            <ContainerBox.Content>
+                                                <Container ClipToContainer="True" Id="b46b3259-95eb-4d8b-836d-633de8c9908d">
+                                                    <Container.Children>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="0e545f8f-2a48-4815-b2f2-29be92ac0c45" Panel.Bounds="0,0,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="86dcc62b-0bf3-4268-bbda-ec7f6d9b4550" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="5c1fd808-49fb-4698-8331-424bbdb15d4c" Panel.Bounds="0,37,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="ccea4a0e-4f2c-442f-8a47-545786a4eed6" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="99ba22e1-a60f-4714-8560-7b64433be020" Panel.Bounds="0,74,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="58926be2-e889-4086-afda-06043e79673a" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="1a1dfd16-6576-4720-b2c4-764e24224cbd" Panel.Bounds="0,111,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="6f397a97-109f-4126-82ec-7ea4f294cc8f" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="68382ef9-ca16-453a-8afd-699c59ee0b9f" Panel.Bounds="0,149,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="2f4d1bb3-52f5-4e97-89e8-0daba0cf2c31" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="7f4526f7-d508-4dab-89e0-aeee508cea15" Panel.Bounds="0,187,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="3c265e13-4330-4fe5-b7d2-b792123ff15d" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;习近平谈中共规矩:违纪往往从破坏规矩开始&lt;/Run&gt;" FontFamily="Arial" Id="8f8e823c-45ee-4957-81c7-d11617bfe877" Panel.Bounds="7,10,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;地方党政&quot;一把手&quot;节后开工 12个省份主官...&lt;/Run&gt;" FontFamily="Arial" Id="d4b42d77-5db3-4651-82ea-283a542a0d71" Panel.Bounds="7,47,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; &gt;苏荣造林大跃进:数百亿工程让田里种树岭...&lt;/Run&gt;" Foreground="#FE5DB3CA" FontFamily="Arial" Id="4a28028c-547e-4c4a-8bf5-a64148990774" Panel.Bounds="7,84,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;甘肃1名在押嫌犯未擦鼻涕 遭5名同监人员打死&lt;/Run&gt;" FontFamily="Arial" Id="52c88ad6-50ad-40f4-abf0-497c1e989335" Panel.Bounds="7,124,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;财经头条:汇丰银行放弃总部迁香港计划...&lt;/Run&gt;" FontFamily="Arial" Id="a069b2ab-da1d-424f-99a7-afe97f54d3a7" Panel.Bounds="7,161,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;电影票在线选座公司如何吸引好莱坞大佬...&lt;/Run&gt;" FontFamily="Arial" Id="38399c1a-eafc-4e01-a2e8-2e2faa2cad77" Panel.Bounds="7,196,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <ContainerBox Color="#FFE2E2E2" Id="d4a6431a-b017-42cf-97cc-e6311a33d85b" Panel.Bounds="0,225,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="e4bfbe62-7ea4-4f1e-adf0-075b161fd6c7" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="5b709c10-c89a-41d1-8f5d-6f48b4202744" Panel.Bounds="0,264,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="c985d43e-3d7e-4246-83c5-dcdf2cfb687c" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                    </Container.Children>
+                                                </Container>
+                                            </ContainerBox.Content>
+                                        </ContainerBox>
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="01369850-39ae-49fa-b022-44e3310fc1f7" Panel.Bounds="569,821,0*,0*">
+                                    <Group.Children>
+                                        <Image SourcePath="assets/1434525443599(1).jpg" Id="b0530329-89c7-4479-8897-5b569eedb0a9" Panel.Bounds="8,0,344{5,2147483647},175{5,2147483647}" />
+                                        <Rectangle Background="#FFC0504D" Opacity="0.6" Id="d79957c4-adea-48dc-a9a0-a39fab32cf56" Panel.Bounds="0,69,360{5,2147483647},38{5,2147483647}" />
+                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFFFFFFF&quot; FontWeight=&quot;Bold&quot; &gt;精心整理的Tomcat如何发布Web应用文章集锦&lt;/Run&gt;" FontFamily="Arial" Id="f013eca2-b96a-4e0b-85b9-19a45709b649" Panel.Bounds="16,79,331{5,2147483647},19{5,2147483647}" />
+                                        <ContainerBox Color="#FFE2E2E2" Thickness="0" Id="d3a66714-db75-4f0a-9b94-1159f241d5d1" Panel.Bounds="9,175,343{5,2147483647},224{5,2147483647}" Viewbox.ContentHeight="313">
+                                            <ContainerBox.Content>
+                                                <Container ClipToContainer="True" Id="2ed880dd-d4e1-46a7-b048-9d77bb77cab8">
+                                                    <Container.Children>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="8da01bcf-34da-4170-8793-04263ee0d92a" Panel.Bounds="0,0,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="d0f882da-db48-49a4-8823-9dbb6bcee684" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="8d1b0884-8955-41f1-a4c4-0d4dd1e39a68" Panel.Bounds="0,37,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="559ac9c4-5e8f-4364-af26-b6e0b344b6f7" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="ba1ae9b7-a364-4a71-bc0d-cc3e8f97846c" Panel.Bounds="0,74,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="393d33a7-9547-495a-8b38-2e5c91aa1ea9" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="d8db0ff0-5f32-4e1b-a01f-7cdd2c104ed3" Panel.Bounds="0,111,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="62c57145-c0e3-4986-9119-5449d942175d" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="dda2f79e-cc96-4ed3-9673-db4d52069408" Panel.Bounds="0,149,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="204a0fcd-cfdc-40ef-b8b1-b47f43716dda" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="35ba50e6-1b40-404e-9cd4-994122f3500b" Panel.Bounds="0,187,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="b9df6f6e-f1c2-4463-808d-3efa72d43acb" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;习近平谈中共规矩:违纪往往从破坏规矩开始&lt;/Run&gt;" FontFamily="Arial" Id="c8a5b871-2ff2-4f02-ad02-451d19002a58" Panel.Bounds="7,10,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;地方党政&quot;一把手&quot;节后开工 12个省份主官...&lt;/Run&gt;" FontFamily="Arial" Id="2f705784-c5dd-4362-88cf-b7a8e0ce66f7" Panel.Bounds="7,47,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; &gt;苏荣造林大跃进:数百亿工程让田里种树岭...&lt;/Run&gt;" Foreground="#FE5DB3CA" FontFamily="Arial" Id="6619dd48-16a4-4df3-87ca-fa84be094616" Panel.Bounds="7,84,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;甘肃1名在押嫌犯未擦鼻涕 遭5名同监人员打死&lt;/Run&gt;" FontFamily="Arial" Id="aaf0c37a-c775-4820-8e37-fd23b20a7285" Panel.Bounds="7,124,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;财经头条:汇丰银行放弃总部迁香港计划...&lt;/Run&gt;" FontFamily="Arial" Id="46e7eee0-ce2d-458d-974a-7e99f3afe051" Panel.Bounds="7,161,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;电影票在线选座公司如何吸引好莱坞大佬...&lt;/Run&gt;" FontFamily="Arial" Id="9fb8d7fa-5704-493f-9cc2-6bc03ab68b0c" Panel.Bounds="7,196,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <ContainerBox Color="#FFE2E2E2" Id="6d1aff8d-25c0-4869-a5cb-0bd5efcb3aa0" Panel.Bounds="0,225,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="d44be46e-3b2b-4244-92fc-527e1890b2eb" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="8f40fe67-beae-4a70-b93b-b056af631d3b" Panel.Bounds="0,264,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="ef18ccc2-e302-4322-8a33-b8c1f58df18d" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                    </Container.Children>
+                                                </Container>
+                                            </ContainerBox.Content>
+                                        </ContainerBox>
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="e638dadf-545f-43c5-b6d4-484d6ac03426" Panel.Bounds="950,821,0*,0*">
+                                    <Group.Children>
+                                        <Image SourcePath="assets/1416191583872(1).jpg" Id="e2294ae5-a766-4ef0-9bb9-23319d2f04c2" Panel.Bounds="8,0,344{5,2147483647},175{5,2147483647}" />
+                                        <Rectangle Background="#FF383838" Opacity="0.6" Id="201d68d0-ca37-4293-b690-852106829bf9" Panel.Bounds="0,69,360{5,2147483647},38{5,2147483647}" />
+                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFFFFFFF&quot; FontWeight=&quot;Bold&quot; &gt;精心整理的Tomcat如何发布Web应用文章集锦&lt;/Run&gt;" FontFamily="Arial" Id="ce4d3bf8-9fba-427d-b3e6-9f7feb41428b" Panel.Bounds="16,79,331{5,2147483647},19{5,2147483647}" />
+                                        <ContainerBox Color="#FFE2E2E2" Thickness="0" Id="118db7a2-67c2-4b57-920e-c1c8ad682a9b" Panel.Bounds="9,175,343{5,2147483647},224{5,2147483647}" Viewbox.ContentHeight="313">
+                                            <ContainerBox.Content>
+                                                <Container ClipToContainer="True" Id="a33545a6-f84a-41b7-92d9-cd4b16e95a23">
+                                                    <Container.Children>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="9b0805dc-2aaa-43e7-b993-ee34666094ac" Panel.Bounds="0,0,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="80c85e72-df15-40f0-82d2-2bf3593aabc2" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="5f43e53b-d5ef-4108-9f09-0634465da79d" Panel.Bounds="0,37,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="f5f84980-b179-4a9d-bc70-2d3bef00572a" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="a5ef239a-8f68-4947-adc7-a1eca217ebd3" Panel.Bounds="0,74,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="cbe083cb-e568-438e-8c3b-ceb90077ed09" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="c7599aff-0584-4220-b7e0-d8f69043ea72" Panel.Bounds="0,111,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="5790bbc1-21ae-42ab-aedd-6d0f0956c049" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="43e6edef-f2d5-4303-90a0-c4c52534b867" Panel.Bounds="0,149,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="45ff4dd2-cc6f-4527-a40c-3f937a8f0808" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="e8d3cc4d-a45e-475a-b5b9-3e155282a4ca" Panel.Bounds="0,187,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="51b75900-97ac-4ded-bd47-dae36d8e772a" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;习近平谈中共规矩:违纪往往从破坏规矩开始&lt;/Run&gt;" FontFamily="Arial" Id="46238b8f-cdfa-420d-92e3-e5cefbdc585e" Panel.Bounds="7,10,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;地方党政&quot;一把手&quot;节后开工 12个省份主官...&lt;/Run&gt;" FontFamily="Arial" Id="43a412f0-7fdb-43e3-be8a-9c8c85639e54" Panel.Bounds="7,47,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; &gt;苏荣造林大跃进:数百亿工程让田里种树岭...&lt;/Run&gt;" Foreground="#FE5DB3CA" FontFamily="Arial" Id="19f678c9-c402-4668-968d-32e28c6ca95b" Panel.Bounds="7,84,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;甘肃1名在押嫌犯未擦鼻涕 遭5名同监人员打死&lt;/Run&gt;" FontFamily="Arial" Id="56c0857c-34f9-4bb4-bf30-f1dedd47c568" Panel.Bounds="7,124,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;财经头条:汇丰银行放弃总部迁香港计划...&lt;/Run&gt;" FontFamily="Arial" Id="582f58b3-7ccd-4afe-af14-18eb4417f066" Panel.Bounds="7,161,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FF555555&quot; &gt;电影票在线选座公司如何吸引好莱坞大佬...&lt;/Run&gt;" FontFamily="Arial" Id="afac13b9-e5a0-4126-b87c-70408d6850c8" Panel.Bounds="7,196,5*{5,2147483647},5*{5,2147483647}" />
+                                                        <ContainerBox Color="#FFE2E2E2" Id="70b7762b-baec-4281-b06c-69a95cf1c602" Panel.Bounds="0,225,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="5244c1ed-8c29-4251-9727-bd0b88fa59a0" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                        <ContainerBox Color="#FFE2E2E2" Id="1ff0bfa4-482a-4076-b4d3-48e53bdece50" Panel.Bounds="0,264,343{5,2147483647},35{5,2147483647}">
+                                                            <ContainerBox.Content>
+                                                                <Container ClipToContainer="True" Id="5522fd5b-382c-4469-9ebc-5a40ae43124e" />
+                                                            </ContainerBox.Content>
+                                                        </ContainerBox>
+                                                    </Container.Children>
+                                                </Container>
+                                            </ContainerBox.Content>
+                                        </ContainerBox>
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="44fc58e4-18dc-4605-be75-78d6ace3dbd0" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <ContainerBox Color="#FE5DB3CA" Background="#FFE2E2E2" Thickness="0" Id="3a5b5ecc-7485-47e1-b08b-d4ac51dba20a" Panel.Bounds="1355,343,390{5,2147483647},1525{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="9ce8d38f-d15f-4a24-9f65-832ba69dba98">
+                                            <Container.Children>
+                                                <ContainerBox Color="#FFE2E2E2" Background="#FDF7F7F7" Thickness="0" Id="ff7ca35c-8e4e-4f7c-821a-eab745f254bc" Panel.Bounds="11,880,274{5,2147483647},136{5,2147483647}">
+                                                    <ContainerBox.Content>
+                                                        <Container ClipToContainer="True" Id="e5ae7f0c-75b5-4325-9052-ab96140332e5">
+                                                            <Container.Children>
+                                                                <Title RichText="&lt;Run FontSize=&quot;72&quot; Foreground=&quot;#FFC6C6C6&quot; &gt;+&lt;/Run&gt;" Align="Center" FontFamily="Arial" Id="f956a0aa-83d8-4411-b2a8-f83218d080d6" Panel.Bounds="-1,21,274{5,2147483647},114{5,2147483647}" />
+                                                                <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFC6C6C6&quot; &gt;添加小插件&lt;/Run&gt;" Align="Center" FontFamily="Arial" Id="be4dfd65-e9d1-4701-b0f7-f8ecfc4e2553" Panel.Bounds="85,96,101{5,2147483647},23{5,2147483647}" />
+                                                            </Container.Children>
+                                                        </Container>
+                                                    </ContainerBox.Content>
+                                                </ContainerBox>
+                                            </Container.Children>
+                                        </Container>
+                                    </ContainerBox.Content>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="44fc58e4-18dc-4605-be75-78d6ace3dbd0" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <ContainerBox Color="#FFE2E2E2" Id="41b55cf5-e9f4-4d2f-bb47-88bb36d42701" Panel.Bounds="1355,811,390{5,2147483647},405{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="d5945ad3-1559-40c3-b387-4c576da121cc">
+                                            <Container.Children>
+                                                <Image SourcePath="assets/Jason Derülo_Talk Dirty (Deluxe Edition)_4.jpg" Id="f38cb30e-2385-48b9-a3f8-72e7afa914b0" Panel.Bounds="139,164,108{5,2147483647},108{5,2147483647}" />
+                                                <Image SourcePath="assets/胡夏_燃点_4.jpg" Id="48f5fffe-7428-43f3-9b8c-bec287e29c14" Panel.Bounds="15,50,108{5,2147483647},108{5,2147483647}" />
+                                                <Image SourcePath="assets/Ke$ha_Animal_4.jpg" Id="680fedaf-6832-4506-aaab-9f5760fb455e" Panel.Bounds="15,164,108{5,2147483647},108{5,2147483647}" />
+                                                <Image SourcePath="assets/Cat Power_Wish I Was Here (Music From The Motion Picture)_4.jpg" Id="06002bf6-c1f9-413d-ad4e-7707e396cf8c" Panel.Bounds="15,280,108{5,2147483647},108{5,2147483647}" />
+                                                <Image SourcePath="assets/胡莎莎_华胥引 电视剧原声带_4.jpg" Id="cb9b5234-e9a4-4f03-9dba-231eb55c797e" Panel.Bounds="139,50,108{5,2147483647},108{5,2147483647}" />
+                                                <Image SourcePath="assets/Hornbostel _ Donner_Time to Groove - Brazil Lounge Edition_4.jpg" Id="3e134267-dc2d-43a4-bded-01930d6340de" Panel.Bounds="139,280,108{5,2147483647},108{5,2147483647}" />
+                                                <Image SourcePath="assets/Girl's Day (걸스데이)_기대 (期待)_4.jpg" Id="c9a37e5f-aa18-4b44-85b0-ede6e91a038b" Panel.Bounds="266,50,108{5,2147483647},108{5,2147483647}" />
+                                                <Image SourcePath="assets/Astrid Suryanto_Armada Lounge_ The Best Downtempo Songs Vol. 2_4.jpg" Id="c9f64093-bdf2-4b22-9465-e87fb22fafb3" Panel.Bounds="266,164,108{5,2147483647},108{5,2147483647}" />
+                                                <Image SourcePath="assets/Ke$ha_Animal_4.jpg" Id="930cc0bb-0d9d-4629-9427-13762b05b814" Panel.Bounds="266,280,108{5,2147483647},108{5,2147483647}" />
+                                                <Link Text="查看所有粉丝" Foreground="#FFC6C6C6" FontFamily="Arial" FontStyle="Normal|Underline" Id="2457717c-3bf3-4b28-94cc-06bc65d99f94" Panel.Bounds="287,12,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Label RichText="&lt;Run FontSize=&quot;13&quot; FontFamily=&quot;Arial&quot; Foreground=&quot;#FFC6C6C6&quot; &gt;拥有50个粉丝&lt;/Run&gt;" FontFamily="Arial" Id="70699353-a0a2-467d-aa17-c703eabb287f" Panel.Bounds="187,12,92{5,2147483647},15*{5,2147483647}" />
+                                            </Container.Children>
+                                        </Container>
+                                    </ContainerBox.Content>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FF4281D0" CatalogId="Airplane" Scale="-1,-1" RotationAngle="-270" Id="54d3c806-3612-4dd3-9c4c-84c85788f7cc" Panel.Bounds="1701,738,57{5,2147483647},57{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Line Thickness="2" Color="#FE5DB2C9" Background="#00FFFFFF" Id="57ba7f9a-3774-4f58-8765-dfcd6513d2dc" Panel.Bounds="1342,850,416{1,2147483647},3{1,2147483647}">
+                                    <Line.StartPoint>
+                                        <Point X="-7" Id="f7efb102-afaf-427c-b996-e1422acfeef0" />
+                                    </Line.StartPoint>
+                                    <Line.Segments>
+                                        <Segment Id="6fddd0ff-73ad-481f-a3b1-b9985e5b91f5">
+                                            <Segment.EndPoint>
+                                                <Point X="409" Id="e7aae9af-ec41-4b43-95bc-1c07b6195aa0" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Line.Segments>
+                                </Line>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFC40000" CatalogId="fa-fire" Id="d3a34ae6-0916-4a8f-98da-f0707ee650da" Panel.Bounds="578,356,28{5,2147483647},28{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FF000000" CatalogId="fa-fire" Opacity="0.2" Id="da43a7aa-a41d-4b35-a82a-7f56b4b7a0f2" Panel.Bounds="958,356,28{5,2147483647},28{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon CatalogId="Trash" Opacity="0.2" Id="a424a16a-112f-49ac-8396-c324349868ba" Panel.Bounds="569,757,27{5,2147483647},27{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon CatalogId="fa-plus" Opacity="0.2" Id="f004e4ed-7aaa-4b25-a4b4-a1a33ddc71d1" Panel.Bounds="899,757,27{5,2147483647},27{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Background="#FFC6C6C6" Opacity="0.6" Id="a6e78d5a-c4e2-4ee6-8666-daaae82c74a7" Panel.Bounds="188,425,360{5,2147483647},38{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#FFE2E2E2" Background="#00FFFFFF" Id="98dd495a-0288-402c-bbe1-e5ec50a84b93" Panel.Bounds="197,356,343{5,2147483647},174{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFFFFFFF" CatalogId="fa-plus" Id="3233fcbc-9a86-4b16-9f56-c909b6785ac4" Panel.Bounds="354,430,27{5,2147483647},27{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="3a5b5ecc-7485-47e1-b08b-d4ac51dba20a" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Id="f3a18f2d-8626-4faa-9cf4-49bdff7f8ee4" Panel.Bounds="158,0,1600{5,2147483647},2204{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon CatalogId="Placeholder" Id="36a49dc3-ef1a-4607-ad57-24209bf8e0c0" Panel.Bounds="181,7,32{5,2147483647},32{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="Text Label or Paragraph" FontFamily="Arial" Id="dff480b5-f6dd-4cfc-8f19-c90ab7cbcbd3" Panel.Bounds="230,17,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Set Property="Content.Background" Value="#6FE2E2E2" Target="7b498680-0046-4d8d-8a37-09b2534c96b1" />
+                    </KeyFrame.Operations>
+                </KeyFrame>
+            </Scene.KeyFrames>
+        </Scene>
+        <Scene Title="Double Tapped/Clicked Container Box" StateGroup="c478f595-3428-470a-9f9b-534eb28c6e99" ParentScene="c478f595-3428-470a-9f9b-534eb28c6e99" Created="02/24/2016 07:54:39" Id="95caba40-5734-405f-88f8-0d8716a654cc">
+            <Scene.KeyFrames>
+                <KeyFrame ResizedGroups="1a2413d0-fe7d-49ed-bd0e-7033ea04d4b9,b4f2ca76-640a-46fc-83b6-f6eb42b22b95,01369850-39ae-49fa-b022-44e3310fc1f7,f2f30dd3-23c0-41fc-a41f-7eb88779583e,e638dadf-545f-43c5-b6d4-484d6ac03426,c45336eb-6fb6-4e2b-902b-58eba2556799" Id="49ca4241-d3e0-4c47-8ac4-af5a0027540b">
+                    <KeyFrame.Operations>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="39b17bb3-7d5f-44c5-87be-08e57a873d3e" Panel.Bounds="1371,862,0*,0*" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="f3a18f2d-8626-4faa-9cf4-49bdff7f8ee4" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#FFD7EDF2" Background="#FF8D8D8D" Opacity="0.6" Id="48da1b84-a8da-4aee-9b0f-320c0c94fbc7" Panel.Bounds="1346,348,405{5,2147483647},140{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="48da1b84-a8da-4aee-9b0f-320c0c94fbc7" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Background="#FE5DB2C9" Id="75b22684-6b12-4557-804d-bfdcb6250a8a" Panel.Bounds="1357,819,100{5,2147483647},30{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="75b22684-6b12-4557-804d-bfdcb6250a8a" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="7c6e44e6-2696-4da0-8f55-1f763ff7b917" Panel.Bounds="555,354,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Color="#00FFFFFF" Background="#FF87C8D9" Opacity="0.4" Id="55217f8d-b259-4659-90eb-55ff13fb5e20" Panel.Bounds="8,365,331{5,2147483647},39{5,2147483647}" />
+                                        <Group GroupName="Group" Id="5744933e-92f4-49cf-b210-75f28977664a" Panel.Bounds="18,175,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="efd505a7-3113-4df4-9848-31c598b2bb30" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="f5211ae8-be6e-46a4-94cd-8baa8088fe65" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="e113d1c8-1c45-43bc-ad45-d06a11822aa1" Panel.Bounds="18,206,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="9dd0c0d8-89b7-4ea9-a848-94fbea9b7593" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF1C416F" CatalogId="Placeholder" Id="79c1104b-cdbf-4397-8374-af771bf7a231" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="1c7cb147-0419-4da9-9001-79c619de7b92" Panel.Bounds="18,301,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="aa151b0d-d284-4731-a43e-c6f6b663daa3" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="729c4653-46b9-45df-b217-00c3f3bd50f6" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="dc4054e3-954e-479c-8ecc-800cd31b7d6a" Panel.Bounds="18,237,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="96823f14-1afd-45b2-8a8c-e1b8e6e0577c" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF3A9EB8" CatalogId="Windows" Id="a59609e1-01fb-4eba-a173-03f203b7d0a5" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="dcda5fc0-6b6c-4d95-8241-42843bd0cf02" Panel.Bounds="18,268,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="ea91f47b-d3fd-46c5-b48c-903fb638f36a" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="d90225b7-d8ac-44f4-983d-8c4c7c813e4f" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="ef33bf18-46e2-434f-9963-fde5a5be56ca" Panel.Bounds="18,301,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="f2bb73ac-1bad-4236-9015-c2a6342442ea" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="0d6e9e59-34d0-4e94-8968-01e20824ee34" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Rectangle Color="#FFFFFFFF" Background="#00FFFFFF" Id="3647b75b-6f9f-4989-aa0a-31ad59689b9d" Panel.Bounds="7,169,331{5,2147483647},234{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="d2eaffb0-794e-4cad-bcd1-cf527da89555" Panel.Bounds="932,354,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Color="#00FFFFFF" Background="#FF87C8D9" Opacity="0.4" Id="b7bd35be-14a0-4731-81c6-18807f37f1e2" Panel.Bounds="8,365,331{5,2147483647},39{5,2147483647}" />
+                                        <Group GroupName="Group" Id="80a5761f-f5f8-44ec-b7af-341c012e8f43" Panel.Bounds="14,1,0*,0*">
+                                            <Group.Children>
+                                                <Image SourcePath="assets/Hornbostel _ Donner_Time to Groove - Brazil Lounge Edition_4.jpg" Id="3a505cba-8bda-453a-a871-061fea58d792" Panel.Bounds="-7,-1,331{5,2147483647},169{5,2147483647}" />
+                                                <Rectangle Color="#FFFFFFFF" Background="#FF4BACC6" Opacity="0.6" Id="172dbeca-908f-4480-b6fe-f484272b5e9c" Panel.Bounds="-14,65,347{5,2147483647},37{5,2147483647}" />
+                                                <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFFFFFFF&quot; FontWeight=&quot;Bold&quot; &gt;精心整理的Tomcat如何发布Web应用文章集锦&lt;/Run&gt;" FontFamily="Arial" Id="40b021dc-fcd3-41b8-a0ac-b6300e7490ee" Panel.Bounds="1,75,319{5,2147483647},18{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Icon Color="#FFC40000" CatalogId="fa-fire" Id="04e7018f-9cb7-4ce7-b33b-38df133dadd3" Panel.Bounds="8,1,27{5,2147483647},27{5,2147483647}" />
+                                        <Icon Color="#FFFFFFFF" CatalogId="Trash" Id="b8eb098e-1cc4-4dc1-b640-d30055055854" Panel.Bounds="270,372,26{5,2147483647},26{5,2147483647}" />
+                                        <Icon Color="#FFFFFFFF" CatalogId="fa-plus" Id="9e5c566f-cf16-4dd1-b8c8-cd7937ce42de" Panel.Bounds="308,372,26{5,2147483647},26{5,2147483647}" />
+                                        <Group GroupName="Group" Id="52eb6424-159e-477f-8701-559e893e6e04" Panel.Bounds="18,175,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="57205adf-e7d8-4c8e-b835-983807aa894f" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="4f5b079c-e005-4a17-b1af-28c4aaf9314e" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="e64ffd55-35dc-437d-b8ed-77c9b8a9e1ea" Panel.Bounds="18,206,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="dc8d2843-4ba9-47df-b659-67041f9fa9c1" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF1C416F" CatalogId="Placeholder" Id="655e9932-b939-4e67-a5a7-90c50560777b" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="dd8dddf7-c910-4a70-bee2-25df9954d3a3" Panel.Bounds="18,301,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="890e0224-0152-41f2-b8b9-dd2ecea491df" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="dafc26ad-063b-43c1-ac39-49de90c58c93" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="f14cb846-be68-452b-a663-1c222bfb15a2" Panel.Bounds="18,237,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="70f5f0ef-323e-4d41-a1ab-27e69d51120d" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF3A9EB8" CatalogId="Windows" Id="8b05c764-d255-4a31-8f6e-3eb7dccde49d" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="a20007a4-5314-4f4a-afd9-7466080953ef" Panel.Bounds="18,268,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="1f62c691-da25-4579-a4db-0ab070fc77cf" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="318ee4e5-1d8c-4c59-9bd8-576e10523da7" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="a76ffadb-5ef0-4803-8371-00b9016a0bd4" Panel.Bounds="18,301,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="7382e164-44d3-4486-a8ec-4f452cd74b05" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="1797419c-a503-41de-8fea-6406956469e2" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Rectangle Color="#FFFFFFFF" Background="#00FFFFFF" Id="2e13c69c-e662-4587-8df2-b52aaa5e6897" Panel.Bounds="7,169,331{5,2147483647},234{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="68c54255-59aa-4ae5-a2a5-f31b47109c99" Panel.Bounds="555,813,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Color="#00FFFFFF" Background="#FF87C8D9" Opacity="0.4" Id="c2c323f6-94cf-4350-9e97-af5c7da4d21f" Panel.Bounds="8,365,331{5,2147483647},39{5,2147483647}" />
+                                        <Group GroupName="Group" Id="0e7aaa88-431a-4fa3-b5ff-83eb71280098" Panel.Bounds="14,1,0*,0*">
+                                            <Group.Children>
+                                                <Image SourcePath="assets/Hornbostel _ Donner_Time to Groove - Brazil Lounge Edition_4.jpg" Id="8ada31fa-4472-48f8-bdb6-fecaf33383fd" Panel.Bounds="-7,-1,331{5,2147483647},169{5,2147483647}" />
+                                                <Rectangle Color="#FFFFFFFF" Background="#FF4BACC6" Opacity="0.6" Id="b5c6aeb1-fff8-48d1-9400-475c2dbf1bb7" Panel.Bounds="-14,65,347{5,2147483647},37{5,2147483647}" />
+                                                <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFFFFFFF&quot; FontWeight=&quot;Bold&quot; &gt;精心整理的Tomcat如何发布Web应用文章集锦&lt;/Run&gt;" FontFamily="Arial" Id="dae4bbcc-c425-4831-8303-1507fd611279" Panel.Bounds="1,75,319{5,2147483647},18{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Icon Color="#FFC40000" CatalogId="fa-fire" Id="7cab46c5-0efc-4f7a-8ec5-5ce75b726daf" Panel.Bounds="8,1,27{5,2147483647},27{5,2147483647}" />
+                                        <Icon Color="#FFFFFFFF" CatalogId="Trash" Id="515b1e98-bf23-42ea-ad11-a5568ea9f157" Panel.Bounds="270,372,26{5,2147483647},26{5,2147483647}" />
+                                        <Icon Color="#FFFFFFFF" CatalogId="fa-plus" Id="20e6185b-a6b4-4846-8750-f3640b7c24f8" Panel.Bounds="308,372,26{5,2147483647},26{5,2147483647}" />
+                                        <Group GroupName="Group" Id="160d8337-cc2a-4d74-9c42-923de2ef2722" Panel.Bounds="18,175,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="d859b399-7db8-42d9-b054-7f512323cdc3" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="7105fa4e-a9cd-4087-8177-1c8cbc50ed7f" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="ade6b84f-9e47-4c9f-aaba-27fe85736688" Panel.Bounds="18,206,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="291c1b55-5ecb-4469-bf0a-0607662af0a1" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF1C416F" CatalogId="Placeholder" Id="30d46655-08e2-4d0e-aeee-ad6f05816f74" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="9cf1a03a-55a9-42b0-94ee-78cd6f866b8f" Panel.Bounds="18,301,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="82aab76b-9416-4e62-9150-29149216ee46" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="3fc8c143-9360-4f74-9a7c-a1d049acf41d" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="1e4e547c-95a0-4f28-8f20-d2ff2c0848e6" Panel.Bounds="18,237,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="57b240da-ae46-445a-86a5-c541d8228cba" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF3A9EB8" CatalogId="Windows" Id="493fbadb-9f51-4a76-8fdf-fe891f1bf1d8" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="8b4510fb-53f7-4f9e-99ab-493980397ab8" Panel.Bounds="18,268,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="45705c8b-5820-4c8c-b1ce-30f37960108f" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="ada313c7-251a-4cdf-9109-adfef8cb4603" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="2655a7bb-f4e8-44ae-9324-1c3c2c7b015f" Panel.Bounds="18,301,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="02ef1bab-89c3-4cbb-a870-a14e2ca4d5dd" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="48815a6a-9479-4253-b9fb-8e30d95e2a08" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Rectangle Color="#FFFFFFFF" Background="#00FFFFFF" Id="5763a0be-0d36-4aa2-87f4-7752d5fb90a7" Panel.Bounds="7,169,331{5,2147483647},234{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="8d691207-abf1-4e36-bfc2-aa5c21f52c5f" Panel.Bounds="932,813,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Color="#00FFFFFF" Background="#FF87C8D9" Opacity="0.4" Id="1f63866c-aebb-48ad-bac9-9ecf6c6b656e" Panel.Bounds="8,365,331{5,2147483647},39{5,2147483647}" />
+                                        <Group GroupName="Group" Id="f6003554-989b-4ee9-ba52-577f18211ca3" Panel.Bounds="14,1,0*,0*">
+                                            <Group.Children>
+                                                <Image SourcePath="assets/Hornbostel _ Donner_Time to Groove - Brazil Lounge Edition_4.jpg" Id="00031d5a-92c1-4d1d-bd2a-80b82c700a75" Panel.Bounds="-7,-1,331{5,2147483647},169{5,2147483647}" />
+                                                <Rectangle Background="#FFC0504D" Opacity="0.6" Id="32169c5f-14f5-4eba-a057-22ccea134af3" Panel.Bounds="-14,65,347{5,2147483647},37{5,2147483647}" />
+                                                <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFFFFFFF&quot; FontWeight=&quot;Bold&quot; &gt;精心整理的Tomcat如何发布Web应用文章集锦&lt;/Run&gt;" FontFamily="Arial" Id="234d5088-8875-45aa-84d3-70834e46a00f" Panel.Bounds="1,75,319{5,2147483647},18{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Icon Color="#FFC40000" CatalogId="fa-fire" Id="91526815-aa65-4d6c-99b5-fa3ad092eb4e" Panel.Bounds="8,1,27{5,2147483647},27{5,2147483647}" />
+                                        <Icon Color="#FFFFFFFF" CatalogId="Trash" Id="cb8f1aae-cbc5-413f-932e-402b4d805b92" Panel.Bounds="270,372,26{5,2147483647},26{5,2147483647}" />
+                                        <Icon Color="#FFFFFFFF" CatalogId="fa-plus" Id="8fb3b4a5-4473-4b80-aa58-e1e59ff10b17" Panel.Bounds="308,372,26{5,2147483647},26{5,2147483647}" />
+                                        <Group GroupName="Group" Id="2d9c34ee-c599-4bfb-a2a5-35252d6141b9" Panel.Bounds="18,175,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="a7848273-4184-440b-954e-83613ca328f1" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="6f32a07c-a59d-42f3-a141-f2b9c28aa705" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="4fdda7e6-d015-481b-9b6e-4c8bca6f5e02" Panel.Bounds="18,206,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="26fda322-efcb-40e0-a1d5-81939b271f51" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF1C416F" CatalogId="Placeholder" Id="66fb08e2-3ec9-4596-8abb-2962c865431d" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="81d9f3f8-3675-46b3-a669-0f7c21e22983" Panel.Bounds="18,301,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="c7376359-708f-4473-872e-97c2853e5514" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="5bb4622f-324e-4d97-91b2-d1f65d76afea" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="5fbdaac4-40b6-4a76-ab12-cf6cfaf6c279" Panel.Bounds="18,237,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="b5b742d6-a904-419e-9cd2-7951f664269b" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF3A9EB8" CatalogId="Windows" Id="947f14dd-e5f3-4263-ba1c-b39e95fdf50e" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="8d3d19e9-7dfe-4fa9-9bee-13686fadcb24" Panel.Bounds="18,268,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="ecbd3098-68fe-49c9-b22c-392623620ca4" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="ef723167-fcf2-4ce1-946d-22f00c35dac4" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="0640a453-6f41-49f3-8a33-bef09b734508" Panel.Bounds="18,301,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyu&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="c588f4f0-1faf-4b25-b5b6-6ffb65b164f0" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="c2eabb4e-4e2f-4949-97e9-3c9efa63982e" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Rectangle Color="#FFFFFFFF" Background="#00FFFFFF" Id="f540b68d-8938-474b-8fbd-0b104fbdc79d" Panel.Bounds="7,169,331{5,2147483647},234{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Set Property="Label.RichText" Value="&lt;Run FontSize=&quot;16&quot; &gt;收藏&lt;/Run&gt;" Target="051cdd68-2200-46df-b717-4dee8892df9e.88418a20-b9b9-4fa0-8b4f-62aef445038a" />
+                        <Move Before="75b22684-6b12-4557-804d-bfdcb6250a8a" Target="3a5b5ecc-7485-47e1-b08b-d4ac51dba20a" />
+                        <Set Property="Shape.Background" Value="#FFFFFFFF" Target="98dd495a-0288-402c-bbe1-e5ec50a84b93" />
+                        <Set Property="Shape.Background" Value="#FF000000" Target="a6e78d5a-c4e2-4ee6-8666-daaae82c74a7" />
+                        <Move To="188,421" Before="39b17bb3-7d5f-44c5-87be-08e57a873d3e" Target="a6e78d5a-c4e2-4ee6-8666-daaae82c74a7" />
+                        <Set Property="Control.Opacity" Value="0.2" Target="a6e78d5a-c4e2-4ee6-8666-daaae82c74a7" />
+                        <Set Property="Control.Opacity" Value="1" Target="a424a16a-112f-49ac-8396-c324349868ba" />
+                        <Set Property="Control.Opacity" Value="1" Target="f004e4ed-7aaa-4b25-a4b4-a1a33ddc71d1" />
+                        <Set Property="Icon.Color" Value="#FFFFFFFF" Target="a424a16a-112f-49ac-8396-c324349868ba" />
+                        <Set Property="ContainerBox.Background" Value="#FFD7EDF2" Target="3a5b5ecc-7485-47e1-b08b-d4ac51dba20a" />
+                        <Move To="348,426" Before="39b17bb3-7d5f-44c5-87be-08e57a873d3e" Target="3233fcbc-9a86-4b16-9f56-c909b6785ac4" />
+                        <Set Property="ContainerBox.Color" Value="#00FFFFFF" Target="3a5b5ecc-7485-47e1-b08b-d4ac51dba20a" />
+                        <Move To="124,114" At="39b17bb3-7d5f-44c5-87be-08e57a873d3e" Target="f38cb30e-2385-48b9-a3f8-72e7afa914b0" />
+                        <Move To="0,0" At="39b17bb3-7d5f-44c5-87be-08e57a873d3e" Target="48f5fffe-7428-43f3-9b8c-bec287e29c14" />
+                        <Move To="0,114" At="39b17bb3-7d5f-44c5-87be-08e57a873d3e" Target="680fedaf-6832-4506-aaab-9f5760fb455e" />
+                        <Move To="0,230" At="39b17bb3-7d5f-44c5-87be-08e57a873d3e" Target="06002bf6-c1f9-413d-ad4e-7707e396cf8c" />
+                        <Move To="124,0" At="39b17bb3-7d5f-44c5-87be-08e57a873d3e" Target="cb9b5234-e9a4-4f03-9dba-231eb55c797e" />
+                        <Move To="124,230" At="39b17bb3-7d5f-44c5-87be-08e57a873d3e" Target="3e134267-dc2d-43a4-bded-01930d6340de" />
+                        <Move To="251,0" At="39b17bb3-7d5f-44c5-87be-08e57a873d3e" Target="c9a37e5f-aa18-4b44-85b0-ede6e91a038b" />
+                        <Move To="251,114" At="39b17bb3-7d5f-44c5-87be-08e57a873d3e" Target="c9f64093-bdf2-4b22-9465-e87fb22fafb3" />
+                        <Move To="251,230" At="39b17bb3-7d5f-44c5-87be-08e57a873d3e" Target="930cc0bb-0d9d-4629-9427-13762b05b814" />
+                        <Move To="1643,824" At="b52e5c24-0cfe-42d7-ae0b-495278f36a99" Before="d2eaffb0-794e-4cad-bcd1-cf527da89555" Target="2457717c-3bf3-4b28-94cc-06bc65d99f94" />
+                        <Move To="1543,824" At="b52e5c24-0cfe-42d7-ae0b-495278f36a99" Before="d2eaffb0-794e-4cad-bcd1-cf527da89555" Target="70699353-a0a2-467d-aa17-c703eabb287f" />
+                        <Move To="1403,1238" At="b52e5c24-0cfe-42d7-ae0b-495278f36a99" Before="d2eaffb0-794e-4cad-bcd1-cf527da89555" Target="f956a0aa-83d8-4411-b2a8-f83218d080d6" />
+                        <Move To="1494,1321" At="b52e5c24-0cfe-42d7-ae0b-495278f36a99" Before="d2eaffb0-794e-4cad-bcd1-cf527da89555" Target="be4dfd65-e9d1-4701-b0f7-f8ecfc4e2553" />
+                        <Set Property="Label.RichText" Value="&lt;Run FontSize=&quot;72&quot; &gt;+&lt;/Run&gt;" Target="f956a0aa-83d8-4411-b2a8-f83218d080d6" />
+                        <Set Property="Text.Foreground" Value="#FFE2E2E2" Target="f956a0aa-83d8-4411-b2a8-f83218d080d6" />
+                        <Set Property="Label.RichText" Value="&lt;Run FontSize=&quot;14&quot; &gt;添加小插件&lt;/Run&gt;" Target="be4dfd65-e9d1-4701-b0f7-f8ecfc4e2553" />
+                        <Set Property="Text.Foreground" Value="#FFFFFFFF" Target="be4dfd65-e9d1-4701-b0f7-f8ecfc4e2553" />
+                        <Move To="1366,827" Target="a262c765-0254-4d9c-b44d-cc0fd6af7cf1" />
+                        <Set Property="Text.Foreground" Value="#FFFFFFFF" Target="a262c765-0254-4d9c-b44d-cc0fd6af7cf1" />
+                        <Set Property="Label.RichText" Value="&lt;Run FontSize=&quot;13&quot; FontFamily=&quot;Arial&quot; &gt;拥有50个粉丝&lt;/Run&gt;" Target="70699353-a0a2-467d-aa17-c703eabb287f" />
+                        <Set Property="Text.Foreground" Value="#FFE2E2E2" Target="70699353-a0a2-467d-aa17-c703eabb287f" />
+                        <Set Property="Text.Foreground" Value="#FFE2E2E2" Target="2457717c-3bf3-4b28-94cc-06bc65d99f94" />
+                        <Resize To="347,37" Target="a6e78d5a-c4e2-4ee6-8666-daaae82c74a7" />
+                        <Resize To="330,168" Target="98dd495a-0288-402c-bbe1-e5ec50a84b93" />
+                        <Move To="270,372" At="7c6e44e6-2696-4da0-8f55-1f763ff7b917" Before="5744933e-92f4-49cf-b210-75f28977664a" Target="a424a16a-112f-49ac-8396-c324349868ba" />
+                        <Move To="8,1" At="7c6e44e6-2696-4da0-8f55-1f763ff7b917" Before="a424a16a-112f-49ac-8396-c324349868ba" Target="d3a34ae6-0916-4a8f-98da-f0707ee650da" />
+                        <Move To="9,167" Target="8737d69f-e87f-499a-bb66-74a37ed89b2d" />
+                        <Resize To="330,235" Target="8737d69f-e87f-499a-bb66-74a37ed89b2d" />
+                        <Move To="308,372" At="7c6e44e6-2696-4da0-8f55-1f763ff7b917" Before="5744933e-92f4-49cf-b210-75f28977664a" Target="f004e4ed-7aaa-4b25-a4b4-a1a33ddc71d1" />
+                        <Move To="-7,-1" Target="e83f6e22-f8bf-41e9-b9c9-eb0af56184ad" />
+                        <Resize To="331,169" Target="e83f6e22-f8bf-41e9-b9c9-eb0af56184ad" />
+                        <Move To="-14,65" Target="01ad3e79-cd60-4943-9876-b1e3d780cbbb" />
+                        <Resize To="347,37" Target="01ad3e79-cd60-4943-9876-b1e3d780cbbb" />
+                        <Move To="1,75" Target="5c6f1d8d-4ba0-4f3d-a306-bdc802dc2093" />
+                        <Resize To="319,18" Target="5c6f1d8d-4ba0-4f3d-a306-bdc802dc2093" />
+                        <Resize To="26,26" Target="3233fcbc-9a86-4b16-9f56-c909b6785ac4" />
+                        <Move To="197,355" Target="98dd495a-0288-402c-bbe1-e5ec50a84b93" />
+                        <Resize To="26,26" Target="a424a16a-112f-49ac-8396-c324349868ba" />
+                        <Resize To="27,27" Target="d3a34ae6-0916-4a8f-98da-f0707ee650da" />
+                        <Resize To="26,26" Target="f004e4ed-7aaa-4b25-a4b4-a1a33ddc71d1" />
+                        <Move To="10,211" Target="ea61de70-6966-46b7-b640-6e1aa8f90662" />
+                        <Move To="1463,517" Target="31c62865-57ef-4960-b313-d126beb5d557" />
+                        <Set Property="Content.Background" Value="#FF203E57" Target="051cdd68-2200-46df-b717-4dee8892df9e.2a3f05b6-3bca-46e9-abcd-cb1e8677e861" />
+                        <Set Property="Icon.Color" Value="#FFFFFFFF" Target="f004e4ed-7aaa-4b25-a4b4-a1a33ddc71d1" />
+                        <Move To="14,1" At="7c6e44e6-2696-4da0-8f55-1f763ff7b917" Before="d3a34ae6-0916-4a8f-98da-f0707ee650da" Target="b4f2ca76-640a-46fc-83b6-f6eb42b22b95" />
+                        <Remove Target="ff7ca35c-8e4e-4f7c-821a-eab745f254bc" />
+                        <Remove Target="41b55cf5-e9f4-4d2f-bb47-88bb36d42701" />
+                        <Remove Target="b279fe22-939e-40b3-8bff-1bcae4378788" />
+                        <Remove Target="7d0168fe-e01b-4ee5-bf11-38e5095d2d10" />
+                        <Remove Target="e638dadf-545f-43c5-b6d4-484d6ac03426" />
+                        <Remove Target="c45336eb-6fb6-4e2b-902b-58eba2556799" />
+                        <Remove Target="01369850-39ae-49fa-b022-44e3310fc1f7" />
+                        <Remove Target="f2f30dd3-23c0-41fc-a41f-7eb88779583e" />
+                        <Remove Target="da43a7aa-a41d-4b35-a82a-7f56b4b7a0f2" />
+                        <Remove Target="f3a18f2d-8626-4faa-9cf4-49bdff7f8ee4" />
+                    </KeyFrame.Operations>
+                </KeyFrame>
+            </Scene.KeyFrames>
+        </Scene>
+    </Page.Scenes>
+</Page>

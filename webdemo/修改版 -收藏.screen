@@ -1,0 +1,1092 @@
+﻿<?Infragistics.Models format="xaml" version="29"?>
+<Page xmlns="http://prototypes.infragistics.com/"
+                                                          xmlns:d="http://prototypes.infragistics.com/views/design"
+                                                          Id="1992b587-502e-4012-86b3-50b8f2dac064" d:Design.ShowGuides="False">
+    <Page.Content>
+        <Content Width="1920" Height="2200" Id="7b498680-0046-4d8d-8a37-09b2534c96b1">
+            <Content.Layers>
+                <Layer Id="b52e5c24-0cfe-42d7-ae0b-495278f36a99" Panel.Layout="Stretch" />
+                <AnnotationsLayer Id="0b471e02-dd8a-4c87-a9e2-1d366fb3d5c3" Panel.Layout="Stretch" />
+            </Content.Layers>
+            <Content.Viewbox>
+                <Viewbox Id="e9daf08d-9d2b-44f4-88a9-30d51c8e24e2" />
+            </Content.Viewbox>
+            <Content.GuidesInfo>
+                <GuidesInfo Id="ed24ea75-b95c-4bc9-8352-6d3cb454b2e3" />
+            </Content.GuidesInfo>
+        </Content>
+    </Page.Content>
+    <Page.Device>
+        <DeviceInfo Id="none" Orientation="None" />
+    </Page.Device>
+    <Page.Scenes>
+        <Scene Title="Start" Created="02/15/2016 03:01:24" Id="c478f595-3428-470a-9f9b-534eb28c6e99">
+            <Scene.KeyFrames>
+                <KeyFrame Id="585a2701-e61a-4389-937e-0fde71062e0a">
+                    <KeyFrame.Operations>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Button Text="关注" Background="#FFFF7373" CornerRadius="7" BorderThickness="0" Foreground="#FFFFFFFF" FontFamily="Arial" Id="7d7ee6fd-a6f4-453d-bee7-b6e89eb6cefc" Panel.Bounds="379,167,71{5,2147483647},22{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Button Text="加载更多" BorderColor="#FFFFFFFF" FontFamily="Arial" Id="a02322b4-838d-4acd-99ca-16485d6375f5" Panel.Bounds="853,1309,80{5,2147483647},35{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <ScreenPartInstance TemplateReference="/Screenparts/Screenpart1.screenpart" Id="051cdd68-2200-46df-b717-4dee8892df9e" Panel.Bounds="158,226,1600{5,2147483647},79{5,2147483647}">
+                                    <ScreenPartInstance.Customizations>
+                                        <Move To="978,-1" Target="8583b229-2afc-48af-a395-28ae575125c3" />
+                                        <Move To="858,-1" Target="80a535ce-c082-4978-b689-5cf35cd85a7b" />
+                                        <Move To="738,-1" Target="1cd53471-8fb6-424c-9cef-7310309959bb" />
+                                        <Set Property="Content.Background" Value="#FF203E57" Target="2a3f05b6-3bca-46e9-abcd-cb1e8677e861" />
+                                        <Set Property="ContainerBox.Background" Value="#FE5EB4CB" Target="1cd53471-8fb6-424c-9cef-7310309959bb" />
+                                        <Set Property="ContainerBox.Background" Value="#FE5EB4CB" Target="80a535ce-c082-4978-b689-5cf35cd85a7b" />
+                                        <Set Property="ContainerBox.Background" Value="#FE5EB4CB" Target="8583b229-2afc-48af-a395-28ae575125c3" />
+                                        <Set Property="Text.Foreground" Value="#FE919191" Target="c803e407-e7d7-4da3-bfae-1d4b7826bafd" />
+                                        <Set Property="Label.RichText" Value="&lt;Run FontSize=&quot;16&quot; Foreground=&quot;#FFFFFFFF&quot; &gt;热门话题&lt;/Run&gt;" Target="c803e407-e7d7-4da3-bfae-1d4b7826bafd" />
+                                        <Set Property="Text.Foreground" Value="#FFFFFFFF" Target="bed83fe8-95a9-47b0-898a-da1477fc15f8" />
+                                        <Set Property="Text.Foreground" Value="#FFFFFFFF" Target="3aface1c-2ec7-4e8c-83d1-32e4e5d1e5b8" />
+                                        <Resize To="120,78" Target="1cd53471-8fb6-424c-9cef-7310309959bb" />
+                                        <Resize To="120,80" Target="80a535ce-c082-4978-b689-5cf35cd85a7b" />
+                                        <Resize To="120,80" Target="8583b229-2afc-48af-a395-28ae575125c3" />
+                                        <Move To="1,30" Target="c803e407-e7d7-4da3-bfae-1d4b7826bafd" />
+                                        <Move To="1,30" Target="bed83fe8-95a9-47b0-898a-da1477fc15f8" />
+                                        <Move To="1,30" Target="3aface1c-2ec7-4e8c-83d1-32e4e5d1e5b8" />
+                                        <Remove Target="eb9701f4-d0a4-4878-a451-18fffdecbc68" />
+                                        <Remove Target="479565da-bb08-4c87-b0b9-87769588a678" />
+                                    </ScreenPartInstance.Customizations>
+                                </ScreenPartInstance>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <ContainerBox Color="#FFE2E2E2" Background="#FE5DB3CA" Id="fac3ba91-9349-492e-b9ff-9b94b01782a1" Panel.Bounds="778,226,120{5,2147483647},78{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="c08cacc1-3a10-48e4-8702-d01e0502eb6a">
+                                            <Container.Children>
+                                                <Label RichText="&lt;Run FontWeight=&quot;Bold&quot; &gt;专栏&lt;/Run&gt;" Align="Center" Foreground="#FFFFFFFF" FontSize="16" FontFamily="Arial" Id="a9ee0fa8-b003-4e42-b1a3-dc6603f301a2" Panel.Bounds="1,28,118{5,2147483647},19*{5,2147483647}" />
+                                            </Container.Children>
+                                        </Container>
+                                    </ContainerBox.Content>
+                                    <ContainerBox.Click>
+                                        <CommandNavigate Screen="/page_blank.screen" Created="02/16/2016 14:01:25" Id="a27acd3d-33a5-4cce-881c-3ea8a5f7183b">
+                                            <CommandNavigate.Transition>
+                                                <NavigateTransition Type="Flip" Duration="300" Direction="Right" />
+                                            </CommandNavigate.Transition>
+                                        </CommandNavigate>
+                                    </ContainerBox.Click>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Title RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFAAAAAA&quot; &gt;很多的时间里我都在想，不具名的人和不想说的事。&lt;/Run&gt;" FontFamily="Arial" Id="42dbca74-5ea0-4ad6-89bf-4e5e635bd4ad" Panel.Bounds="383,130,366{5,2147483647},19{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="42dbca74-5ea0-4ad6-89bf-4e5e635bd4ad" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Image SourcePath="assets/Kevin Kern_Enchanted Piano_4.jpg" Id="3a61516b-eb6a-4305-a459-ee62bfb55ca0" Panel.Bounds="213,64,138{5,2147483647},140{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="3a61516b-eb6a-4305-a459-ee62bfb55ca0" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Title RichText="&lt;Run FontSize=&quot;16&quot; &gt;测试用户名&lt;/Run&gt;" FontFamily="Arial" Id="36994102-6dfb-4e34-8465-5acbdb489548" Panel.Bounds="383,105,82{5,2147483647},19{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="36994102-6dfb-4e34-8465-5acbdb489548" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="标签查找" Foreground="#FFFFFFFF" FontSize="14" FontFamily="Arial" Id="b9134cda-23a9-4fd3-87fd-64c4e92953b0" Panel.Bounds="1376,315,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="b9134cda-23a9-4fd3-87fd-64c4e92953b0" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Background="#FE5DB2C9" Id="686ea883-6c5b-4ae9-909b-e355f4eb5163" Panel.Bounds="1357,309,100{5,2147483647},30{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Line Thickness="2" Color="#FE5DB2C9" Background="#00FFFFFF" Id="ea1fffa0-7881-4d27-9c39-128bc988c3cb" Panel.Bounds="1337,340,421{1,2147483647},3{1,2147483647}">
+                                    <Line.StartPoint>
+                                        <Point X="-12" Id="4da97fed-21e5-4bb7-8556-2c990390fb70" />
+                                    </Line.StartPoint>
+                                    <Line.Segments>
+                                        <Segment Id="393dd55f-1646-4f74-853e-1e1c8dc46082">
+                                            <Segment.EndPoint>
+                                                <Point X="409" Id="d5f1eb84-d2a4-4146-8d86-e776405fefa4" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Line.Segments>
+                                </Line>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFFFFFFF" CatalogId="fa-search" Id="463bc199-083c-4b0f-b241-5cf53ac0e186" Panel.Bounds="188,249,32{5,2147483647},32{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <TextBox FontFamily="Corbel" Opacity="0.52" Id="175e5284-c964-4934-8e3e-71f6bdac6ea0" Panel.Bounds="230,255,339{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FF4281D0" CatalogId="Airplane" Scale="-1,-1" RotationAngle="-270" Id="54d3c806-3612-4dd3-9c4c-84c85788f7cc" Panel.Bounds="1701,738,57{5,2147483647},57{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon CatalogId="Placeholder" Id="36a49dc3-ef1a-4607-ad57-24209bf8e0c0" Panel.Bounds="181,7,32{5,2147483647},32{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="36a49dc3-ef1a-4607-ad57-24209bf8e0c0" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Line Thickness="2" Color="#FE5DB2C9" Background="#00FFFFFF" Id="57ba7f9a-3774-4f58-8765-dfcd6513d2dc" Panel.Bounds="1342,850,416{1,2147483647},3{1,2147483647}">
+                                    <Line.StartPoint>
+                                        <Point X="-7" Id="f7efb102-afaf-427c-b996-e1422acfeef0" />
+                                    </Line.StartPoint>
+                                    <Line.Segments>
+                                        <Segment Id="6fddd0ff-73ad-481f-a3b1-b9985e5b91f5">
+                                            <Segment.EndPoint>
+                                                <Point X="409" Id="e7aae9af-ec41-4b43-95bc-1c07b6195aa0" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Line.Segments>
+                                </Line>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="Text Label or Paragraph" FontFamily="Arial" Id="dff480b5-f6dd-4cfc-8f19-c90ab7cbcbd3" Panel.Bounds="230,17,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Polyline Thickness="1" IsClosed="True" Color="#00FFFFFF" Background="#FFC6C6C6" Id="1ae4c8e0-30ba-4326-97ba-58a470c555bb" Panel.Bounds="324,326,121{1,2147483647},31{1,2147483647}">
+                                    <Polyline.StartPoint>
+                                        <Point Id="70225727-dcbf-43e2-8df5-ef69b562080f" />
+                                    </Polyline.StartPoint>
+                                    <Polyline.Segments>
+                                        <Segment Id="0fe980e4-3006-4580-9da7-ba86031f7d0e">
+                                            <Segment.EndPoint>
+                                                <Point X="24" Y="-30" Id="d440a560-19cf-4deb-b915-55ce827f34e9" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="cee33c12-45e2-4573-838e-99c40e531b96">
+                                            <Segment.EndPoint>
+                                                <Point X="121" Y="-30" Id="411b0f0a-aca1-4d7c-b282-05a0e5951b2a" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="32996e3f-37a4-4059-ad69-1e7d79208f20">
+                                            <Segment.EndPoint>
+                                                <Point X="94" Y="1" Id="1973387f-871c-4380-aba7-900cec67651f" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="88df8504-5fdc-4169-8208-02eb8920606b">
+                                            <Segment.EndPoint>
+                                                <Point Id="f13180bb-3572-4b7e-94c5-431d7cd49c26" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Polyline.Segments>
+                                </Polyline>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Polyline Thickness="1" IsClosed="True" Color="#00FFFFFF" Background="#FFFF2E2E" Id="b15b4b8f-1e22-435e-aca1-830fcf7c062f" Panel.Bounds="324,431,121{1,2147483647},31{1,2147483647}">
+                                    <Polyline.StartPoint>
+                                        <Point Id="a9c7ac9f-a704-409a-98a8-02ba18d43d81" />
+                                    </Polyline.StartPoint>
+                                    <Polyline.Segments>
+                                        <Segment Id="1f78835a-7241-4073-a04a-f2c09b9fb636">
+                                            <Segment.EndPoint>
+                                                <Point X="24" Y="-30" Id="2c538a91-f883-47b7-9390-a7676ac2b5e0" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="df442a41-975b-4e45-beea-10efb8d6c271">
+                                            <Segment.EndPoint>
+                                                <Point X="121" Y="-30" Id="fe137fb7-7522-45f6-90a0-c95ffa30ae5e" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="64ed111a-0606-428c-a471-aa0411e1b433">
+                                            <Segment.EndPoint>
+                                                <Point X="94" Y="1" Id="83c04793-49cc-4b5f-8bab-21012f664b18" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="975984f8-aba8-4de3-bc6e-519c187f4552">
+                                            <Segment.EndPoint>
+                                                <Point Id="69e52021-3daf-4601-975d-487e194957cb" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Polyline.Segments>
+                                </Polyline>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Polyline Thickness="1" IsClosed="True" Color="#00FFFFFF" Background="#FFC6C6C6" Id="fcafd153-8e77-4305-8132-1ceb6e593a5f" Panel.Bounds="548,431,121{1,2147483647},31{1,2147483647}">
+                                    <Polyline.StartPoint>
+                                        <Point Id="68960468-8710-4cd5-a81d-d76483c0291b" />
+                                    </Polyline.StartPoint>
+                                    <Polyline.Segments>
+                                        <Segment Id="e7d07c34-41ed-4301-8048-74ba180b5bb6">
+                                            <Segment.EndPoint>
+                                                <Point X="24" Y="-30" Id="cf768df2-289f-4e53-b445-f3fe9dfb025c" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="dc237511-9a3f-4212-a6bd-16f3740e913a">
+                                            <Segment.EndPoint>
+                                                <Point X="121" Y="-30" Id="399f6b2f-5943-435b-adba-2bbb2b8cab0b" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="da75b748-55b7-420e-95ea-27ed66335111">
+                                            <Segment.EndPoint>
+                                                <Point X="94" Y="1" Id="3aa0722c-3a0c-4ebc-b43a-a4f57d9a15dc" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="0b2f77fb-3ff2-4ac2-a88b-920f616a7fda">
+                                            <Segment.EndPoint>
+                                                <Point Id="c4e04bf2-392c-44be-a13e-49a1c1b7033b" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Polyline.Segments>
+                                </Polyline>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <ContainerBox Color="#FFE2E2E2" Background="#FF5FB5CC" Id="51f4754b-110b-4c87-ad30-1c99607268d5" Panel.Bounds="657,217,120{5,2147483647},100{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="87196187-3a32-407a-bde8-a78477f88c6c">
+                                            <Container.Children>
+                                                <Label RichText="收藏" Align="Center" Foreground="#FFFFFFFF" FontSize="22" FontFamily="Arial" FontStyle="Bold" Id="c4b79d9c-669c-46c9-83d5-cda639918493" Panel.Bounds="1,38,118{5,2147483647},19*{5,2147483647}" />
+                                            </Container.Children>
+                                        </Container>
+                                    </ContainerBox.Content>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Background="#FFFF7373" Id="334281f8-d030-4b7c-85e0-8a22d6081e68" Panel.Bounds="1371,351,108{5,2147483647},51{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Background="#FFA3E0AB" Id="56d69fe0-a55c-4c3f-959a-469ab603c5ec" Panel.Bounds="1496,351,108{5,2147483647},51{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Background="#FFAFDAE6" Id="041b506a-8122-4562-83dc-a189533c8fb2" Panel.Bounds="1622,351,108{5,2147483647},51{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Id="97421af9-94e6-45a0-8804-7d3fbe6180da" Panel.Bounds="1371,421,108{5,2147483647},51{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Id="3772bcd3-8e91-44ab-bb9c-250425503cd1" Panel.Bounds="1622,421,108{5,2147483647},51{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Id="87ecf67a-3a3a-43c1-8ed2-65165022e47d" Panel.Bounds="1496,421,108{5,2147483647},51{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Id="4ee89797-7a81-4dfa-8774-0150da57d349" Panel.Bounds="1371,491,108{5,2147483647},51{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Id="48db83fe-3edb-4dc9-a51f-ca4e8d51cfdb" Panel.Bounds="1496,491,108{5,2147483647},51{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Id="7913083e-c95d-4f4e-91d6-e2a2986d9e08" Panel.Bounds="1622,491,108{5,2147483647},51{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Id="996a5142-0379-4af2-ba3a-5844124002e0" Panel.Bounds="1371,561,108{5,2147483647},51{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Id="15581466-de8d-46f2-9e5e-82d486ad352b" Panel.Bounds="1622,561,108{5,2147483647},51{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Id="894ab944-ca17-4f5a-b0a2-05d4c7e9dde8" Panel.Bounds="1496,561,108{5,2147483647},51{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; &gt;设计&lt;/Run&gt;" Align="Center" Foreground="#FE919191" FontSize="20" FontFamily="Arial" Id="d0b26fb5-26fc-4a99-abe9-82d6a32261d8" Panel.Bounds="1366,367,118{5,2147483647},19*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; &gt;护理&lt;/Run&gt;" Align="Center" Foreground="#FE919191" FontSize="20" FontFamily="Arial" Id="3e28f43d-83c1-445e-bd74-ee79f898cb52" Panel.Bounds="1494,367,118{5,2147483647},19*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; &gt;编程&lt;/Run&gt;" Align="Center" Foreground="#FE919191" FontSize="20" FontFamily="Arial" Id="e3ffe726-a2fd-439b-bb5c-62441060b9a7" Panel.Bounds="1617,367,118{5,2147483647},19*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="3d899629-81fb-4ab5-bed1-ee52145aed14" Panel.Bounds="324,460,0*,0*">
+                                    <Group.Children>
+                                        <ContainerBox Color="#FF81ABE0" Background="#FFD7EDF2" Id="f0a64c85-5601-4113-adc8-795b649a8dde" Panel.Bounds="0,0,933{5,2147483647},195{5,2147483647}">
+                                            <ContainerBox.Content>
+                                                <Container ClipToContainer="True" Id="d03d26e1-9f07-4617-a9ec-9744af8b706d" />
+                                            </ContainerBox.Content>
+                                        </ContainerBox>
+                                        <Rectangle Color="#00FFFFFF" Background="#FFC6C6C6" Opacity="0.2" Id="d4c26c30-0c67-4e82-8030-790dbae2b055" Panel.Bounds="0,157,933{5,2147483647},38{5,2147483647}" />
+                                        <Rectangle Color="#00FFFFFF" Opacity="0.2" Id="75faf3bd-6a27-4b57-ad7a-e9ac13fdec05" Panel.Bounds="0,0,933{5,2147483647},38{5,2147483647}" />
+                                        <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="0eb787f2-660c-43fd-a999-d2d494208c8e" Panel.Bounds="28,160,35{5,2147483647},35{5,2147483647}" />
+                                        <Rectangle Color="#00FFFFFF" Background="#FFFF7373" Opacity="0.2" Id="ef783dcd-bda1-4144-adfc-1e17f2f5e40b" Panel.Bounds="0,79,933{5,2147483647},38{5,2147483647}" />
+                                        <Group GroupName="Group" Id="1b2e6d12-c293-482d-a1d0-8365cdfe7906" Panel.Bounds="34,6,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="4499045a-bf9d-4b6e-a732-71db359e66fe" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="340ed695-d625-472d-8a08-e0da8500ffae" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="057c8f18-20c2-44e9-becf-a3cab0285dd6" Panel.Bounds="34,45,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="8e596d09-f1ba-468f-8fff-23d849c45af7" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF1D4F5C" CatalogId="FriendFeed" Id="375db8bc-dfbe-481a-bd3d-6e4a26aca5b0" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="9fc68197-de02-4119-a7ee-a3053dccc70e" Panel.Bounds="34,84,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="8ae180ba-f42a-4f9b-9fad-30c0a9021e4b" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="edeaa5d0-6dfd-4143-a61e-9e929fa6c59d" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="fb27a3f4-e397-4aac-8b6f-8ace7aa021e5" Panel.Bounds="34,125,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="7c6d01e7-6249-4685-ab4e-0786a07e12bc" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF392C49" CatalogId="Info2" Id="168cd4df-828d-4f05-8c5d-ef049c667961" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Polyline Thickness="1" IsClosed="True" Color="#00FFFFFF" Background="#FFC6C6C6" Id="d7456d04-216a-46d1-ae85-c2ef383f0c20" Panel.Bounds="437,431,121{1,2147483647},31{1,2147483647}">
+                                    <Polyline.StartPoint>
+                                        <Point Id="57af2c3e-855f-4337-aa10-968956bb0cf4" />
+                                    </Polyline.StartPoint>
+                                    <Polyline.Segments>
+                                        <Segment Id="ef769a7a-aa68-4c0d-a6a1-9288d56d706b">
+                                            <Segment.EndPoint>
+                                                <Point X="24" Y="-30" Id="d4786d58-0df8-4c61-bc58-24943a188b22" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="8e27d7e4-65bc-4cba-9bed-ae7231f4252f">
+                                            <Segment.EndPoint>
+                                                <Point X="121" Y="-30" Id="fc4a10a0-ffd6-4bc1-958e-870938fa2f4f" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="5ffd943b-4392-426c-ac6b-891c7c0f6158">
+                                            <Segment.EndPoint>
+                                                <Point X="94" Y="1" Id="7bd95e86-e030-406a-88e9-ede05d8c08cb" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="8e82e93f-ce2d-440a-b2a2-3002a78b4c85">
+                                            <Segment.EndPoint>
+                                                <Point Id="b95a4905-2698-4756-9efa-0d8afda099b4" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Polyline.Segments>
+                                </Polyline>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="3be54ab0-aab2-417b-9c90-c5c35b89d75c" Panel.Bounds="434,332,24{5,2147483647},24{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="9b8bf434-e787-49bd-820d-f3dd36d8b79a" Panel.Bounds="658,438,24{5,2147483647},24{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; &gt;设计&lt;/Run&gt;" Align="Center" Foreground="#FE919191" FontSize="20" FontFamily="Arial" Id="7c219fdb-4178-44d3-91c6-68cf755be0f0" Panel.Bounds="324,436,118{5,2147483647},19*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; &gt;教程&lt;/Run&gt;" Align="Center" Foreground="#FE919191" FontSize="20" FontFamily="Arial" Id="5da39832-065d-45cc-91a8-8cd8b50ce57d" Panel.Bounds="437,436,118{5,2147483647},19*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; &gt;练习&lt;/Run&gt;" Align="Center" Foreground="#FE919191" FontSize="20" FontFamily="Arial" Id="0c7153c0-4367-4678-be6e-fac2ada045bb" Panel.Bounds="551,436,118{5,2147483647},19*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Polyline Thickness="1" IsClosed="True" Color="#00FFFFFF" Background="#FF75D181" Id="057c60fe-fa5f-4539-b89a-d0c102481566" Panel.Bounds="324,693,121{1,2147483647},31{1,2147483647}">
+                                    <Polyline.StartPoint>
+                                        <Point Id="24b3b268-5489-4cdd-8ea5-04f342f0e861" />
+                                    </Polyline.StartPoint>
+                                    <Polyline.Segments>
+                                        <Segment Id="e543b7e4-1724-473e-a7d6-9793fcde6f16">
+                                            <Segment.EndPoint>
+                                                <Point X="24" Y="-30" Id="6047480b-d744-45be-9fb6-42218bbfad67" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="901357f5-b480-4a46-9162-19c629dbe687">
+                                            <Segment.EndPoint>
+                                                <Point X="121" Y="-30" Id="d6c48d2d-7167-4188-8f5b-8c623c7397be" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="f64c1a2e-c0c7-4cc5-ad70-63c0ddd244bf">
+                                            <Segment.EndPoint>
+                                                <Point X="94" Y="1" Id="014a54c8-ca93-4c59-aa15-22541d03b768" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="5a440daf-71e4-48e4-9f39-62df8479f02d">
+                                            <Segment.EndPoint>
+                                                <Point Id="00d1d12f-4656-4b5b-8597-6d7cfb741c86" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Polyline.Segments>
+                                </Polyline>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="060eee35-a689-4bc2-9b2b-51e948e7703f" Panel.Bounds="324,722,0*,0*">
+                                    <Group.Children>
+                                        <ContainerBox Color="#FFE2E2E2" Id="5f30bc94-2975-453c-a8cf-3edebcad36e2" Panel.Bounds="0,0,933{5,2147483647},195{5,2147483647}">
+                                            <ContainerBox.Content>
+                                                <Container ClipToContainer="True" Id="17fd1863-e82d-4120-94d1-a18f7eee1646" />
+                                            </ContainerBox.Content>
+                                        </ContainerBox>
+                                        <Rectangle Color="#00FFFFFF" Background="#FFC6C6C6" Opacity="0.2" Id="27274aef-2f52-4493-af85-05299cc07dd1" Panel.Bounds="0,157,933{5,2147483647},38{5,2147483647}" />
+                                        <Rectangle Color="#00FFFFFF" Background="#FFC6C6C6" Opacity="0.2" Id="9ee6d21f-fa3c-4ef6-83f9-47e6b9c556f8" Panel.Bounds="0,0,933{5,2147483647},38{5,2147483647}" />
+                                        <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="c8e5e3c7-30ac-4467-a9c2-739c6bed851e" Panel.Bounds="28,160,35{5,2147483647},35{5,2147483647}" />
+                                        <Rectangle Color="#00FFFFFF" Background="#FF8DAE47" Opacity="0.2" Id="fea3a4fd-2daf-4245-b346-8199017d6de3" Panel.Bounds="0,79,933{5,2147483647},38{5,2147483647}" />
+                                        <Group GroupName="Group" Id="2a914c49-e399-4bf9-8f2c-676b148faf2b" Panel.Bounds="34,6,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="1d250720-58de-4b6b-9a06-a4b4f7c6d894" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="a3f84c2c-8bf5-47c8-ae7b-7aa2a9a6a343" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="b71f2f4b-a67c-4101-8d2e-020672f69c28" Panel.Bounds="34,45,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="9060e2a7-4cda-4efb-b476-ffca0c1bd711" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF1D4F5C" CatalogId="FriendFeed" Id="e2f39216-1f35-44de-b8de-284c2c65175a" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="e9bffb55-37a3-4512-8b28-fe00b8b6e7c0" Panel.Bounds="34,84,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="ddb10d25-eb3d-435a-b175-0fe7d0525b4f" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="ad3fb5a6-006c-46fe-b5c3-beacc71de8c7" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="666adc48-7f3e-483d-bb66-29d9536422e3" Panel.Bounds="34,125,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="f515c160-d3b9-46e4-a5f4-20715a8aa5a7" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF392C49" CatalogId="Info2" Id="dbf0f1ed-d768-4736-ba41-4218af3515ed" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Polyline Thickness="1" IsClosed="True" Color="#00FFFFFF" Background="#FFC6C6C6" Id="15104024-6311-48c2-88b7-617d12f020db" Panel.Bounds="437,693,121{1,2147483647},31{1,2147483647}">
+                                    <Polyline.StartPoint>
+                                        <Point Id="e513d211-eff1-441a-8456-dcc8936585cc" />
+                                    </Polyline.StartPoint>
+                                    <Polyline.Segments>
+                                        <Segment Id="aac2f228-eb21-4b69-b8b7-e271c4eade41">
+                                            <Segment.EndPoint>
+                                                <Point X="24" Y="-30" Id="6a8cdd51-4e8a-4e35-ab4c-8b5468e9ab33" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="e1b19351-14d9-4d2e-a837-77c410e59b9e">
+                                            <Segment.EndPoint>
+                                                <Point X="121" Y="-30" Id="390e6480-5cf6-45e6-9253-b0ecead5fede" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="7dd0309e-2e0f-4bff-bad3-74b7b43378cf">
+                                            <Segment.EndPoint>
+                                                <Point X="94" Y="1" Id="534ee939-b594-4918-98f8-8e313da0eef3" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="9a816af7-012f-4d1d-a8b7-3b4a326cfcac">
+                                            <Segment.EndPoint>
+                                                <Point Id="b4b6d1eb-ed0f-413d-9229-38b8481b5fbe" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Polyline.Segments>
+                                </Polyline>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; &gt;护理&lt;/Run&gt;" Align="Center" Foreground="#FE919191" FontSize="20" FontFamily="Arial" Id="64b96e4e-11e2-4a76-994f-7b7638976f34" Panel.Bounds="324,698,118{5,2147483647},19*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; &gt;母子&lt;/Run&gt;" Align="Center" Foreground="#FE919191" FontSize="20" FontFamily="Arial" Id="3f9346c7-6149-406e-a73d-66ebae4059e2" Panel.Bounds="437,698,118{5,2147483647},19*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="48a5f310-4f91-4170-9e5c-88bc822448fb" Panel.Bounds="548,700,24{5,2147483647},24{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Polyline Thickness="1" IsClosed="True" Color="#00FFFFFF" Background="#FF417BAD" Id="9d11708f-ac30-470e-99e3-afb7dcdb3d2f" Panel.Bounds="324,958,121{1,2147483647},31{1,2147483647}">
+                                    <Polyline.StartPoint>
+                                        <Point Id="1c995c71-95c8-4ace-8e91-5f0c2e09c8ee" />
+                                    </Polyline.StartPoint>
+                                    <Polyline.Segments>
+                                        <Segment Id="c1ed1a31-2ed5-4d29-a8b8-44322e921388">
+                                            <Segment.EndPoint>
+                                                <Point X="24" Y="-30" Id="91efde59-3a88-43f1-a19e-7db66c2cb4ba" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="59b758a1-e41f-47d6-8480-322c70466cdb">
+                                            <Segment.EndPoint>
+                                                <Point X="121" Y="-30" Id="e894cacb-7ea8-4560-a2dd-1b991a1040e3" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="bc950898-2d7d-4de0-b891-cccfc50f82a1">
+                                            <Segment.EndPoint>
+                                                <Point X="94" Y="1" Id="84158bd0-4e4d-424c-b926-1e399d0bd13c" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="ba152726-e67e-44dd-874a-e6a109e393fe">
+                                            <Segment.EndPoint>
+                                                <Point Id="a67a967d-5826-4cb3-9e71-bf96cb7d004f" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Polyline.Segments>
+                                </Polyline>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Polyline Thickness="1" IsClosed="True" Color="#00FFFFFF" Background="#FFC6C6C6" Id="fe7810b2-409a-44b7-91b0-370a152f287b" Panel.Bounds="548,958,121{1,2147483647},31{1,2147483647}">
+                                    <Polyline.StartPoint>
+                                        <Point Id="d2415a5d-270d-41f9-b4a9-105ed05e3b3b" />
+                                    </Polyline.StartPoint>
+                                    <Polyline.Segments>
+                                        <Segment Id="5ef9fea4-8fb2-46f5-a295-e8ce77ec0028">
+                                            <Segment.EndPoint>
+                                                <Point X="24" Y="-30" Id="54ef803d-4af0-4ed7-9b80-4e9124773a6f" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="64044e79-b7ce-4f33-89e4-56e4462c0f56">
+                                            <Segment.EndPoint>
+                                                <Point X="121" Y="-30" Id="f400b4c6-3c56-4e74-8ec4-60e272023112" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="76f383e4-03b6-495c-b4c0-adc342937238">
+                                            <Segment.EndPoint>
+                                                <Point X="94" Y="1" Id="cf21e575-a704-483d-8e71-971365219347" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="2ac80a52-91bb-4953-97f1-926cf0d29b04">
+                                            <Segment.EndPoint>
+                                                <Point Id="2c3806ba-3efd-468a-b4a5-61fd9a69e574" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Polyline.Segments>
+                                </Polyline>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="38879a2e-edc2-40f7-a219-713303a6d738" Panel.Bounds="324,987,0*,0*">
+                                    <Group.Children>
+                                        <ContainerBox Color="#FFE2E2E2" Id="abe96417-6a92-41e5-901f-61fcb036f007" Panel.Bounds="0,0,933{5,2147483647},195{5,2147483647}">
+                                            <ContainerBox.Content>
+                                                <Container ClipToContainer="True" Id="9f1b7dab-d868-4f44-9901-fe846b2a40f2" />
+                                            </ContainerBox.Content>
+                                        </ContainerBox>
+                                        <Rectangle Color="#00FFFFFF" Background="#FFC6C6C6" Opacity="0.2" Id="92ca5591-2b64-4b38-bb3e-fb8ae670c90b" Panel.Bounds="0,157,933{5,2147483647},38{5,2147483647}" />
+                                        <Rectangle Color="#00FFFFFF" Background="#FFC6C6C6" Opacity="0.2" Id="3700b91c-cd87-4bf9-bb9d-965d86568ab0" Panel.Bounds="0,0,933{5,2147483647},38{5,2147483647}" />
+                                        <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="e385e3e4-60cd-4035-ac96-7dd0f8a7ecbb" Panel.Bounds="28,160,35{5,2147483647},35{5,2147483647}" />
+                                        <Rectangle Color="#00FFFFFF" Background="#FFC6C6C6" Opacity="0.2" Id="5d4fad11-4c03-49f1-9d5b-519bd82280e1" Panel.Bounds="0,79,933{5,2147483647},38{5,2147483647}" />
+                                        <Group GroupName="Group" Id="1a3b1312-53ef-4578-9ff1-80484cc85590" Panel.Bounds="34,6,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="c5112fef-e25e-4008-be04-b1f0ee2cb37c" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="d4e2eb80-264b-4736-8787-186b96ad543c" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="2dcd9838-3ddc-4a05-91f6-01350775afe0" Panel.Bounds="34,45,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="746498f3-f401-4fd0-a827-d8df2c8901fb" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF1D4F5C" CatalogId="FriendFeed" Id="c9835261-0023-4319-91bf-c9946212c3cd" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="a7d00cc6-cb3f-413d-858a-a39f161730b8" Panel.Bounds="34,84,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="033db659-cbbb-4d61-9cfe-27347b86d80c" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="ca8a75e8-c87d-4a31-98c4-96312d0dff8a" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="9583e0b3-5a71-4e23-b621-430d72b9eee2" Panel.Bounds="34,125,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="37c1138f-88db-45e6-b8fd-44af0444b7f5" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF392C49" CatalogId="Info2" Id="bea8673c-e201-4bc2-a443-a58e55fd3584" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Polyline Thickness="1" IsClosed="True" Color="#00FFFFFF" Background="#FFC6C6C6" Id="d8d1e0ed-6637-4477-a7cd-cc1ff7c1d33b" Panel.Bounds="437,958,121{1,2147483647},31{1,2147483647}">
+                                    <Polyline.StartPoint>
+                                        <Point Id="eec570a8-4edd-4362-baab-33e0fbead436" />
+                                    </Polyline.StartPoint>
+                                    <Polyline.Segments>
+                                        <Segment Id="f62c94af-30d6-47d7-ba95-c00098dd4e62">
+                                            <Segment.EndPoint>
+                                                <Point X="24" Y="-30" Id="11fcfa36-76d7-4f9e-9488-dce69e90976d" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="2a36aaab-9d50-4664-ae6c-4ac18bb722d5">
+                                            <Segment.EndPoint>
+                                                <Point X="121" Y="-30" Id="14dd940c-bd90-4ae2-a183-aad9721b3710" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="e605065c-512a-4fcd-b5dd-296316a55cc2">
+                                            <Segment.EndPoint>
+                                                <Point X="94" Y="1" Id="8216a5fb-fd34-448e-920a-e2df0c05ad20" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="2d8a3c6b-a32e-4d2c-b76e-d541612d25f5">
+                                            <Segment.EndPoint>
+                                                <Point Id="2fc9e7b3-249a-4aab-9087-00f79881a0ea" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Polyline.Segments>
+                                </Polyline>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="a59dee76-0c17-43c3-ac65-3988e373fcd5" Panel.Bounds="658,965,24{5,2147483647},24{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; &gt;护理&lt;/Run&gt;" Align="Center" Foreground="#FE919191" FontSize="20" FontFamily="Arial" Id="083918e2-b78e-4271-8ff2-d16bd067ebc0" Panel.Bounds="324,963,118{5,2147483647},19*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; &gt;母子&lt;/Run&gt;" Align="Center" Foreground="#FE919191" FontSize="20" FontFamily="Arial" Id="0fb04c8d-658c-4962-a70e-ca621941961c" Panel.Bounds="437,963,118{5,2147483647},19*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; &gt;卫生&lt;/Run&gt;" Align="Center" Foreground="#FE919191" FontSize="20" FontFamily="Arial" Id="db7a117b-a7fa-4491-a2e7-2292f330ab37" Panel.Bounds="551,963,118{5,2147483647},19*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Polyline Thickness="1" IsClosed="True" Color="#00FFFFFF" Background="#FF8DAE47" Id="474c6308-317a-4a4a-8e01-8534c13d0ea8" Panel.Bounds="324,958,121{1,2147483647},31{1,2147483647}">
+                                    <Polyline.StartPoint>
+                                        <Point Id="d0f9cebd-7a44-4042-b770-ce270d972d6a" />
+                                    </Polyline.StartPoint>
+                                    <Polyline.Segments>
+                                        <Segment Id="3513e657-533f-457b-87c5-fe8c3bf904bc">
+                                            <Segment.EndPoint>
+                                                <Point X="24" Y="-30" Id="bef5bd9b-623c-4f02-8fe6-bca5ccbdf959" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="5b56bca9-6b78-42c0-9ed1-e242e0de8939">
+                                            <Segment.EndPoint>
+                                                <Point X="121" Y="-30" Id="43c3fea4-fb10-4e5b-9f2e-07a9fc9909b2" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="0dcc99bd-74bb-46f8-be8f-01abe07fdca7">
+                                            <Segment.EndPoint>
+                                                <Point X="94" Y="1" Id="74b400c8-cf1e-46bb-b9e5-edfc28a91ae6" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="460a3547-b99f-46ef-adbc-c7372689ae09">
+                                            <Segment.EndPoint>
+                                                <Point Id="14c8d29f-4473-48a9-b041-8b664ab9ba78" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Polyline.Segments>
+                                </Polyline>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Polyline Thickness="1" IsClosed="True" Color="#00FFFFFF" Background="#FFC6C6C6" Id="51b39f16-ebeb-4f4b-8cd4-a3e28ccc16f0" Panel.Bounds="548,958,121{1,2147483647},31{1,2147483647}">
+                                    <Polyline.StartPoint>
+                                        <Point Id="8c6f17d7-812a-4966-be0b-1320b1dc6296" />
+                                    </Polyline.StartPoint>
+                                    <Polyline.Segments>
+                                        <Segment Id="de2cc4c8-7aad-4c7a-ad1b-d0880b14ba90">
+                                            <Segment.EndPoint>
+                                                <Point X="24" Y="-30" Id="66a82fd2-98a3-47c3-8e33-2ab3f22e88d2" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="b7fc550a-f9a0-44a1-90c5-c953d945ca89">
+                                            <Segment.EndPoint>
+                                                <Point X="121" Y="-30" Id="e80da85c-3cb3-475c-aaa1-e1d3646af94a" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="bbad128e-53a0-4a9f-84d1-3fce79eb56d1">
+                                            <Segment.EndPoint>
+                                                <Point X="94" Y="1" Id="7a0ced1f-6bcb-41f5-9872-f0a70e4383cc" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="9e1cb873-3822-4ee7-8ed2-eb09bb16c2a6">
+                                            <Segment.EndPoint>
+                                                <Point Id="21648c86-bc05-49a8-bbc8-0635ec27be51" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Polyline.Segments>
+                                </Polyline>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="c6519c5d-0c78-4c63-b5c7-5e386ad6da43" Panel.Bounds="324,987,0*,0*">
+                                    <Group.Children>
+                                        <ContainerBox Color="#FFE2E2E2" Id="fbd9c532-e74c-4ede-9c8b-1163a781f979" Panel.Bounds="0,0,933{5,2147483647},195{5,2147483647}">
+                                            <ContainerBox.Content>
+                                                <Container ClipToContainer="True" Id="f1ac2ac0-26ed-45be-a60b-f5f83ff9fc3f" />
+                                            </ContainerBox.Content>
+                                        </ContainerBox>
+                                        <Rectangle Color="#00FFFFFF" Background="#FFC6C6C6" Opacity="0.2" Id="d08f7ba6-2dc8-4693-85d3-9491e926e371" Panel.Bounds="0,157,933{5,2147483647},38{5,2147483647}" />
+                                        <Rectangle Color="#00FFFFFF" Background="#FF570000" Opacity="0.2" Id="92985a0b-ab92-404a-adf3-ef8e23fcf59b" Panel.Bounds="0,0,933{5,2147483647},38{5,2147483647}" />
+                                        <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="eb17dca5-7000-4e12-b130-7bffcee2d232" Panel.Bounds="28,160,35{5,2147483647},35{5,2147483647}" />
+                                        <Rectangle Color="#00FFFFFF" Background="#FFC6C6C6" Opacity="0.2" Id="c0727989-7d6f-4dad-9780-168e333b9808" Panel.Bounds="0,79,933{5,2147483647},38{5,2147483647}" />
+                                        <Group GroupName="Group" Id="628286ea-0c96-4fe0-a5c0-0b368b8dc8aa" Panel.Bounds="34,6,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="4e19cc86-a095-4b8d-8ffe-4d52e7b3c505" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="5b9d44ba-ae63-4a59-83da-8513395069ab" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="a00dd131-2c4c-46f5-9d10-feabd1cfc34d" Panel.Bounds="34,45,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="b4afc5c2-2489-48f2-b777-5b9d7d92569e" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF1D4F5C" CatalogId="FriendFeed" Id="2cea85ea-b67d-4f15-9a55-74909b76312b" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="eccb31ba-49f5-4293-8669-44a73a8ad451" Panel.Bounds="34,84,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="2620b7b3-34ee-4ef0-99bb-d2ee756ccc6b" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="efef43fd-de34-4f2d-95e2-665aaf937896" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                        <Group GroupName="Group" Id="7a18c186-5d6a-47e4-84c1-7342dc1c74bb" Panel.Bounds="34,125,0*,0*">
+                                            <Group.Children>
+                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="3bbbfa55-8977-463d-a179-d60d0e9172b1" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                                <Icon Color="#FF392C49" CatalogId="Info2" Id="80785a85-035c-407d-a40c-5384de0df705" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                            </Group.Children>
+                                        </Group>
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Polyline Thickness="1" IsClosed="True" Color="#00FFFFFF" Background="#FFC6C6C6" Id="601f8493-74ec-417d-85ab-5b36034bcb01" Panel.Bounds="437,958,121{1,2147483647},31{1,2147483647}">
+                                    <Polyline.StartPoint>
+                                        <Point Id="fe01d424-fde0-47b1-adaf-e899b5487d00" />
+                                    </Polyline.StartPoint>
+                                    <Polyline.Segments>
+                                        <Segment Id="9390ca3f-1c8b-47e8-8f8e-3c003c44932b">
+                                            <Segment.EndPoint>
+                                                <Point X="24" Y="-30" Id="f5e6072a-67c4-40e0-830b-d34a2b81e10a" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="a03d7454-04d1-43d4-923c-f3896a7b9f97">
+                                            <Segment.EndPoint>
+                                                <Point X="121" Y="-30" Id="ff5209da-2689-4d55-9fb7-666b20e5dd97" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="0b7a2623-b188-49d6-a3c8-c2758c95c956">
+                                            <Segment.EndPoint>
+                                                <Point X="94" Y="1" Id="5a013779-acca-48ab-9458-f2726eb155e9" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                        <Segment Id="98b64a3f-37a8-4f06-af85-acb0df895eb0">
+                                            <Segment.EndPoint>
+                                                <Point Id="7e88a405-040d-4e9b-9e25-b63278ae0b9b" />
+                                            </Segment.EndPoint>
+                                        </Segment>
+                                    </Polyline.Segments>
+                                </Polyline>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="05e7736c-cced-447f-afbc-60ab8a69aba7" Panel.Bounds="658,965,24{5,2147483647},24{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; &gt;外教&lt;/Run&gt;" Align="Center" Foreground="#FE919191" FontSize="20" FontFamily="Arial" Id="2002fde7-3577-4b56-8f9b-71df686394d2" Panel.Bounds="324,963,118{5,2147483647},19*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; &gt;母子&lt;/Run&gt;" Align="Center" Foreground="#FE919191" FontSize="20" FontFamily="Arial" Id="66aad38c-2ee4-4007-a843-8d9c8053cf6a" Panel.Bounds="437,963,118{5,2147483647},19*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run Foreground=&quot;#FFFFFFFF&quot; &gt;卫生&lt;/Run&gt;" Align="Center" Foreground="#FE919191" FontSize="20" FontFamily="Arial" Id="a97aee00-8939-47fd-aee3-e10e1accf9c6" Panel.Bounds="551,963,118{5,2147483647},19*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFC6C6C6" CatalogId="Magazine" Id="ac8904a3-dddc-4f09-8460-122bf2f9d1da" Panel.Bounds="1219,624,26{5,2147483647},26{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFC6C6C6" CatalogId="Bookmarks" Id="567659ac-0652-4bf1-8177-b5e90918d1c4" Panel.Bounds="1219,359,26{5,2147483647},26{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFC6C6C6" CatalogId="Magazine" Id="4b1c9e38-5ad1-44b2-affe-39189f919d5d" Panel.Bounds="1219,886,26{5,2147483647},26{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon CatalogId="Trash" Id="afe1fc53-d79c-4781-a7b6-1d0acded9e77" Panel.Bounds="1234,436,20{5,2147483647},20{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="9a090809-b860-40a6-aa22-6770c0dcd8b8" Panel.Bounds="163,575,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Color="#00FFFFFF" Background="#FE5EB4CB" Id="94b486bf-77a9-44d1-972a-7ab2f5041ef8" Panel.Bounds="0,0,77{5,2147483647},69{5,2147483647}" />
+                                        <Icon Color="#FFFFFFFF" CatalogId="Tag" Id="2e98073e-3ebd-4730-bb57-b06df6acf34d" Panel.Bounds="9,5,59{5,2147483647},59{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFFFFFFF" CatalogId="fa-picture-o" Id="94dd2820-7280-4b5c-8a40-b971e5ae12a4" Panel.Bounds="172,660,59{5,2147483647},59{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="94dd2820-7280-4b5c-8a40-b971e5ae12a4" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Background="#FE5EB4CB" Id="9805f182-9ec7-4d29-bb0f-ff1c7f216408" Panel.Bounds="163,655,77{5,2147483647},69{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFFFFFFF" CatalogId="fa-picture-o" Opacity="0.8" Id="9331c63b-0a32-4bd4-a0e3-43718faa5522" Panel.Bounds="1707,49,35{5,2147483647},35{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFFFFFFF" CatalogId="fa-cogs" Opacity="0.8" Id="8ef87dd5-0e82-4719-9cdd-8f921b537256" Panel.Bounds="1650,49,35{5,2147483647},35{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run FontSize=&quot;14&quot; FontWeight=&quot;Bold&quot; &gt;粉丝&lt;/Run&gt;" Foreground="#FFFFFFFF" FontFamily="Arial" Id="d3b3d3b5-bbee-4036-b2c8-88694e7ed26b" Panel.Bounds="1366,825,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Image SourcePath="assets/Jason Derülo_Talk Dirty (Deluxe Edition)_4.jpg" Id="923602ba-cf4f-4362-bcc9-bcf497adcee9" Panel.Bounds="1495,976,108{5,2147483647},108{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Image SourcePath="assets/胡夏_燃点_4.jpg" Id="533534c1-c942-4376-9e32-160ceff0877d" Panel.Bounds="1371,862,108{5,2147483647},108{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Image SourcePath="assets/Ke$ha_Animal_4.jpg" Id="30303faf-16d3-4959-a33a-7f1ba4f7d97e" Panel.Bounds="1371,976,108{5,2147483647},108{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Image SourcePath="assets/Cat Power_Wish I Was Here (Music From The Motion Picture)_4.jpg" Id="442f8832-639e-46c9-bcf4-d873bf380b42" Panel.Bounds="1371,1092,108{5,2147483647},108{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Image SourcePath="assets/胡莎莎_华胥引 电视剧原声带_4.jpg" Id="33977b55-9989-4e45-9057-f3d660e9581d" Panel.Bounds="1495,862,108{5,2147483647},108{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Image SourcePath="assets/Hornbostel _ Donner_Time to Groove - Brazil Lounge Edition_4.jpg" Id="11b087c9-294d-43a0-84bc-b67250f2ba34" Panel.Bounds="1495,1092,108{5,2147483647},108{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Image SourcePath="assets/Girl's Day (걸스데이)_기대 (期待)_4.jpg" Id="9df1a524-3db1-4775-9819-d193152cf1c3" Panel.Bounds="1622,862,108{5,2147483647},108{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Image SourcePath="assets/Astrid Suryanto_Armada Lounge_ The Best Downtempo Songs Vol. 2_4.jpg" Id="1d27e7d8-9b61-4071-90ad-aaaee5c745ee" Panel.Bounds="1622,976,108{5,2147483647},108{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Image SourcePath="assets/Ke$ha_Animal_4.jpg" Id="6f4bf3ea-baf8-423c-9457-6dd1ce290efb" Panel.Bounds="1622,1092,108{5,2147483647},108{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Link Text="查看所有粉丝" Foreground="#FFFFFFFF" FontFamily="Arial" FontStyle="Normal|Underline" Id="007e7966-be45-4646-832c-f551f3fa2e46" Panel.Bounds="1643,824,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Label RichText="&lt;Run FontSize=&quot;13&quot; FontFamily=&quot;Arial&quot; &gt;拥有50个粉丝&lt;/Run&gt;" Foreground="#FFFFFFFF" FontFamily="Arial" Id="61fdd5d8-da63-4198-b379-30dcaa3b3ba2" Panel.Bounds="1543,824,92{5,2147483647},15*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="afe1fc53-d79c-4781-a7b6-1d0acded9e77" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#FFFFFFFF" Background="#FFD7EDF2" Id="c7df1e3d-85b4-4f7c-a3f8-fe680692ce61" Panel.Bounds="861,473,85{5,2147483647},35{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="afe1fc53-d79c-4781-a7b6-1d0acded9e77" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon CatalogId="Delicious" Id="0c4aaebd-5117-46bb-b0e5-960b45eb6909" Panel.Bounds="878,480,20{5,2147483647},20{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="afe1fc53-d79c-4781-a7b6-1d0acded9e77" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon CatalogId="Trash" Id="31947837-87eb-49a5-9937-699fb7bf55cf" Panel.Bounds="909,480,20{5,2147483647},20{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="7d7ee6fd-a6f4-453d-bee7-b6e89eb6cefc" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Background="#FE5DB2C9" Id="ff6f762b-3774-4cbe-b305-14ebf111dc50" Panel.Bounds="1357,819,100{5,2147483647},30{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="ff6f762b-3774-4cbe-b305-14ebf111dc50" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Id="f3a18f2d-8626-4faa-9cf4-49bdff7f8ee4" Panel.Bounds="158,0,1600{5,2147483647},2204{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="ff6f762b-3774-4cbe-b305-14ebf111dc50" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Background="#FFC6C6C6" Opacity="0.2" Id="a6e78d5a-c4e2-4ee6-8666-daaae82c74a7" Panel.Bounds="324,355,933{5,2147483647},35{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="ff6f762b-3774-4cbe-b305-14ebf111dc50" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="1103cbd2-10ba-49a2-81f9-6c3ec5589fbe" Panel.Bounds="77,493,0*,0*">
+                                    <Group.Children>
+                                        <Rectangle Color="#00FFFFFF" Background="#FE5EB4CB" Id="093712fe-6c63-4835-8deb-2e0b874eae5c" Panel.Bounds="0,0,77{5,2147483647},69{5,2147483647}" />
+                                        <Icon Color="#FFFFFFFF" CatalogId="fa-folder-o" Id="9cbd2f25-62fc-480c-82bb-41d96db03ddd" Panel.Bounds="9,5,59{5,2147483647},59{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="ff6f762b-3774-4cbe-b305-14ebf111dc50" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <ContainerBox Color="#FFB1CBE2" Background="#00FFFFFF" Id="6410f4e1-5ce4-47a4-b8f1-7bb5680192e4" Panel.Bounds="324,355,933{5,2147483647},35{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="92ed4134-dfd2-46f8-8293-74a2d737e020" />
+                                    </ContainerBox.Content>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="ff6f762b-3774-4cbe-b305-14ebf111dc50" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Background="#FE5EB4CB" Id="43de99f4-fd2e-45c2-9328-1eba15c08a6a" Panel.Bounds="163,493,77{5,2147483647},69{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="ff6f762b-3774-4cbe-b305-14ebf111dc50" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFFFFFFF" CatalogId="fa-folder-open-o" Id="f0d9c2ab-3027-4978-a28d-31b6742e9e58" Panel.Bounds="172,498,59{5,2147483647},59{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="ff6f762b-3774-4cbe-b305-14ebf111dc50" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="3233fcbc-9a86-4b16-9f56-c909b6785ac4" Panel.Bounds="339,357,35{5,2147483647},35{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="ff6f762b-3774-4cbe-b305-14ebf111dc50" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <ContainerBox Color="#FE5DB3CA" Background="#FFD7EDF2" Thickness="0" Id="3a5b5ecc-7485-47e1-b08b-d4ac51dba20a" Panel.Bounds="1355,343,390{5,2147483647},1525{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="9ce8d38f-d15f-4a24-9f65-832ba69dba98">
+                                            <Container.Children>
+                                                <ContainerBox Color="#FFE2E2E2" Background="#FDF7F7F7" Thickness="0" Id="ff7ca35c-8e4e-4f7c-821a-eab745f254bc" Panel.Bounds="11,880,274{5,2147483647},136{5,2147483647}">
+                                                    <ContainerBox.Content>
+                                                        <Container ClipToContainer="True" Id="e5ae7f0c-75b5-4325-9052-ab96140332e5">
+                                                            <Container.Children>
+                                                                <Title RichText="&lt;Run FontSize=&quot;72&quot; Foreground=&quot;#FFC6C6C6&quot; &gt;+&lt;/Run&gt;" Align="Center" FontFamily="Arial" Id="f956a0aa-83d8-4411-b2a8-f83218d080d6" Panel.Bounds="-1,21,274{5,2147483647},114{5,2147483647}" />
+                                                                <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFC6C6C6&quot; &gt;添加小插件&lt;/Run&gt;" Align="Center" FontFamily="Arial" Id="be4dfd65-e9d1-4701-b0f7-f8ecfc4e2553" Panel.Bounds="85,96,101{5,2147483647},23{5,2147483647}" />
+                                                            </Container.Children>
+                                                        </Container>
+                                                    </ContainerBox.Content>
+                                                </ContainerBox>
+                                            </Container.Children>
+                                        </Container>
+                                    </ContainerBox.Content>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="ff6f762b-3774-4cbe-b305-14ebf111dc50" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <ContainerBox Color="#FFE2E2E2" Thickness="0" Id="3aa0c3d4-64f0-4843-a4fc-94c83e6b957e" Panel.Bounds="158,49,1600{5,2147483647},178{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="9dc83693-13ca-478e-bdf8-9190edc35fee">
+                                            <Container.Children>
+                                                <Rectangle Thickness="0" Background="#FFE2E2E2" Tooltip="logo" Id="37605f66-60bf-4b1d-ae04-5d24f9ba6f6b" Panel.Bounds="8,0,161{5,2147483647},46{5,2147483647}" />
+                                                <Title RichText="logo" FontFamily="Arial" Id="398baa7c-745d-4662-8958-131767b1d364" Panel.Bounds="51,4,5*{5,2147483647},37{5,2147483647}" />
+                                                <Image SourcePath="assets/20101029234349460.jpg" Id="155c8cd2-17be-4726-a1eb-49334f8be867" Panel.Bounds="-3,0,1603{5,2147483647},181{5,2147483647}" />
+                                            </Container.Children>
+                                        </Container>
+                                    </ContainerBox.Content>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Link Text="查看所有标签" Foreground="#FFC6C6C6" FontFamily="Arial" FontStyle="Normal|Underline" Id="b7bfbc2f-660d-42e7-bfc0-2a6ba7cf1351" Panel.Bounds="1643,317,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Set Property="Content.Background" Value="#6FE2E2E2" Target="7b498680-0046-4d8d-8a37-09b2534c96b1" />
+                    </KeyFrame.Operations>
+                </KeyFrame>
+            </Scene.KeyFrames>
+        </Scene>
+    </Page.Scenes>
+</Page>

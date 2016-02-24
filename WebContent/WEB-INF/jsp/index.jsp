@@ -76,6 +76,8 @@
 								<div class="img">
 									<img src="${context_path}/img/demoimg.jpg"  />
 								</div>
+								<div class="bg"></div>
+								<div class="mt">这是这个专题的标题这是这个专题的标题这是这个专题的标题</div>
 							</div>
 							<div class="item">
 								<div class="con">
@@ -106,6 +108,9 @@
 									<i class="dot"></i>
 									<a href="###" class="title">国产、欧美等手机盘点 从MWC看全球智能手机市场兴衰</a>
 								</div>
+							</div>
+							<div class="item">
+								<span class="edit-img" title="编辑本专题"></span>
 							</div>
 						</div>
 						<div class="subject">

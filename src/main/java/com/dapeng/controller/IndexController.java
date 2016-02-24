@@ -86,6 +86,23 @@ public class IndexController extends UserSessionController {
         return "index";
     }
 
+    @RequestMapping(value = "index_temp", method = { RequestMethod.GET, RequestMethod.POST })
+    public String index_temp(Model model, HttpSession session) {
+        String userid = getSessionUserId(session);
+        // 获取热门书签
+        List<BookmarkMiniBO> hotBookmarkList = bookmarkService.selectHotBookmarkList(userid);
+        model.addAttribute("hotBookmarkList", hotBookmarkList);
+
+        // 获取大分类
+        List<CategoryBO> parentCategoryList = categoryService.selectParentCategoryList(userid);
+        model.addAttribute("parentCategoryList", parentCategoryList);
+
+        // 获取书签，分类总数
+        model.addAttribute("bookmarkCnt", bookmarkService.countBookmark(userid));
+        model.addAttribute("categoryCnt", categoryService.countCategory(userid));
+        return "index_temp";
+    }
+    
     @RequestMapping(value = "index1", method = { RequestMethod.GET, RequestMethod.POST })
     public String index1() {
         return "index1";

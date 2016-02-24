@@ -1,18 +1,18 @@
 ﻿<?Infragistics.Models format="xaml" version="3"?>
 <ScreenPart xmlns="http://prototypes.infragistics.com/"
                                                                xmlns:d="http://prototypes.infragistics.com/views/design"
-                                                               Id="feff7088-74c3-4b35-bf0b-ae053b699b19" d:Design.ShowGuides="False">
+                                                               Id="fd683277-bdcf-40f9-b6fa-1a7c6664e273" d:Design.ShowGuides="False">
     <ScreenPart.Content>
-        <BorderedContent Width="379" Height="379" Background="#00FFFFFF" Id="8ba0441f-5eb9-46e9-9694-49316bd6cc8b">
+        <BorderedContent Width="150" Height="150" Background="#00FFFFFF" Id="fa613e33-44b0-44e8-92bc-67d8efedd06e">
             <BorderedContent.Layers>
-                <Layer Id="de9cc87d-3799-4146-ab3e-d2d299bb25d4" Panel.Layout="Stretch" />
-                <AnnotationsLayer Id="9fd809af-5de7-4227-847f-da8dd4e5e5cd" Panel.Layout="Stretch" />
+                <Layer Id="75d066db-22f6-47bb-816b-f6190aff3c12" Panel.Layout="Stretch" />
+                <AnnotationsLayer Id="8eb96a81-1e06-4a06-8536-b8eb444d13d3" Panel.Layout="Stretch" />
             </BorderedContent.Layers>
             <BorderedContent.Viewbox>
-                <Viewbox Id="426f336c-3890-45df-8c13-599658ef2349" />
+                <Viewbox Id="9624badd-3a10-4aa5-9d86-bc6a2c02021f" />
             </BorderedContent.Viewbox>
             <BorderedContent.GuidesInfo>
-                <GuidesInfo Id="d6df79e9-95fb-40ea-9089-77080b0760c3" />
+                <GuidesInfo Id="4dfa29db-2dc8-4315-8270-85d8c141082b" />
             </BorderedContent.GuidesInfo>
         </BorderedContent>
     </ScreenPart.Content>
@@ -20,13 +20,13 @@
         <DeviceInfo Id="none" Orientation="None" />
     </ScreenPart.Device>
     <ScreenPart.Scenes>
-        <Scene Title="Initial state" Created="02/17/2016 12:09:03" Id="dd13f318-c7e2-4412-b5fa-c18778895c92">
+        <Scene Title="Initial state" Created="02/17/2016 12:11:03" Id="d0b265ef-88cf-4e9e-8679-f85be1f66f8e">
             <Scene.KeyFrames>
-                <KeyFrame Id="300478e8-241f-48cc-88ac-9df26b012695">
+                <KeyFrame Id="aef75b87-fad5-44fe-80cd-f580c1da9d3d">
                     <KeyFrame.Operations>
-                        <Add Property="Panel.Children" Target="de9cc87d-3799-4146-ab3e-d2d299bb25d4">
+                        <Add Property="Panel.Children" Target="75d066db-22f6-47bb-816b-f6190aff3c12">
                             <Add.Item>
-                                <Icon CatalogId="Placeholder" Id="103a3b5b-0521-43ff-84a3-5a5a9d0c0ae1" Panel.Bounds="0,0,379{5,2147483647},379{5,2147483647}" />
+                                <WebCamMock MockType="WebCam" Id="04943d0e-4330-4a09-8a0a-218c0ad56023" Panel.Bounds="0,0,150{5,2147483647},150{5,2147483647}" />
                             </Add.Item>
                         </Add>
                     </KeyFrame.Operations>
