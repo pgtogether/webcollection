@@ -16,7 +16,9 @@ $(function() {
 		// 初始化操作网址的功能
 		bookmarkOperateFunc.init();
 	});
-	// 初始化导航功能
+	// 初始化模块导航功能
+	moduleNavBar.init();
+	// 初始化分类导航功能
 	categoryTabsOperateFunc.init();
 	// 初始化添加功能
 	newCategoryOrBookMarkFunc.init();
@@ -26,6 +28,8 @@ $(function() {
 	sideBannerFunc.init();
 	// 提示框功能
 	alertUtilsFunc.init();
+	// 滚动条插件
+	scrollBarFunc.init();
 });
 
 // 排序功能
@@ -294,6 +298,22 @@ var newCategoryOrBookMarkFunc = {
 	callbackShow : function() {
 	}
 };
+// 模块导航的操作
+var moduleNavBar = {
+		init : function(){
+			this.clickBar();
+		},
+		clickBar : function(){
+			$(".func-navs .nav-item").click(function(){
+				var $this = $(this);
+				$this.addClass("selected").siblings().removeClass("selected");
+				var index = $this.index();
+				$(".js-module-item").eq(index).show().siblings(".js-module-item").hide();
+			});
+		}
+};
+
+
 // 操作大分类Tab的功能
 var categoryTabsOperateFunc = {
 	init : function(){
@@ -992,3 +1012,19 @@ var sideBannerFunc = {
 			});
 	}
 };
+// scrollBar
+var scrollBarFunc = {
+		init : function(){
+			var bars = '.jspVerticalBar';
+			$('.scroll-pane').bind('jsp-initialised', function (event, isScrollable) {
+				$(this).find(bars).hide();
+			}).jScrollPane().hover(
+				function () {
+					$(this).find(bars).stop().fadeTo('fast', 0.9);
+				},
+				function () {
+					$(this).find(bars).stop().fadeTo('fast', 0);
+				}
+			);
+		}
+}
