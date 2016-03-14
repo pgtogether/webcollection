@@ -199,7 +199,7 @@
 }
 
 .popbox-body .pop-input textarea {
-	width: 100%; max-width: 100%; float: left; text-indent: 5px; line-height: 30px; padding-right: 2px;
+	width: 100%; max-width: 100%; float: left; text-indent: 5px; padding-right: 2px; height: 60px; padding-top: 3px;
 }
 
 .popbox-body .pop-input input[type=radio] {
@@ -365,12 +365,16 @@
 	background: #7BE693; text-align: center;
 }
 
-.pop-subjuct .subject-btns{
-	margin-top: 30px;
+.pop-subjuct .subject-btns {
+	margin-top: 20px;
 }
 
-.pop-subjuct .btn a {
+.pop-subjuct .subject-btns .btn a {
 	background: #7BE693;
+}
+
+.pop-subjuct .sub-head-btns .btn a {
+	background: #D3F3FF;
 }
 
 .pop-subjuct .list-subject {
@@ -378,7 +382,7 @@
 }
 
 .pop-subjuct .edit-subject {
-	width: 350px; float: right; margin-right: 10px; padding-top: 40px;
+	width: 350px; float: right; margin-right: 10px; margin-top: 5px;
 }
 
 .pop-subjuct .list-subject .subject {
@@ -421,6 +425,41 @@
 	width: 100%; float: left; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: #333; text-decoration: none;
 }
 
+.pop-subjuct .list-subject .edit-sub-head {
+	height: 100%; width: 100%; position: absolute; top: 0; background: url(../img/icon/edit-sub-head.png) no-repeat center; cursor: pointer;
+}
+
+.edit-subject .h-sub,.edit-subject .l-sub {
+	height: 310px; width: 100%; float: left;
+}
+
+.edit-subject .h-sub .h-item {
+	margin-bottom: 10px;
+}
+
+.edit-subject .h-sub .h-item .img-box {
+	margin: 0 auto; display: block; width: 85%; height: 100px; background: #F9F9F9; text-align: center; line-height: 100px; font-size: 50px; margin-top: 10px; color: #bbb; cursor: pointer; border: 2px dashed #E2E2E2;
+}
+
+.edit-subject .h-sub .h-item .img-box:hover {
+	color: #00A726;
+}
+
+.edit-subject .h-sub .h-item .word {
+	width: 90%; height: 30px; margin: 0 auto; text-align: center; background: #D3F3FF; line-height: 30px; border-radius: 10px; display: block;
+}
+
+.edit-subject .h-sub .h-item .sub-name {
+	height: 30px; width: 85%; margin: 0 auto; display: block; margin-top: 10px; text-indent: 10px;
+}
+
+.edit-subject .i-sub {
+	background: #F7F7F7; float: left; text-indent: 5px; padding: 5px 0 5px 0;
+}
+
+.edit-subject .i-sub span {
+	width: 100%; float: left; text-indent: 20px;
+}
 
 /* ¿Õ°×Ä£°å */
 .blank-category {

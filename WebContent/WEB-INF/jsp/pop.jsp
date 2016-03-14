@@ -160,11 +160,14 @@
 		<div class="list-subject">
 			<div class="subject">
 				<div class="item">
-					<div class="img">
-						<img src="${context_path}/img/demoimg.jpg"  />
+					<div class="sub-head">
+						<div class="img">
+							<img src="${context_path}/img/demoimg.jpg"  />
+						</div>
+						<div class="bg"></div>
+						<div class="mt">这是这个专题的标题这是这个专题的标题这是这个专题的标题</div>
 					</div>
-					<div class="bg"></div>
-					<div class="mt">这是这个专题的标题这是这个专题的标题这是这个专题的标题</div>
+					<div class="edit-sub-head"></div>
 				</div>
 				<div class="list-item scroll-pane">
 					<div class="item">
@@ -237,45 +240,61 @@
 			</div>
 		</div>
 		<div class="edit-subject">
-			<div class="pop-item">
-				<label class="name">网址</label>
-				<div class="pop-input">
-					<input type="text" id="url" name="url" placeholder="例:www.52url.com" />
+			<div class="h-sub">
+				<div class="h-item">
+					<span class="word">上传专题图片</span>
+					<div class="img-box">
+						<b>+</b>
+					</div>
+				</div>
+				<div class="h-item">
+					<span class="word">设置专题名称</span>
+					<input type="text" class="sub-name">
+				</div>
+				<div class="h-item pop-item sub-head-btns">
+					<span class="btn"> <a class="confirm-btn">确定</a><a
+						class="cancel-btn">取消</a>
+					</span>
 				</div>
 			</div>
-			<div class="pop-item">
-				<label class="name">名称</label>
-				<div class="pop-input">
-				<input type="text" id="bookmarkname" name="bookmarkname"
-					placeholder="例:网址收藏" />
+			<div class="l-sub" style="display: none;">
+				<div class="pop-item">
+					<label class="name">网址</label>
+					<div class="pop-input">
+						<input type="text" id="url" name="url" placeholder="例:www.52url.com" />
+					</div>
+				</div>
+				<div class="pop-item">
+					<label class="name">名称</label>
+					<div class="pop-input">
+					<input type="text" id="bookmarkname" name="bookmarkname"
+						placeholder="例:网址收藏" />
+					</div>
+				</div>
+				<div class="pop-item">
+					<label class="name">标签</label>
+					<div class="pop-input">
+					<input type="text" id="tags" name="tags"
+						placeholder="例:生活,美食(以逗号,分隔)" />
+					</div>
+				</div>
+				<div class="pop-item">
+					<label class="name">描述</label>
+					<div class="pop-input">
+					<textarea id="desc" name="desc"></textarea>
+					</div>
+				</div>
+				<div class="pop-item subject-btns">
+					<span class="btn"> <a class="confirm-btn">新增</a><a
+						class="cancel-btn">取消</a>
+					</span>
 				</div>
 			</div>
-			<div class="pop-item choose-category">
-				<label class="name">分类</label>
-				<div class="pop-input">
-				<input type="hidden" id="categoryno" name="categoryno" />
-				<input type="text" id="categoryname" name="categoryname" placeholder="例:菜谱(输入分类名可创建新分类)" />
-				<ul class="exist-category-list">
-				</ul>
-				</div>
-			</div>
-			<div class="pop-item">
-				<label class="name">标签</label>
-				<div class="pop-input">
-				<input type="text" id="tags" name="tags"
-					placeholder="例:生活,美食(以逗号,分隔)" />
-				</div>
-			</div>
-			<div class="pop-item">
-				<label class="name">描述</label>
-				<div class="pop-input">
-				<textarea id="desc" name="desc"></textarea>
-				</div>
-			</div>
-			<div class="pop-item subject-btns">
-				<span class="btn"> <a class="confirm-btn">新增</a><a
-					class="cancel-btn">取消</a>
-				</span>
+			<div class="i-sub">
+				<span><b>备注：</b></span>
+				<span>1.点击专题头部<b>图片位</b>可修改图标及标题。</span>
+				<span>2.<b>双击</b>专题列表栏位可修改。</span>
+				<span>3.专题列表栏位可<b>拖动排序</b>。</span>
 			</div>
 		</div>
 	</div>

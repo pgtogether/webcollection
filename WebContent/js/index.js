@@ -30,6 +30,8 @@ $(function() {
 	alertUtilsFunc.init();
 	// 滚动条插件
 	scrollBarFunc.init();
+	// 编辑专题功能
+	editSubjectFunc.init();
 });
 
 // 排序功能
@@ -1027,4 +1029,25 @@ var scrollBarFunc = {
 				}
 			);
 		}
-}
+};
+// 编辑专题
+var editSubjectFunc = {
+		init:function(){
+			var $pop_subject = $(".pop-subjuct");
+			$pop_subject.find(".edit-sub-head").click(function(){
+				$pop_subject.find(".h-sub").show().next().hide();
+			});
+			
+			$pop_subject.find(".list-item .item").click(function(){
+				$pop_subject.find(".l-sub").show().prev().hide();
+			});
+		},
+		// 新增专题
+		// 编辑专题
+		
+		// 添加专题书签
+		// 编辑专题书签
+		// 删除专题书签
+		// 上传专题图片
+		// 编辑专题标题/描述
+};
