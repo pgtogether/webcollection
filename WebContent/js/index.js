@@ -1034,12 +1034,40 @@ var scrollBarFunc = {
 var editSubjectFunc = {
 		init:function(){
 			var $pop_subject = $(".pop-subjuct");
-			$pop_subject.find(".edit-sub-head").click(function(){
+			$pop_subject.find(".item:first").hover(function(){
+				$(".edit-sub-head").show();
+			},function(){
+				$(".edit-sub-head").hide();
+			}).click(function(){
 				$pop_subject.find(".h-sub").show().next().hide();
 			});
 			
-			$pop_subject.find(".list-item .item").click(function(){
+			$pop_subject.find(".list-item .item").dblclick(function(){
 				$pop_subject.find(".l-sub").show().prev().hide();
+			});
+			
+			this.hoverBookmark();
+		},
+		// 鼠标经过网址
+		hoverBookmark : function() {
+			var selfFunc = this;
+			$(".js-module-item").on("mouseenter mouseleave", ".list-item .item",function(event) {
+				var $li = $(this);
+				if (event.type == "mouseenter") {
+					var color = $li.parent().parent().siblings(
+							".head-style").css("background-color");
+					$li.css("background-color", color).siblings().attr(
+							"style", "");
+					var urlOperateBtnTemplate = selfFunc.getUrlOperateBtn($li);
+					// 18为图标宽度
+					var width = $("<div>"+urlOperateBtnTemplate+"</div>").find("span:not(.staricon)").length * 18;
+					var bookmarkNameWith = $li.find("a").width();
+					$li.find("a").css("max-width",bookmarkNameWith-width);
+					$li.find(".operatebtn").append(urlOperateBtnTemplate);
+				} else if (event.type == "mouseleave") {
+					$li.attr("style", "").find("a").attr("style", "");
+					selfFunc.removeUrlOperateBtn($li);
+				}
 			});
 		},
 		// 新增专题
