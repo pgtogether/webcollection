@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+a {
+	cursor: pointer;
+}
+
+.txtellipsis {
+	white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}

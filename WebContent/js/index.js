@@ -310,7 +310,7 @@ var moduleNavBar = {
 				var $this = $(this);
 				$this.addClass("selected").siblings().removeClass("selected");
 				var index = $this.index();
-				$(".js-module-item").eq(index).show().siblings(".js-module-item").hide();
+				$(".module-item").eq(index).show().siblings(".module-item").hide();
 			});
 		}
 };
@@ -1051,7 +1051,7 @@ var editSubjectFunc = {
 		// 鼠标经过网址
 		hoverBookmark : function() {
 			var selfFunc = this;
-			$(".js-module-item").on("mouseenter mouseleave", ".list-item .item",function(event) {
+			$(".subject-item").on("mouseenter mouseleave", ".list-item .item",function(event) {
 				var $li = $(this);
 				if (event.type == "mouseenter") {
 					var color = $li.parent().parent().siblings(

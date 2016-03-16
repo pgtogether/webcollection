@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 <link href="${context_path}/css/base.css" rel="stylesheet"
 	type="text/css" />
+<link href="${context_path}/css/common.css" rel="stylesheet"
+	type="text/css" />
 <link href="${context_path}/css/index.css" rel="stylesheet"
 	type="text/css" />
 <link href="${context_path}/css/operate.css" rel="stylesheet"
@@ -46,7 +48,7 @@
 					<div class="nav-item">粉丝</div>
 				</div>
 			</div>
-			<div class="js-module-item">
+			<div class="module-item">
 				<div class="category-tabs">
 					<c:choose>
 						<c:when test="${not empty parentCategoryList}">
@@ -69,34 +71,31 @@
 					</span>
 				</div>
 				<!-- 网址主体 -->
-				<div class="content-left-body">
-					<c:choose>
-						<c:when test="${not empty parentCategoryList}">
-							<c:forEach items="${parentCategoryList}" var="parentcategoryname" varStatus="index">
-								<c:if test="${index.first}">
-									<div class="content-item">
-								</c:if>	
-								<c:if test="${!index.first}">
-									<div class="content-item display-none">
-								</c:if>
-									<div class="wrap-box" value="0">
-										<div class="block block-disabled add-block">
-											<span class="add-block-btn categorybtn" title="添加分类">+</span>
-										</div>
+				<c:choose>
+					<c:when test="${not empty parentCategoryList}">
+						<c:forEach items="${parentCategoryList}" var="parentcategoryname" varStatus="index">
+							<c:if test="${index.first}">
+								<div class="content-item">
+							</c:if>	
+							<c:if test="${!index.first}">
+								<div class="content-item display-none">
+							</c:if>
+								<div class="wrap-box" value="0">
+									<div class="block block-disabled add-block">
+										<span class="add-block-btn categorybtn" title="添加分类">+</span>
 									</div>
-									<div class="wrap-box" value="1"></div>
-									<div class="wrap-box" value="2"></div>
-									<div class="wrap-box" value="3"></div>
 								</div>
-							</c:forEach>
-						</c:when>
-					</c:choose>
-				</div>
+								<div class="wrap-box" value="1"></div>
+								<div class="wrap-box" value="2"></div>
+								<div class="wrap-box" value="3"></div>
+							</div>
+						</c:forEach>
+					</c:when>
+				</c:choose>
 			</div>
 			<!-- 专题 -->
-			<div class="js-module-item display-none">
+			<div class="module-item display-none">
 				<!-- 网址主体 -->
-				<div class="content-left-body">
 					<div class="subject-item">
 						<div class="subject-box ui-sortable">
 							<div class="block" id="c_21">
@@ -297,6 +296,77 @@
 							</div>
 						</div>
 					</div>
+			</div>
+			<!-- 关注 -->
+			<div class="module-item display-none">
+				<div class="fans-item">
+					<ul class="list-fans">
+						<li class="fans">
+							<div class="box">
+								<p class="headimg"><a><img src="" /></a></p>
+								<p class="username"><a class="txtellipsis">这是网名这是网名这是网名这是网名</a></p>
+								<p class="infos short">
+									<span class="">100书签</span>
+									<span class="">100专题</span>
+									<span class="">50关注</span>
+									<span class="">100粉丝</span>
+								</p>
+								<p class="btn"><a>关注</a></p>
+							</div>
+						</li>
+						<li class="fans">
+							<div class="box">
+								<p class="headimg"><a><img src="" /></a></p>
+								<p class="username"><a class="txtellipsis">这是网名这是网名这是网名这是网名</a></p>
+								<p class="infos short">
+									<span class="">100书签</span>
+									<span class="">100专题</span>
+									<span class="">50关注</span>
+									<span class="">100粉丝</span>
+								</p>
+								<p class="btn"><a>关注</a></p>
+							</div>
+						</li>
+						<li class="fans">
+							<div class="box">
+								<p class="headimg"><a><img src="" /></a></p>
+								<p class="username"><a class="txtellipsis">这是网名这是网名这是网名这是网名</a></p>
+								<p class="infos short">
+									<span class="">100书签</span>
+									<span class="">100专题</span>
+									<span class="">50关注</span>
+									<span class="">100粉丝</span>
+								</p>
+								<p class="btn"><a>关注</a></p>
+							</div>
+						</li>
+						<li class="fans">
+							<div class="box">
+								<p class="headimg"><a><img src="" /></a></p>
+								<p class="username"><a class="txtellipsis">这是网名这是网名这是网名这是网名</a></p>
+								<p class="infos short">
+									<span class="">100书签</span>
+									<span class="">100专题</span>
+									<span class="">50关注</span>
+									<span class="">100粉丝</span>
+								</p>
+								<p class="btn"><a>关注</a></p>
+							</div>
+						</li>
+						<li class="fans">
+							<div class="box">
+								<p class="headimg"><a><img src="" /></a></p>
+								<p class="username"><a class="txtellipsis">这是网名这是网名这是网名这是网名</a></p>
+								<p class="infos short">
+									<span class="">100书签</span>
+									<span class="">100专题</span>
+									<span class="">50关注</span>
+									<span class="">100粉丝</span>
+								</p>
+								<p class="btn"><a>关注</a></p>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
