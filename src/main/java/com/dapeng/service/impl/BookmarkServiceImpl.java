@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.dapeng.constants.BookmarkDeleteEnum;
 import com.dapeng.constants.BookmarkHotEnum;
 import com.dapeng.constants.BookmarkPermissionEnum;
+import com.dapeng.constants.CategoryPermissionEnum;
 import com.dapeng.constants.CategoryTypeEnum;
 import com.dapeng.dao.BookmarkMapper;
 import com.dapeng.dao.UserTagsMapper;
@@ -45,6 +46,9 @@ public class BookmarkServiceImpl implements BookmarkService {
         return bookmarkDao.countBookmark(bookmark);
     }
 
+    /**
+     * 查询所有的分类以及书签
+     */
     @Override
     public List<CategoryWithBookmarkMiniBO> selectBookmarkList(String userid) {
         List<CategoryWithBookmarkMiniBO> showList = null;
@@ -62,8 +66,9 @@ public class BookmarkServiceImpl implements BookmarkService {
             for (BookmarkBO bo : list) {
                 // 分类编号
                 Integer categoryno = bo.getCategoryno();
-                // 如果存在此分类编号，在此分类下追加书签
-                if (categoryMap.containsKey(categoryno)) {
+                // 如果存在此分类编号,并且不是加密分类，在此分类下追加书签
+                if (categoryMap.containsKey(categoryno)
+                        && CategoryPermissionEnum.NORMAL.getId().equals(bo.getCategorypermission())) {
                     // 根据索引值获得相应的BO
                     CategoryWithBookmarkMiniBO withBO = showList.get(categoryMap.get(categoryno));
                     BookmarkMiniBO miniBO = new BookmarkMiniBO();
@@ -79,15 +84,19 @@ public class BookmarkServiceImpl implements BookmarkService {
                     withBO.setN(bo.getCategoryname());
                     withBO.setC(bo.getColno());
                     withBO.setPc(bo.getParentcategoryno());
-                    if (bo.getBookmarkno() != 0) {
-                        List<BookmarkMiniBO> bookmarklist = new ArrayList<BookmarkMiniBO>();
-                        BookmarkMiniBO miniBO = new BookmarkMiniBO();
-                        miniBO.setI(bo.getBookmarkno());
-                        miniBO.setN(bo.getBookmarkname());
-                        miniBO.setU(bo.getUrl());
-                        miniBO.setH(bo.getHot());
-                        bookmarklist.add(miniBO);
-                        withBO.setList(bookmarklist);
+                    withBO.setCp(bo.getCategorypermission());
+                    // 如果此分类是加密分类，无需显示分类下书签
+                    if (CategoryPermissionEnum.NORMAL.getId().equals(bo.getCategorypermission())) {
+                        if (bo.getBookmarkno() != 0) {
+                            List<BookmarkMiniBO> bookmarklist = new ArrayList<BookmarkMiniBO>();
+                            BookmarkMiniBO miniBO = new BookmarkMiniBO();
+                            miniBO.setI(bo.getBookmarkno());
+                            miniBO.setN(bo.getBookmarkname());
+                            miniBO.setU(bo.getUrl());
+                            miniBO.setH(bo.getHot());
+                            bookmarklist.add(miniBO);
+                            withBO.setList(bookmarklist);
+                        }
                     }
                     // 加入显示用List
                     showList.add(withBO);

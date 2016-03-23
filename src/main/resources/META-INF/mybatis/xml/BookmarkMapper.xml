@@ -281,25 +281,22 @@
 	<!-- 书签操作 -->
 	<select id="selectBookmarkBOList" parameterType="com.dapeng.service.bo.BookmarkBO"
 		resultType="com.dapeng.service.bo.BookmarkBO">
-		SELECT T1.categoryno, T1.categoryname, T1.colno, T1.parentcategoryno,
-		T2.bookmarkname, T2.bookmarkno,
-		T2.url, T2.pinyin, T2.pinyinhead,
-		T2.hot
+		SELECT T1.categoryno, T1.categoryname, T1.colno,
+			T1.parentcategoryno, T1.categorypermission,
+			T2.bookmarkname,
+			T2.bookmarkno,
+			T2.url, T2.pinyin, T2.pinyinhead,
+			T2.hot
 		FROM
-		category T1
-		left join
-		bookmark T2
+			category T1 left join bookmark T2
 		ON
-		T1.categoryno =
-		T2.categoryno
-		and T1.userid = T2.userid
-		and T2.deleteflg =
-		#{deleteflg,jdbcType=VARCHAR}
+			T1.categoryno = T2.categoryno
+			and T1.userid = T2.userid
+			and T2.deleteflg = #{deleteflg,jdbcType=VARCHAR}
 		WHERE
-		T1.userid =
-		#{userid,jdbcType=VARCHAR}
-		and T1.categorytype = #{categorytype,jdbcType=VARCHAR}
-		ORDER BY T1.sort desc, T2.sort desc
+			T1.userid = #{userid,jdbcType=VARCHAR}
+			and T1.categorytype = #{categorytype,jdbcType=VARCHAR}
+			ORDER BY T1.sort desc, T2.sort desc
 	</select>
 	<!-- 书签操作 获取同一类别书签 -->
 	<select id="selectBookmarkListByCategoryid" resultType="com.dapeng.domain.Bookmark">
@@ -524,8 +521,10 @@
 		parameterType="com.dapeng.domain.Bookmark">
 		select count(1)
 		from bookmark
-		where userid = #{userid,jdbcType=VARCHAR}
-		and deleteflg = #{deleteflg,jdbcType=VARCHAR}
+		where userid =
+		#{userid,jdbcType=VARCHAR}
+		and deleteflg =
+		#{deleteflg,jdbcType=VARCHAR}
 	</select>
 </mapper>
 

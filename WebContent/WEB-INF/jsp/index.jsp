@@ -48,7 +48,7 @@
 					<div class="nav-item">粉丝</div>
 				</div>
 			</div>
-			<div class="module-item">
+			<div class="module-item bookmark-item">
 				<div class="category-tabs">
 					<c:choose>
 						<c:when test="${not empty parentCategoryList}">
@@ -303,7 +303,7 @@
 					<ul class="list-fans">
 						<li class="fans">
 							<div class="box">
-								<p class="headimg"><a><img src="" /></a></p>
+								<p class="headimg"><a><img src="${context_path}/img/demoimg.jpg" /></a></p>
 								<p class="username"><a class="txtellipsis">这是网名这是网名这是网名这是网名</a></p>
 								<p class="infos short">
 									<span class="">100书签</span>
@@ -316,7 +316,7 @@
 						</li>
 						<li class="fans">
 							<div class="box">
-								<p class="headimg"><a><img src="" /></a></p>
+								<p class="headimg"><a><img src="${context_path}/img/demoimg.jpg" /></a></p>
 								<p class="username"><a class="txtellipsis">这是网名这是网名这是网名这是网名</a></p>
 								<p class="infos short">
 									<span class="">100书签</span>
@@ -329,7 +329,7 @@
 						</li>
 						<li class="fans">
 							<div class="box">
-								<p class="headimg"><a><img src="" /></a></p>
+								<p class="headimg"><a><img src="${context_path}/img/demoimg.jpg" /></a></p>
 								<p class="username"><a class="txtellipsis">这是网名这是网名这是网名这是网名</a></p>
 								<p class="infos short">
 									<span class="">100书签</span>
@@ -342,7 +342,7 @@
 						</li>
 						<li class="fans">
 							<div class="box">
-								<p class="headimg"><a><img src="" /></a></p>
+								<p class="headimg"><a><img src="${context_path}/img/demoimg.jpg" /></a></p>
 								<p class="username"><a class="txtellipsis">这是网名这是网名这是网名这是网名</a></p>
 								<p class="infos short">
 									<span class="">100书签</span>
@@ -355,7 +355,33 @@
 						</li>
 						<li class="fans">
 							<div class="box">
-								<p class="headimg"><a><img src="" /></a></p>
+								<p class="headimg"><a><img src="${context_path}/img/demoimg.jpg" /></a></p>
+								<p class="username"><a class="txtellipsis">这是网名这是网名这是网名这是网名</a></p>
+								<p class="infos short">
+									<span class="">100书签</span>
+									<span class="">100专题</span>
+									<span class="">50关注</span>
+									<span class="">100粉丝</span>
+								</p>
+								<p class="btn"><a>关注</a></p>
+							</div>
+						</li>
+						<li class="fans">
+							<div class="box">
+								<p class="headimg"><a><img src="${context_path}/img/demoimg.jpg" /></a></p>
+								<p class="username"><a class="txtellipsis">这是网名这是网名这是网名这是网名</a></p>
+								<p class="infos short">
+									<span class="">100书签</span>
+									<span class="">100专题</span>
+									<span class="">50关注</span>
+									<span class="">100粉丝</span>
+								</p>
+								<p class="btn"><a>关注</a></p>
+							</div>
+						</li>
+						<li class="fans">
+							<div class="box">
+								<p class="headimg"><a><img src="${context_path}/img/demoimg.jpg" /></a></p>
 								<p class="username"><a class="txtellipsis">这是网名这是网名这是网名这是网名</a></p>
 								<p class="infos short">
 									<span class="">100书签</span>

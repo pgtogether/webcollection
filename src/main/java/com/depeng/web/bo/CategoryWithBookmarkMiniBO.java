@@ -39,9 +39,12 @@ public class CategoryWithBookmarkMiniBO {
 
     // colno
     private String c;
-    
+
     // parentcategoryno
     private int pc;
+
+    // categorypermission
+    private String cp;
 
     // bookmarklist
     private List<BookmarkMiniBO> list;
@@ -86,5 +89,12 @@ public class CategoryWithBookmarkMiniBO {
         this.pc = pc;
     }
 
+    public String getCp() {
+        return cp;
+    }
+
+    public void setCp(String cp) {
+        this.cp = cp;
+    }
 
 }

@@ -23,9 +23,11 @@ public class BookmarkBO {
     private String permission;
 
     private int categoryno;
-    
+
     private int parentcategoryno;
-    
+
+    private String categorypermission;
+
     private String categorytype;
 
     private String categoryname;
@@ -249,5 +251,13 @@ public class BookmarkBO {
     public void setCategorytype(String categorytype) {
         this.categorytype = categorytype;
     }
-    
+
+    public String getCategorypermission() {
+        return categorypermission;
+    }
+
+    public void setCategorypermission(String categorypermission) {
+        this.categorypermission = categorypermission;
+    }
+
 }

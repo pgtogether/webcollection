@@ -34,6 +34,7 @@ var initLoadFunc = {
 							var categoryname = _this.CacheList[i].n;
 							var categorycolno = _this.CacheList[i].c;
 							var parentcategoryno = _this.CacheList[i].pc;
+							var categorypermission = _this.CacheList[i].cp;
 							var bookmarklist = _this.CacheList[i].list;
 							// 复制一个分类模板
 							var $clone = $(".category-template").clone().removeClass("category-template display-none");
@@ -43,8 +44,12 @@ var initLoadFunc = {
 							$clone.find(".block-head").css("background-color",randomColor[rand]);
 							$clone.find(".block-head-title").text(categoryname)
 									.attr("value",categoryno).prop("id","category_" + categoryno);
+							// 如果此分类是加密分类，绘制加密分类样式
+							if(categorypermission == "2") {
+								$clone.find(".url-list").append(categoryOperateFunc.getLockedCategoryTemplate());
+							} 
 							// 绘制分类下的书签列
-							if (bookmarklist && bookmarklist.length > 0) {
+							else if (bookmarklist && bookmarklist.length > 0) {
 								var bookmarkHtml = '';
 								for (var n in bookmarklist) {
 									var id = bookmarklist[n].i;

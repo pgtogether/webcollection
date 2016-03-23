@@ -102,7 +102,7 @@ public class IndexController extends UserSessionController {
         model.addAttribute("categoryCnt", categoryService.countCategory(userid));
         return "index_temp";
     }
-    
+
     @RequestMapping(value = "index1", method = { RequestMethod.GET, RequestMethod.POST })
     public String index1() {
         return "index1";
@@ -426,13 +426,14 @@ public class IndexController extends UserSessionController {
     @RequestMapping(value = "doAddCategory", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
     public Map<String, Object> doAddCategory(CategoryForm form, HttpSession session) {
-        if (StringUtils.isEmpty(form.getCategoryname()) || StringUtils.isEmpty(form.getParentcategoryno())) {
+        if (StringUtils.isEmpty(form.getCategoryname()) || StringUtils.isEmpty(form.getParentcategoryno())
+                || StringUtils.isEmpty(form.getCategorypermission())) {
             return ajaxFail();
         }
         CategoryBO categoryBO = new CategoryBO();
         categoryBO.setCategoryname(form.getCategoryname());
         // 权限
-        categoryBO.setCategorypermission(CategoryPermissionEnum.NORMAL.getId());
+        categoryBO.setCategorypermission(form.getCategorypermission());
         // 密码：暂无
         categoryBO.setCategorypsw("***");
         // 默认二级分类
