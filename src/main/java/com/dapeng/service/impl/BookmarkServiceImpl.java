@@ -67,16 +67,17 @@ public class BookmarkServiceImpl implements BookmarkService {
                 // 分类编号
                 Integer categoryno = bo.getCategoryno();
                 // 如果存在此分类编号,并且不是加密分类，在此分类下追加书签
-                if (categoryMap.containsKey(categoryno)
-                        && CategoryPermissionEnum.NORMAL.getId().equals(bo.getCategorypermission())) {
-                    // 根据索引值获得相应的BO
-                    CategoryWithBookmarkMiniBO withBO = showList.get(categoryMap.get(categoryno));
-                    BookmarkMiniBO miniBO = new BookmarkMiniBO();
-                    miniBO.setI(bo.getBookmarkno());
-                    miniBO.setN(bo.getBookmarkname());
-                    miniBO.setU(bo.getUrl());
-                    miniBO.setH(bo.getHot());
-                    withBO.getList().add(miniBO);
+                if (categoryMap.containsKey(categoryno)) {
+                    if (CategoryPermissionEnum.NORMAL.getId().equals(bo.getCategorypermission())) {
+                        // 根据索引值获得相应的BO
+                        CategoryWithBookmarkMiniBO withBO = showList.get(categoryMap.get(categoryno));
+                        BookmarkMiniBO miniBO = new BookmarkMiniBO();
+                        miniBO.setI(bo.getBookmarkno());
+                        miniBO.setN(bo.getBookmarkname());
+                        miniBO.setU(bo.getUrl());
+                        miniBO.setH(bo.getHot());
+                        withBO.getList().add(miniBO);
+                    }
                 } else {
                     // 新增分类以及书签
                     CategoryWithBookmarkMiniBO withBO = new CategoryWithBookmarkMiniBO();
