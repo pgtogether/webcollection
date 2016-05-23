@@ -25,4 +25,18 @@ public class UserInfoServiceImpl implements UserInfoService {
         return userInfoDao.updateByPrimaryKeySelective(userinfo);
     }
 
+    /**
+     * 验证分类密码
+     */
+    @Override
+    public boolean checkCategoryPsw(String categorypsw, String userid) {
+        UserInfo userinfo = new UserInfo();
+        userinfo.setUserid(userid);
+        userinfo.setCategorypsw(categorypsw);
+        int result = userInfoDao.checkCategoryPsw(userinfo);
+        if (result > 0) {
+            return true;
+        }
+        return false;
+    }
 }

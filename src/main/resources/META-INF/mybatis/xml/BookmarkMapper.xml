@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-
 <mapper namespace="com.dapeng.dao.BookmarkMapper">
 	<resultMap id="BaseResultMap" type="com.dapeng.domain.Bookmark">
 		<id column="bookmarkid" property="bookmarkid" jdbcType="INTEGER" />
@@ -282,26 +281,35 @@
 	<select id="selectBookmarkBOList" parameterType="com.dapeng.service.bo.BookmarkBO"
 		resultType="com.dapeng.service.bo.BookmarkBO">
 		SELECT T1.categoryno, T1.categoryname, T1.colno,
-			T1.parentcategoryno, T1.categorypermission,
-			T2.bookmarkname,
-			T2.bookmarkno,
-			T2.url, T2.pinyin, T2.pinyinhead,
-			T2.hot
+		T1.parentcategoryno, T1.categorypermission,
+		T2.bookmarkname,
+		T2.bookmarkno,
+		T2.url, T2.pinyin, T2.pinyinhead,
+		T2.hot
 		FROM
-			category T1 left join bookmark T2
+		category T1
+		left join bookmark T2
 		ON
-			T1.categoryno = T2.categoryno
-			and T1.userid = T2.userid
-			and T2.deleteflg = #{deleteflg,jdbcType=VARCHAR}
+		T1.categoryno = T2.categoryno
+		and T1.userid =
+		T2.userid
+		and T2.deleteflg = #{deleteflg,jdbcType=VARCHAR}
 		WHERE
-			T1.userid = #{userid,jdbcType=VARCHAR}
-			and T1.categorytype = #{categorytype,jdbcType=VARCHAR}
-			ORDER BY T1.sort desc, T2.sort desc
+		T1.userid = #{userid,jdbcType=VARCHAR}
+		and T1.categorytype =
+		#{categorytype,jdbcType=VARCHAR}
+		ORDER BY T1.sort desc, T2.sort desc
 	</select>
-	<!-- 书签操作 获取同一类别书签 -->
-	<select id="selectBookmarkListByCategoryid" resultType="com.dapeng.domain.Bookmark">
-		select *
-		from bookmark where deleteflg!="1" and categoryno = #{categoryno}
+	<select id="selectBookmarkListByCategoryNo" parameterType="com.dapeng.domain.Bookmark"
+		resultType="com.depeng.web.bo.BookmarkMiniBO">
+		select T1.bookmarkno as i, T1.bookmarkname as n, T1.url as u, T1.hot as h
+		from bookmark T1, category T2
+		where T1.deleteflg != #{deleteflg,jdbcType=VARCHAR}
+		and T2.categoryno = #{categoryno,jdbcType=INTEGER}
+		and T2.userid = #{userid,jdbcType=VARCHAR}
+		and T1.categoryno = T2.categoryno
+		and T1.userid = T2.userid
+		order by T1.sort asc
 	</select>
 	<select id="selectHotBookmarkList" parameterType="com.dapeng.domain.Bookmark"
 		resultType="com.depeng.web.bo.BookmarkMiniBO">
@@ -523,6 +531,18 @@
 		from bookmark
 		where userid =
 		#{userid,jdbcType=VARCHAR}
+		and deleteflg =
+		#{deleteflg,jdbcType=VARCHAR}
+	</select>
+	<select id="countBookmarkByCategory" resultType="java.lang.Integer"
+		parameterType="com.dapeng.domain.Bookmark">
+		select count(1)
+		from
+		bookmark
+		where userid =
+		#{userid,jdbcType=VARCHAR}
+		and categoryno =
+		#{categoryno,jdbcType=VARCHAR}
 		and deleteflg =
 		#{deleteflg,jdbcType=VARCHAR}
 	</select>

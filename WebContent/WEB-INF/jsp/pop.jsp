@@ -82,6 +82,31 @@
 	</div>
 	</form>
 </div>
+<div class="popbox popbox-for-new pop-subject">
+	<form id="newSubjectForm">
+	<div class="popbox-head">添加专题</div>
+	<div class="popbox-body">
+		<div class="pop-item">
+			<label class="name">名称</label>
+			<div class="pop-input">
+			<input type="text" id="subjectname" name="subjectname"
+				placeholder="专题名称" />
+			</div>
+		</div>
+		<div class="pop-item">
+			<label class="name">描述</label>
+			<div class="pop-input">
+			<textarea id="subjectdesc" name="subjectdesc"></textarea>
+			</div>
+		</div>
+		<div class="pop-item">
+			<span class="btn"> <a class="confirm-btn">确定</a><a
+				class="cancel-btn">取消</a>
+			</span>
+		</div>
+	</div>
+	</form>
+</div>
 <div class="popbox popbox-for-new pop-parentcategory">
 	<form id="newParentCategoryForm">
 	<div class="popbox-head">添加导航</div>
@@ -133,7 +158,7 @@
 		</div>
 	</div>
 </div>
-<div class="popbox pop-callback-success">
+<div class="popbox pop-callback-success" style="display: block;">
 	<div class="popbox-body">
 		<div>
 			<img alt="success" src="${context_path}/img/dosuccess.png">

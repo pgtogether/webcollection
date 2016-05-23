@@ -26,7 +26,7 @@
                     <KeyFrame.Operations>
                         <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
                             <Add.Item>
-                                <Button Text="关注" Background="#FFFF7373" CornerRadius="7" BorderThickness="0" Foreground="#FFFFFFFF" FontFamily="Arial" Id="7d7ee6fd-a6f4-453d-bee7-b6e89eb6cefc" Panel.Bounds="379,167,71{5,2147483647},22{5,2147483647}" />
+                                <Button Text="关注" Background="#FFFF7373" CornerRadius="7" BorderThickness="0" Foreground="#FFFFFFFF" FontFamily="Arial" Id="7d7ee6fd-a6f4-453d-bee7-b6e89eb6cefc" Panel.Bounds="934,167,71{5,2147483647},22{5,2147483647}" />
                             </Add.Item>
                         </Add>
                         <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
@@ -83,17 +83,17 @@
                         </Add>
                         <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
                             <Add.Item>
-                                <Title RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFAAAAAA&quot; &gt;很多的时间里我都在想，不具名的人和不想说的事。&lt;/Run&gt;" FontFamily="Arial" Id="42dbca74-5ea0-4ad6-89bf-4e5e635bd4ad" Panel.Bounds="383,130,366{5,2147483647},19{5,2147483647}" />
+                                <Title RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFAAAAAA&quot; &gt;很多的时间里我都在想，不具名的人和不想说的事。&lt;/Run&gt;" FontFamily="Arial" Id="42dbca74-5ea0-4ad6-89bf-4e5e635bd4ad" Panel.Bounds="938,130,366{5,2147483647},19{5,2147483647}" />
                             </Add.Item>
                         </Add>
                         <Add Property="Panel.Children" Before="42dbca74-5ea0-4ad6-89bf-4e5e635bd4ad" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
                             <Add.Item>
-                                <Image SourcePath="assets/Kevin Kern_Enchanted Piano_4.jpg" Id="3a61516b-eb6a-4305-a459-ee62bfb55ca0" Panel.Bounds="213,64,138{5,2147483647},140{5,2147483647}" />
+                                <Image SourcePath="assets/Kevin Kern_Enchanted Piano_4.jpg" Id="3a61516b-eb6a-4305-a459-ee62bfb55ca0" Panel.Bounds="768,64,138{5,2147483647},140{5,2147483647}" />
                             </Add.Item>
                         </Add>
                         <Add Property="Panel.Children" Before="3a61516b-eb6a-4305-a459-ee62bfb55ca0" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
                             <Add.Item>
-                                <Title RichText="&lt;Run FontSize=&quot;16&quot; &gt;测试用户名&lt;/Run&gt;" FontFamily="Arial" Id="36994102-6dfb-4e34-8465-5acbdb489548" Panel.Bounds="383,105,82{5,2147483647},19{5,2147483647}" />
+                                <Title RichText="&lt;Run FontSize=&quot;16&quot; &gt;测试用户名&lt;/Run&gt;" FontFamily="Arial" Id="36994102-6dfb-4e34-8465-5acbdb489548" Panel.Bounds="938,105,82{5,2147483647},19{5,2147483647}" />
                             </Add.Item>
                         </Add>
                         <Add Property="Panel.Children" Before="36994102-6dfb-4e34-8465-5acbdb489548" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
@@ -346,47 +346,6 @@
                         </Add>
                         <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
                             <Add.Item>
-                                <Group GroupName="Group" Id="3d899629-81fb-4ab5-bed1-ee52145aed14" Panel.Bounds="324,460,0*,0*">
-                                    <Group.Children>
-                                        <ContainerBox Color="#FF81ABE0" Background="#FFD7EDF2" Id="f0a64c85-5601-4113-adc8-795b649a8dde" Panel.Bounds="0,0,933{5,2147483647},195{5,2147483647}">
-                                            <ContainerBox.Content>
-                                                <Container ClipToContainer="True" Id="d03d26e1-9f07-4617-a9ec-9744af8b706d" />
-                                            </ContainerBox.Content>
-                                        </ContainerBox>
-                                        <Rectangle Color="#00FFFFFF" Background="#FFC6C6C6" Opacity="0.2" Id="d4c26c30-0c67-4e82-8030-790dbae2b055" Panel.Bounds="0,157,933{5,2147483647},38{5,2147483647}" />
-                                        <Rectangle Color="#00FFFFFF" Opacity="0.2" Id="75faf3bd-6a27-4b57-ad7a-e9ac13fdec05" Panel.Bounds="0,0,933{5,2147483647},38{5,2147483647}" />
-                                        <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="0eb787f2-660c-43fd-a999-d2d494208c8e" Panel.Bounds="28,160,35{5,2147483647},35{5,2147483647}" />
-                                        <Rectangle Color="#00FFFFFF" Background="#FFFF7373" Opacity="0.2" Id="ef783dcd-bda1-4144-adfc-1e17f2f5e40b" Panel.Bounds="0,79,933{5,2147483647},38{5,2147483647}" />
-                                        <Group GroupName="Group" Id="1b2e6d12-c293-482d-a1d0-8365cdfe7906" Panel.Bounds="34,6,0*,0*">
-                                            <Group.Children>
-                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="4499045a-bf9d-4b6e-a732-71db359e66fe" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
-                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="340ed695-d625-472d-8a08-e0da8500ffae" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
-                                            </Group.Children>
-                                        </Group>
-                                        <Group GroupName="Group" Id="057c8f18-20c2-44e9-becf-a3cab0285dd6" Panel.Bounds="34,45,0*,0*">
-                                            <Group.Children>
-                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="8e596d09-f1ba-468f-8fff-23d849c45af7" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
-                                                <Icon Color="#FF1D4F5C" CatalogId="FriendFeed" Id="375db8bc-dfbe-481a-bd3d-6e4a26aca5b0" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
-                                            </Group.Children>
-                                        </Group>
-                                        <Group GroupName="Group" Id="9fc68197-de02-4119-a7ee-a3053dccc70e" Panel.Bounds="34,84,0*,0*">
-                                            <Group.Children>
-                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="8ae180ba-f42a-4f9b-9fad-30c0a9021e4b" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
-                                                <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="edeaa5d0-6dfd-4143-a61e-9e929fa6c59d" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
-                                            </Group.Children>
-                                        </Group>
-                                        <Group GroupName="Group" Id="fb27a3f4-e397-4aac-8b6f-8ace7aa021e5" Panel.Bounds="34,125,0*,0*">
-                                            <Group.Children>
-                                                <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="7c6d01e7-6249-4685-ab4e-0786a07e12bc" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
-                                                <Icon Color="#FF392C49" CatalogId="Info2" Id="168cd4df-828d-4f05-8c5d-ef049c667961" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
-                                            </Group.Children>
-                                        </Group>
-                                    </Group.Children>
-                                </Group>
-                            </Add.Item>
-                        </Add>
-                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
-                            <Add.Item>
                                 <Polyline Thickness="1" IsClosed="True" Color="#00FFFFFF" Background="#FFC6C6C6" Id="d7456d04-216a-46d1-ae85-c2ef383f0c20" Panel.Bounds="437,431,121{1,2147483647},31{1,2147483647}">
                                     <Polyline.StartPoint>
                                         <Point Id="57af2c3e-855f-4337-aa10-968956bb0cf4" />
@@ -414,11 +373,6 @@
                                         </Segment>
                                     </Polyline.Segments>
                                 </Polyline>
-                            </Add.Item>
-                        </Add>
-                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
-                            <Add.Item>
-                                <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="3be54ab0-aab2-417b-9c90-c5c35b89d75c" Panel.Bounds="434,332,24{5,2147483647},24{5,2147483647}" />
                             </Add.Item>
                         </Add>
                         <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
@@ -556,11 +510,6 @@
                         </Add>
                         <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
                             <Add.Item>
-                                <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="48a5f310-4f91-4170-9e5c-88bc822448fb" Panel.Bounds="548,700,24{5,2147483647},24{5,2147483647}" />
-                            </Add.Item>
-                        </Add>
-                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
-                            <Add.Item>
                                 <Polyline Thickness="1" IsClosed="True" Color="#00FFFFFF" Background="#FF417BAD" Id="9d11708f-ac30-470e-99e3-afb7dcdb3d2f" Panel.Bounds="324,958,121{1,2147483647},31{1,2147483647}">
                                     <Polyline.StartPoint>
                                         <Point Id="1c995c71-95c8-4ace-8e91-5f0c2e09c8ee" />
@@ -691,11 +640,6 @@
                                         </Segment>
                                     </Polyline.Segments>
                                 </Polyline>
-                            </Add.Item>
-                        </Add>
-                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
-                            <Add.Item>
-                                <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="a59dee76-0c17-43c3-ac65-3988e373fcd5" Panel.Bounds="658,965,24{5,2147483647},24{5,2147483647}" />
                             </Add.Item>
                         </Add>
                         <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
@@ -845,11 +789,6 @@
                                         </Segment>
                                     </Polyline.Segments>
                                 </Polyline>
-                            </Add.Item>
-                        </Add>
-                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
-                            <Add.Item>
-                                <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="05e7736c-cced-447f-afbc-60ab8a69aba7" Panel.Bounds="658,965,24{5,2147483647},24{5,2147483647}" />
                             </Add.Item>
                         </Add>
                         <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
@@ -1081,6 +1020,80 @@
                         <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
                             <Add.Item>
                                 <Link Text="查看所有标签" Foreground="#FFC6C6C6" FontFamily="Arial" FontStyle="Normal|Underline" Id="b7bfbc2f-660d-42e7-bfc0-2a6ba7cf1351" Panel.Bounds="1643,317,5*{5,2147483647},5*{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="d7456d04-216a-46d1-ae85-c2ef383f0c20" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <ContainerBox Color="#FF81ABE0" Id="f0a64c85-5601-4113-adc8-795b649a8dde" ControlExtensions.Locked="True" Panel.Bounds="324,460,933{5,2147483647},195{5,2147483647}">
+                                    <ContainerBox.Content>
+                                        <Container ClipToContainer="True" Id="d03d26e1-9f07-4617-a9ec-9744af8b706d" />
+                                    </ContainerBox.Content>
+                                </ContainerBox>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="d7456d04-216a-46d1-ae85-c2ef383f0c20" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Background="#FFC6C6C6" Opacity="0.2" Id="d4c26c30-0c67-4e82-8030-790dbae2b055" Panel.Bounds="324,617,933{5,2147483647},38{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="d7456d04-216a-46d1-ae85-c2ef383f0c20" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Opacity="0.2" Id="75faf3bd-6a27-4b57-ad7a-e9ac13fdec05" Panel.Bounds="324,460,933{5,2147483647},38{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="d7456d04-216a-46d1-ae85-c2ef383f0c20" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Icon Color="#FFAAAAAA" CatalogId="fa-plus" Opacity="0.2" Id="0eb787f2-660c-43fd-a999-d2d494208c8e" Panel.Bounds="352,620,35{5,2147483647},35{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="d7456d04-216a-46d1-ae85-c2ef383f0c20" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Background="#FE5EB4CB" Opacity="0.2" Id="ef783dcd-bda1-4144-adfc-1e17f2f5e40b" Panel.Bounds="324,539,933{5,2147483647},38{5,2147483647}" />
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="d7456d04-216a-46d1-ae85-c2ef383f0c20" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="1b2e6d12-c293-482d-a1d0-8365cdfe7906" Panel.Bounds="358,466,0*,0*">
+                                    <Group.Children>
+                                        <Label RichText="Text Label or Paragraph " FontSize="16" FontFamily="Arial" Id="4499045a-bf9d-4b6e-a732-71db359e66fe" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="340ed695-d625-472d-8a08-e0da8500ffae" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="d7456d04-216a-46d1-ae85-c2ef383f0c20" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="057c8f18-20c2-44e9-becf-a3cab0285dd6" Panel.Bounds="358,505,0*,0*">
+                                    <Group.Children>
+                                        <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="8e596d09-f1ba-468f-8fff-23d849c45af7" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Icon Color="#FF1D4F5C" CatalogId="FriendFeed" Id="375db8bc-dfbe-481a-bd3d-6e4a26aca5b0" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="d7456d04-216a-46d1-ae85-c2ef383f0c20" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="9fc68197-de02-4119-a7ee-a3053dccc70e" Panel.Bounds="358,544,0*,0*">
+                                    <Group.Children>
+                                        <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="8ae180ba-f42a-4f9b-9fad-30c0a9021e4b" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Icon Color="#FFFF2E2E" CatalogId="Placeholder" Id="edeaa5d0-6dfd-4143-a61e-9e929fa6c59d" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Before="d7456d04-216a-46d1-ae85-c2ef383f0c20" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Group GroupName="Group" Id="fb27a3f4-e397-4aac-8b6f-8ace7aa021e5" Panel.Bounds="358,585,0*,0*">
+                                    <Group.Children>
+                                        <Label RichText="Text Label or Paragraph  &lt;Run Foreground=&quot;#FF4BACC6&quot; &gt;http://v.yinyuetai.com/playlist/3571327&lt;/Run&gt;" FontSize="16" FontFamily="Arial" Id="7c6d01e7-6249-4685-ab4e-0786a07e12bc" Panel.Bounds="26,4,5*{5,2147483647},5*{5,2147483647}" />
+                                        <Icon Color="#FF392C49" CatalogId="Info2" Id="168cd4df-828d-4f05-8c5d-ef049c667961" Panel.Bounds="0,0,23{5,2147483647},23{5,2147483647}" />
+                                    </Group.Children>
+                                </Group>
+                            </Add.Item>
+                        </Add>
+                        <Add Property="Panel.Children" Target="b52e5c24-0cfe-42d7-ae0b-495278f36a99">
+                            <Add.Item>
+                                <Rectangle Color="#00FFFFFF" Background="#FFC6C6C6" Opacity="0.2" Id="eeb88554-a280-466c-bee4-cdb5e83c600b" ControlExtensions.Locked="True" Panel.Bounds="324,461,933{5,2147483647},38{5,2147483647}" />
                             </Add.Item>
                         </Add>
                         <Set Property="Content.Background" Value="#6FE2E2E2" Target="7b498680-0046-4d8d-8a37-09b2534c96b1" />

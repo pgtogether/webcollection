@@ -35,7 +35,9 @@
 	<!-- 解密分类模板 -->
 	<ul class="unlock-category-template display-none">
 		<li class="li-disabled unlock-url">
-			<label class="unlocktxt">密码:</label><input type="password" class="unlockpsw"><span class="unlockbtn" title="开锁"></span>
+			<label class="unlocktxt">密码:</label>
+			<input name="categorypsw" type="password" class="unlockpsw">
+			<span class="unlockbtn" title="开锁"></span>
 		</li>
 	</ul>
 	
@@ -48,4 +50,11 @@
 	<!-- 书签操作按钮模板 -->
 	
 	<!-- 分类操作按钮模板 -->
+	<div class="subject-title-template display-none">
+		<input class="updatetitle" type="text" value="" />
+		<div class="block-head-func">
+			<span title="确定" class="confirmicon"></span>
+			<span title="取消" class="cancelicon"></span>
+		</div>
+	</div>
 </div>

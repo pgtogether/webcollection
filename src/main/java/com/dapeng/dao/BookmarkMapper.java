@@ -18,7 +18,7 @@ public interface BookmarkMapper {
     int insertSelective(Bookmark record);
 
     Bookmark selectByPrimaryKey(Integer bookmarkid);
-    
+
     Bookmark selectByUniqueKey(Bookmark record);
 
     int updateByPrimaryKeySelective(Bookmark record);
@@ -31,12 +31,9 @@ public interface BookmarkMapper {
     List<BookmarkBO> selectBookmarkBOList(BookmarkBO record);
 
     /**
-     * 查找相同类别的标签
-     * 
-     * @param categoryid
-     * @return
+     * 查找分类下的书签
      */
-    List<Bookmark> selectBookmarkListByCategoryid(int categoryid);
+    List<BookmarkMiniBO> selectBookmarkListByCategoryNo(Bookmark record);
 
     /**
      * 回收站列表
@@ -97,9 +94,11 @@ public interface BookmarkMapper {
 
     // 批量更新分类排序
     void batchUpdateBookmarkSort(List<Bookmark> list);
-    
+
     List<BookmarkMiniBO> getBookmarkListByTag(Bookmark bookmark);
-    
+
     // 获取书签数目
     int countBookmark(Bookmark bookmark);
+
+    int countBookmarkByCategory(Bookmark bookmark);
 }

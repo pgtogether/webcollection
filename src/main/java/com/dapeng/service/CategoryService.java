@@ -30,7 +30,7 @@ public interface CategoryService {
 
     // 增加分类导航
     int addParentCategory(CategoryBO categoryBO);
-    
+
     // 修改分类导航
     int updParentCategory(CategoryBO categoryBO);
 
@@ -48,4 +48,5 @@ public interface CategoryService {
 
     // 更新分类的排序
     void updateCategorySort(CategoryBO bo);
+
 }

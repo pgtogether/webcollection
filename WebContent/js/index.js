@@ -214,6 +214,7 @@ var newCategoryOrBookMarkFunc = {
 				var $newcategoryform = $("#newCategoryForm");
 				bookmarkOperateFunc.closeAllEditBookmarkTemplate();
 				var categoryname = $newcategoryform.find("#categoryname").val();
+				var categorypermission = $newcategoryform.find(":radio:checked").val();
 				var $clone = $(".category-template").clone().removeClass("category-template")
 													.prop("id","c_"+newCategoryNo);
 				// 添加新分类模板标题颜色
@@ -221,6 +222,10 @@ var newCategoryOrBookMarkFunc = {
 				$clone.find(".block-head").css("background-color",randomColor[rand]);
 				$clone.find(".block-head-title").text(categoryname)
 						.attr("value",newCategoryNo).prop("id","category_" + newCategoryNo);
+				// 如果此分类是加密分类，绘制加密分类样式
+				if(categorypermission == "2") {
+					$clone.find(".url-list").append(categoryOperateFunc.getLockedCategoryTemplate());
+				} 
 				// 放入当前显示大分类的栏位下
 				var index = $(".category-tabs").find(".tab-item.selected").index(".tab-item");
 				$(".content-item:eq("+ index +")").find(".wrap-box .add-block").after($clone);
@@ -324,7 +329,7 @@ var categoryTabsOperateFunc = {
 			var index = $this.index(".tab-item");
 			var selectedClass = "selected";
 			$this.addClass(selectedClass).siblings().removeClass(selectedClass);
-			$(".content-item:eq("+ index +")").show().siblings().hide();
+			$(".content-item:eq("+ index +")").show().siblings(".content-item").hide();
 			$("#parentcategoryno").val($this.prop("id").replace("pc_",""));
 		});
 		$(".tab-func").hover(function(){
@@ -438,7 +443,7 @@ var categoryOperateFunc = {
 		this.confirmModify();
 		this.cancelModify();
 		this.deleteCategory();
-		this.unLockCategory();
+		this.lockCategory();
 	},
 	// 鼠标经过标题时候
 	hoverTitle : function() {
@@ -490,10 +495,11 @@ var categoryOperateFunc = {
 		});
 		// 监听回车键
 		$(".bookmark-item").on("keydown",".updatetitle", function(e){
+			var $head = $(this).parents(".block-head");
 			if(e.keyCode==13){
-				$(".bookmark-item").find(".confirmicon").click();
+				$head.find(".confirmicon").click();
 			} else if (e.keyCode == 27) {
-				$(".bookmark-item").find(".cancelicon").click();
+				$head.find(".cancelicon").click();
 			}
 		});
 	},
@@ -516,10 +522,22 @@ var categoryOperateFunc = {
 		var selfFunc = this;
 		// 关闭提示框
 		$(".bookmark-item").on("click", ".closeicon", function() {
-			selfFunc.deleteCategoryNo = $(this).parents(".block").find(".category-title").attr("value");
+			var categoryno = $(this).parents(".block").find(".category-title").attr("value");
+			selfFunc.deleteCategoryNo = categoryno;
 			var $urlList = $(this).parents(".block").find(".url-list");
 			if($urlList.find("li").length > 0) {
-				alertUtilsFunc.alert("该分类下还有网址，不可删除！");
+				// 如果该分类是加密分类，判断此分类下是否有书签
+				if($urlList.find(".lock-url").length > 0) {
+					doAjaxFunc.cntBookmarkInCategory(categoryno, function(bookmarkcnt){
+						if (parseInt(bookmarkcnt) > 0) {
+							alertUtilsFunc.alert("该分类下还有网址，不可删除！");
+						} else {
+							$(".popbox-for-confirm").show();
+						}
+					});
+				} else {
+					alertUtilsFunc.alert("该分类下还有网址，不可删除！");
+				}
 			} else {
 				$(".popbox-for-confirm").show();
 			}
@@ -537,8 +555,9 @@ var categoryOperateFunc = {
 			});
 		});
 	},
-	// 解锁分类
-	unLockCategory : function(){
+	// 锁定分类
+	lockCategory : function(){
+		// 锁定样式
 		$(".bookmark-item").on("click", ".lock-url", function() {
 			var _this = $(this);
 			var unlockClass = "unlock";
@@ -551,6 +570,57 @@ var categoryOperateFunc = {
 				_this.after($unLockTemplate);
 				$unLockTemplate.find("input").focus();
 			}
+		});
+		// 解密分类
+		$(".bookmark-item").on("click", ".unlockbtn", function() {
+			var $input = $(this).prev("input");
+			var categorypsw = $input.val();
+			if (!categorypsw) {
+				$input.addClass("error");
+				return;
+			}
+			var params = {
+				categorypsw : categorypsw
+			};
+			doAjaxFunc.doValidCategoryPsw(params, function(result){
+				if (result) {
+					$input.removeClass("error");
+					// 验证成功后，加载分类所属书签
+					$input.parent().hide().prev().removeClass("unlock").addClass("loading");
+					var categoryno = $input.parents(".block").find(".category-title").attr("value");
+					var params2 = {
+						categoryno : categoryno
+					};
+					doAjaxFunc.doLoadBookmarkList(params2, function(list){
+						var bookmarklistHtml = "";
+						if (list && list.length > 0) {
+							for (var i in list) {
+								var bookmark = list[i];
+								var value = {
+									bookmarkno : bookmark.i,
+									bookmarkname : bookmark.n,
+									url : bookmark.u,
+									hot : bookmark.h,
+									isDisplay : true
+								};
+								var bookmarkHtml = bookmarkOperateFunc.getBookmarkTemplate(value);
+								bookmarklistHtml += bookmarkHtml;
+							}
+						}
+						var $urlList = $input.parents(".url-list");
+						$urlList.html(bookmarklistHtml);
+						$urlList.next(".add-url").append(categoryOperateFunc.getLockedCategoryBtn());
+					});
+				} else {
+					$input.addClass("error");
+				}
+			});
+		});
+		// 加密分类
+		$(".bookmark-item").on("click", ".lockicon", function() {
+			var $lockBtn = $(this);
+			$lockBtn.parent().prev(".url-list").html(categoryOperateFunc.getLockedCategoryTemplate());
+			$lockBtn.remove();
 		});
 	},
 	// 关闭其他正在编辑标题的操作
@@ -591,6 +661,10 @@ var categoryOperateFunc = {
 	// 获取锁定的分类模板
 	getLockedCategoryTemplate : function(){
 		return '<li class="li-disabled lock-url" title="加密分类"></li>';
+	},
+	// 获取分类锁定图标
+	getLockedCategoryBtn : function(){
+		return '<span class="lockicon" title="锁定分类"></span>';
 	}
 };
 
@@ -608,7 +682,7 @@ var bookmarkOperateFunc = {
 	// 鼠标经过网址
 	hoverBookmark : function() {
 		var selfFunc = this;
-		$(".content").on("mouseenter mouseleave", ".url-list li",function(event) {
+		$(".bookmark-item,.subject-item").on("mouseenter mouseleave", ".url-list li:not('.li-disabled')",function(event) {
 			var $li = $(this);
 			if (event.type == "mouseenter") {
 				var color = $li.parent().parent().siblings(
@@ -620,7 +694,10 @@ var bookmarkOperateFunc = {
 				var width = $("<div>"+urlOperateBtnTemplate+"</div>").find("span:not(.staricon)").length * 18;
 				var bookmarkNameWith = $li.find("a").width();
 				$li.find("a").css("max-width",bookmarkNameWith-width);
-				$li.find(".operatebtn").append(urlOperateBtnTemplate);
+				var $operatebtn = $li.find(".operatebtn");
+				if ($operatebtn.children().length == 0) {
+					$operatebtn.append(urlOperateBtnTemplate);
+				}
 			} else if (event.type == "mouseleave") {
 				$li.attr("style", "").find("a").attr("style", "");
 				selfFunc.removeUrlOperateBtn($li);
@@ -630,7 +707,7 @@ var bookmarkOperateFunc = {
 	// 新增网址
 	addBookmark : function() {
 		var selfFunc = this;
-		$(".bookmark-item").on("click", ".addicon", function() {
+		$(".bookmark-item,.subject-item").on("click", ".addicon", function() {
 			// 如果已经存在,不需要再增加一个模板
 			var $this = $(this);
 			if ($this.parents(".block").find(".addbookmark").length == 0) {
@@ -646,7 +723,7 @@ var bookmarkOperateFunc = {
 	// 编辑网址
 	editBookmark : function() {
 		var selfFunc = this;
-		$(".bookmark-item").on("click", ".editicon", function() {
+		$(".bookmark-item,.subject-item").on("click", ".editicon", function() {
 			// 如果已经存在,不需要再增加一个模板
 			var $this = $(this);
 			var $thisli = $this.parents("li");
@@ -686,7 +763,7 @@ var bookmarkOperateFunc = {
 	// 删除网址
 	delBookmark : function() {
 		var selfFunc = this;
-		$(".bookmark-item").on("click", ".delicon", function() {
+		$(".bookmark-item,.subject-item").on("click", ".delicon", function() {
 			// 如果已经存在,不需要再增加一个模板
 			var $this = $(this);
 			if ($this.parents("li").next().find(".delbookmark").length == 0) {
@@ -742,22 +819,29 @@ var bookmarkOperateFunc = {
 				doAjaxFunc.doAddbookmark(function(newBookmarkNo,categoryno){
 					// 保存数据成功后的回调方法
 					bookmarkOperateFunc.closeAllEditBookmarkTemplate();
-					var $addbookmarkform = $("#addbookmarkform");
-					var url = $addbookmarkform.find("#url").val();
-					var name = $addbookmarkform.find("#bookmarkname").val();
-					// 获取新增网址的模板
-					var valuesObj = {};
-					valuesObj.bookmarkno = newBookmarkNo;
-					valuesObj.bookmarkname = name;
-					valuesObj.url = url;
-					var template = selfFunc.getBookmarkTemplate(valuesObj);
-					// 添加一个新网址
-					var $ul = $addbookmarkform.parents("ul");
-					$ul.prepend(template);
-					$ul.find("li:eq(0)").addClass("save-success").slideDown();
-					// 缓存数据
-					valuesObj.categoryno = categoryno;
-					initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.NEW_BOOKMARK, valuesObj);
+					// 如果该分类为加密分类，不显示新增书签
+					if ($("#c_"+categoryno).find(".lock-url").length > 0) {
+						commonUtilsFunc.calBookmarkCnt(1);
+						doAjaxFunc.saveSuccessAnimate("添加成功");
+					} else {
+						// 否则显示
+						var $addbookmarkform = $("#addbookmarkform");
+						var url = $addbookmarkform.find("#url").val();
+						var name = $addbookmarkform.find("#bookmarkname").val();
+						// 获取新增网址的模板
+						var valuesObj = {};
+						valuesObj.bookmarkno = newBookmarkNo;
+						valuesObj.bookmarkname = name;
+						valuesObj.url = url;
+						var template = selfFunc.getBookmarkTemplate(valuesObj);
+						// 添加一个新网址
+						var $ul = $addbookmarkform.parents("ul");
+						$ul.prepend(template);
+						$ul.find("li:eq(0)").addClass("save-success").slideDown();
+						// 缓存数据
+						valuesObj.categoryno = categoryno;
+						initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.NEW_BOOKMARK, valuesObj);
+					}
 				});
 			}
 			// 确认编辑网址
@@ -821,7 +905,7 @@ var bookmarkOperateFunc = {
 	// 取消网址
 	cancelEditBookmark : function() {
 		selfFunc = this;
-		$(".bookmark-item").on("click", ".cancelediticon", function() {
+		$(".bookmark-item,.subject-item").on("click", ".cancelediticon", function() {
 			selfFunc.closeAllEditBookmarkTemplate();
 		});
 	},
@@ -874,7 +958,7 @@ var bookmarkOperateFunc = {
 	},
 	// 关闭其他正在编辑的网址模板
 	closeAllEditBookmarkTemplate : function() {
-		$(".bookmark-item").find(".editbookmarktemplate").slideUp(function() {
+		$(".bookmark-item,.subject-item").find(".editbookmarktemplate").slideUp(function() {
 			var $this = $(this);
 			$this.prev(".pointto").removeClass("li-disabled pointto");
 			$this.remove();
@@ -1036,6 +1120,7 @@ var scrollBarFunc = {
 };
 // 编辑专题
 var editSubjectFunc = {
+		// 专题中的一些动作与书签动作公用，只有特有的在此处定义
 		init:function(){
 			var $pop_subject = $(".pop-subjuct");
 			$pop_subject.find(".item:first").hover(function(){
@@ -1049,37 +1134,90 @@ var editSubjectFunc = {
 			$pop_subject.find(".list-item .item").dblclick(function(){
 				$pop_subject.find(".l-sub").show().prev().hide();
 			});
-			
-			this.hoverBookmark();
+
+			this.modifyTitle();
+			this.confirmModify();
+			this.cancelModify();
+			this.addSubject();
 		},
-		// 鼠标经过网址
-		hoverBookmark : function() {
-			var selfFunc = this;
-			$(".subject-item").on("mouseenter mouseleave", ".list-item .item",function(event) {
-				var $li = $(this);
-				if (event.type == "mouseenter") {
-					var color = $li.parent().parent().siblings(
-							".head-style").css("background-color");
-					$li.css("background-color", color).siblings().attr(
-							"style", "");
-					var urlOperateBtnTemplate = selfFunc.getUrlOperateBtn($li);
-					// 18为图标宽度
-					var width = $("<div>"+urlOperateBtnTemplate+"</div>").find("span:not(.staricon)").length * 18;
-					var bookmarkNameWith = $li.find("a").width();
-					$li.find("a").css("max-width",bookmarkNameWith-width);
-					$li.find(".operatebtn").append(urlOperateBtnTemplate);
-				} else if (event.type == "mouseleave") {
-					$li.attr("style", "").find("a").attr("style", "");
-					selfFunc.removeUrlOperateBtn($li);
+		// 编辑专题标题
+		modifyTitle:function(){
+			var _this = this;
+			$(".subject-item").on("dblclick",".block-head .mt",function(){
+				var $this = $(this);
+				var modifyClass = "modify";
+				if (!$this.hasClass(modifyClass)) {
+					$this.addClass(modifyClass);
+					var title = $.trim($this.text());
+					$this.data("title",title);
+					$this.html(_this.getSubjectTitleTemplate(title));
+					$this.find("input").focus();
 				}
 			});
 		},
+		// 确定修改标题
+		confirmModify : function() {
+			var selfFunc = this;
+			$(".subject-item").on("click", ".confirmicon", function() {
+				var $this = $(this);
+				var $block = $this.parents(".block");
+				var categoryno = $block.find(".category-title").attr("value");
+				var categoryname = $block.find(".updatetitle").val();
+				var updateParams = {
+						categoryno : categoryno,
+						categoryname : categoryname
+				};
+				// 保存修改并且回调
+				doAjaxFunc.doUpdateCategoryName(updateParams,function(){
+					var $headFuncSpan = $this.parent();
+					selfFunc.removeBoxTitleUpdateBtn($headFuncSpan);
+					initLoadFunc.setCacheList(initLoadFunc.CacheTypeEnum.UPDATE_CATEGORY_NAME, updateParams);
+				});
+			});
+			// 监听回车键
+			$(".subject-item").on("keydown",".updatetitle", function(e){
+				var $this = $(this).parents(".block-head");
+				if(e.keyCode==13){
+					$this.find(".confirmicon").click();
+				} else if (e.keyCode == 27) {
+					$this.find(".cancelicon").click();
+				}
+			});
+		},
+		// 取消修改
+		cancelModify : function() {
+			$(".subject-item").on("click", ".cancelicon", function() {
+				var $this = $(this);
+				// 如果没有修改，返回初始值
+				var $mt = $this.parents(".mt");
+				$mt.html($mt.data("title")).removeClass("modify").removeData("title");
+			});
+		},
+		// 获取专题标题模板
+		getSubjectTitleTemplate : function(text) {
+			var $template = $(".subject-title-template").clone();
+			$template.find("input").attr("value",text);
+			return $template.html();
+		},
 		// 新增专题
+		addSubject : function(){
+			$(".content").on("click", ".subjectbtn", function() {
+				// 还原到初始状态
+				var $pop_subject = $(".pop-subject");
+				$pop_subject.find(":input").val("");
+				$(".mask").fadeIn(300);
+				$pop_subject.fadeIn(300).find(":input:eq(0)").focus();
+			});
+			
+			$(".pop-subject .confirm-btn").click(function() {
+				// 提交到后台
+				doAjaxFunc.doNewSubject(function(newCategoryNo){
+				});
+			});
+		}
 		// 编辑专题
-		
 		// 添加专题书签
 		// 编辑专题书签
 		// 删除专题书签
 		// 上传专题图片
-		// 编辑专题标题/描述
 };

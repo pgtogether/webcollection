@@ -110,9 +110,13 @@ public class BookmarkServiceImpl implements BookmarkService {
     }
 
     @Override
-    public List<Bookmark> selectBookmarkListByCategoryid(int categoryid) {
-
-        return bookmarkDao.selectBookmarkListByCategoryid(categoryid);
+    public List<BookmarkMiniBO> selectBookmarkListByCategoryNo(int categoryno, String userid) {
+        Bookmark bookmark = new Bookmark();
+        bookmark.setUserid(userid);
+        bookmark.setCategoryno(categoryno);
+        // 排除逻辑删除的书签
+        bookmark.setDeleteflg(BookmarkDeleteEnum.LOGIC_DELETE.getId());
+        return bookmarkDao.selectBookmarkListByCategoryNo(bookmark);
     }
 
     @Override
@@ -374,4 +378,13 @@ public class BookmarkServiceImpl implements BookmarkService {
         return bookmarkDao.getBookmarkListByTag(bookmark);
     }
 
+    @Override
+    public int cntBookmarkByCategory(int categoryno, String userid) {
+        Bookmark bookmark = new Bookmark();
+        bookmark.setUserid(userid);
+        bookmark.setCategoryno(categoryno);
+        bookmark.setDeleteflg(BookmarkDeleteEnum.NORMAL_SHOW.getId());
+
+        return bookmarkDao.countBookmarkByCategory(bookmark);
+    }
 }

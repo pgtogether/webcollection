@@ -35,4 +35,13 @@ public class StringUtils {
         return str.trim();
     }
 
+    public static boolean validInteger(String str) {
+        if (isNotEmpty(str)) {
+            if (str.matches("^[1-9]\\d*$")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

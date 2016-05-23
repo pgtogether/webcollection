@@ -181,4 +181,5 @@ public class CategoryServiceImpl implements CategoryService {
         category.setCategorytype(CategoryTypeEnum.FIRST_CATEGORY_TYPE.getId());
         return categoryDao.selectParentCategoryList(category);
     }
+
 }

@@ -142,4 +142,11 @@
 		pswanswer = #{pswanswer,jdbcType=VARCHAR}
 		where userid = #{userid,jdbcType=VARCHAR}
 	</update>
+	<select id="checkCategoryPsw" parameterType="com.dapeng.domain.UserInfo"
+		resultType="java.lang.Integer">
+		select count(1)
+		from user_info
+		where userid = #{userid,jdbcType=VARCHAR}
+		and categorypsw = #{categorypsw,jdbcType=VARCHAR}
+	</select>
 </mapper>

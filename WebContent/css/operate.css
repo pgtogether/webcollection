@@ -77,11 +77,19 @@
 }
 
 .addicon {
-	background: url(../img/icon/add-b.png) no-repeat center; width: 20px; height: 30px; float: right; cursor: pointer; margin-right: 5px;
+	background: url(../img/icon/add-b.png) no-repeat center; width: 20px; height: 30px; float: right; cursor: pointer; margin-right: 5px; margin-top: 1px;
 }
 
 .addicon:hover {
 	background: url(../img/icon/add-b-h.png) no-repeat center;
+}
+
+.lockicon {
+	background: url(../img/icon/lock.png) no-repeat center; width: 20px; height: 30px; float: right; cursor: pointer; margin-right: 5px;
+}
+
+.lockicon:hover {
+	background: url(../img/icon/lock-h.png) no-repeat center;
 }
 
 /* 分类内部新增书签样式 */
@@ -239,7 +247,7 @@
 }
 
 .pop-bookmark .exist-category-list {
-	display: none; width: 75%; max-height: 112px; background: #FFFFFF; position: absolute; float: left; margin-left: 20%; margin-top: 30px; padding: 0 2px 4px 2px; overflow: auto; box-shadow: 2px 2px 5px #A0A0A0, -2px 0px 5px #A0A0A0;
+	display: none; width: 75%; max-height: 112px; background: #FFFFFF; position: absolute; float: left; margin-top: 30px; padding: 0 2px 4px 2px; overflow: auto; box-shadow: 2px 2px 5px #A0A0A0, -2px 0px 5px #A0A0A0;
 }
 
 .pop-bookmark .exist-category-list li {
@@ -271,11 +279,19 @@
 }
 
 .pop-callback-success,.pop-callback-error {
-	top: -350px; display: block; opacity: 0.3; left: 45%; width: 200px;
+	top: -350px; display: block; opacity: 0.3; left: 45%; width: 200px; text-align: center; padding-bottom: 10px;
 }
 
 .pop-callback-error .callbackmsg {
 	color: red;
+}
+
+.pop-subject .popbox-head {
+	background: #6FC2FF;
+}
+
+.pop-subject .btn a {
+	background: #6FC2FF;
 }
 
 /* alert */

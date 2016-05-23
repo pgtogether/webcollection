@@ -319,8 +319,10 @@
 		resultType="com.dapeng.service.bo.CategoryBO">
 		select categoryno, categoryname
 		from category
-		where userid = #{userid,jdbcType=VARCHAR}
-		and categorytype = #{categorytype,jdbcType=VARCHAR}
+		where userid =
+		#{userid,jdbcType=VARCHAR}
+		and categorytype =
+		#{categorytype,jdbcType=VARCHAR}
 		order by categoryno asc
 	</select>
 </mapper>

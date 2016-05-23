@@ -16,4 +16,6 @@ public interface UserInfoMapper {
 
     int updateByPrimaryKey(UserInfo record);
     
+    int checkCategoryPsw(UserInfo record);
+    
 }

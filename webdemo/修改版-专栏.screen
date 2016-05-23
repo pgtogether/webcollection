@@ -59,7 +59,7 @@
                                                     <ContainerBox.Content>
                                                         <Container ClipToContainer="True" Id="0daf37ca-f95a-435d-ae24-f4ca685fd3b3">
                                                             <Container.Children>
-                                                                <Label RichText="&lt;Run FontSize=&quot;16&quot; &gt;书签&lt;/Run&gt;" Align="Center" Foreground="#FFFFFFFF" FontFamily="Arial" Id="88418a20-b9b9-4fa0-8b4f-62aef445038a" Panel.Bounds="1,30,118{5,2147483647},19*{5,2147483647}" />
+                                                                <Label RichText="&lt;Run FontSize=&quot;16&quot; &gt;收藏&lt;/Run&gt;" Align="Center" Foreground="#FFFFFFFF" FontFamily="Arial" Id="88418a20-b9b9-4fa0-8b4f-62aef445038a" Panel.Bounds="1,30,118{5,2147483647},19*{5,2147483647}" />
                                                             </Container.Children>
                                                         </Container>
                                                     </ContainerBox.Content>
@@ -69,7 +69,7 @@
                                         <Move To="978,-1" Target="8583b229-2afc-48af-a395-28ae575125c3" />
                                         <Move To="858,-1" Target="80a535ce-c082-4978-b689-5cf35cd85a7b" />
                                         <Move To="738,-1" Target="1cd53471-8fb6-424c-9cef-7310309959bb" />
-                                        <Set Property="Content.Background" Value="#FFD8E5F0" Target="2a3f05b6-3bca-46e9-abcd-cb1e8677e861" />
+                                        <Set Property="Content.Background" Value="#FF203E57" Target="2a3f05b6-3bca-46e9-abcd-cb1e8677e861" />
                                         <Set Property="ContainerBox.Background" Value="#FE5EB4CB" Target="1cd53471-8fb6-424c-9cef-7310309959bb" />
                                         <Set Property="ContainerBox.Background" Value="#FE5EB4CB" Target="80a535ce-c082-4978-b689-5cf35cd85a7b" />
                                         <Set Property="ContainerBox.Background" Value="#FE5EB4CB" Target="8583b229-2afc-48af-a395-28ae575125c3" />
@@ -178,7 +178,7 @@
                                 <Group GroupName="Group" Id="b4f2ca76-640a-46fc-83b6-f6eb42b22b95" Panel.Bounds="569,355,0*,0*">
                                     <Group.Children>
                                         <Image SourcePath="assets/Hornbostel _ Donner_Time to Groove - Brazil Lounge Edition_4.jpg" Id="e83f6e22-f8bf-41e9-b9c9-eb0af56184ad" Panel.Bounds="8,0,344{5,2147483647},175{5,2147483647}" />
-                                        <Rectangle Background="#FFC0504D" Opacity="0.6" Id="01ad3e79-cd60-4943-9876-b1e3d780cbbb" Panel.Bounds="0,69,360{5,2147483647},38{5,2147483647}" />
+                                        <Rectangle Background="#FF3A9EB8" Opacity="0.6" Id="01ad3e79-cd60-4943-9876-b1e3d780cbbb" Panel.Bounds="0,69,360{5,2147483647},38{5,2147483647}" />
                                         <Label RichText="&lt;Run FontSize=&quot;14&quot; Foreground=&quot;#FFFFFFFF&quot; FontWeight=&quot;Bold&quot; &gt;精心整理的Tomcat如何发布Web应用文章集锦&lt;/Run&gt;" FontFamily="Arial" Id="5c6f1d8d-4ba0-4f3d-a306-bdc802dc2093" Panel.Bounds="16,79,331{5,2147483647},19{5,2147483647}" />
                                         <ContainerBox Color="#FFE2E2E2" Thickness="0" Id="b279fe22-939e-40b3-8bff-1bcae4378788" Panel.Bounds="9,175,343{5,2147483647},224{5,2147483647}" Viewbox.ContentHeight="313">
                                             <ContainerBox.Content>

@@ -35,9 +35,11 @@ import com.dapeng.controller.form.EditBookMarkForm;
 import com.dapeng.controller.form.ParentCategoryForm;
 import com.dapeng.service.BookmarkService;
 import com.dapeng.service.CategoryService;
+import com.dapeng.service.SubjectService;
 import com.dapeng.service.UserTagsService;
 import com.dapeng.service.bo.BookmarkBO;
 import com.dapeng.service.bo.CategoryBO;
+import com.dapeng.service.bo.SubjectBO;
 import com.dapeng.util.StringUtils;
 import com.depeng.web.bo.BookmarkMiniBO;
 import com.depeng.web.bo.CategoryMiniBO;
@@ -65,6 +67,9 @@ public class IndexController extends UserSessionController {
 
     @Autowired
     private UserTagsService userTagsService;
+
+    @Autowired
+    private SubjectService subjectService;
 
     /**
      * 默认主页
@@ -491,6 +496,26 @@ public class IndexController extends UserSessionController {
         return ajaxSuccess();
     }
 
+    @RequestMapping(value = "doUpdateSubjectName", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> doUpdateSubjectName(HttpServletRequest request, HttpSession session) {
+        String subjectno = request.getParameter("subjectno");
+        String subjectname = request.getParameter("subjectname");
+        if (StringUtils.isEmpty(subjectno) || StringUtils.isEmpty(subjectname)) {
+            return ajaxFail("参数异常");
+        }
+
+        SubjectBO bo = new SubjectBO();
+        bo.setUserid(getSessionUserId(session));
+        bo.setSubjectno(Integer.valueOf(subjectno));
+        bo.setSubjectname(subjectname);
+        int result = subjectService.updateSubjectByUnique(bo);
+        if (result == 0) {
+            return ajaxFail("修改失败");
+        }
+        return ajaxSuccess();
+    }
+
     /**
      * 查询用户名下的所有分类
      */
@@ -603,4 +628,48 @@ public class IndexController extends UserSessionController {
             return ajaxFail();
         }
     }
+
+    /**
+     * 统计某个分类下书签个数
+     */
+    @RequestMapping(value = "cntBookmarkInCategory", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> cntBookmarkInCategory(HttpServletRequest request, HttpSession session) {
+        String categoryno = request.getParameter("categoryno");
+        if (StringUtils.isEmpty(categoryno)) {
+            return ajaxFail();
+        }
+        try {
+            int bookmarkcnt = bookmarkService.cntBookmarkByCategory(Integer.valueOf(categoryno),
+                    getSessionUserId(session));
+            return ajaxSuccess(bookmarkcnt);
+        } catch (Exception e) {
+            return ajaxFail();
+        }
+    }
+
+    /**
+     * 新增专题
+     */
+    @RequestMapping(value = "doAddSubject", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public Map<String, Object> doAddSubject(HttpServletRequest request, HttpSession session) {
+        String subjectName = request.getParameter("subjectname");
+        String subjectDesc = request.getParameter("subjectdesc");
+        if (StringUtils.isEmpty(subjectName)) {
+            return ajaxFail();
+        }
+
+        SubjectBO subjectBO = new SubjectBO();
+        subjectBO.setUserid(getSessionUserId(session));
+        subjectBO.setSubjectname(subjectName);
+        subjectBO.setSubjectdesc(subjectDesc);
+        int result = subjectService.addSubject(subjectBO);
+        if (result > 0) {
+            return ajaxSuccess();
+        } else {
+            return ajaxFail();
+        }
+    }
+    
 }

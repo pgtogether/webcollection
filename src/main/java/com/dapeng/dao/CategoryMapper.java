@@ -19,7 +19,7 @@ public interface CategoryMapper {
     int deleteByPrimaryKey(int categoryid);
 
     int deleteByUnique(Category record);
-    
+
     int insert(Category record);
 
     int insertSelective(Category record);
@@ -34,7 +34,7 @@ public interface CategoryMapper {
      * 类别检索
      */
     List<CategoryMiniBO> selectCategoryList(String userid);
-    
+
     List<CategoryBO> selectParentCategoryList(Category category);
 
     Category selectCategoryById(int categoryid);
@@ -62,6 +62,7 @@ public interface CategoryMapper {
 
     // 获取默认栏位下最大排序号
     int selectMaxSortInDefaultColNo(Category category);
-    
+
     int countCategory(String userid);
+
 }

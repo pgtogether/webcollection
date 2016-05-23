@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dapeng.dao.SubjectMapper">
+	<resultMap id="BaseResultMap" type="com.dapeng.domain.Subject">
+		<id column="subjectid" property="subjectid" jdbcType="INTEGER" />
+		<result column="subjectname" property="subjectname" jdbcType="VARCHAR" />
+		<result column="userid" property="userid" jdbcType="VARCHAR" />
+		<result column="subjectno" property="subjectno" jdbcType="INTEGER" />
+		<result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+		<result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+		<result column="subjectdesc" property="subjectdesc" jdbcType="VARCHAR" />
+		<result column="extendcol1" property="extendcol1" jdbcType="VARCHAR" />
+		<result column="extendcol2" property="extendcol2" jdbcType="VARCHAR" />
+		<result column="extendcol3" property="extendcol3" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		subjectid, subjectname, userid, subjectno, createtime,
+		updatetime, subjectdesc,
+		extendcol1,
+		extendcol2, extendcol3
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from subject
+		where subjectid = #{subjectid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		subject
+		where subjectid = #{subjectid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.dapeng.domain.Subject">
+		insert into subject
+		(subjectid, subjectname, userid,
+		subjectno, createtime, updatetime,
+		subjectdesc, extendcol1, extendcol2,
+		extendcol3)
+		values
+		(#{subjectid,jdbcType=INTEGER}, #{subjectname,jdbcType=VARCHAR},
+		#{userid,jdbcType=VARCHAR},
+		#{subjectno,jdbcType=INTEGER},
+		#{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP},
+		#{subjectdesc,jdbcType=VARCHAR}, #{extendcol1,jdbcType=VARCHAR},
+		#{extendcol2,jdbcType=VARCHAR},
+		#{extendcol3,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.dapeng.domain.Subject">
+		insert into subject
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="subjectid != null">
+				subjectid,
+			</if>
+			<if test="subjectname != null">
+				subjectname,
+			</if>
+			<if test="userid != null">
+				userid,
+			</if>
+			<if test="subjectno != null">
+				subjectno,
+			</if>
+			<if test="createtime != null">
+				createtime,
+			</if>
+			<if test="updatetime != null">
+				updatetime,
+			</if>
+			<if test="subjectdesc != null">
+				subjectdesc,
+			</if>
+			<if test="extendcol1 != null">
+				extendcol1,
+			</if>
+			<if test="extendcol2 != null">
+				extendcol2,
+			</if>
+			<if test="extendcol3 != null">
+				extendcol3,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="subjectid != null">
+				#{subjectid,jdbcType=INTEGER},
+			</if>
+			<if test="subjectname != null">
+				#{subjectname,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectno != null">
+				#{subjectno,jdbcType=INTEGER},
+			</if>
+			<if test="createtime != null">
+				#{createtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatetime != null">
+				#{updatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="subjectdesc != null">
+				#{subjectdesc,jdbcType=VARCHAR},
+			</if>
+			<if test="extendcol1 != null">
+				#{extendcol1,jdbcType=VARCHAR},
+			</if>
+			<if test="extendcol2 != null">
+				#{extendcol2,jdbcType=VARCHAR},
+			</if>
+			<if test="extendcol3 != null">
+				#{extendcol3,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.dapeng.domain.Subject">
+		update subject
+		<set>
+			<if test="subjectname != null">
+				subjectname = #{subjectname,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				userid = #{userid,jdbcType=VARCHAR},
+			</if>
+			<if test="subjectno != null">
+				subjectno = #{subjectno,jdbcType=INTEGER},
+			</if>
+			<if test="createtime != null">
+				createtime = #{createtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatetime != null">
+				updatetime = #{updatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="subjectdesc != null">
+				subjectdesc = #{subjectdesc,jdbcType=VARCHAR},
+			</if>
+			<if test="extendcol1 != null">
+				extendcol1 = #{extendcol1,jdbcType=VARCHAR},
+			</if>
+			<if test="extendcol2 != null">
+				extendcol2 = #{extendcol2,jdbcType=VARCHAR},
+			</if>
+			<if test="extendcol3 != null">
+				extendcol3 = #{extendcol3,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where subjectid = #{subjectid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.dapeng.domain.Subject">
+		update subject
+		set
+		subjectname = #{subjectname,jdbcType=VARCHAR},
+		userid =
+		#{userid,jdbcType=VARCHAR},
+		subjectno = #{subjectno,jdbcType=INTEGER},
+		createtime = #{createtime,jdbcType=TIMESTAMP},
+		updatetime =
+		#{updatetime,jdbcType=TIMESTAMP},
+		subjectdesc =
+		#{subjectdesc,jdbcType=VARCHAR},
+		extendcol1 =
+		#{extendcol1,jdbcType=VARCHAR},
+		extendcol2 =
+		#{extendcol2,jdbcType=VARCHAR},
+		extendcol3 =
+		#{extendcol3,jdbcType=VARCHAR}
+		where subjectid =
+		#{subjectid,jdbcType=INTEGER}
+	</update>
+	<update id="updateSubjectByUnique" parameterType="com.dapeng.domain.Subject">
+		update
+		subject
+		set subjectname = #{subjectname,jdbcType=VARCHAR},
+		updatetime =
+		#{updatetime,jdbcType=TIMESTAMP}
+		where subjectno =
+		#{subjectno,jdbcType=INTEGER}
+		and userid = #{userid,jdbcType=VARCHAR}
+	</update>
+	<select id="selectNextSubjectno" parameterType="java.lang.String"
+		resultType="java.lang.Integer">
+		select IFNULL(max(subjectno),0) + 1
+		from subject
+		where
+		userid
+		=
+		#{userid,jdbcType=VARCHAR}
+	</select>
+</mapper>

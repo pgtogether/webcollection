@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 <link href="${context_path}/css/base.css" rel="stylesheet"
 	type="text/css" />
+<link href="${context_path}/css/common.css" rel="stylesheet"
+	type="text/css" />
 <link href="${context_path}/css/index.css" rel="stylesheet"
 	type="text/css" />
 <script type="text/javascript">

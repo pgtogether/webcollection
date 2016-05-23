@@ -2,7 +2,6 @@
 
 import java.util.List;
 
-import com.dapeng.domain.Bookmark;
 import com.dapeng.service.bo.BookmarkBO;
 import com.depeng.web.bo.BookmarkMiniBO;
 import com.depeng.web.bo.CategoryWithBookmarkMiniBO;
@@ -10,12 +9,12 @@ import com.depeng.web.bo.CategoryWithBookmarkMiniBO;
 public interface BookmarkService {
     // 获取书签数目
     int countBookmark(String userid);
-    
+
     // 查看书签列表
     List<CategoryWithBookmarkMiniBO> selectBookmarkList(String userid);
 
-    // 查找同一类别的书签
-    List<Bookmark> selectBookmarkListByCategoryid(int categoryid);
+    // 查找分类下的书签
+    List<BookmarkMiniBO> selectBookmarkListByCategoryNo(int categoryno,String userid);
 
     // 查看回收站列表
     List<BookmarkMiniBO> selectrecycleList(String userid);
@@ -47,10 +46,15 @@ public interface BookmarkService {
     // 取消热门书签
     int cancelHotbookmark(BookmarkBO bo);
 
+    // 获取用户的所有热门书签
     List<BookmarkMiniBO> selectHotBookmarkList(String userid);
 
     // 更新书签的排序
     void updateBookmarkSort(BookmarkBO bo);
 
+    // 根据Tag查询书签
     List<BookmarkMiniBO> getBookmarkListByTag(String userid, String tag);
+
+    // 查询某分类下书签数目
+    int cntBookmarkByCategory(int categoryno, String userid);
 }

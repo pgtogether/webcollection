@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+.search-box {
+	width: 800px; height: 100px; background: #fff; margin: 0 auto; margin-top: 10px;
+}
+
+.search-input {
+	border: 1px solid #bbb; height: 40px; width: 100%; border-radius: 5px;
+}
+
+.search-input input {
+	width: 740px; height: 100%; border: none; float: left; margin: 0 5px; font-size: 16px; text-indent: 10px;
+}
+
+.search-input .btn {
+	height: 100%; width: 50px; float: left; background: url(../img/icon/search.png) no-repeat 8px 4px; cursor: pointer;
+}
+
+.search-input .btn:hover {
+	background: url(../img/icon/search-h.png) no-repeat 8px 4px; cursor: pointer;
+}

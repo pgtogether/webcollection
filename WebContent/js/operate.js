@@ -447,6 +447,25 @@ var doAjaxFunc = {
 			}
 		});
 	},
+	// 统计分类下书签数目
+	cntBookmarkInCategory : function(categoryno,successCallBack){
+		$.ajax({
+			type : "post",
+			url : CONTEXT_PATH + "/cntBookmarkInCategory",
+			data : {
+				categoryno : categoryno
+			},
+			success : function(json) {
+				if (json.result == "OK") {
+					successCallBack(json.data);
+				} else {
+					alert(json.msg);
+				}
+			},
+			error : function(e) {
+			}
+		});
+	},
 	// 设置常用书签
 	doSetHotBookmark : function(bookmarkno,successCallBack){
 		$.ajax({
@@ -496,6 +515,76 @@ var doAjaxFunc = {
 					successCallBack();
 				} else {
 					alert(json.msg);
+				}
+			},
+			error : function(e) {
+			}
+		});
+	},
+	// 修改专题标题
+	doUpdateSubjectName : function(updateParams,successCallBack){
+		$.ajax({
+			type : "post",
+			url : CONTEXT_PATH + "/doUpdateCategoryName",
+			data : updateParams,
+			success : function(json) {
+				if (json.result == "OK") {
+					successCallBack();
+				} else {
+					alert(json.msg);
+				}
+			},
+			error : function(e) {
+			}
+		});
+	},
+	// 添加专题
+	doNewSubject : function(successCallBack){
+		var $newsubjectform = $("#newSubjectForm");
+		formValidateFunc.validateNewSubjectForm($newsubjectform);
+		if (!$newsubjectform.valid()) {
+			return;
+		}
+		$.ajax({
+			data : $newsubjectform.serialize(),
+			type : "post",
+			url : CONTEXT_PATH + "/doAddSubject",
+			success : function(json) {
+				if (json.result == "OK") {
+					var newSubjectNo = json.data;
+					successCallBack(newSubjectNo);
+				} else {
+					validateErrorsUtil.showValidateErrors($newsubjectform, json.errors);
+				}
+			},
+			error : function(e) {
+			}
+		});
+	},
+	// 验证加密分类
+	doValidCategoryPsw : function(updateParams,successCallBack){
+		$.ajax({
+			type : "post",
+			url : CONTEXT_PATH + "/unlockCategory",
+			data : updateParams,
+			success : function(json) {
+				if (json.result == "OK") {
+					successCallBack(json.data);
+				}
+			},
+			error : function(e) {
+			}
+		});
+	},
+	// 加载分类所属书签
+	doLoadBookmarkList : function(updateParams,successCallBack){
+		$.ajax({
+			type : "post",
+			url : CONTEXT_PATH + "/doSelectBookmarkListByCategory",
+			data : updateParams,
+			success : function(json) {
+				if (json.result == "OK") {
+					successCallBack(json.data);
 				}
 			},
 			error : function(e) {
@@ -628,7 +717,22 @@ var formValidateFunc = {
 				}
 			}
 		});
-	}
+	},
+	// 验证添加专题
+	validateNewSubjectForm : function($form){
+		$form.validate({
+			rules : {
+				subjectname : {
+					required : true
+				}
+			},
+			messages : {
+				subjectname : {
+					required : "请输入专题名称"
+				}
+			}
+		});
+	},
 };
 
 var commonUtilsFunc = {

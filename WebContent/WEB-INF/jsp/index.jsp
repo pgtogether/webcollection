@@ -98,21 +98,8 @@
 				<!-- 网址主体 -->
 					<div class="subject-item">
 						<div class="subject-box ui-sortable">
-							<div class="block" id="c_21">
-								<div class="block-head">
-									<div class="img">
-										<img src="/webcollection/img/demoimg.jpg" />
-									</div>
-									<div class="bg"></div>
-									<div class="mt">这是这个专题的标题这是这个专题的标题这是这个专题的标题</div>
-								</div>
-								<div class="block-body">
-									<ul class="url-list ui-sortable">
-									<li id="h_3" value="3" title="123" class="filter-item" style=""><a href="http://nj.58.com/yizizhuanyi/0/?ispic=1&amp;selpic=2&amp;PGTID=180391126189489863003811786&amp;ClickID=1" target="_blank" style="">123</a><div class="operatebtn"></div></li><li id="h_4" value="4" title="123123123123123123123123123123123" class="filter-item" style=""><a href="http://nj.58.com/yizizhuanyi/0/?ispic=1&amp;selpic=2&amp;PGTID=180391126189489863003811786&amp;ClickID=1" target="_blank" style="">123123123123123123123123123123123</a><div class="operatebtn"><span title="从常用网址取消" class="staricon light"></span></div></li></ul>
-									<div class="add-url">
-										<span class="addicon" title="添加网址"></span>
-									</div>
-								</div>
+							<div class="block block-disabled add-block">
+								<span class="add-block-btn subjectbtn" title="添加专题">+</span>
 							</div>
 							<div class="block" id="c_21">
 								<div class="block-head">
@@ -487,9 +474,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="footer">
-		<div class="footer-in"></div>
-	</div>
+	<jsp:include page="/include/footer.jsp" />
 	<div class="sideBanner ie">
 		<div class="fun1">
 			<span>意见反馈</span>
