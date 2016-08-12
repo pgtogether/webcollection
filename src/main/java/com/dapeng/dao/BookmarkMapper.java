@@ -91,6 +91,9 @@ public interface BookmarkMapper {
 
     // 获取用户指定分类下的书签最大的排序编号
     int selectMaxSortByCategory(Bookmark bookmark);
+    
+    // 获取用户指定专题下的书签最大的排序编号
+    int selectMaxSortBySubject(Bookmark bookmark);
 
     // 批量更新分类排序
     void batchUpdateBookmarkSort(List<Bookmark> list);

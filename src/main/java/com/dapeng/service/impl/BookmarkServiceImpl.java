@@ -133,10 +133,18 @@ public class BookmarkServiceImpl implements BookmarkService {
         int maxBookmarkNo = bookmarkDao.selectMaxBookmarkNoByUserId(bookmarkbo.getUserid()) + 1;
 
         // 获取最大排序号
-        Bookmark record = new Bookmark();
-        record.setUserid(bookmarkbo.getUserid());
-        record.setCategoryno(bookmarkbo.getCategoryno());
-        int maxSort = bookmarkDao.selectMaxSortByCategory(record) + 1;
+        int maxSort = 0;
+        if (0 != bookmarkbo.getCategoryno()) {
+            Bookmark record = new Bookmark();
+            record.setUserid(bookmarkbo.getUserid());
+            record.setCategoryno(bookmarkbo.getCategoryno());
+            maxSort = bookmarkDao.selectMaxSortByCategory(record) + 1;
+        } else if (0 != bookmarkbo.getSubjectno()) {
+            Bookmark record = new Bookmark();
+            record.setUserid(bookmarkbo.getUserid());
+            record.setSubjectno(bookmarkbo.getSubjectno());
+            maxSort = bookmarkDao.selectMaxSortBySubject(record) + 1;
+        }
 
         // 插入标签
         String tags = bookmarkbo.getTags();
@@ -186,6 +194,7 @@ public class BookmarkServiceImpl implements BookmarkService {
         bookmark.setUrl(bookmarkbo.getUrl());
         bookmark.setPermission(BookmarkPermissionEnum.PRIVATEE.getId());
         bookmark.setCategoryno(bookmarkbo.getCategoryno());
+        bookmark.setSubjectno(bookmarkbo.getSubjectno());
         bookmark.setTags(insertTags);
         bookmark.setDescription(bookmarkbo.getDescription());
         bookmark.setHot(BookmarkHotEnum.NORMAL.getId());

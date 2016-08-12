@@ -8,7 +8,7 @@ import java.util.Date;
  * @author Administrator
  * 
  */
-public class BookmarkBO {
+public class SubjectBookmarkBO {
 
     private int bookmarkid;
 
@@ -22,18 +22,8 @@ public class BookmarkBO {
 
     private String permission;
 
-    private int categoryno;
-
     private int subjectno;
-
-    private int parentcategoryno;
-
-    private String categorypermission;
-
-    private String categorytype;
-
-    private String categoryname;
-
+    
     private String colno;
 
     private int usetimes;
@@ -78,6 +68,22 @@ public class BookmarkBO {
         this.bookmarkname = bookmarkname;
     }
 
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public int getBookmarkno() {
+        return bookmarkno;
+    }
+
+    public void setBookmarkno(int bookmarkno) {
+        this.bookmarkno = bookmarkno;
+    }
+
     public String getUrl() {
         return url;
     }
@@ -92,6 +98,22 @@ public class BookmarkBO {
 
     public void setPermission(String permission) {
         this.permission = permission;
+    }
+
+    public int getSubjectno() {
+        return subjectno;
+    }
+
+    public void setSubjectno(int subjectno) {
+        this.subjectno = subjectno;
+    }
+
+    public String getColno() {
+        return colno;
+    }
+
+    public void setColno(String colno) {
+        this.colno = colno;
     }
 
     public int getUsetimes() {
@@ -158,6 +180,14 @@ public class BookmarkBO {
         this.sort = sort;
     }
 
+    public String getSortlist() {
+        return sortlist;
+    }
+
+    public void setSortlist(String sortlist) {
+        this.sortlist = sortlist;
+    }
+
     public String getHot() {
         return hot;
     }
@@ -174,38 +204,6 @@ public class BookmarkBO {
         this.deleteflg = deleteflg;
     }
 
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
-
-    public String getCategoryname() {
-        return categoryname;
-    }
-
-    public void setCategoryname(String categoryname) {
-        this.categoryname = categoryname;
-    }
-
-    public int getBookmarkno() {
-        return bookmarkno;
-    }
-
-    public void setBookmarkno(int bookmarkno) {
-        this.bookmarkno = bookmarkno;
-    }
-
-    public int getCategoryno() {
-        return categoryno;
-    }
-
-    public void setCategoryno(int categoryno) {
-        this.categoryno = categoryno;
-    }
-
     public String getTags() {
         return tags;
     }
@@ -214,60 +212,12 @@ public class BookmarkBO {
         this.tags = tags;
     }
 
-    public String getSortlist() {
-        return sortlist;
-    }
-
-    public void setSortlist(String sortlist) {
-        this.sortlist = sortlist;
-    }
-
-    public String getColno() {
-        return colno;
-    }
-
-    public void setColno(String colno) {
-        this.colno = colno;
-    }
-
     public String getTagids() {
         return tagids;
     }
 
     public void setTagids(String tagids) {
         this.tagids = tagids;
-    }
-
-    public int getParentcategoryno() {
-        return parentcategoryno;
-    }
-
-    public void setParentcategoryno(int parentcategoryno) {
-        this.parentcategoryno = parentcategoryno;
-    }
-
-    public String getCategorytype() {
-        return categorytype;
-    }
-
-    public void setCategorytype(String categorytype) {
-        this.categorytype = categorytype;
-    }
-
-    public String getCategorypermission() {
-        return categorypermission;
-    }
-
-    public void setCategorypermission(String categorypermission) {
-        this.categorypermission = categorypermission;
-    }
-
-    public int getSubjectno() {
-        return subjectno;
-    }
-
-    public void setSubjectno(int subjectno) {
-        this.subjectno = subjectno;
     }
 
 }

@@ -111,7 +111,7 @@
 }
 
 .addbookmark p,.editbookmark p {
-	width: 100%; display: inline-block; min-height: 30px; min-height: 30px; height: auto; height: auto;
+	width: 100%; display: inline-block; min-height: 30px; height: auto;
 }
 
 .addbookmark p label,.editbookmark p label {

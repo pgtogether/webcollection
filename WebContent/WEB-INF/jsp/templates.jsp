@@ -40,9 +40,24 @@
 			<span class="unlockbtn" title="开锁"></span>
 		</li>
 	</ul>
-	
 	<!-- 新增书签模板 -->
-	
+	<ul class="bookmarktemplate display-none">
+		<li class="editbookmarktemplate li-disabled" style="display:none;">
+			<form id="form">
+			<div class="">
+				<p class="edit-title"></p>
+				<p><label>网址</label><input type="text" id="url" name="url" placeholder="例:www.52url.com" value=""/></p>
+				<p><label>名称</label><input type="text" id="bookmarkname" name="bookmarkname" placeholder="例:网址收藏" value=""/></p>
+				<p><label>标签</label><input type="text" id="tags" name="tags" placeholder="逗号(,)分隔,最多5个" value=""/></p>
+				<p><label>描述</label><textarea id="desc" name="desc"></textarea></p>
+				<p class="btn">
+					<span class="confirmediticon" title="确定"></span>
+					<span class="cancelediticon" title="取消"></span>
+				</p>
+			</div>
+			</form>
+		</li>
+	</ul>
 	<!-- 编辑书签模板 -->
 	
 	<!-- 删除书签模板 -->

@@ -648,28 +648,4 @@ public class IndexController extends UserSessionController {
         }
     }
 
-    /**
-     * 新增专题
-     */
-    @RequestMapping(value = "doAddSubject", method = { RequestMethod.GET, RequestMethod.POST })
-    @ResponseBody
-    public Map<String, Object> doAddSubject(HttpServletRequest request, HttpSession session) {
-        String subjectName = request.getParameter("subjectname");
-        String subjectDesc = request.getParameter("subjectdesc");
-        if (StringUtils.isEmpty(subjectName)) {
-            return ajaxFail();
-        }
-
-        SubjectBO subjectBO = new SubjectBO();
-        subjectBO.setUserid(getSessionUserId(session));
-        subjectBO.setSubjectname(subjectName);
-        subjectBO.setSubjectdesc(subjectDesc);
-        int result = subjectService.addSubject(subjectBO);
-        if (result > 0) {
-            return ajaxSuccess();
-        } else {
-            return ajaxFail();
-        }
-    }
-    
 }

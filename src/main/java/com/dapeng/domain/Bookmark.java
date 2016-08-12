@@ -19,7 +19,9 @@ public class Bookmark {
     private String permission;
 
     private int categoryno;
-
+    
+    private int subjectno;
+    
     private int usetimes;
 
     private String pinyin;
@@ -188,6 +190,14 @@ public class Bookmark {
 
     public void setTags(String tags) {
         this.tags = tags;
+    }
+
+    public int getSubjectno() {
+        return subjectno;
+    }
+
+    public void setSubjectno(int subjectno) {
+        this.subjectno = subjectno;
     }
 
 }

@@ -1,5 +1,6 @@
 package com.dapeng.service;
 
+import com.dapeng.service.bo.BookmarkBO;
 import com.dapeng.service.bo.SubjectBO;
 
 /**
@@ -16,4 +17,5 @@ public interface SubjectService {
     
     // 更新专题
     int updateSubjectByUnique(SubjectBO bo);
+    
 }

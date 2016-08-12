@@ -538,29 +538,6 @@ var doAjaxFunc = {
 			}
 		});
 	},
-	// 添加专题
-	doNewSubject : function(successCallBack){
-		var $newsubjectform = $("#newSubjectForm");
-		formValidateFunc.validateNewSubjectForm($newsubjectform);
-		if (!$newsubjectform.valid()) {
-			return;
-		}
-		$.ajax({
-			data : $newsubjectform.serialize(),
-			type : "post",
-			url : CONTEXT_PATH + "/doAddSubject",
-			success : function(json) {
-				if (json.result == "OK") {
-					var newSubjectNo = json.data;
-					successCallBack(newSubjectNo);
-				} else {
-					validateErrorsUtil.showValidateErrors($newsubjectform, json.errors);
-				}
-			},
-			error : function(e) {
-			}
-		});
-	},
 	// 验证加密分类
 	doValidCategoryPsw : function(updateParams,successCallBack){
 		$.ajax({
@@ -627,6 +604,62 @@ var doAjaxFunc = {
 			}, 500);
 		});
 	}
+};
+
+var doSubjectAjaxFunc = {
+		// 添加专题
+		doNewSubject : function(successCallBack){
+			var $newsubjectform = $("#newSubjectForm");
+			formValidateFunc.validateNewSubjectForm($newsubjectform);
+			if (!$newsubjectform.valid()) {
+				return;
+			}
+			$.ajax({
+				data : $newsubjectform.serialize(),
+				type : "post",
+				url : CONTEXT_PATH + "/subject/doAddSubject",
+				success : function(json) {
+					if (json.result == "OK") {
+						var newSubjectNo = json.data;
+						successCallBack(newSubjectNo);
+					} else {
+						validateErrorsUtil.showValidateErrors($newsubjectform, json.errors);
+					}
+				},
+				error : function(e) {
+				}
+			});
+		},
+		// 新增书签
+		doAddSubjectBookmark : function(successCallBack) {
+			var $addbookmarkform = $("#addbookmarkform");
+			formValidateFunc.validateBookmarkForm($addbookmarkform);
+			if (!$addbookmarkform.valid()) {
+				return;
+			}
+			// 补足URL的HTTP前缀
+			var url = this.fillUrl($addbookmarkform.find("#url").val());
+			$addbookmarkform.find("#url").val(url);
+			var subjectno = $addbookmarkform.parents(".block").attr("value");
+			var params = $addbookmarkform.serialize();
+			params += "&subjectno=" + subjectno;
+			$.ajax({
+				data : params,
+				type : "post",
+				url : CONTEXT_PATH + "/doAddSubjectBookmark",
+				success : function(json) {
+					if (json.result == "OK") {
+						// 返回新增的书签编号
+						var newBookmarkNo = json.data;
+						successCallBack(newBookmarkNo,subjectno);
+					} else {
+						validateErrorsUtil.showValidateErrors($addbookmarkform, json.errors);
+					}
+				},
+				error : function(e) {
+				}
+			});
+		}
 };
 
 // 表单验证操作
